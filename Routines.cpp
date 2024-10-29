@@ -64,3 +64,42 @@ void RenovateAllResidential::execute()
         
     // }
 }
+
+void UpgradeAllRail::execute()
+{
+    for (auto rail : rails) 
+    {        
+        rail->performMaintenance();
+    } 
+}
+
+UpgradeAllRail::UpgradeAllRail(const std::vector<RailSystemAdapter*> &rails)
+{
+    this->rails = rails;
+}
+
+void UpgradeAllRoad::execute()
+{
+    for (auto road : roads) 
+    {        
+        road->performMaintenance();
+    } 
+}
+
+UpgradeAllRoad::UpgradeAllRoad(const std::vector<RoadSystemAdapter *> &roads)
+{
+    this->roads = roads;
+}
+
+void UpgradeAllPub::execute()
+{
+    for (auto pt : pub) 
+    {        
+        pt->performMaintenance();
+    } 
+}
+
+UpgradeAllPub::UpgradeAllPub(const std::vector<PublicTransitAdapter *> &pub)
+{
+    this->pub = pub;
+}
