@@ -7,6 +7,7 @@ Utility::Utility() : name(""), efficiency(100.0f) {
     wood = Wood::getInstance();
     steel = Steel::getInstance();
     budget = Budget::getInstance();
+    isFunctional=true;    
 }
 
 Utility::~Utility() {}
@@ -55,7 +56,6 @@ PowerPlant::PowerPlant(powerPlants type) : powerGeneration(0), type(type){
     default:
         break;
     }
-    
 }
 
 PowerPlant::~PowerPlant() {}
@@ -92,7 +92,7 @@ Utility* FunctionalPowerPlant::mulfunction() {
         std::cout << "Utility does not exist" << std::endl;
         return this;
     }
-    
+    isFunctional=false;
     NonFunctionalPowerPlant* nonFunctional = new NonFunctionalPowerPlant(this->getType());
     nonFunctional->setPowerGeneration(this->getPowerGeneration());
     nonFunctional->setEfficiency(this->getEfficiency() * 0.333);
@@ -166,6 +166,7 @@ Utility* NonFunctionalPowerPlant::repair() {
         break;
     }
     std::cout << "Power plant repaired." << std::endl;
+    isFunctional = true;
     return functional;
 }
 
@@ -230,6 +231,7 @@ Utility* FunctionalWaterSupply::mulfunction() {
     nonFunctional->setEfficiency(this->getEfficiency() * 0.333);
     water->setliters(water->getLiters() - waterGeneration * getEfficiency() + waterGeneration * nonFunctional->getEfficiency());
     std::cout << "Water supply malfunctioned." << std::endl;
+    isFunctional=false;
     return nonFunctional;
 }
 
@@ -262,6 +264,7 @@ Utility* NonFunctionalWaterSupply::repair() {
 
     water->setliters(water->getLiters() - waterGeneration * getEfficiency() + waterGeneration * functional->getEfficiency());
     std::cout << "Water supply repaired." << std::endl;
+    isFunctional = true;
     return functional;
 }
 
@@ -326,6 +329,7 @@ Utility* FunctionalWasteManagement::mulfunction() {
     nonFunctional->setWasteCollection(this->getWasteCollectionRaw());
     nonFunctional->setEfficiency(this->getEfficiency() * 0.333);
     std::cout << "Waste management malfunctioned." << std::endl;
+    isFunctional = false;
     return nonFunctional;
 }
 
@@ -356,6 +360,7 @@ Utility* NonFunctionalWasteManagement::repair() {
     functional->setWasteCollection(this->getWasteCollectionRaw());
     functional->setEfficiency(100.0f);  // Reset efficiency to 100%
     std::cout << "Waste management repaired." << std::endl;
+    isFunctional = true;
     return functional;
 }
 
