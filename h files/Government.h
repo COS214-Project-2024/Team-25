@@ -20,7 +20,7 @@ private:
     Wood* wood;
     Concrete* concrete;
     Steel* steel;
-    CitySector* citySector;
+    CityGrowth* cityGrowth;
     TaxSystem* taxSystem;
     std::vector<PublicTransitAdapter*> publicTransitAdapter;
     std::vector<RoadSystemAdapter*> roadSystemAdapter;
@@ -32,6 +32,11 @@ private:
     std::vector<MonthlyRoutines*> monthlyRoutines;
 public:
     Government();
+    ~Government();
+    
+    //Actions
+    void createBuilding(); //action 1
+
     virtual void attach(Citizen Citizen);
     virtual void detach(Citizen Citizen);
     virtual void notifyBuilding(Citizen Citizen);

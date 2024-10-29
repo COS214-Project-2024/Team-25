@@ -96,7 +96,7 @@ void UpgradeAllPub::execute()
     for (auto pt : pub) 
     {        
         pt->performMaintenance();
-    } 
+    }
 }
 
 UpgradeAllPub::UpgradeAllPub(const std::vector<PublicTransitAdapter *> &pub)
