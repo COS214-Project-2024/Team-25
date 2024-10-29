@@ -47,6 +47,14 @@ int Residential::getLeftOverCapacity(){
     return (this->capacity - residents.size());
 }
 
+int Residential::getCapacity() {
+    return this->capacity;
+}
+
+std::vector<Citizen*> Residential::getCitizens() {
+    return this->residents;
+}
+
 
 
 // House class

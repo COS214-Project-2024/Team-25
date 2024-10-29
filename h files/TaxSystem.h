@@ -31,7 +31,7 @@ class TaxStrategy {
    public:
     // TaxStrategy();
     // ~TaxStrategy();
-    virtual float calculateTax(int totalBuildings) = 0;
+    virtual float calculateTax(CityGrowth* growth) = 0;
     virtual std::string getStrategy() = 0;
    private:
 };
@@ -40,7 +40,7 @@ class ProgressiveTaxStrategy : public TaxStrategy {
    public:
     // ProgressiveTaxStrategy();
     // ~ProgressiveTaxStrategy();
-    virtual float calculateTax(int totalBuildings);
+    virtual float calculateTax(CityGrowth* growth);
     virtual std::string getStrategy();
 
    private:
@@ -50,7 +50,7 @@ class FlatTaxStrategy : public TaxStrategy {
    public:
     // FlatTaxStrategy();
     // ~FlatTaxStrategy();
-    virtual float calculateTax(int totalBuildings);
+    virtual float calculateTax(CityGrowth* growth);
     virtual std::string getStrategy();
 
    private:

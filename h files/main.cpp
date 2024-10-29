@@ -59,7 +59,8 @@ int main(int argc, char const *argv[])
      steel->increase();
 
      Utility* powerPlant = new FunctionalPowerPlant(HYDRO);
-     powerPlant = powerPlant->mulfunction();
+    //  powerPlant = powerPlant->mulfunction();
+    // commented out because of error 
 
 
     // /* --------------------------- Testing CityGrowth --------------------------- */
@@ -84,10 +85,15 @@ int main(int argc, char const *argv[])
     for (int i = 0; i < 18; i++) {
         // House(std::string name, int numRooms, int m_squared, float value,
         // int numBedrooms, int numBathrooms, int kitchenSize)
-        House* newHouse = new House("0", 1, 500, 100000, 1, 1, 20, 2);
+        House* newHouse = new House("0", 1, 500, 100000, 1, 1, 10, 2);
+        CommercialWorker* commercialWorker = new CommercialWorker();
         // make sure the new houses only go into the valid sector positions
+        newHouse->addCitizen(commercialWorker);
+        
         citygrowth->addBuilding(newHouse,i % citygrowth->getTotalSectorCount());
     }
+    Apartment* newApartment = new Apartment("0", 1, 500, 100000, 1, 1, 20, 2);
+    citygrowth->addBuilding(newApartment, 2);
 
     std::cout << citygrowth->printSectors();
 
@@ -119,6 +125,8 @@ int main(int argc, char const *argv[])
     std::cout << "Total collected taxes: " << taxSystem->getCollectedTaxes() << "\n";
     std::cout << "\n";
     std::cout << "Total collected taxes: " << taxSystem->getCollectedTaxes() << "\n";
+
+    /* -------------------------------------------------------------------------- */
 
      House* myHouse = new House("Dream House", 5, 120, 250000.0f, 3, 2, 5, 9);
 
