@@ -10,6 +10,16 @@ void MonthlyRoutines::addRoutines(GovernmentCommands* command)
     M_Routines.push_back(command);
 }
 
+void MonthlyRoutines::addtransportRoutines(GovernmentCommands *command)
+{
+    transportRoutines.push_back(command);
+}
+
+void MonthlyRoutines::addbuildingRoutines(GovernmentCommands *command)
+{
+    buildingRoutines.push_back(command);
+}
+
 std::string MonthlyRoutines::removeRoutines(GovernmentCommands* command) 
 {
     if (!M_Routines.empty()) 
@@ -20,6 +30,52 @@ std::string MonthlyRoutines::removeRoutines(GovernmentCommands* command)
         {
             M_Routines.erase(it);
             return "Monthly Routine removed successfully";
+        }
+        else
+        {
+            return "Governement Command is not part of these Routines";
+        }
+        
+    }
+    else    
+    {
+        return "Governement Command does not exist";
+    }
+}
+
+std::string MonthlyRoutines::removetransportRoutines(GovernmentCommands *command)
+{
+    if (!transportRoutines.empty()) 
+    {
+        auto it = std::find(transportRoutines.begin(), transportRoutines.end(), command);
+
+        if (it != transportRoutines.end())
+        {
+            transportRoutines.erase(it);
+            return "Trnasport Routine removed successfully";
+        }
+        else
+        {
+            return "Governement Command is not part of these Routines";
+        }
+        
+    }
+    else    
+    {
+        return "Governement Command does not exist";
+    }
+}
+
+std::string MonthlyRoutines::removebuildingRoutines(GovernmentCommands *command)
+{
+     if (!buildingRoutines.empty()) 
+    {
+        auto it = std::find(buildingRoutines.begin(), buildingRoutines.end(), command);
+
+        if (it != buildingRoutines.end())
+        {
+            buildingRoutines.erase(it);
+            return "Building Routine removed successfully";
         }
         else
         {
@@ -44,6 +100,29 @@ void MonthlyRoutines::execute()
         
     }
     
+}
+
+void MonthlyRoutines::executueTransport()
+{
+    if (!transportRoutines.empty())
+    {
+        for (auto tRoutine : transportRoutines)
+        {
+            tRoutine->execute();
+        }
+    }
+    
+}
+
+void MonthlyRoutines::executueBuilding()
+{
+   if (!buildingRoutines.empty())
+   {
+       for (auto buildings : buildingRoutines)
+       {
+            buildings->execute();
+       }
+   }  
 }
 
 // RenovateAllResidential class implementation

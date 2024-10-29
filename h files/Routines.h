@@ -19,11 +19,18 @@ class MonthlyRoutines : public GovernmentCommands
 private:
 
     std::vector<GovernmentCommands*> M_Routines;
-
+    std::vector<GovernmentCommands*> transportRoutines;
+    std::vector<GovernmentCommands*> buildingRoutines;
 public:
     void addRoutines(GovernmentCommands* command);
+    void addtransportRoutines(GovernmentCommands* command);
+    void addbuildingRoutines(GovernmentCommands* command);
     std::string removeRoutines(GovernmentCommands* command);
+    std::string removetransportRoutines(GovernmentCommands* command);
+    std::string removebuildingRoutines(GovernmentCommands* command);
     void execute() override;
+    void executueTransport();
+    void executueBuilding();
 };
 
 //ConcreteCommand
