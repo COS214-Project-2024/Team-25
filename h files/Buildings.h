@@ -76,7 +76,7 @@ public:
 
 /******* COMMERCIAL *******/
 
-class Commercial : public Building {
+class Commercial : public Building{
 protected:
     int capacity;
     int numFloors;
@@ -119,7 +119,7 @@ public:
 
 /******* INDUSTRIAL *******/
 
-class Industrial : public Building {
+class Industrial : public Building{
 protected:
     int carbonFootprint;
     int capacity;
@@ -156,7 +156,7 @@ public:
 
 /******* LANDMARK *******/
 
-class Landmark : public Building {
+class Landmark : public Building{
 protected:
     int culturalRelevance;
 public:
