@@ -5,11 +5,6 @@
 GovernmentCommands::~GovernmentCommands() {}
 
 
-void MonthlyRoutines::addRoutines(GovernmentCommands* command) 
-{
-    M_Routines.push_back(command);
-}
-
 void MonthlyRoutines::addtransportRoutines(GovernmentCommands *command)
 {
     transportRoutines.push_back(command);
@@ -18,88 +13,6 @@ void MonthlyRoutines::addtransportRoutines(GovernmentCommands *command)
 void MonthlyRoutines::addbuildingRoutines(GovernmentCommands *command)
 {
     buildingRoutines.push_back(command);
-}
-
-std::string MonthlyRoutines::removeRoutines(GovernmentCommands* command) 
-{
-    if (!M_Routines.empty()) 
-    {
-        auto it = std::find(M_Routines.begin(), M_Routines.end(), command);
-
-        if (it != M_Routines.end())
-        {
-            M_Routines.erase(it);
-            return "Monthly Routine removed successfully";
-        }
-        else
-        {
-            return "Governement Command is not part of these Routines";
-        }
-        
-    }
-    else    
-    {
-        return "Governement Command does not exist";
-    }
-}
-
-std::string MonthlyRoutines::removetransportRoutines(GovernmentCommands *command)
-{
-    if (!transportRoutines.empty()) 
-    {
-        auto it = std::find(transportRoutines.begin(), transportRoutines.end(), command);
-
-        if (it != transportRoutines.end())
-        {
-            transportRoutines.erase(it);
-            return "Trnasport Routine removed successfully";
-        }
-        else
-        {
-            return "Governement Command is not part of these Routines";
-        }
-        
-    }
-    else    
-    {
-        return "Governement Command does not exist";
-    }
-}
-
-std::string MonthlyRoutines::removebuildingRoutines(GovernmentCommands *command)
-{
-     if (!buildingRoutines.empty()) 
-    {
-        auto it = std::find(buildingRoutines.begin(), buildingRoutines.end(), command);
-
-        if (it != buildingRoutines.end())
-        {
-            buildingRoutines.erase(it);
-            return "Building Routine removed successfully";
-        }
-        else
-        {
-            return "Governement Command is not part of these Routines";
-        }
-        
-    }
-    else    
-    {
-        return "Governement Command does not exist";
-    }
-}
-
-void MonthlyRoutines::execute()  
-{
-    if (!M_Routines.empty())
-    {
-        for (auto routine : M_Routines)
-        {
-            routine->execute();
-        }
-        
-    }
-    
 }
 
 void MonthlyRoutines::executueTransport()
@@ -140,7 +53,6 @@ void RenovateAllResidential::execute()
     //     {
     //         residential.renovate();
     //     }
-        
     // }
 }
 
