@@ -141,13 +141,17 @@ int main(int argc, char const *argv[])
     citygrowth->addSector(newSector2);
     citygrowth->addBuilding(myWarehouse, 6);
 
-    std::cout << "\n\n" << citygrowth->printSectors();
-    citygrowth->printSectorsCitizens();
+    std::cout << "\n" << citygrowth->printSectors();
+    citygrowth->printSectorsCitizens(6);
+    std::cout << "\n";
+    citygrowth->printSectorsCitizens(7);
+    std::cout << "\n";
+    citygrowth->printSectorsCitizens(8);
 
     delete myHouse;
     delete myWarehouse;
     delete newSector1;
     delete newSector2;
-    
+
     return 0;
 }

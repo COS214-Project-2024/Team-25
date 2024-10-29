@@ -27,15 +27,14 @@ void Residential::addCitizen(Citizen* human){
     {
        residents.push_back(human);
     }else{
-        std::cout << "Total capacity reached for this building. Make new building... "<< "\n";
-
+        std::cout << "Total capacity reached for " <<  this->getName() << ". Make a new building... "<< "\n";
     }
  }
 
 void Residential::displayCitizens(){
     if (residents.empty())
     {
-        std::cout << "Buildings has no residents"<< "\n";
+        std::cout << this->getName() << ": has no residents"<< "\n";
     }else{
         std::cout << "Residents in " << this->getName() << ":\n";
         for (Citizen* person : residents) {
@@ -187,14 +186,14 @@ void Commercial::addCitizen(Citizen* human){
     {
        employees.push_back(human);
     }else{
-        std::cout << "No more employees needed for this building. Make new building... "<< "\n";
+        std::cout << "No more employees needed for " <<  this->getName() << ". Make a new building... "<< "\n";
     }
  }
 
 void Commercial::displayCitizens(){
     if (employees.empty())
     {
-        std::cout << "Buildings has no employees"<< "\n";
+        std::cout << this->getName() << ": has no employees"<< "\n";
     }else{
         std::cout << "Employees in " << this->getName() << ":\n";
         for (Citizen* person : employees) {
@@ -350,14 +349,14 @@ void Industrial::addCitizen(Citizen* human){
     {
        employees.push_back(human);
     }else{
-        std::cout << "No more employees needed for this building. Make new building... "<< "\n";
+        std::cout << "No more employees needed for " <<  this->getName() << ". Make a new building... "<< "\n";
     }
  }
 
 void Industrial::displayCitizens(){
     if (employees.empty())
     {
-        std::cout << "Buildings has no employees"<< "\n";
+        std::cout << this->getName() << ": has no employees"<< "\n";
     }else{
         std::cout << "Employees in " << this->getName() << ":\n";
         for (Citizen* person : employees) {
@@ -578,14 +577,14 @@ void Instatutional::addCitizen(Citizen* human){
     {
        employees.push_back(human);
     }else{
-        std::cout << "No more employees needed for this building. Make new building... "<< "\n";
+        std::cout << "No more employees needed for " <<  this->getName() << ". Make a new building... "<< "\n";
     }
 }
 
 void Instatutional::displayCitizens(){
      if (employees.empty())
     {
-        std::cout << "Buildings has no employees"<< "\n";
+        std::cout << this->getName() << ": has no employees"<< "\n";
     }else{
         std::cout << "Employees in " << this->getName() << ":\n";
         for (Citizen* person : employees) {

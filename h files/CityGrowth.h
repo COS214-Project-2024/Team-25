@@ -34,7 +34,7 @@ class CityGrowth : public CitySector {
     int getTotalBuildingCount();
     int getTotalSectorCount();
     std::string printSectors();
-    void printSectorsCitizens();
+    void printSectorsCitizens(int sectorID);
     
 
    private:
