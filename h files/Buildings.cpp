@@ -725,4 +725,3 @@ GovermentBuilding* GovermentBuilding::clone(){
         this->numfloors
     );
 }
-
