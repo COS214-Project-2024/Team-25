@@ -63,95 +63,94 @@ int main(int argc, char const *argv[])
 
 
     // /* --------------------------- Testing CityGrowth --------------------------- */
-     std::cout << "\n\n";
+    std::cout << "\n\n";
 
-     CityGrowth* citygrowth = new CityGrowth();
+    CityGrowth* citygrowth = new CityGrowth();
 
-     std::cout << citygrowth->printSectors();
+    std::cout << citygrowth->printSectors();
 
-     // CitySector* citySector0 = new CitySector();
-     // citygrowth->addSector(citySector0);
-     // CitySector* citySector1 = new CitySector();
-     // citygrowth->addSector(citySector1);
+    // CitySector* citySector0 = new CitySector();
+    // citygrowth->addSector(citySector0);
+    // CitySector* citySector1 = new CitySector();
+    // citygrowth->addSector(citySector1);
 
-     for (int i = 0; i < 5; i++) {
-         CitySector* newSector = new CitySector();
-         citygrowth->addSector(newSector);
+    for (int i = 0; i < 5; i++) {
+        CitySector* newSector = new CitySector();
+        citygrowth->addSector(newSector);
     }
 
-     std::cout << citygrowth->printSectors();
+    std::cout << citygrowth->printSectors();
 
     for (int i = 0; i < 18; i++) {
-        // House(std::string name, int numRooms, int m_squared, float value, int
-        // numBedrooms, int numBathrooms, int kitchenSize)
-        House* newHouse = new House("0", 1, 500, 100000, 1, 1, 20,2);
+        // House(std::string name, int numRooms, int m_squared, float value,
+        // int numBedrooms, int numBathrooms, int kitchenSize)
+        House* newHouse = new House("0", 1, 500, 100000, 1, 1, 20, 2);
         // make sure the new houses only go into the valid sector positions
-        citygrowth->addBuilding(newHouse, i % citygrowth->getTotalSectorCount());
+        citygrowth->addBuilding(newHouse,i % citygrowth->getTotalSectorCount());
     }
 
-     std::cout << citygrowth->printSectors();
+    std::cout << citygrowth->printSectors();
 
-     // House(std::string name, int numRooms, int m_squared, float value, int
+    // House(std::string name, int numRooms, int m_squared, float value, int
     // numBedrooms, int numBathrooms, int kitchenSize) House* house0 = new
-     // House("0", 1, 500, 100000, 1, 1, 20); citygrowth->addBuilding(house0, 0);
+    // House("0", 1, 500, 100000, 1, 1, 20); citygrowth->addBuilding(house0,
+    // 0);
 
-     /* ------------------------------ Testing Taxes ----------------------------- */
-     TaxStrategy* flatStrat = new FlatTaxStrategy();
-     TaxStrategy* progStrat = new ProgressiveTaxStrategy();
+    /* ------------------------------ Testing Taxes ----------------------------- */
+    TaxStrategy* flatStrat = new FlatTaxStrategy();
+    TaxStrategy* progStrat = new ProgressiveTaxStrategy();
     TaxSystem* taxSystem = new TaxSystem();
 
-     std::cout << "Using FlatTaxStrategy:\n";
-     // taxSystem->setTaxStrategy(flatStrat);
-     taxSystem->collectTax(citygrowth);
+    std::cout << "Using FlatTaxStrategy:\n";
+    // taxSystem->setTaxStrategy(flatStrat);
+    taxSystem->collectTax(citygrowth);
 
-     std::cout << "Using ProgressiveTaxStrategy:\n";
-     taxSystem->setTaxStrategy(progStrat);
-     taxSystem->collectTax(citygrowth);
+    std::cout << "Using ProgressiveTaxStrategy:\n";
+    taxSystem->setTaxStrategy(progStrat);
+    taxSystem->collectTax(citygrowth);
 
     std::cout << "\n";
     std::cout << "Total collected taxes: " << taxSystem->getCollectedTaxes() << "\n";
     std::cout << "\n";
     std::cout << "Total collected taxes: " << taxSystem->getCollectedTaxes() << "\n";
 
-    
+     House* myHouse = new House("Dream House", 5, 120, 250000.0f, 3, 2, 5, 9);
 
-    
-    House *myHouse = new House("Dream House", 5, 120, 250000.0f, 3, 2, 5,9);
+     ComWorkerFactory comWorkerFactory;
+     // Add citizens (workers) to the house
 
-    ComWorkerFactory comWorkerFactory;
-    // Add citizens (workers) to the house
-   
-    myHouse->addCitizen(comWorkerFactory.createCitizen("Shop"));
-    myHouse->addCitizen(comWorkerFactory.createCitizen("Shop")); 
-    myHouse->addCitizen(comWorkerFactory.createCitizen("Mall"));
-    myHouse->addCitizen(comWorkerFactory.createCitizen("Office"));
-    myHouse->addCitizen(comWorkerFactory.createCitizen("Office"));
-    myHouse->addCitizen(comWorkerFactory.createCitizen("Mall"));
+     myHouse->addCitizen(comWorkerFactory.createCitizen("Shop"));
+     myHouse->addCitizen(comWorkerFactory.createCitizen("Shop"));
+     myHouse->addCitizen(comWorkerFactory.createCitizen("Mall"));
+     myHouse->addCitizen(comWorkerFactory.createCitizen("Office"));
+     myHouse->addCitizen(comWorkerFactory.createCitizen("Office"));
+     myHouse->addCitizen(comWorkerFactory.createCitizen("Mall"));
 
-    myHouse->displayCitizens();
+     myHouse->displayCitizens();
 
-    Warehouse *myWarehouse  = new Warehouse("Warehouse 2", 5, 120, 250000.0f, 3, 200);
-    
-    CitySector* newSector1 = new CitySector();
-    citygrowth->addSector(newSector1);
+     Warehouse* myWarehouse =
+         new Warehouse("Warehouse 2", 5, 120, 250000.0f, 3, 200);
 
-    citygrowth->addBuilding(myHouse, 5);
+     CitySector* newSector1 = new CitySector();
+     citygrowth->addSector(newSector1);
 
-    CitySector* newSector2 = new CitySector();
-    citygrowth->addSector(newSector2);
-    citygrowth->addBuilding(myWarehouse, 6);
+     citygrowth->addBuilding(myHouse, 5);
 
-    std::cout << "\n" << citygrowth->printSectors();
-    citygrowth->printSectorsCitizens(6);
-    std::cout << "\n";
-    citygrowth->printSectorsCitizens(7);
-    std::cout << "\n";
-    citygrowth->printSectorsCitizens(8);
+     CitySector* newSector2 = new CitySector();
+     citygrowth->addSector(newSector2);
+     citygrowth->addBuilding(myWarehouse, 6);
 
-    delete myHouse;
-    delete myWarehouse;
-    delete newSector1;
-    delete newSector2;
+     std::cout << "\n" << citygrowth->printSectors();
+     citygrowth->printSectorsCitizens(6);
+     std::cout << "\n";
+     citygrowth->printSectorsCitizens(7);
+     std::cout << "\n";
+     citygrowth->printSectorsCitizens(8);
 
-    return 0;
+     delete myHouse;
+     delete myWarehouse;
+     delete newSector1;
+     delete newSector2;
+
+     return 0;
 }
