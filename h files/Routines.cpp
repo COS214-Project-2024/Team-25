@@ -4,8 +4,11 @@
 
 GovernmentCommands::~GovernmentCommands() {}
 
+MonthlyRoutines::MonthlyRoutines(CityGrowth *cg){
+    cityGrowth = cg; 
+}
 
-void MonthlyRoutines::addRoutines(GovernmentCommands* command) 
+void MonthlyRoutines::addRoutines(GovernmentCommands *command)
 {
     M_Routines.push_back(command);
 }

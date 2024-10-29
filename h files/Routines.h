@@ -3,6 +3,7 @@
 
 #include "Buildings.h"
 #include "Transportation.h"
+#include "CityGrowth.h"
 #include <vector>
 
 //Command
@@ -17,11 +18,12 @@ public:
 class MonthlyRoutines : public GovernmentCommands
 {
 private:
-
+    CityGrowth* cityGrowth;
     std::vector<GovernmentCommands*> M_Routines;
     std::vector<GovernmentCommands*> transportRoutines;
     std::vector<GovernmentCommands*> buildingRoutines;
 public:
+    MonthlyRoutines(CityGrowth* cg);
     void addRoutines(GovernmentCommands* command);
     void addtransportRoutines(GovernmentCommands* command);
     void addbuildingRoutines(GovernmentCommands* command);
