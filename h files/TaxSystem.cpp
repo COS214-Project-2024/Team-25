@@ -75,6 +75,9 @@ float TaxSystem::getCollectedTaxes() {
     return collectedAmount;
 }
 
+std::string TaxSystem::currentStrategy() {
+    return this->strategy->getStrategy();
+}
 
 
 /* ------------------------- ProgressiveTaxStrategy ------------------------- */
