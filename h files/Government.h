@@ -4,6 +4,9 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <math.h>
+#include <random>
+
 #include "Citizen.h"
 #include "Resources.h"
 #include "CityGrowth.h"
@@ -20,7 +23,7 @@ private:
     Wood* wood;
     Concrete* concrete;
     Steel* steel;
-    CitySector* citySector;
+    CityGrowth* cityGrowth;
     TaxSystem* taxSystem;
     std::vector<PublicTransitAdapter*> publicTransitAdapter;
     std::vector<RoadSystemAdapter*> roadSystemAdapter;
@@ -32,13 +35,21 @@ private:
     std::vector<MonthlyRoutines*> monthlyRoutines;
 public:
     Government();
+    ~Government();
+    
+    //Actions
+    void createBuilding(); //action 1
+    void createUtility();
+    void increaseMaterials();
+    void naturalDisaster();
+
     virtual void attach(Citizen Citizen);
     virtual void detach(Citizen Citizen);
     virtual void notifyBuilding(Citizen Citizen);
     void callRoutines();
     void repair(std::string name); //name of utility, also notifies citizens
     void mulfunction(std::string name); //name of utility, also notifies citizens
-    void increaseMaterial(std::string materialType);
+    
 
     /*getters*/
     std::vector<Citizen> getCitizens();

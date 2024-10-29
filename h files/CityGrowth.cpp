@@ -45,18 +45,19 @@ void CityGrowth::addSector(CitySector* sector) {
     this->sectors.push_back(sector);
 }
 
-void CityGrowth::addBuilding(Building* building, int sectorId) {
+bool CityGrowth::addBuilding(Building* building, int sectorId) {
     if (this->sectors.size() == 0) {
         std::cout << "There are no existing CitySectors.\n";
-        return;
+        return false;
     }
 
     if ((sectorId < 0) || (sectorId >= this->sectors.size())) {
         std::cout << "Invalid sectorId chosen.\n";
-        return;
+        return false;
     }
 
     this->sectors[sectorId]->addBuilding(building);
+    return true;
 }
 
 int CityGrowth::getTotalBuildingCount() {
