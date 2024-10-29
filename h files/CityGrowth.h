@@ -36,6 +36,7 @@ class CityGrowth : public CitySector {
     std::string printSectors();
     void printSectorsCitizens(int sectorID);
     
+    
 
    private:
     std::vector<CitySector*> sectors;

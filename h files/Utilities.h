@@ -23,6 +23,7 @@ protected:
     Concrete* concrete;
     Steel* steel;
     Wood* wood;
+    bool isFunctional;
 public:
     Utility();
     ~Utility();

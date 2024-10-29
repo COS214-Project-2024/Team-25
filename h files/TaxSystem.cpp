@@ -28,6 +28,30 @@ void TaxSystem::setTaxStrategy(TaxStrategy* strategy) {
     }
 }
 
+void TaxSystem::toggleStrategy() {
+    if(this->strategy) {
+        // current Strategy is FlatTaxStrategy
+        if(this->strategy->getStrategy() == "FlatTaxStrategy") {
+            delete this->strategy;
+            this->strategy = new ProgressiveTaxStrategy();
+
+            std::cout << "Strategy changed from FlatTaxStrategy to ProgressiveTaxStrategy\n"; 
+
+        } else { // current Strategy is ProgressiveTaxStrategy
+            delete this->strategy;
+            this->strategy = new FlatTaxStrategy();
+
+            std::cout << "Strategy changed from ProgressiveTaxStrategy to FlatTaxStrategy\n"; 
+
+        }
+    }
+    else {
+        this->strategy = new FlatTaxStrategy();
+            std::cout << "Strategy changed from none to FlatTaxStrategy\n"; 
+
+    }
+}
+
 void TaxSystem::collectTax(CityGrowth* growth) {
     if (this->strategy) {
         int totalBuildings = growth->getTotalBuildingCount();
@@ -51,6 +75,11 @@ float TaxSystem::getCollectedTaxes() {
     return collectedAmount;
 }
 
+std::string TaxSystem::currentStrategy() {
+    return this->strategy->getStrategy();
+}
+
+
 /* ------------------------- ProgressiveTaxStrategy ------------------------- */
 
 float ProgressiveTaxStrategy::calculateTax(int totalBuildings) {
@@ -71,9 +100,17 @@ float ProgressiveTaxStrategy::calculateTax(int totalBuildings) {
     return totalTax;
 }
 
+std::string ProgressiveTaxStrategy::getStrategy() {
+    return "ProgressiveTaxStrategy";
+}
+
 /* ----------------------------- FlatTaxStrategy ---------------------------- */
 
 float FlatTaxStrategy::calculateTax(int totalBuildings) {
     const float ratePerBuilding = 2000.0f;
     return totalBuildings * ratePerBuilding;
+}
+
+std::string FlatTaxStrategy::getStrategy() {
+    return "FlatTaxStrategy";
 }
