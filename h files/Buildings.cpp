@@ -13,6 +13,15 @@ std::string Building::getBuildingType(){
     return this->type;
 }
 
+void Building::renovate()
+{
+    if (built)
+    {
+        value = value + value * 0.1;
+    }
+    
+}
+
 void Building::displayCitizens(){
 
 }
@@ -133,6 +142,8 @@ Apartment *Apartment::clone()
     );
 }
 
+
+
 // Mansion class
 Mansion::Mansion(std::string name, int numRooms, int m_squared, float value, int numBedrooms, int numBathrooms, int capacity, bool waterFeature)
     : Residential(name, numRooms, m_squared, value, numBedrooms, numBathrooms, capacity, "Mansion"), waterFeature(waterFeature) {}
@@ -172,9 +183,6 @@ Mansion *Mansion::clone()
         this->waterFeature
     );
 }
-
-
-
 
 
 /******* COMMERCIAL CLASS *******/

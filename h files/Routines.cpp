@@ -4,6 +4,10 @@
 
 GovernmentCommands::~GovernmentCommands() {}
 
+MonthlyRoutines::MonthlyRoutines(CityGrowth *cg)
+{
+    citygrowth = cg;
+}
 
 void MonthlyRoutines::addtransportRoutines(GovernmentCommands *command)
 {
@@ -39,22 +43,6 @@ void MonthlyRoutines::executueBuilding()
 }
 
 // RenovateAllResidential class implementation
-
-RenovateAllResidential::RenovateAllResidential(const std::vector<Residential*>& residentials) 
-{
-    this->residentials = residentials;
-}
-
-void RenovateAllResidential::execute() 
-{
-    // for (auto residential : residentials) 
-    // {
-    //     if (residential.getRenStatus() == true)
-    //     {
-    //         residential.renovate();
-    //     }
-    // }
-}
 
 void UpgradeAllRail::execute()
 {
@@ -94,3 +82,17 @@ UpgradeAllPub::UpgradeAllPub(const std::vector<PublicTransitAdapter *> &pub)
 {
     this->pub = pub;
 }
+
+void RenovateAllBuildings::execute()
+{
+    for (auto building : buildings)
+    {
+        building->renovate();
+    }
+}
+
+// RenovateAllBuildings::RenovateAllBuildings()
+// {
+//     this->buildings = citygrowth->getBuildings();
+// }
+

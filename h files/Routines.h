@@ -3,6 +3,7 @@
 
 #include "Buildings.h"
 #include "Transportation.h"
+#include "CityGrowth.h"
 #include <vector>
 
 //Command
@@ -16,10 +17,13 @@ public:
 //Invoker
 class MonthlyRoutines : public GovernmentCommands
 {
+protected:
+    CityGrowth *citygrowth;
 private:
     std::vector<GovernmentCommands*> transportRoutines;
     std::vector<GovernmentCommands*> buildingRoutines;
 public:
+    MonthlyRoutines(CityGrowth *cg);
     void addtransportRoutines(GovernmentCommands* command);
     void addbuildingRoutines(GovernmentCommands* command);
     void executueTransport();
@@ -27,13 +31,13 @@ public:
 };
 
 //ConcreteCommand
-class RenovateAllResidential : public GovernmentCommands
+class RenovateAllBuildings : public GovernmentCommands
 {
 private:
-    std::vector<Residential*> residentials;
+    std::vector<Building*> buildings;
 public:
     void execute() override;
-    RenovateAllResidential(const std::vector<Residential*>& residentials);
+    RenovateAllBuildings(const std::vector<Building*>& buildings);
 };
 
 // Any other Commands will be added here
