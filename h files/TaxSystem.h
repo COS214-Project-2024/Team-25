@@ -23,6 +23,7 @@ class TaxSystem {
    private:
     TaxStrategy* strategy;
     float collectedTaxes;
+    Budget* budget; 
     // std::vector<Citizen*> observers;
 };
 

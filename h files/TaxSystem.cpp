@@ -15,6 +15,7 @@ using namespace std;
 TaxSystem::TaxSystem() {
     this->strategy = new FlatTaxStrategy();
     this->collectedTaxes = 0;
+    budget = Budget::getInstance();
 }
 
 TaxSystem::~TaxSystem() { delete this->strategy; }
@@ -57,7 +58,7 @@ void TaxSystem::collectTax(CityGrowth* growth) {
         int totalBuildings = growth->getTotalBuildingCount();
         float taxAmount = this->strategy->calculateTax(totalBuildings);
         this->collectedTaxes += taxAmount;
-
+        budget->setCash(budget->getCash() + taxAmount);
         std::cout << "R " << taxAmount << " tax collected.\n";
         std::cout << "R " << this->collectedTaxes
                   << " Total current collected taxes available\n";

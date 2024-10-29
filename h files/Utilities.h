@@ -8,14 +8,11 @@
 
 #include "Resources.h"
 
-
-
-enum powerPlants{
+enum powerPlants {
     HYDRO, COAL, WIND, SOLAR
 };
 
-class Utility
-{
+class Utility {
 protected:
     std::string name;
     float efficiency; // percent of utility that is running
@@ -24,31 +21,31 @@ protected:
     Steel* steel;
     Wood* wood;
     bool isFunctional;
+
 public:
     Utility();
     ~Utility();
-    virtual Utility* repair() = 0;
-    virtual Utility* mulfunction() = 0;
 
     std::string getName() const { return name; }
     float getEfficiency() const { return efficiency; }
 
     void setName(const std::string& value) { name = value; }
     void setEfficiency(float value) { efficiency = value; }
+
+    bool getFunctional() const { return isFunctional; }
 };
 
-class PowerPlant : public Utility
-{
+class PowerPlant : public Utility {
 protected:
-    int powerGeneration; //in watts
+    int powerGeneration; // in watts
     powerPlants type;
     Energy* energy;
-    
+
 public:
     PowerPlant(powerPlants type);
     ~PowerPlant();
-    virtual Utility* repair() = 0;
-    virtual Utility* mulfunction() = 0;
+    virtual PowerPlant* repair() = 0; // Changed to PowerPlant*
+    virtual PowerPlant* mulfunction() = 0; // Changed to PowerPlant*
     int getPowerGeneration(); // power gen * efficiency
     powerPlants getType();
     void generate();
@@ -60,37 +57,32 @@ public:
     void setType(powerPlants value) { type = value; }
 };
 
-class FunctionalPowerPlant : public PowerPlant
-{
-private:
+class FunctionalPowerPlant : public PowerPlant {
 public:
     FunctionalPowerPlant(powerPlants type);
     ~FunctionalPowerPlant();
-    Utility* repair() override; //does nothing in this class
-    Utility* mulfunction() override;
+    PowerPlant* repair() override; // Changed to PowerPlant*
+    PowerPlant* mulfunction() override; // Changed to PowerPlant*
 };
 
-class NonFunctionalPowerPlant : public PowerPlant
-{
-private:
+class NonFunctionalPowerPlant : public PowerPlant {
 public:
     NonFunctionalPowerPlant(powerPlants type);
     ~NonFunctionalPowerPlant();
-    Utility* repair() override; 
-    Utility* mulfunction() override; //does nothing in this class
+    PowerPlant* repair() override; // Changed to PowerPlant*
+    PowerPlant* mulfunction() override; // Changed to PowerPlant*
 };
 
-
-class WaterSupply : public Utility
-{
+class WaterSupply : public Utility {
 protected:
-    int waterGeneration; //in liters
+    int waterGeneration; // in liters
     Water* water;
+
 public:
     WaterSupply();
     ~WaterSupply();
-    virtual Utility* repair() = 0;
-    virtual Utility* mulfunction() = 0;
+    virtual WaterSupply* repair() = 0; // Changed to WaterSupply*
+    virtual WaterSupply* mulfunction() = 0; // Changed to WaterSupply*
     int getWaterGeneration();
     void distribute();
 
@@ -98,36 +90,31 @@ public:
     void setWaterGeneration(int value) { waterGeneration = value; }
 };
 
-class FunctionalWaterSupply : public WaterSupply
-{
-private:
+class FunctionalWaterSupply : public WaterSupply {
 public:
     FunctionalWaterSupply();
     ~FunctionalWaterSupply();
-    Utility* repair() override; //does nothing in this class
-    Utility* mulfunction() override;
+    WaterSupply* repair() override; // Changed to WaterSupply*
+    WaterSupply* mulfunction() override; // Changed to WaterSupply*
 };
 
-class NonFunctionalWaterSupply : public WaterSupply
-{
-private:
+class NonFunctionalWaterSupply : public WaterSupply {
 public:
     NonFunctionalWaterSupply();
     ~NonFunctionalWaterSupply();
-    Utility* repair() override; 
-    Utility* mulfunction() override; //does nothing in this class
+    WaterSupply* repair() override; // Changed to WaterSupply*
+    WaterSupply* mulfunction() override; // Changed to WaterSupply*
 };
 
-
-class WasteManagement : public Utility
-{
+class WasteManagement : public Utility {
 protected:
-    int wasteCollection; //in kgs
+    int wasteCollection; // in kgs
+
 public:
     WasteManagement(/* args */);
     ~WasteManagement();
-    virtual Utility* repair() = 0;
-    virtual Utility* mulfunction() = 0;
+    virtual WasteManagement* repair() = 0; // Changed to WasteManagement*
+    virtual WasteManagement* mulfunction() = 0; // Changed to WasteManagement*
     int getWasteCollection();
     void recycle();
     void collect();
@@ -137,26 +124,20 @@ public:
     void setWasteCollection(int value) { wasteCollection = value; }
 };
 
-class FunctionalWasteManagement : public WasteManagement
-{
-private:
+class FunctionalWasteManagement : public WasteManagement {
 public:
     FunctionalWasteManagement();
     ~FunctionalWasteManagement();
-    Utility* repair() override; //does nothing in this class
-    Utility* mulfunction() override;
+    WasteManagement* repair() override; // Changed to WasteManagement*
+    WasteManagement* mulfunction() override; // Changed to WasteManagement*
 };
 
-class NonFunctionalWasteManagement : public WasteManagement
-{
-private:
+class NonFunctionalWasteManagement : public WasteManagement {
 public:
     NonFunctionalWasteManagement();
     ~NonFunctionalWasteManagement();
-    Utility* repair() override; 
-    Utility* mulfunction() override; //does nothing in this class
+    WasteManagement* repair() override; // Changed to WasteManagement*
+    WasteManagement* mulfunction() override; // Changed to WasteManagement*
 };
-
-
 
 #endif

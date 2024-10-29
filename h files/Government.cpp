@@ -266,7 +266,14 @@ void Government::naturalDisaster(){
     for(int i = 0; i < numMalfunctions; i++) {
         std::uniform_int_distribution<> indexDist(0, powerPlant.size() - 1);
         int randomIndex = indexDist(gen);
-        powerPlant[randomIndex]->mulfunction();
+        if(powerPlant[randomIndex]->getFunctional()){
+            PowerPlant* p = powerPlant[randomIndex]->mulfunction();
+            PowerPlant* plantToDelete = powerPlant[randomIndex];
+            powerPlant.erase(powerPlant.begin() + randomIndex);
+            delete plantToDelete;
+            powerPlant.push_back(p);
+        }
+        
     }
     std::cout << numMalfunctions << " PowerPlants have mulfunctioned." << std::endl;
 
@@ -281,7 +288,13 @@ void Government::naturalDisaster(){
     for(int i = 0; i < numMalfunctions; i++) {
         std::uniform_int_distribution<> indexDist(0, waterSupply.size() - 1);
         int randomIndex = indexDist(gen2);
-        waterSupply[randomIndex]->mulfunction();
+        if(waterSupply[randomIndex]->getFunctional()){
+            WaterSupply* w = waterSupply[randomIndex]->mulfunction();
+            WaterSupply* supplyToDelete = waterSupply[randomIndex];
+            waterSupply.erase(waterSupply.begin() + randomIndex);
+            delete supplyToDelete;
+            waterSupply.push_back(w);
+        }
     }
     std::cout << numMalfunctions << " Water Supplies have mulfunctioned." << std::endl;
 
@@ -298,7 +311,13 @@ void Government::naturalDisaster(){
     // Get random index
         std::uniform_int_distribution<> indexDist(0, wasteManagement.size() - 1);
         int randomIndex = indexDist(gen3);
-        wasteManagement[randomIndex]->mulfunction();
+        if(wasteManagement[randomIndex]->getFunctional()){
+            WasteManagement* w = wasteManagement[randomIndex]->mulfunction();
+            WasteManagement* wasteToDelete = wasteManagement[randomIndex];
+            wasteManagement.erase(wasteManagement.begin() + randomIndex);
+            delete wasteToDelete;
+            wasteManagement.push_back(w);
+        }
     }
     std::cout << numMalfunctions << " Waste Management Plants have mulfunctioned." << std::endl;
 
@@ -313,11 +332,11 @@ void Government::upgradeBuildings(){
 }
 
 void Government::taxCitizens(){
-
+    taxSystem->collectTax(cityGrowth);
 }
 
-void Government::changeTaxStartegy()
-{
+void Government::changeTaxStartegy(){
+    taxSystem->toggleStrategy();
 }
 
 void Government::repairUtilities(){
@@ -329,11 +348,30 @@ void Government::repairUtilities(){
     switch (u){
     case 1:
         for (auto x : powerPlant){
-            
+            if(!x->getFunctional()){
+                PowerPlant* p = x->repair();
+                delete x;
+                
+            }
         }
         
         break;
-    
+    case 2:
+        for (auto x : waterSupply){
+            if(!x->getFunctional()){
+                x->repair();
+            }
+        }
+        
+        break;
+    case 3:
+        for (auto x : wasteManagement){
+            if(!x->getFunctional()){
+                x->repair();
+            }
+        }
+        
+        break;
     default:
         break;
     }
