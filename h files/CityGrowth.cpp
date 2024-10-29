@@ -17,6 +17,10 @@ void CitySector::addBuilding(Building* building) {
 
 int CitySector::getBuildingCount() { return this->block.size(); }
 
+const std::vector<Building*>& CitySector::getBuildings() const{
+    return block;
+}
+
 // void PopulationGrowth();
 // void HousingNeeds();
 // void EconomicDevelopment();
@@ -88,3 +92,15 @@ std::string CityGrowth::printSectors() {
 
     return output.str();
 }
+
+void CityGrowth::printSectorsCitizens(){
+    int sectorId = 1;
+    for (const CitySector* sector : sectors) {
+        std::cout << "Sector " << sectorId << ":" << std::endl;
+        for (Building* building : sector->getBuildings()) {
+            building->displayCitizens();
+        }
+        sectorId++;
+    }
+}
+

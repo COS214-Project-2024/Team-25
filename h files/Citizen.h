@@ -2,78 +2,88 @@
 #define CITIZEN_H
 
 #include <string>
+using namespace std;
 
 // Abstract Product
 class Citizen {
-public:
-    Citizen();
-    virtual ~Citizen() = default;
-    virtual void displayInfo() = 0;
-    virtual std::string getType() const = 0;
-protected:
-    std::string name;
-    int age;
-    int satisfaction;
+    private:
+        string residence;
+        string workplace;
+        string type;
+        //int age;
+        float satisfaction;
+    public:
+        Citizen();
+        virtual ~Citizen() = default;
+        virtual void setCitizen(string type, string residence, string workplace);
+        virtual std::string getType();
+        //void update();
+        virtual string getResidence();
+        virtual string getWorkplace();
+        virtual float getSatisfaction();
+        virtual void displayInfo() = 0;
 };
 
 // Concrete Products
-class Worker : public Citizen {
+class CommercialWorker : public Citizen {
 public:
-    Worker();
-    void displayInfo() override;
-    std::string getType() const override;
-private:
-    std::string occupation;
-    double salary;
+    CommercialWorker();
+    CommercialWorker(string workplace);
+    virtual void displayInfo();
 };
 
 class GovernmentWorker : public Citizen {
 public:
     GovernmentWorker();
-    void displayInfo() override;
-    std::string getType() const override;
-private:
-    std::string department;
-    std::string securityClearance;
-    int payGrade;
-    double salary;
+    GovernmentWorker(string workplace);
+    virtual void displayInfo();
 };
 
-class Retiree : public Citizen {
+class IndustrialWorker : public Citizen {
 public:
-    Retiree();
-    void displayInfo() override;
-    std::string getType() const override;
-private:
-    int yearsOfService;
-    double pension;
+    IndustrialWorker();
+    IndustrialWorker(string workplace);
+    virtual void displayInfo();
 };
+
+// class Retiree : public Citizen {
+// public:
+//     Retiree();
+//     void displayInfo() override;
+//     std::string getType() const override;
+// private:
+//     int yearsOfService;
+//     double pension;
+// };
 
 // Abstract Creator
 class CitizenFactory {
+private: 
+    Citizen* citizen;
 public:
-    CitizenFactory();
+   // CitizenFactory();
     virtual ~CitizenFactory() = default;
     virtual Citizen* createCitizen() = 0;
+    virtual Citizen* createCitizen(string workplace) = 0;
 };
 
 // Concrete Creators
-class WorkerFactory : public CitizenFactory {
+class ComWorkerFactory : public CitizenFactory {
 public:
-    WorkerFactory();
     Citizen* createCitizen() override;
+    Citizen* createCitizen(string workplace);
 };
 
 class GovernmentWorkerFactory : public CitizenFactory {
 public:
-    GovernmentWorkerFactory();
     Citizen* createCitizen() override;
+    Citizen* createCitizen(string workplace);
 };
 
-class RetireeFactory : public CitizenFactory {
+class IndWorkerFactory : public CitizenFactory {
 public:
-    RetireeFactory();
     Citizen* createCitizen() override;
+    Citizen* createCitizen(string workplace);
 };
 
 #endif

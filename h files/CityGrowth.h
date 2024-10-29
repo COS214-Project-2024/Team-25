@@ -13,6 +13,7 @@ class CitySector {
     // ~CitySector();
     void addBuilding(Building* building);
     int getBuildingCount();
+    const std::vector<Building*>& getBuildings() const;
 
    private:
     std::vector<Building*> block;
@@ -33,6 +34,8 @@ class CityGrowth : public CitySector {
     int getTotalBuildingCount();
     int getTotalSectorCount();
     std::string printSectors();
+    void printSectorsCitizens();
+    
 
    private:
     std::vector<CitySector*> sectors;
