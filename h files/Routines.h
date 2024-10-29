@@ -2,6 +2,7 @@
 #define ROUTINES_H
 
 #include "Buildings.h"
+#include "Transportation.h"
 #include <vector>
 
 //Command
@@ -42,7 +43,32 @@ public:
 // The government.h file will have and object of type MonthlyRoutines
 // which will be used to execute all of the commands.
 
+class UpgradeAllRail : public GovernmentCommands
+{
+private:
+    std::vector<RailSystemAdapter*> rails;
+public:
+    void execute() override;
+    UpgradeAllRail(const std::vector<RailSystemAdapter*>& rails);
+};
 
+class UpgradeAllRoad : public GovernmentCommands
+{
+private: 
+    std::vector<RoadSystemAdapter*> roads;
+public:
+    void execute() override;
+    UpgradeAllRoad(const std::vector<RoadSystemAdapter*>& roads);
+};
+
+class UpgradeAllPub : public GovernmentCommands
+{
+private: 
+    std::vector<PublicTransitAdapter*> pub;
+public:
+    void execute() override;
+    UpgradeAllPub(const std::vector<PublicTransitAdapter*>& pub);
+};
 
 #endif // Routines.h
 
