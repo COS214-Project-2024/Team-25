@@ -23,11 +23,12 @@ private:
     std::vector<GovernmentCommands*> transportRoutines;
     std::vector<GovernmentCommands*> buildingRoutines;
 public:
-    MonthlyRoutines(CityGrowth *cg);
+    MonthlyRoutines(CityGrowth* cg);
     void addtransportRoutines(GovernmentCommands* command);
     void addbuildingRoutines(GovernmentCommands* command);
     void executueTransport();
     void executueBuilding();
+    void execute();
 };
 
 //ConcreteCommand

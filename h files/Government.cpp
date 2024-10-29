@@ -9,6 +9,7 @@ Government::Government(){
     steel = Steel::getInstance();
     taxSystem = new TaxSystem();
     cityGrowth = new CityGrowth();
+    monthlyRoutines = new MonthlyRoutines(cityGrowth);
 }
 
 Government::~Government(){
@@ -189,6 +190,8 @@ void Government::createBuilding() {
         if (b->getBuilt()) {
             check = cityGrowth->addBuilding(b, sector);
         }
+    }else{
+        std::cout << "Tough cookies" << std::endl;
     }
 }
 
@@ -299,4 +302,39 @@ void Government::naturalDisaster(){
     }
     std::cout << numMalfunctions << " Waste Management Plants have mulfunctioned." << std::endl;
 
+}
+
+void Government::upgradeTransport(){
+    monthlyRoutines->executueTransport();
+}
+
+void Government::upgradeBuildings(){
+    monthlyRoutines->executueBuilding();
+}
+
+void Government::taxCitizens(){
+
+}
+
+void Government::changeTaxStartegy()
+{
+}
+
+void Government::repairUtilities(){
+    std::cout << "Select which utilities to repair: " << std::endl;
+    std::cout << "  1. Power Plants\n    2. Water Supplies\n    3. Waste management" << std::endl;
+    int u;
+    std::cin >> u;
+
+    switch (u){
+    case 1:
+        for (auto x : powerPlant){
+            
+        }
+        
+        break;
+    
+    default:
+        break;
+    }
 }

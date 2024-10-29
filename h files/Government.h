@@ -32,16 +32,21 @@ private:
     std::vector<WasteManagement*> wasteManagement;
     // std::vector<SewageSystems*> sewageSystems;
     std::vector<PowerPlant*> powerPlant;
-    std::vector<MonthlyRoutines*> monthlyRoutines;
+    MonthlyRoutines* monthlyRoutines;
 public:
     Government();
     ~Government();
     
     //Actions
     void createBuilding(); //action 1
-    void createUtility();
-    void increaseMaterials();
-    void naturalDisaster();
+    void createUtility(); //action 2
+    void increaseMaterials(); //action 2 as well
+    void naturalDisaster(); //action 3
+    void upgradeTransport(); //action 4
+    void upgradeBuildings(); //action 5
+    void taxCitizens(); //action 6
+    void changeTaxStartegy(); //action 7
+    void repairUtilities();
 
     virtual void attach(Citizen Citizen);
     virtual void detach(Citizen Citizen);

@@ -10,7 +10,6 @@ class Citizen {
         string residence;
         string workplace;
         string type;
-        //int age;
         float satisfaction;
     public:
         Citizen();
@@ -45,16 +44,6 @@ public:
     IndustrialWorker(string workplace);
     virtual void displayInfo();
 };
-
-// class Retiree : public Citizen {
-// public:
-//     Retiree();
-//     void displayInfo() override;
-//     std::string getType() const override;
-// private:
-//     int yearsOfService;
-//     double pension;
-// };
 
 // Abstract Creator
 class CitizenFactory {

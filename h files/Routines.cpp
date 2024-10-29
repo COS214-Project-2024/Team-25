@@ -4,9 +4,8 @@
 
 GovernmentCommands::~GovernmentCommands() {}
 
-MonthlyRoutines::MonthlyRoutines(CityGrowth *cg)
-{
-    citygrowth = cg;
+MonthlyRoutines::MonthlyRoutines(CityGrowth *cg){
+    citygrowth = cg; 
 }
 
 void MonthlyRoutines::addtransportRoutines(GovernmentCommands *command)
@@ -40,6 +39,11 @@ void MonthlyRoutines::executueBuilding()
             buildings->execute();
        }
    }  
+}
+
+void MonthlyRoutines::execute()
+{
+    //
 }
 
 // RenovateAllResidential class implementation
