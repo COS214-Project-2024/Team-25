@@ -105,6 +105,11 @@ int main(int argc, char const *argv[])
     // taxSystem->setTaxStrategy(flatStrat);
     taxSystem->collectTax(citygrowth);
 
+    std::cout <<"\n";
+    taxSystem->toggleStrategy();
+    taxSystem->toggleStrategy();
+    std::cout <<"\n";
+
     std::cout << "Using ProgressiveTaxStrategy:\n";
     taxSystem->setTaxStrategy(progStrat);
     taxSystem->collectTax(citygrowth);
