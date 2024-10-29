@@ -30,7 +30,7 @@ class CityGrowth : public CitySector {
     void InfrastructureExpansion();
     void addSector();
     void addSector(CitySector* sector);
-    void addBuilding(Building* building, int sectorId);
+    bool addBuilding(Building* building, int sectorId);
     int getTotalBuildingCount();
     int getTotalSectorCount();
     std::string printSectors();

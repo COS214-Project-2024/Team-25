@@ -27,6 +27,7 @@ public:
     virtual void displayCitizens();
     std::string getName();
     std::string getBuildingType();
+    bool getBuilt() const {return built;}
 };
 
 /******* RESIDENTIAL *******/

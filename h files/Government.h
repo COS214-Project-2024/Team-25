@@ -4,6 +4,9 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <math.h>
+#include <random>
+
 #include "Citizen.h"
 #include "Resources.h"
 #include "CityGrowth.h"
@@ -36,6 +39,9 @@ public:
     
     //Actions
     void createBuilding(); //action 1
+    void createUtility();
+    void increaseMaterials();
+    void naturalDisaster();
 
     virtual void attach(Citizen Citizen);
     virtual void detach(Citizen Citizen);
@@ -43,7 +49,7 @@ public:
     void callRoutines();
     void repair(std::string name); //name of utility, also notifies citizens
     void mulfunction(std::string name); //name of utility, also notifies citizens
-    void increaseMaterial(std::string materialType);
+    
 
     /*getters*/
     std::vector<Citizen> getCitizens();
