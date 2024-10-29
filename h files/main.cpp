@@ -112,6 +112,7 @@ int main(int argc, char const *argv[])
 
     std::cout << "Using ProgressiveTaxStrategy:\n";
     taxSystem->setTaxStrategy(progStrat);
+    // taxSystem->toggleStrategy();
     taxSystem->collectTax(citygrowth);
 
     std::cout << "\n";
