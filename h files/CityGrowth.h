@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <map>
 
 #include "Buildings.h"
 #include "Citizen.h"
@@ -14,6 +15,7 @@ class CitySector {
     void addBuilding(Building* building);
     int getBuildingCount();
     const std::vector<Building*>& getBuildings() const;
+    std::vector<Building*> getBlock();
 
    private:
     std::vector<Building*> block;
@@ -33,6 +35,7 @@ class CityGrowth : public CitySector {
     bool addBuilding(Building* building, int sectorId);
     int getTotalBuildingCount();
     int getTotalSectorCount();
+    std::vector<CitySector*> getSectors();
     std::string printSectors();
     void printSectorsCitizens(int sectorID);
     

@@ -2,35 +2,81 @@
 #define TRASNPORTAION_H
 
 #include <vector>
+#include <iostream>
+using namespace std;
 
 class PublicTransport
 {
 private:
-  
+    //Commercial busses transport CommercialWorkers to/from Residence: House to/from Workplace: shop/mall/office
+    //Government busses transport GovernmentWorkers to/from Residence: Mansion to/from Workplace: school/hospital/government 
+    //Industrial busses transport IndustrialWorker to/from Residence: Apartment to/from Workplace: warehouse/plant/factory    
+    string type; 
+    string TransportType;     
+    int currentAmount;
+    int capacity;
 public:
-    void addTransport();
+    PublicTransport(int capacity, string type,string TransportType);
+    void add(int amount);
     void upgrade();
-    int getPassengers();
+    int getAmount();
+};
+
+
+class Road
+{
+private:
+    int numOfBusses;
+    //Commercial busses transport CommercialWorkers to/from Residence: House to/from Workplace: shop/mall/office on a Commercial road
+    //Government busses transport GovernmentWorkers to/from Residence: Mansion to/from Workplace: school/hospital/government on a Government road
+    //Industrial busses transport IndustrialWorker to/from Residence: Apartment to/from Workplace: warehouse/plant/factory on a Industrial road
+    string type;   
+    int maxNumOfBusses;
+    vector<PublicTransport> busses;
+
+public:
+    Road(int maxBusses, string type);
+    void addBus(PublicTransport bus);
+    string getType();
+    int getNumBusses();
+    int getMaxNumOfBusses();
+
 };
 
 class RoadSystem
 {
 private:
-  
+    int numRoads;
+    vector<Road> roads;
 public:
-    void addRoads();
+    void addRoad(Road road);
     void upgrade();
-    int getTrafficFlow();
+    int getUtilization();
+};
+
+class Railway
+{
+    private:
+        int numOfTrains;
+        string type;
+        vector<PublicTransport> trains;
+    public:
+        Railway(string type);
+        void addTrain(PublicTransport train);
+        string getType();
+        int getNumTrains();
+
 };
 
 class RailSystem
 {
 private:
-  
+  int numRailways;
+  vector<Railway> railways;
 public:
-    void addRailway();
+    void addRailway(Railway railway);
     void upgrade();
-    int getTrainSchedule();
+    int getUtilization();
 };
 
 class UnifiedTransportSystem 
@@ -56,7 +102,7 @@ private:
 public:
     PublicTransitAdapter(PublicTransport* pts);
 
-    void addRoute();
+    void addRoute(int amount);
 
     int getUtilization() override;
 
@@ -70,7 +116,7 @@ private:
 public:
     RoadSystemAdapter(RoadSystem* rs);
 
-    void addRoute() override;
+    void addRoute(Road road) ;
 
     int getUtilization() override;
 
@@ -84,7 +130,7 @@ private:
 public:
     RailSystemAdapter(RailSystem* rs);
 
-    void addRoute() override;
+    void addRoute(Railway railway);
 
     int getUtilization() override ;
 

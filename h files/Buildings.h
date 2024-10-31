@@ -46,6 +46,9 @@ public:
     void addCitizen(Citizen* human);
     void displayCitizens();
     int getLeftOverCapacity();
+    int getCapacity();
+    std::vector<Citizen*> getCitizens();
+
 };
 
 class House : public Residential {
