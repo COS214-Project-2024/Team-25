@@ -27,10 +27,10 @@ class CityGrowth : public CitySector {
    public:
     CityGrowth();
     ~CityGrowth();
-    void PopulationGrowth();
-    void HousingNeeds();
-    void EconomicDevelopment();
-    void InfrastructureExpansion();
+    // void PopulationGrowth();
+    // void HousingNeeds();
+    // void EconomicDevelopment();
+    // void InfrastructureExpansion();
     void addSector();
     void addSector(CitySector* sector);
     bool addBuilding(Building* building, int sectorId);

@@ -11,7 +11,7 @@
 #include "Resources.h"
 #include "CityGrowth.h"
 #include "TaxSystem.h"
-#include "Transportation.h"
+// #include "Transportation.h"
 #include "Utilities.h"
 #include "Routines.h"
 class Government{
@@ -69,9 +69,9 @@ public:
     // virtual void attach(Citizen Citizen);
     // virtual void detach(Citizen Citizen);
     // virtual void notifyBuilding(Citizen Citizen);
-    void callRoutines();
-    void repair(std::string name); //name of utility, also notifies citizens
-    void mulfunction(std::string name); //name of utility, also notifies citizens
+    // void callRoutines();
+    // void repair(std::string name); //name of utility, also notifies citizens
+    // void mulfunction(std::string name); //name of utility, also notifies citizens
     
 
 };  
