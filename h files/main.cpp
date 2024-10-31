@@ -1,3 +1,4 @@
+#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include <iostream>
 
 #include "Utilities.h"
@@ -5,6 +6,8 @@
 #include "CityGrowth.h"
 #include "TaxSystem.h"
 #include "Buildings.h"
+
+
 
 void testCitizenFactories() {
     // Creating factories for each type of worker
@@ -43,6 +46,7 @@ void testCitizenFactories() {
     delete industrialWorker2;
 }
 
+
 int main(int argc, char const *argv[])
 {
     testCitizenFactories();
@@ -63,7 +67,8 @@ int main(int argc, char const *argv[])
     // commented out because of error 
 
 
-    // /* --------------------------- Testing CityGrowth --------------------------- */
+
+    /* --------------------------- Testing CityGrowth --------------------------- */
     std::cout << "\n\n";
 
     CityGrowth* citygrowth = new CityGrowth();
