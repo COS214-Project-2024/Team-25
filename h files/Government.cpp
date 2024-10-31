@@ -10,6 +10,7 @@ Government::Government(){
     taxSystem = new TaxSystem();
     cityGrowth = new CityGrowth();
     monthlyRoutines = new MonthlyRoutines(cityGrowth);
+    roadSystem = new RoadSystem();
 }
 
 Government::~Government(){
@@ -307,38 +308,69 @@ void Government::changeTaxStartegy(){
 }
 
 void Government::repairUtilities(){
-    std::cout << "Select which utilities to repair: " << std::endl;
-    std::cout << "  1. Power Plants\n    2. Water Supplies\n    3. Waste management" << std::endl;
-    int u;
-    std::cin >> u;
+    printC("Select which utilities to repair:", Color::CYAN);
+    printC("  1. Power Plants", Color::WHITE);
+    printC("  2. Water Supplies", Color::WHITE);
+    printC("  3. Waste Management", Color::WHITE);
+    int u = safeIntInput(1, 3);
 
     switch (u){
     case 1:
-        for (auto x : powerPlant){
-            if(!x->getFunctional()){
-                PowerPlant* p = x->repair();
-                delete x;
+        for (auto it = powerPlant.begin(); it != powerPlant.end(); ) {
+            if (!(*it)->getFunctional()) {
+                PowerPlant* repairedPlant = (*it)->repair();
+                delete *it;
+                
+                if (repairedPlant) {
+                    *it = repairedPlant;
+                    ++it;
+                } else {
+                    it = powerPlant.erase(it);
+                }
+            } else {
+                ++it;
             }
         }
-        
         break;
+
     case 2:
-        for (auto x : waterSupply){
-            if(!x->getFunctional()){
-                x->repair();
+        for (auto it = waterSupply.begin(); it != waterSupply.end(); ) {
+            if (!(*it)->getFunctional()) {
+                WaterSupply* repairedSupply = (*it)->repair();
+                delete *it;
+                
+                if (repairedSupply) {
+                    *it = repairedSupply;
+                    ++it;
+                } else {
+                    it = waterSupply.erase(it);
+                }
+            } else {
+                ++it;
             }
         }
-        
         break;
+    
     case 3:
-        for (auto x : wasteManagement){
-            if(!x->getFunctional()){
-                x->repair();
+        for (auto it = wasteManagement.begin(); it != wasteManagement.end(); ) {
+            if (!(*it)->getFunctional()) {
+                WasteManagement* repairedWaste = (*it)->repair();
+                delete *it;
+                
+                if (repairedWaste) {
+                    *it = repairedWaste;
+                    ++it;
+                } else {
+                    it = wasteManagement.erase(it);
+                }
+            } else {
+                ++it;
             }
         }
-        
         break;
+
     default:
+        printC("Invalid utility selection.", Color::RED);
         break;
     }
 }

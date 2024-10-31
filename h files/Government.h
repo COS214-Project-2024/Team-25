@@ -34,20 +34,7 @@ private:
     // std::vector<SewageSystems*> sewageSystems;
     std::vector<PowerPlant*> powerPlant;
     MonthlyRoutines* monthlyRoutines;
-
-      // Function prototypes
-void promptForNewFactory();
-void promptForNewWarehouse();
-void promptForNewPlant();
-void promptForNewShop();
-void promptForNewOffice();
-void promptForNewMall();
-void promptForNewSchool();
-void promptForNewHospital();
-void promptForNewGovernmentBuilding();
-void promptForNewHouse();
-void promptForNewApartment();
-void promptForNewMansion();
+    // Function prototypes
 public:
     Government();
     ~Government();
