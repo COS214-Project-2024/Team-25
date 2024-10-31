@@ -37,7 +37,7 @@ private:
 public:
     Road(int maxBusses, string type);
     void addBus(PublicTransport bus);
-    string getType();
+    string getType() const;
     int getNumBusses();
     int getMaxNumOfBusses();
 
@@ -52,6 +52,7 @@ public:
     void addRoad(Road road);
     void upgrade();
     int getUtilization();
+    vector<Road>& getRoads();
 };
 
 class Railway
@@ -84,7 +85,6 @@ class UnifiedTransportSystem
 private:
     
 public:
-    virtual void addRoute() = 0;
     virtual int getUtilization() = 0;
     virtual void performMaintenance() = 0;
     virtual ~UnifiedTransportSystem() {}
@@ -116,7 +116,9 @@ private:
 public:
     RoadSystemAdapter(RoadSystem* rs);
 
-    void addRoute(Road road) ;
+    void addRoute(Road road);
+
+    vector<Road>& getRoads();
 
     int getUtilization() override;
 

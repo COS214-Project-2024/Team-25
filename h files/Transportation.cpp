@@ -46,7 +46,7 @@ void Road::addBus(PublicTransport bus){
     busses.push_back(bus);
 }
 
-string Road::getType(){
+string Road::getType() const{
     return type;
 }
 
@@ -100,6 +100,11 @@ int RoadSystem::getUtilization() {
 
     return utilization;
 
+}
+
+vector<Road> &RoadSystem::getRoads()
+{
+    return roads;
 }
 
 //class Railway
@@ -184,6 +189,11 @@ RoadSystemAdapter::RoadSystemAdapter(RoadSystem* roadSystem)
 
 void RoadSystemAdapter::addRoute(Road road) {
     roadSystem->addRoad(road);
+}
+
+vector<Road>& RoadSystemAdapter::getRoads()
+{
+    return roadSystem->getRoads();
 }
 
 int RoadSystemAdapter::getUtilization() {

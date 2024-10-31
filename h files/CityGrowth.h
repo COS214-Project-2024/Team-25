@@ -7,6 +7,7 @@
 
 #include "Buildings.h"
 #include "Citizen.h"
+#include "Transportation.h"
 
 class CitySector {
    public:
@@ -38,11 +39,13 @@ class CityGrowth : public CitySector {
     std::vector<CitySector*> getSectors();
     std::string printSectors();
     void printSectorsCitizens(int sectorID);
-    
+    void setRoads(RoadSystemAdapter* rs); 
     
 
    private:
     std::vector<CitySector*> sectors;
+    RoadSystem* roads;
+    RoadSystemAdapter* roadsAdapted;
 };
 
 #endif  // CityGrowth_H

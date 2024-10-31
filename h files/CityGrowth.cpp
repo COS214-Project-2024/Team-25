@@ -82,6 +82,7 @@ std::string CityGrowth::printSectors() {
     std::ostringstream output;
     std::ostringstream BuildingType;
     std::ostringstream populationStream;
+    std::ostringstream RoadType;
     int PopulationCapacity = 0;
     int CurrentPopulation = 0;
 
@@ -89,67 +90,82 @@ std::string CityGrowth::printSectors() {
     output << "|\t CityGrowth Stats\t|\n";
     output << "|\t ---------------\t|\n";
 
-    output << "| Total Sectors: " << std::setw(15) << std::left
+    output << "| Total Sectors: " << std::setw(15) << std::left 
            << this->sectors.size() << "|\n";
-    output << "| Total buildings: " << std::setw(13) << std::left
+    output << "| Total buildings: " << std::setw(13) << std::left 
            << this->getTotalBuildingCount() << "|\n";
 
-    //Display all different buildings and amounts
-    //std::string = BuildingType, int = BuildingAmount
-    std::map<std::string, int> buildingMap; 
+    // Map to track road types using getRoads()
+    std::map<std::string, int> roadMap;
 
-    for( const auto& SectorOP : this->sectors) {
-        // Building* building = SectorOP->block[0];
-        for( const auto& BuildingOP : SectorOP->getBlock()) {
+    if (roadsAdapted != nullptr) 
+    {
+        for (const Road& road : roadsAdapted->getRoads()) 
+        {
+            roadMap[road.getType()]++;
+        }
+    }
+
+    // Map to track building types
+    std::map<std::string, int> buildingMap;
+
+    for (const auto& SectorOP : this->sectors) {
+        for (const auto& BuildingOP : SectorOP->getBlock()) {
+            // Track building types
             buildingMap[BuildingOP->getBuildingType()]++;
 
-            // Calculate PopulationCapacity and CurrentPopulation
-            if(BuildingOP->getBuildingType() == "House") {
+            // Calculate population for residential buildings
+            if (BuildingOP->getBuildingType() == "House") {
                 if (House* house = dynamic_cast<House*>(BuildingOP)) {
                     PopulationCapacity += house->getCapacity();
                     CurrentPopulation += house->getCitizens().size();
-
                 }
-            } else if(BuildingOP->getBuildingType() == "Apartment") {
+            } else if (BuildingOP->getBuildingType() == "Apartment") {
                 if (Apartment* apartment = dynamic_cast<Apartment*>(BuildingOP)) {
                     PopulationCapacity += apartment->getCapacity();
                     CurrentPopulation += apartment->getCitizens().size();
-
                 }
-            } else if(BuildingOP->getBuildingType() == "Mansion") {
+            } else if (BuildingOP->getBuildingType() == "Mansion") {
                 if (Mansion* mansion = dynamic_cast<Mansion*>(BuildingOP)) {
                     PopulationCapacity += mansion->getCapacity();
                     CurrentPopulation += mansion->getCitizens().size();
-
                 }
             }
         }
     }
 
-    for(auto it = buildingMap.begin(); it != buildingMap.end(); it++) {
-        BuildingType << "| " << std::setw(10) << std::left <<  it->first 
-               << " : " << std::setw(2) << std::right << it->second 
-               << std::setw(17) << std::right << "|\n";
+    // Print building types
+    for (auto it = buildingMap.begin(); it != buildingMap.end(); it++) {
+        BuildingType << "| " << std::setw(10) << std::left << it->first
+                     << " : " << std::setw(2) << std::right << it->second
+                     << std::setw(17) << std::right << "|\n";
+    }
+
+    // Print road types
+    for (auto it = roadMap.begin(); it != roadMap.end(); it++) {
+        RoadType << "| " << std::setw(10) << std::left << it->first + " Roads"
+                 << " : " << std::setw(2) << std::right << it->second
+                 << std::setw(11) << std::right << "|\n";
     }
 
     populationStream << CurrentPopulation << "/" << PopulationCapacity;
 
-
-    output << "| Population: \t" << populationStream.str() 
+    output << "| Population: \t" << populationStream.str()
            << std::setw(18 - populationStream.str().size()) << std::right << "|\n";
     output << "|\t ---------------\t|\n";
     output << BuildingType.str();
     output << "|\t ---------------\t|\n";
+    output << RoadType.str();
+    output << "|\t ---------------\t|\n";
 
-    // Display building count for each section
+    // Display building count for each sector
     for (int i = 0; i < this->sectors.size(); i++) {
         output << "| Sector[" << i << "]: " << std::setw(1) << std::left
                << this->sectors[i]->getBuildingCount() << " buildings"
                << std::setw(10) << std::right << "|\n";
     }
-    
-    output << "---------------------------------\n";
-    output << "\n";
+
+    output << "---------------------------------\n\n";
 
     return output.str();
 }
@@ -173,3 +189,7 @@ void CityGrowth::printSectorsCitizens(int sectorID){
     }
 }
 
+void CityGrowth::setRoads(RoadSystemAdapter *rs)
+{
+    this->roadsAdapted = rs;
+}
