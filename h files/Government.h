@@ -34,7 +34,21 @@ private:
     // std::vector<SewageSystems*> sewageSystems;
     std::vector<PowerPlant*> powerPlant;
     MonthlyRoutines* monthlyRoutines;
-    // Function prototypes
+
+
+      // Function prototypes
+    void promptForNewFactory(int sector);
+    void promptForNewWarehouse(int sector);
+    void promptForNewPlant(int sector);
+    void promptForNewShop(int sector);
+    void promptForNewOffice(int sector);
+    void promptForNewMall(int sector);
+    void promptForNewSchool(int sector);
+    void promptForNewHospital(int sector);
+    void promptForNewGovernmentBuilding(int sector);
+    void promptForNewHouse(int sector);
+    void promptForNewApartment(int sector);
+    void promptForNewMansion(int sector);
 public:
     Government();
     ~Government();

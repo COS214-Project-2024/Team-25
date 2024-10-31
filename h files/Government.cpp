@@ -23,6 +23,58 @@ Government::~Government(){
     delete taxSystem;
 }
 
+enum class Color {
+    RED,
+    GREEN,
+    YELLOW,
+    BLUE,
+    MAGENTA,
+    CYAN,
+    WHITE,
+    RESET
+};
+
+void printC(const std::string& text, Color color) {
+    // ANSI escape codes for text colors
+    switch (color) {
+        case Color::RED:     std::cout << "\033[31m"; break;
+        case Color::GREEN:   std::cout << "\033[32m"; break;
+        case Color::YELLOW:  std::cout << "\033[33m"; break;
+        case Color::BLUE:    std::cout << "\033[34m"; break;
+        case Color::MAGENTA: std::cout << "\033[35m"; break;
+        case Color::CYAN:    std::cout << "\033[36m"; break;
+        case Color::WHITE:   std::cout << "\033[37m"; break;
+        case Color::RESET:   std::cout << "\033[0m";  break;
+    }
+    std::cout << text;
+    std::cout << "\033[0m\n";
+}
+
+bool validateIntInput(int value, int lowerBound, int upperBound) {
+    return (value >= lowerBound && value <= upperBound);
+}
+
+int safeIntInput(int lowerBound, int upperBound) {
+    int input;
+    while (true) {
+        printC("Enter an integer between " + std::to_string(lowerBound) + " and " + std::to_string(upperBound) + ": ", Color::CYAN);
+        
+        if (std::cin >> input) {
+            if (validateIntInput(input, lowerBound, upperBound)) {
+                printC("Valid input received.", Color::GREEN);
+                return input;
+            }
+            printC("Input out of range. Try again.", Color::RED);
+        }
+        else {
+            // Clear error flags and ignore invalid input
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            printC("Invalid input. Please enter an integer.", Color::RED);
+        }
+    }
+}
+
 void Government::createBuilding() {
     std::cout << "Select which type of building you would like to create(1-4):" << std::endl;
     //std::cout << "  1. Residential" << std::endl;
@@ -309,9 +361,9 @@ void Government::changeTaxStartegy(){
 
 void Government::repairUtilities(){
     printC("Select which utilities to repair:", Color::CYAN);
-    printC("  1. Power Plants", Color::WHITE);
-    printC("  2. Water Supplies", Color::WHITE);
-    printC("  3. Waste Management", Color::WHITE);
+    printC("    1. Power Plants", Color::WHITE);
+    printC("    2. Water Supplies", Color::WHITE);
+    printC("    3. Waste Management", Color::WHITE);
     int u = safeIntInput(1, 3);
 
     switch (u){
@@ -418,7 +470,7 @@ void Government::createCitizen() {
                     }
                 }
                 if (!assigned) {
-                    promptForNewFactory();
+                    promptForNewFactory(sector);
                 }
             }
             else if (type2 == 2) {  // Warehouse
@@ -431,7 +483,7 @@ void Government::createCitizen() {
                     }
                 }
                 if (!assigned) {
-                    promptForNewWarehouse();
+                    promptForNewWarehouse(sector);
                 }
             }
             else if (type2 == 3) {  // Plant
@@ -444,7 +496,7 @@ void Government::createCitizen() {
                     }
                 }
                 if (!assigned) {
-                    promptForNewPlant();
+                    promptForNewPlant(sector);
                 }
             }
 
@@ -459,7 +511,7 @@ void Government::createCitizen() {
                 }
                 // If no apartment found, prompt to create one
                 if (!assigned) {
-                    promptForNewApartment();
+                    promptForNewApartment(sector);
                 }
             }
             delete factory; // Clean up the factory
@@ -485,7 +537,7 @@ void Government::createCitizen() {
                     }
                 }
                 if (!assigned) {
-                    promptForNewShop();
+                    promptForNewShop(sector);
                 }
             }
             else if (type2 == 2) {  // Office
@@ -498,7 +550,7 @@ void Government::createCitizen() {
                     }
                 }
                 if (!assigned) {
-                    promptForNewOffice();
+                    promptForNewOffice(sector);
                 }
             }
             else if (type2 == 3) {  // Mall
@@ -511,7 +563,7 @@ void Government::createCitizen() {
                     }
                 }
                 if (!assigned) {
-                    promptForNewMall();
+                    promptForNewMall(sector);
                 }
             }
 
@@ -526,7 +578,7 @@ void Government::createCitizen() {
                 }
                 // If no house found, prompt to create one
                 if (!assigned) {
-                    promptForNewHouse();
+                    promptForNewHouse(sector);
                 }
             }
             delete factory; // Clean up the factory
@@ -552,7 +604,7 @@ void Government::createCitizen() {
                     }
                 }
                 if (!assigned) {
-                    promptForNewSchool();
+                    promptForNewSchool(sector);
                 }
             }
             else if (type2 == 2) {  // Hospital
@@ -565,7 +617,7 @@ void Government::createCitizen() {
                     }
                 }
                 if (!assigned) {
-                    promptForNewHospital();
+                    promptForNewHospital(sector);
                 }
             }
             else if (type2 == 3) {  // Government Building
@@ -578,7 +630,7 @@ void Government::createCitizen() {
                     }
                 }
                 if (!assigned) {
-                    promptForNewGovernmentBuilding();
+                    promptForNewGovernmentBuilding(sector);
                 }
             }
 
@@ -593,7 +645,7 @@ void Government::createCitizen() {
                 }
                 // If no mansion found, prompt to create one
                 if (!assigned) {
-                    promptForNewMansion();
+                    promptForNewMansion(sector);
                 }
             }
             delete factory; // Clean up the factory
@@ -607,7 +659,7 @@ void Government::createCitizen() {
 }
 
 
-void promptForNewApartment() {
+void Government::promptForNewApartment(int sector) {
     std::cout << "No current apartment building available. Create a new one? (Type Y or N)" << std::endl;
     std::string choice;
     std::cin >> choice;
@@ -622,6 +674,10 @@ void promptForNewApartment() {
         std::cout << "Enter number of floors: ";
         std::cin >> floors;
         Building* a =new Apartment(name, capacity * capacity, 5 * capacity * capacity, capacity * 5000, capacity, capacity, capacity, 2);
+        a->build();
+        if (a->getBuilt()){
+            cityGrowth->addBuilding(a, sector);
+        }
     }
     else {
         std::cout << "No apartment building created" << std::endl;
@@ -629,7 +685,7 @@ void promptForNewApartment() {
 }
 
 // Function to prompt for creating a new house
-void promptForNewHouse() {
+void Government::promptForNewHouse(int sector) {
     std::cout << "No current house available. Create a new one? (Type Y or N)" << std::endl;
     std::string choice;
     std::cin >> choice;
@@ -644,6 +700,10 @@ void promptForNewHouse() {
         std::cout << "Enter number of floors: ";
         std::cin >> floors;
         Building* h = new House(name, capacity * capacity, 10 * capacity * capacity, capacity * 10000, capacity, capacity, capacity, capacity * 10);
+        h->build();
+        if (h->getBuilt()){
+            cityGrowth->addBuilding(h, sector);
+        }
     }
     else {
         std::cout << "No house created" << std::endl;
@@ -651,7 +711,7 @@ void promptForNewHouse() {
 }
 
 // Function to prompt for creating a new mansion
-void promptForNewMansion() {
+void Government::promptForNewMansion(int sector) {
     std::cout << "No current mansion available. Create a new one? (Type Y or N)" << std::endl;
     std::string choice;
     std::cin >> choice;
@@ -666,6 +726,10 @@ void promptForNewMansion() {
         std::cout << "Enter number of floors: ";
         std::cin >> floors;
         Building* m = new Mansion(name, capacity * capacity + 5, 15 * capacity * capacity, capacity * 15000, capacity + 3, capacity + 2, capacity, true);
+        m->build();
+        if (m->getBuilt()){
+            cityGrowth->addBuilding(m, sector);
+        }
     }
     else {
         std::cout << "No mansion created" << std::endl;
@@ -674,7 +738,7 @@ void promptForNewMansion() {
 
 
 // Function definitions
-void promptForNewFactory() {
+void Government::promptForNewFactory(int sector) {
     // Prompt for new factory details
     std::cout << "No current factory available. Create a new one? (Type Y or N)" << std::endl;
     std::string choice;
@@ -690,13 +754,17 @@ void promptForNewFactory() {
         std::cout << "Enter capacity: ";
         std::cin >> capacity;
         Building* f = new Factory(name, capacity * 2, capacity * 4, carbonFootprint * 1000, carbonFootprint, capacity);
+        f->build();
+        if (f->getBuilt()){
+            cityGrowth->addBuilding(f, sector);
+        }
     }
     else {
         std::cout << "No factory created" << std::endl;
     }
 }
 
-void promptForNewWarehouse() {
+void Government::promptForNewWarehouse(int sector) {
     // Prompt for new warehouse details
     std::cout << "No current warehouse available. Create a new one? (Type Y or N)" << std::endl;
     std::string choice;
@@ -710,13 +778,17 @@ void promptForNewWarehouse() {
         std::cout << "Enter capacity: ";
         std::cin >> capacity;
         Building* w = new Warehouse(name, capacity * 3, capacity * 5, capacity * 3000, capacity, 2);
+        w->build();
+        if (w->getBuilt()){
+            cityGrowth->addBuilding(w, sector);
+        }
     }
     else {
         std::cout << "No warehouse created" << std::endl;
     }
 }
 
-void promptForNewPlant() {
+void Government::promptForNewPlant(int sector) {
     // Prompt for new plant details
     std::cout << "No current plant available. Create a new one? (Type Y or N)" << std::endl;
     std::string choice;
@@ -732,13 +804,17 @@ void promptForNewPlant() {
         std::cout << "Enter capacity: ";
         std::cin >> capacity;
         Building* p = new Plant(name, capacity * 3, capacity * 5, carbonFootprint * 1000, carbonFootprint, capacity);
+        p->build();
+        if (p->getBuilt()){
+            cityGrowth->addBuilding(p, sector);
+        }
     }
     else {
         std::cout << "No plant created" << std::endl;
     }
 }
 
-void promptForNewShop() {
+void Government::promptForNewShop(int sector) {
     // Prompt for new shop details
     std::cout << "No current shop available. Create a new one? (Type Y or N)" << std::endl;
     std::string choice;
@@ -754,13 +830,17 @@ void promptForNewShop() {
         std::cout << "Enter number of floors: ";
         std::cin >> floors;
         Building* s = new Shop(name, capacity * 2, capacity * 5, capacity * 1000, capacity, floors, 3);
+        s->build();
+        if (s->getBuilt()){
+            cityGrowth->addBuilding(s, sector);
+        }
     }
     else {
         std::cout << "No shop created" << std::endl;
     }
 }
 
-void promptForNewOffice() {
+void Government::promptForNewOffice(int sector) {
     // Prompt for new office details
     std::cout << "No current office available. Create a new one? (Type Y or N)" << std::endl;
     std::string choice;
@@ -776,13 +856,17 @@ void promptForNewOffice() {
         std::cout << "Enter number of floors: ";
         std::cin >> floors;
         Building* o = new Office(name, capacity * 4, capacity * 15, capacity * 8000, capacity, floors, 5);
+        o->build();
+        if (o->getBuilt()){
+            cityGrowth->addBuilding(o, sector);
+        }
     }
     else {
         std::cout << "No office created" << std::endl;
     }
 }
 
-void promptForNewMall() {
+void Government::promptForNewMall(int sector) {
     // Prompt for new mall details
     std::cout << "No current mall available. Create a new one? (Type Y or N)" << std::endl;
     std::string choice;
@@ -797,14 +881,18 @@ void promptForNewMall() {
         std::cin >> capacity;
         std::cout << "Enter number of floors: ";
         std::cin >> floors;
-        Building* m = new Mall(name, capacity * 6, capacity * 20, capacity * 15000, capacity, floors, 8);;
+        Building* m = new Mall(name, capacity * 6, capacity * 20, capacity * 15000, capacity, floors, 8);
+        m->build();
+        if (m->getBuilt()){
+            cityGrowth->addBuilding(m, sector);
+        }
     }
     else {
         std::cout << "No mall created" << std::endl;
     }
 }
 
-void promptForNewSchool() {
+void Government::promptForNewSchool(int sector) {
     // Prompt for new school details
     std::cout << "No current school available. Create a new one? (Type Y or N)" << std::endl;
     std::string choice;
@@ -820,13 +908,17 @@ void promptForNewSchool() {
         std::cout << "Enter number of floors: ";
         std::cin >> floors;
         Building* sc = new School(name, capacity * 5, capacity * 15, capacity * 20000, capacity, floors);
+        sc->build();
+        if (sc->getBuilt()){
+            cityGrowth->addBuilding(sc, sector);
+        }
     }
     else {
         std::cout << "No school created" << std::endl;
     }
 }
 
-void promptForNewHospital() {
+void Government::promptForNewHospital(int sector) {
     // Prompt for new hospital details
     std::cout << "No current hospital available. Create a new one? (Type Y or N)" << std::endl;
     std::string choice;
@@ -842,13 +934,17 @@ void promptForNewHospital() {
         std::cout << "Enter number of floors: ";
         std::cin >> floors;
         Building* h = new Hospital(name, capacity * 10, capacity * 20, capacity * 50000, capacity, floors);
+        h->build();
+        if (h->getBuilt()){
+            cityGrowth->addBuilding(h, sector);
+        }
     }
     else {
         std::cout << "No hospital created" << std::endl;
     }
 }
 
-void promptForNewGovernmentBuilding() {
+void Government::promptForNewGovernmentBuilding(int sector) {
     // Prompt for new government building details
     std::cout << "No current government building available. Create a new one? (Type Y or N)" << std::endl;
     std::string choice;
@@ -864,6 +960,10 @@ void promptForNewGovernmentBuilding() {
         std::cout << "Enter number of floors: ";
         std::cin >> floors;
         Building* g = new GovernmentBuilding(name, capacity * 8, capacity * 25, capacity * 40000, capacity, floors);
+        g->build();
+        if (g->getBuilt()){
+            cityGrowth->addBuilding(g, sector);
+        }
     }
     else {
         std::cout << "No government building created" << std::endl;
