@@ -25,6 +25,7 @@ private:
     Steel* steel;
     CityGrowth* cityGrowth;
     TaxSystem* taxSystem;
+    RoadSystem* roadSystem;
     std::vector<PublicTransitAdapter*> publicTransitAdapter;
     std::vector<RoadSystemAdapter*> roadSystemAdapter;
     std::vector<RailSystemAdapter*> railSystemAdapter;
@@ -33,6 +34,20 @@ private:
     // std::vector<SewageSystems*> sewageSystems;
     std::vector<PowerPlant*> powerPlant;
     MonthlyRoutines* monthlyRoutines;
+
+      // Function prototypes
+void promptForNewFactory();
+void promptForNewWarehouse();
+void promptForNewPlant();
+void promptForNewShop();
+void promptForNewOffice();
+void promptForNewMall();
+void promptForNewSchool();
+void promptForNewHospital();
+void promptForNewGovernmentBuilding();
+void promptForNewHouse();
+void promptForNewApartment();
+void promptForNewMansion();
 public:
     Government();
     ~Government();
@@ -47,33 +62,16 @@ public:
     void taxCitizens(); //action 6
     void changeTaxStartegy(); //action 7
     void repairUtilities();
+    void createCitizen();
 
-    virtual void attach(Citizen Citizen);
-    virtual void detach(Citizen Citizen);
-    virtual void notifyBuilding(Citizen Citizen);
+    // virtual void attach(Citizen Citizen);
+    // virtual void detach(Citizen Citizen);
+    // virtual void notifyBuilding(Citizen Citizen);
     void callRoutines();
     void repair(std::string name); //name of utility, also notifies citizens
     void mulfunction(std::string name); //name of utility, also notifies citizens
     
 
-    /*getters*/
-    std::vector<Citizen> getCitizens();
-    Water* getWater();
-    Budget* getBudget();
-    Energy* getEnergy();
-    Wood* getWood();
-    Concrete* getConcrete();
-    Steel* getSteel();
-    CitySector* getCitySector();
-    TaxSystem* getTaxSystem();
-    std::vector<PublicTransitAdapter*> getPublicTransitAdapter();
-    std::vector<RoadSystemAdapter*> getRoadSystemAdapter();
-    std::vector<RailSystemAdapter*> getRailSystemAdapter();
-    std::vector<WaterSupply*> getWaterSupply();
-    std::vector<WasteManagement*> getWasteManagement();
-    // std::vector<SewageSystems*> getSewageSystems();
-    std::vector<PowerPlant*> getPowerPlant();
-    std::vector<MonthlyRoutines*> getMonthlyRoutines();
 };  
 
 #endif 

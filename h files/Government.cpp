@@ -24,11 +24,10 @@ Government::~Government(){
 
 void Government::createBuilding() {
     std::cout << "Select which type of building you would like to create(1-4):" << std::endl;
-    std::cout << "  1. Residential" << std::endl;
-    std::cout << "  2. Industrial" << std::endl;
-    std::cout << "  3. Commercial" << std::endl;
-    std::cout << "  4. Landmark" << std::endl;
-    std::cout << "  5. Institutional" << std::endl; 
+    //std::cout << "  1. Residential" << std::endl;
+    std::cout << "  1. Industrial" << std::endl;
+    std::cout << "  2. Commercial" << std::endl;
+    std::cout << "  3. Institutional" << std::endl; 
     int type, type2, sector;
     std::cin >> type;
 
@@ -43,32 +42,32 @@ void Government::createBuilding() {
     bool check;
 
     switch (type) {
-        case 1: {  // Residential
-            int capacity;
-            std::cout << "Select which type of residential building would you like to create(1-3):" << std::endl;
-            std::cout << "  1. House" << std::endl;
-            std::cout << "  2. Apartment" << std::endl;
-            std::cout << "  3. Mansion" << std::endl;
-            std::cin >> type2;
+        // case 1: {  // Residential
+        //     int capacity;
+        //     std::cout << "Select which type of residential building would you like to create(1-3):" << std::endl;
+        //     std::cout << "  1. House" << std::endl;
+        //     std::cout << "  2. Apartment" << std::endl;
+        //     std::cout << "  3. Mansion" << std::endl;
+        //     std::cin >> type2;
 
-            std::cout << "Enter how many people can live in the residential building: " << std::endl;
-            std::cin >> capacity;
+        //     std::cout << "Enter how many people can live in the residential building: " << std::endl;
+        //     std::cin >> capacity;
 
-            switch (type2) {
-                case 1:
-                    b = new House(name, capacity * capacity, 10 * capacity * capacity, capacity * 10000, capacity, capacity, capacity, capacity * 10);
-                    break;
-                case 2:
-                    b = new Apartment(name, capacity * capacity, 5 * capacity * capacity, capacity * 5000, capacity, capacity, capacity, 2);
-                    break;
-                case 3:
-                    b = new Mansion(name, capacity * capacity + 5, 15 * capacity * capacity, capacity * 15000, capacity + 3, capacity + 2, capacity, true);
-                    break;
-            }
-            break;
-        }
+        //     switch (type2) {
+        //         case 1:
+        //             b = new House(name, capacity * capacity, 10 * capacity * capacity, capacity * 10000, capacity, capacity, capacity, capacity * 10);
+        //             break;
+        //         case 2:
+        //             b = new Apartment(name, capacity * capacity, 5 * capacity * capacity, capacity * 5000, capacity, capacity, capacity, 2);
+        //             break;
+        //         case 3:
+        //             b = new Mansion(name, capacity * capacity + 5, 15 * capacity * capacity, capacity * 15000, capacity + 3, capacity + 2, capacity, true);
+        //             break;
+        //     }
+        //     break;
+        // }
 
-        case 2: {  // Industrial
+        case 1: {  // Industrial
             int carbonFootprint, capacity;
             std::cout << "Select which type of industrial building would you like to create(1-3):" << std::endl;
             std::cout << "  1. Factory" << std::endl;
@@ -96,7 +95,7 @@ void Government::createBuilding() {
             break;
         }
 
-        case 3: {  // Commercial
+        case 2: {  // Commercial
             int capacity, numFloors;
             std::cout << "Select which type of commercial building would you like to create(1-3):" << std::endl;
             std::cout << "  1. Shop" << std::endl;
@@ -124,39 +123,7 @@ void Government::createBuilding() {
             break;
         }
 
-        case 4: {  // Landmark
-            int culturalRelevance;
-            std::cout << "Select which type of landmark would you like to create(1-2):" << std::endl;
-            std::cout << "  1. Park" << std::endl;
-            std::cout << "  2. Monument" << std::endl;
-            std::cin >> type2;
-
-            std::cout << "Enter cultural relevance (1-10): ";
-            std::cin >> culturalRelevance;
-
-            switch (type2) {
-                case 1: {
-                    int numTrees;
-                    bool river;
-                    std::cout << "Enter number of trees: ";
-                    std::cin >> numTrees;
-                    std::cout << "Is there a river? (1 for yes, 0 for no): ";
-                    std::cin >> river;
-                    b = new Park(name, 0, 0, culturalRelevance * 1000, culturalRelevance, numTrees, river);
-                    break;
-                }
-                case 2: {
-                    int detail;
-                    std::cout << "Enter level of detail (1-5): ";
-                    std::cin >> detail;
-                    b = new Monument(name, 0, 0, culturalRelevance * 5000, culturalRelevance, detail);
-                    break;
-                }
-            }
-            break;
-        }
-
-        case 5: {  // Institutional
+        case 3: {  // Institutional
             int capacity, numFloors;
             std::cout << "Select which type of institutional building you would like to create(1-3):" << std::endl;
             std::cout << "  1. School" << std::endl;
@@ -178,7 +145,7 @@ void Government::createBuilding() {
                     b = new Hospital(name, capacity * 4, capacity * 15, capacity * 12000, capacity, numFloors);
                     break;
                 case 3:
-                    b = new GovermentBuilding(name, capacity * 5, capacity * 20, capacity * 15000, capacity, numFloors);
+                    b = new GovernmentBuilding(name, capacity * 5, capacity * 20, capacity * 15000, capacity, numFloors);
                     break;
             }
             break;
@@ -351,7 +318,6 @@ void Government::repairUtilities(){
             if(!x->getFunctional()){
                 PowerPlant* p = x->repair();
                 delete x;
-                
             }
         }
         
@@ -376,3 +342,499 @@ void Government::repairUtilities(){
         break;
     }
 }
+
+void Government::createCitizen() {
+    std::cout << "Select which work sector your citizen should work in: " << std::endl;
+    std::cout << "  1. Industrial" << std::endl;
+    std::cout << "  2. Commercial" << std::endl;
+    std::cout << "  3. Institutional" << std::endl;
+
+    int sector, type2, type;
+    std::cin >> type;
+    bool valid = false;
+
+    while (!valid) {
+        std::cout << "Enter the sector you want the citizen to work in: (Select from 1-" << cityGrowth->getTotalSectorCount() << ")" << std::endl;
+        std::cin >> sector;
+
+        if (sector < 1 || sector > cityGrowth->getTotalSectorCount()) {
+            std::cout << "Invalid sector number" << std::endl;
+        } else valid = true;
+    }
+
+    CitySector* s = cityGrowth->getSectors()[sector - 1];
+    bool assigned = false;
+    CitizenFactory* factory = nullptr;
+
+    switch (type) {
+        case 1: {  // Industrial
+            factory = new IndWorkerFactory();
+            std::cout << "Select which type of industrial building would you like your citizen to work at:" << std::endl;
+            std::cout << "  1. Factory" << std::endl;
+            std::cout << "  2. Warehouse" << std::endl;
+            std::cout << "  3. Plant" << std::endl;
+            std::cin >> type2;
+
+            // Handle assignment to industrial buildings
+            if (type2 == 1) {  // Factory
+                for (auto* b : s->getBuildings()) {
+                    if (b->getType() == "Factory" && b->getLeftOverCapacity() > 0) {
+                        Citizen* c = factory->createCitizen("Factory");
+                        b->addCitizen(c);
+                        assigned = true;
+                        break;
+                    }
+                }
+                if (!assigned) {
+                    promptForNewFactory();
+                }
+            }
+            else if (type2 == 2) {  // Warehouse
+                for (auto* b : s->getBuildings()) {
+                    if (b->getType() == "Warehouse" && b->getLeftOverCapacity() > 0) {
+                        Citizen* c = factory->createCitizen("Warehouse");
+                        b->addCitizen(c);
+                        assigned = true;
+                        break;
+                    }
+                }
+                if (!assigned) {
+                    promptForNewWarehouse();
+                }
+            }
+            else if (type2 == 3) {  // Plant
+                for (auto* b : s->getBuildings()) {
+                    if (b->getType() == "Plant" && b->getLeftOverCapacity() > 0) {
+                        Citizen* c = factory->createCitizen("Plant");
+                        b->addCitizen(c);
+                        assigned = true;
+                        break;
+                    }
+                }
+                if (!assigned) {
+                    promptForNewPlant();
+                }
+            }
+
+            // Check for Apartment Building assignment
+            if (assigned) {
+                for (auto* b : s->getBuildings()) {
+                    if (b->getType() == "Apartment Building" && b->getLeftOverCapacity() > 0) {
+                        Citizen* c = factory->createCitizen("Apartment Building");
+                        b->addCitizen(c);
+                        break;
+                    }
+                }
+                // If no apartment found, prompt to create one
+                if (!assigned) {
+                    promptForNewApartment();
+                }
+            }
+            delete factory; // Clean up the factory
+            break;
+        }
+
+        case 2: {  // Commercial
+            factory = new ComWorkerFactory();
+            std::cout << "Select which type of commercial building would you like your citizen to work at:" << std::endl;
+            std::cout << "  1. Shop" << std::endl;
+            std::cout << "  2. Office" << std::endl;
+            std::cout << "  3. Mall" << std::endl;
+            std::cin >> type2;
+
+            // Handle assignment to commercial buildings
+            if (type2 == 1) {  // Shop
+                for (auto* b : s->getBuildings()) {
+                    if (b->getType() == "Shop" && b->getLeftOverCapacity() > 0) {
+                        Citizen* c = factory->createCitizen("Shop");
+                        b->addCitizen(c);
+                        assigned = true;
+                        break;
+                    }
+                }
+                if (!assigned) {
+                    promptForNewShop();
+                }
+            }
+            else if (type2 == 2) {  // Office
+                for (auto* b : s->getBuildings()) {
+                    if (b->getType() == "Office" && b->getLeftOverCapacity() > 0) {
+                        Citizen* c = factory->createCitizen("Office");
+                        b->addCitizen(c);
+                        assigned = true;
+                        break;
+                    }
+                }
+                if (!assigned) {
+                    promptForNewOffice();
+                }
+            }
+            else if (type2 == 3) {  // Mall
+                for (auto* b : s->getBuildings()) {
+                    if (b->getType() == "Mall" && b->getLeftOverCapacity() > 0) {
+                        Citizen* c = factory->createCitizen("Mall");
+                        b->addCitizen(c);
+                        assigned = true;
+                        break;
+                    }
+                }
+                if (!assigned) {
+                    promptForNewMall();
+                }
+            }
+
+            // Check for House assignment
+            if (assigned) {
+                for (auto* b : s->getBuildings()) {
+                    if (b->getType() == "House" && b->getLeftOverCapacity() > 0) {
+                        Citizen* c = factory->createCitizen("House");
+                        b->addCitizen(c);
+                        break;
+                    }
+                }
+                // If no house found, prompt to create one
+                if (!assigned) {
+                    promptForNewHouse();
+                }
+            }
+            delete factory; // Clean up the factory
+            break;
+        }
+
+        case 3: {  // Institutional
+            factory = new GovernmentWorkerFactory();
+            std::cout << "Select which type of institutional building would you like your citizen to work at:" << std::endl;
+            std::cout << "  1. School" << std::endl;
+            std::cout << "  2. Hospital" << std::endl;
+            std::cout << "  3. Government Building" << std::endl;
+            std::cin >> type2;
+
+            // Handle assignment to institutional buildings
+            if (type2 == 1) {  // School
+                for (auto* b : s->getBuildings()) {
+                    if (b->getType() == "School" && b->getLeftOverCapacity() > 0) {
+                        Citizen* c = factory->createCitizen("School");
+                        b->addCitizen(c);
+                        assigned = true;
+                        break;
+                    }
+                }
+                if (!assigned) {
+                    promptForNewSchool();
+                }
+            }
+            else if (type2 == 2) {  // Hospital
+                for (auto* b : s->getBuildings()) {
+                    if (b->getType() == "Hospital" && b->getLeftOverCapacity() > 0) {
+                        Citizen* c = factory->createCitizen("Hospital");
+                        b->addCitizen(c);
+                        assigned = true;
+                        break;
+                    }
+                }
+                if (!assigned) {
+                    promptForNewHospital();
+                }
+            }
+            else if (type2 == 3) {  // Government Building
+                for (auto* b : s->getBuildings()) {
+                    if (b->getType() == "Government Building" && b->getLeftOverCapacity() > 0) {
+                        Citizen* c = factory->createCitizen("Government Building");
+                        b->addCitizen(c);
+                        assigned = true;
+                        break;
+                    }
+                }
+                if (!assigned) {
+                    promptForNewGovernmentBuilding();
+                }
+            }
+
+            // Check for Mansion assignment
+            if (assigned) {
+                for (auto* b : s->getBuildings()) {
+                    if (b->getType() == "Mansion" && b->getLeftOverCapacity() > 0) {
+                        Citizen* c = factory->createCitizen("Mansion");
+                        b->addCitizen(c);
+                        break;
+                    }
+                }
+                // If no mansion found, prompt to create one
+                if (!assigned) {
+                    promptForNewMansion();
+                }
+            }
+            delete factory; // Clean up the factory
+            break;
+        }
+
+        default:
+            std::cout << "Invalid type entered" << std::endl;
+            break;
+    }
+}
+
+
+void promptForNewApartment() {
+    std::cout << "No current apartment building available. Create a new one? (Type Y or N)" << std::endl;
+    std::string choice;
+    std::cin >> choice;
+
+    if (choice == "Y") {
+        int capacity, floors;
+        std::string name;
+        std::cout << "Enter the name of the building: ";
+        std::cin >> name;
+        std::cout << "Enter capacity: ";
+        std::cin >> capacity;
+        std::cout << "Enter number of floors: ";
+        std::cin >> floors;
+        Building* a =new Apartment(name, capacity * capacity, 5 * capacity * capacity, capacity * 5000, capacity, capacity, capacity, 2);
+    }
+    else {
+        std::cout << "No apartment building created" << std::endl;
+    }
+}
+
+// Function to prompt for creating a new house
+void promptForNewHouse() {
+    std::cout << "No current house available. Create a new one? (Type Y or N)" << std::endl;
+    std::string choice;
+    std::cin >> choice;
+
+    if (choice == "Y") {
+        int capacity, floors;
+        std::string name;
+        std::cout << "Enter the name of the building: ";
+        std::cin >> name;
+        std::cout << "Enter capacity: ";
+        std::cin >> capacity;
+        std::cout << "Enter number of floors: ";
+        std::cin >> floors;
+        Building* h = new House(name, capacity * capacity, 10 * capacity * capacity, capacity * 10000, capacity, capacity, capacity, capacity * 10);
+    }
+    else {
+        std::cout << "No house created" << std::endl;
+    }
+}
+
+// Function to prompt for creating a new mansion
+void promptForNewMansion() {
+    std::cout << "No current mansion available. Create a new one? (Type Y or N)" << std::endl;
+    std::string choice;
+    std::cin >> choice;
+
+    if (choice == "Y") {
+        int capacity, floors;
+        std::string name;
+        std::cout << "Enter the name of the building: ";
+        std::cin >> name;
+        std::cout << "Enter capacity: ";
+        std::cin >> capacity;
+        std::cout << "Enter number of floors: ";
+        std::cin >> floors;
+        Building* m = new Mansion(name, capacity * capacity + 5, 15 * capacity * capacity, capacity * 15000, capacity + 3, capacity + 2, capacity, true);
+    }
+    else {
+        std::cout << "No mansion created" << std::endl;
+    }
+}
+
+
+// Function definitions
+void promptForNewFactory() {
+    // Prompt for new factory details
+    std::cout << "No current factory available. Create a new one? (Type Y or N)" << std::endl;
+    std::string choice;
+    std::cin >> choice;
+
+    if (choice == "Y") {
+        int capacity, carbonFootprint;
+        std::string name;
+        std::cout << "Enter the name of the building: ";
+        std::cin >> name;
+        std::cout << "Enter carbon footprint: ";
+        std::cin >> carbonFootprint;
+        std::cout << "Enter capacity: ";
+        std::cin >> capacity;
+        Building* f = new Factory(name, capacity * 2, capacity * 4, carbonFootprint * 1000, carbonFootprint, capacity);
+    }
+    else {
+        std::cout << "No factory created" << std::endl;
+    }
+}
+
+void promptForNewWarehouse() {
+    // Prompt for new warehouse details
+    std::cout << "No current warehouse available. Create a new one? (Type Y or N)" << std::endl;
+    std::string choice;
+    std::cin >> choice;
+
+    if (choice == "Y") {
+        int capacity;
+        std::string name;
+        std::cout << "Enter the name of the building: ";
+        std::cin >> name;
+        std::cout << "Enter capacity: ";
+        std::cin >> capacity;
+        Building* w = new Warehouse(name, capacity * 3, capacity * 5, capacity * 3000, capacity, 2);
+    }
+    else {
+        std::cout << "No warehouse created" << std::endl;
+    }
+}
+
+void promptForNewPlant() {
+    // Prompt for new plant details
+    std::cout << "No current plant available. Create a new one? (Type Y or N)" << std::endl;
+    std::string choice;
+    std::cin >> choice;
+
+    if (choice == "Y") {
+        int capacity, carbonFootprint;
+        std::string name;
+        std::cout << "Enter the name of the building: ";
+        std::cin >> name;
+        std::cout << "Enter carbon footprint: ";
+        std::cin >> carbonFootprint;
+        std::cout << "Enter capacity: ";
+        std::cin >> capacity;
+        Building* p = new Plant(name, capacity * 3, capacity * 5, carbonFootprint * 1000, carbonFootprint, capacity);
+    }
+    else {
+        std::cout << "No plant created" << std::endl;
+    }
+}
+
+void promptForNewShop() {
+    // Prompt for new shop details
+    std::cout << "No current shop available. Create a new one? (Type Y or N)" << std::endl;
+    std::string choice;
+    std::cin >> choice;
+
+    if (choice == "Y") {
+        int capacity, floors;
+        std::string name;
+        std::cout << "Enter the name of the building: ";
+        std::cin >> name;
+        std::cout << "Enter capacity: ";
+        std::cin >> capacity;
+        std::cout << "Enter number of floors: ";
+        std::cin >> floors;
+        Building* s = new Shop(name, capacity * 2, capacity * 5, capacity * 1000, capacity, floors, 3);
+    }
+    else {
+        std::cout << "No shop created" << std::endl;
+    }
+}
+
+void promptForNewOffice() {
+    // Prompt for new office details
+    std::cout << "No current office available. Create a new one? (Type Y or N)" << std::endl;
+    std::string choice;
+    std::cin >> choice;
+
+    if (choice == "Y") {
+        int capacity, floors;
+        std::string name;
+        std::cout << "Enter the name of the building: ";
+        std::cin >> name;
+        std::cout << "Enter capacity: ";
+        std::cin >> capacity;
+        std::cout << "Enter number of floors: ";
+        std::cin >> floors;
+        Building* o = new Office(name, capacity * 4, capacity * 15, capacity * 8000, capacity, floors, 5);
+    }
+    else {
+        std::cout << "No office created" << std::endl;
+    }
+}
+
+void promptForNewMall() {
+    // Prompt for new mall details
+    std::cout << "No current mall available. Create a new one? (Type Y or N)" << std::endl;
+    std::string choice;
+    std::cin >> choice;
+
+    if (choice == "Y") {
+        int capacity, floors;
+        std::string name;
+        std::cout << "Enter the name of the building: ";
+        std::cin >> name;
+        std::cout << "Enter capacity: ";
+        std::cin >> capacity;
+        std::cout << "Enter number of floors: ";
+        std::cin >> floors;
+        Building* m = new Mall(name, capacity * 6, capacity * 20, capacity * 15000, capacity, floors, 8);;
+    }
+    else {
+        std::cout << "No mall created" << std::endl;
+    }
+}
+
+void promptForNewSchool() {
+    // Prompt for new school details
+    std::cout << "No current school available. Create a new one? (Type Y or N)" << std::endl;
+    std::string choice;
+    std::cin >> choice;
+
+    if (choice == "Y") {
+        int capacity, floors;
+        std::string name;
+        std::cout << "Enter the name of the building: ";
+        std::cin >> name;
+        std::cout << "Enter capacity: ";
+        std::cin >> capacity;
+        std::cout << "Enter number of floors: ";
+        std::cin >> floors;
+        Building* sc = new School(name, capacity * 5, capacity * 15, capacity * 20000, capacity, floors);
+    }
+    else {
+        std::cout << "No school created" << std::endl;
+    }
+}
+
+void promptForNewHospital() {
+    // Prompt for new hospital details
+    std::cout << "No current hospital available. Create a new one? (Type Y or N)" << std::endl;
+    std::string choice;
+    std::cin >> choice;
+
+    if (choice == "Y") {
+        int capacity, floors;
+        std::string name;
+        std::cout << "Enter the name of the building: ";
+        std::cin >> name;
+        std::cout << "Enter capacity: ";
+        std::cin >> capacity;
+        std::cout << "Enter number of floors: ";
+        std::cin >> floors;
+        Building* h = new Hospital(name, capacity * 10, capacity * 20, capacity * 50000, capacity, floors);
+    }
+    else {
+        std::cout << "No hospital created" << std::endl;
+    }
+}
+
+void promptForNewGovernmentBuilding() {
+    // Prompt for new government building details
+    std::cout << "No current government building available. Create a new one? (Type Y or N)" << std::endl;
+    std::string choice;
+    std::cin >> choice;
+
+    if (choice == "Y") {
+        int capacity, floors;
+        std::string name;
+        std::cout << "Enter the name of the building: ";
+        std::cin >> name;
+        std::cout << "Enter capacity: ";
+        std::cin >> capacity;
+        std::cout << "Enter number of floors: ";
+        std::cin >> floors;
+        Building* g = new GovernmentBuilding(name, capacity * 8, capacity * 25, capacity * 40000, capacity, floors);
+    }
+    else {
+        std::cout << "No government building created" << std::endl;
+    }
+}
+
