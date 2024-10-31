@@ -14,21 +14,26 @@ protected:
     int numRooms;
     int m_squared;
     float value;
-    bool built=false;
+    bool built = false;
     Budget* budget;
     Concrete* concrete;
     Steel* steel;
     Wood* wood;
+
 public:
     Building(std::string name, int numRooms, int m_squared, float value, std::string type);
     virtual ~Building() = default;
+    
     virtual void build() = 0;
     virtual Building* clone() = 0;
     virtual void displayCitizens();
+    virtual void addCitizen(Citizen* human) = 0;  // Pure virtual function
+    virtual int getLeftOverCapacity() = 0;        // Now a pure virtual function
+    virtual std::string getType() const = 0;
+    
     std::string getName();
     std::string getBuildingType();
-    bool getBuilt() const {return built;}
-    void renovate();
+    bool getBuilt() const { return built; }
 };
 
 /******* RESIDENTIAL *******/
@@ -39,43 +44,51 @@ protected:
     int numBathrooms;
     int capacity;
     std::vector<Citizen*> residents;
+
 public:
-    Residential(std::string name, int numRooms, int m_squared, float value, int numBedrooms, int numBathrooms, int capacity,  std::string type );
+    Residential(std::string name, int numRooms, int m_squared, float value, int numBedrooms, int numBathrooms, int capacity, std::string type);
     virtual void build() = 0;
     virtual Residential* clone() = 0;
-    void addCitizen(Citizen* human);
-    void displayCitizens();
-    int getLeftOverCapacity();
+
+    void addCitizen(Citizen* human) override;
+    void displayCitizens() override;
+    int getLeftOverCapacity() override;  // Implementation of pure virtual function
     int getCapacity();
     std::vector<Citizen*> getCitizens();
-
+    virtual std::string getType() const = 0;
 };
 
 class House : public Residential {
 private:
     int kitchenSize;
+
 public:
     House(std::string name, int numRooms, int m_squared, float value, int numBedrooms, int numBathrooms, int capacity, int kitchenSize);
     void build() override;
-    House* clone();
+    House* clone() override;
+    std::string getType() const override { return type; }
 };
 
 class Apartment : public Residential {
 private:
     int numFloors;
+
 public:
     Apartment(std::string name, int numRooms, int m_squared, float value, int numBedrooms, int numBathrooms, int capacity, int numFloors);
     void build() override;
-    Apartment* clone();
+    Apartment* clone() override;
+    std::string getType() const override { return type; }
 };
 
 class Mansion : public Residential {
 private:
     bool waterFeature;
+
 public:
     Mansion(std::string name, int numRooms, int m_squared, float value, int numBedrooms, int numBathrooms, int capacity, bool waterFeature);
     void build() override;
-    Mansion* clone();
+    Mansion* clone() override;
+    std::string getType() const override { return type; }
 };
 
 /******* COMMERCIAL *******/
@@ -85,40 +98,49 @@ protected:
     int capacity;
     int numFloors;
     std::vector<Citizen*> employees;
+
 public:
     Commercial(std::string name, int numRooms, int m_squared, float value, int capacity, int numFloors, std::string type);
     virtual void build() = 0;
     virtual Commercial* clone() = 0;
-    void addCitizen(Citizen* human);
-    void displayCitizens();
-    int getLeftOverCapacity();
+
+    void addCitizen(Citizen* human) override;
+    void displayCitizens() override;
+    int getLeftOverCapacity() override;  // Implementation of pure virtual function
+    virtual std::string getType() const = 0;
 };
 
 class Shop : public Commercial {
 private:
     int storageRooms;
+
 public:
     Shop(std::string name, int numRooms, int m_squared, float value, int capacity, int numFloors, int storageRooms);
     void build() override;
-    Shop* clone();
+    Shop* clone() override;
+    std::string getType() const override { return type; }
 };
 
 class Office : public Commercial {
 private:
     int offices;
+
 public:
     Office(std::string name, int numRooms, int m_squared, float value, int capacity, int numFloors, int offices);
     void build() override;
-    Office* clone();
+    Office* clone() override;
+    std::string getType() const override { return type; }
 };
 
 class Mall : public Commercial {
 private:
     int shops;
+
 public:
     Mall(std::string name, int numRooms, int m_squared, float value, int capacity, int numFloors, int shops);
     void build() override;
-    Mall* clone();
+    Mall* clone() override;
+    std::string getType() const override { return type; }
 };
 
 /******* INDUSTRIAL *******/
@@ -128,107 +150,91 @@ protected:
     int carbonFootprint;
     int capacity;
     std::vector<Citizen*> employees;
+
 public:
     Industrial(std::string name, int numRooms, int m_squared, float value, int carbonFootprint, int capacity, std::string type);
     virtual void build() = 0;
     virtual Industrial* clone() = 0;
-    void addCitizen(Citizen* human);
-    void displayCitizens();
-    int getLeftOverCapacity();
+
+    void addCitizen(Citizen* human) override;
+    void displayCitizens() override;
+    int getLeftOverCapacity() override;  // Implementation of pure virtual function
+    virtual std::string getType() const = 0;
 };
 
 class Factory : public Industrial {
 public:
     Factory(std::string name, int numRooms, int m_squared, float value, int carbonFootprint, int capacity);
     void build() override;
-    Factory* clone();
+    Factory* clone() override;
+    std::string getType() const override { return type; }
 };
 
 class Warehouse : public Industrial {
 public:
     Warehouse(std::string name, int numRooms, int m_squared, float value, int carbonFootprint, int capacity);
     void build() override;
-    Warehouse* clone();
+    Warehouse* clone() override;
+    std::string getType() const override { return type; }
 };
 
 class Plant : public Industrial {
 public:
     Plant(std::string name, int numRooms, int m_squared, float value, int carbonFootprint, int capacity);
     void build() override;
-    Plant* clone();
+    Plant* clone() override;
+    std::string getType() const override { return type; }
 };
 
-/******* LANDMARK *******/
+/******* INSTITUTIONAL *******/
 
-class Landmark : public Building {
+class Instatutional : public Building {
 protected:
-    int culturalRelevance;
+    int capacity;
+    std::vector<Citizen*> employees;
+
 public:
-    Landmark(std::string name, int numRooms, int m_squared, float value, int culturalRelevance, std::string type);
+    Instatutional(std::string name, int numRooms, int m_squared, float value, int capacity, std::string type);
     virtual void build() = 0;
-    virtual Landmark* clone() = 0;
-};
+    virtual Instatutional* clone() = 0;
 
-class Park : public Landmark {
-private:
-    int numTrees;
-    bool river;
-public:
-    Park(std::string name, int numRooms, int m_squared, float value, int culturalRelevance, int numTrees, bool river);
-    void build() override;
-    Park* clone();
-};
-
-class Monument : public Landmark {
-private:
-    int detail;
-public:
-    Monument(std::string name, int numRooms, int m_squared, float value, int culturalRelevance, int detail);
-    void build() override;
-    Monument* clone();
-};
-
-
-/******* INSTATUTIONAL *******/
-
-class Instatutional : public Building{
-    protected:
-        int capacity;
-        std::vector<Citizen*> employees;
-    public:
-        Instatutional(std::string name, int numRooms, int m_squared, float value, int capacity, std::string type);
-        void build() = 0;
-        virtual Instatutional* clone() = 0;
-        void addCitizen(Citizen* human);
-        void displayCitizens();
-        int  getLeftOverCapacity();
+    void addCitizen(Citizen* human) override;
+    void displayCitizens() override;
+    int getLeftOverCapacity() override;  // Implementation of pure virtual function
+    virtual std::string getType() const = 0;
 };
 
 class School : public Instatutional {
 private:
     int numfloors;
+
 public:
     School(std::string name, int numRooms, int m_squared, float value, int capacity, int numfloors);
     void build() override;
-    School* clone();
+    School* clone() override;
+    std::string getType() const override { return type; }
 };
 
 class Hospital : public Instatutional {
 private:
     int numfloors;
+
 public:
     Hospital(std::string name, int numRooms, int m_squared, float value, int capacity, int numfloors);
     void build() override;
-    Hospital* clone();
+    Hospital* clone() override;
+    std::string getType() const override { return type; }
 };
 
-class GovermentBuilding : public Instatutional {
+class GovernmentBuilding : public Instatutional {
 private:
     int numfloors;
+
 public:
-    GovermentBuilding(std::string name, int numRooms, int m_squared, float value, int capacity, int numfloors);
+    GovernmentBuilding(std::string name, int numRooms, int m_squared, float value, int capacity, int numfloors);
     void build() override;
-    GovermentBuilding* clone();
+    GovernmentBuilding* clone() override;
+    std::string getType() const override { return type; }
 };
 
-#endif //Building.h 
+#endif // BUILDING_H
