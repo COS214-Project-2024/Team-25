@@ -376,3 +376,7 @@ void Government::repairUtilities(){
         break;
     }
 }
+
+void Government::createCitizen()
+{
+}

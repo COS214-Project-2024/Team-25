@@ -11,7 +11,7 @@
 #include "Resources.h"
 #include "CityGrowth.h"
 #include "TaxSystem.h"
-#include "Transportation.h"
+// #include "Transportation.h"
 #include "Utilities.h"
 #include "Routines.h"
 class Government{
@@ -35,45 +35,46 @@ private:
     MonthlyRoutines* monthlyRoutines;
 public:
     Government();
-    ~Government();
+    virtual ~Government();
     
     //Actions
     void createBuilding(); //action 1
     void createUtility(); //action 2
-    void increaseMaterials(); //action 2 as well
+    void increaseMaterials(); //action 8
     void naturalDisaster(); //action 3
     void upgradeTransport(); //action 4
     void upgradeBuildings(); //action 5
     void taxCitizens(); //action 6
     void changeTaxStartegy(); //action 7
     void repairUtilities();
+    void createCitizen();
 
-    virtual void attach(Citizen Citizen);
-    virtual void detach(Citizen Citizen);
-    virtual void notifyBuilding(Citizen Citizen);
-    void callRoutines();
-    void repair(std::string name); //name of utility, also notifies citizens
-    void mulfunction(std::string name); //name of utility, also notifies citizens
+    // virtual void attach(Citizen Citizen);
+    // virtual void detach(Citizen Citizen);
+    // virtual void notifyBuilding(Citizen Citizen);
+    // void callRoutines();
+    // void repair(std::string name); //name of utility, also notifies citizens
+    // void mulfunction(std::string name); //name of utility, also notifies citizens
     
 
     /*getters*/
-    std::vector<Citizen> getCitizens();
-    Water* getWater();
-    Budget* getBudget();
-    Energy* getEnergy();
-    Wood* getWood();
-    Concrete* getConcrete();
-    Steel* getSteel();
-    CitySector* getCitySector();
-    TaxSystem* getTaxSystem();
-    std::vector<PublicTransitAdapter*> getPublicTransitAdapter();
-    std::vector<RoadSystemAdapter*> getRoadSystemAdapter();
-    std::vector<RailSystemAdapter*> getRailSystemAdapter();
-    std::vector<WaterSupply*> getWaterSupply();
-    std::vector<WasteManagement*> getWasteManagement();
-    // std::vector<SewageSystems*> getSewageSystems();
-    std::vector<PowerPlant*> getPowerPlant();
-    std::vector<MonthlyRoutines*> getMonthlyRoutines();
+    // std::vector<Citizen> getCitizens();
+    // Water* getWater();
+    // Budget* getBudget();
+    // Energy* getEnergy();
+    // Wood* getWood();
+    // Concrete* getConcrete();
+    // Steel* getSteel();
+    // CitySector* getCitySector();
+    // TaxSystem* getTaxSystem();
+    // std::vector<PublicTransitAdapter*> getPublicTransitAdapter();
+    // std::vector<RoadSystemAdapter*> getRoadSystemAdapter();
+    // std::vector<RailSystemAdapter*> getRailSystemAdapter();
+    // std::vector<WaterSupply*> getWaterSupply();
+    // std::vector<WasteManagement*> getWasteManagement();
+    // // std::vector<SewageSystems*> getSewageSystems();
+    // std::vector<PowerPlant*> getPowerPlant();
+    // std::vector<MonthlyRoutines*> getMonthlyRoutines();
 };  
 
 #endif 
