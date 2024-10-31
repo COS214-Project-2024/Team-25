@@ -10,17 +10,17 @@
 #include "Transportation.h"
 
 class CitySector {
-   public:
-    // CitySector();
-    // ~CitySector();
-    void addBuilding(Building* building);
-    int getBuildingCount();
-    const std::vector<Building*>& getBuildings() const;
-    std::vector<Building*> getBlock();
+    public:
+        // CitySector();
+        // ~CitySector();
+        void addBuilding(Building* building);
+        int getBuildingCount();
+        const std::vector<Building*>& getBuildings() const;
+        std::vector<Building*> getBlock();
 
-   private:
-    std::vector<Building*> block;
-    // std::vector<Citizen*> population;
+    private:
+        std::vector<Building*> block;
+        // std::vector<Citizen*> population;
 };
 
 class CityGrowth : public CitySector {

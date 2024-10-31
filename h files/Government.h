@@ -66,6 +66,8 @@ public:
     void repairUtilities();
     void createCitizen();
 
+    float avgSatisfaction();
+    void updateSatisfaction(int amt); 
     // virtual void attach(Citizen Citizen);
     // virtual void detach(Citizen Citizen);
     // virtual void notifyBuilding(Citizen Citizen);

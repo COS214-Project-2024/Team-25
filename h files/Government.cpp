@@ -662,6 +662,54 @@ void Government::createCitizen() {
     }
 }
 
+float Government::avgSatisfaction(){
+    std::vector<CitySector*> sectors = cityGrowth->getSectors();
+    float total = 0;
+    float count  = 0.0;
+    for (int i = 0; i < sectors.size(); i++)
+    {
+        CitySector* sector = sectors.at(i);
+        std::vector<Building*> block = sector->getBuildings();
+        for (int j = 0; j < block.size(); j++)
+        {
+            if(block.at(j) != nullptr && block.at(j)->getBuildingType() != "House" && block.at(j)->getBuildingType() != "Mansion" && block.at(j)->getBuildingType() != "Apartment"){
+                std::vector<Citizen*> citizens = block.at(j)->getCitizens(); 
+                for (int k = 0; k < citizens.size(); k++)
+                {
+                   total += citizens.at(k)->getSatisfaction();
+                   count += 1.0; 
+                }
+                
+            }
+        }
+        
+    }
+    return total/count;
+    
+}
+
+void Government::updateSatisfaction(int amt){
+    std::vector<CitySector*> sectors = cityGrowth->getSectors();
+    float total = 0;
+    float count  = 0.0;
+    for (int i = 0; i < sectors.size(); i++){
+        CitySector* sector = sectors.at(i);
+        std::vector<Building*> block = sector->getBuildings();
+        for (int j = 0; j < block.size(); j++){
+            if(block.at(j) != nullptr && block.at(j)->getBuildingType() != "House" && block.at(j)->getBuildingType() != "Mansion" && block.at(j)->getBuildingType() != "Apartment"){
+                std::vector<Citizen*> citizens = block.at(j)->getCitizens();            
+                for (int k = 0; k < citizens.size(); k++){
+                   citizens.at(k)->changeSatisfaction(amt);
+                   
+                }
+                
+            }
+        }
+        
+    }
+        
+ 
+}
 
 void Government::promptForNewApartment(int sector) {
     std::cout << "No current apartment building available. Create a new one? (Type Y or N)" << std::endl;
