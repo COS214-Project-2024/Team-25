@@ -25,10 +25,11 @@ private:
     Steel* steel;
     CityGrowth* cityGrowth;
     TaxSystem* taxSystem;
-    RoadSystem* roadSystem;
-    std::vector<PublicTransitAdapter*> publicTransitAdapter;
-    std::vector<RoadSystemAdapter*> roadSystemAdapter;
-    std::vector<RailSystemAdapter*> railSystemAdapter;
+    //RoadSystem* roadSystem;
+    RoadSystemAdapter* roadSystemAdapter;
+    // std::vector<PublicTransitAdapter*> publicTransitAdapter;
+    // std::vector<RoadSystemAdapter*> roadSystemAdapter;
+    // std::vector<RailSystemAdapter*> railSystemAdapter;
     std::vector<WaterSupply*> waterSupply;
     std::vector<WasteManagement*> wasteManagement;
     // std::vector<SewageSystems*> sewageSystems;

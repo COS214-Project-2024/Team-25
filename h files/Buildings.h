@@ -34,6 +34,7 @@ public:
     std::string getName();
     std::string getBuildingType();
     bool getBuilt() const { return built; }
+    void renovate();
 };
 
 /******* RESIDENTIAL *******/

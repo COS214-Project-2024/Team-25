@@ -44,7 +44,6 @@ class CityGrowth : public CitySector {
 
    private:
     std::vector<CitySector*> sectors;
-    RoadSystem* roads;
     RoadSystemAdapter* roadsAdapted;
 };
 

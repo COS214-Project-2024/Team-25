@@ -10,7 +10,8 @@ Government::Government(){
     taxSystem = new TaxSystem();
     cityGrowth = new CityGrowth();
     monthlyRoutines = new MonthlyRoutines(cityGrowth);
-    roadSystem = new RoadSystem();
+    roadSystemAdapter = new RoadSystemAdapter(new RoadSystem());
+    cityGrowth->setRoads(roadSystemAdapter);
 }
 
 Government::~Government(){
@@ -209,6 +210,9 @@ void Government::createBuilding() {
         b->build();
         if (b->getBuilt()) {
             check = cityGrowth->addBuilding(b, sector);
+            Road r(5, b->getType()); 
+            roadSystemAdapter->addRoute(r);
+            
         }
     }else{
         std::cout << "Tough cookies" << std::endl;
@@ -677,6 +681,8 @@ void Government::promptForNewApartment(int sector) {
         a->build();
         if (a->getBuilt()){
             cityGrowth->addBuilding(a, sector);
+            Road r(5, "Industrial"); 
+            roadSystemAdapter->addRoute(r);
         }
     }
     else {
@@ -703,6 +709,8 @@ void Government::promptForNewHouse(int sector) {
         h->build();
         if (h->getBuilt()){
             cityGrowth->addBuilding(h, sector);
+            Road r(5, "Commercial"); 
+            roadSystemAdapter->addRoute(r);
         }
     }
     else {
@@ -729,6 +737,8 @@ void Government::promptForNewMansion(int sector) {
         m->build();
         if (m->getBuilt()){
             cityGrowth->addBuilding(m, sector);
+            Road r(5,"Government"); 
+            roadSystemAdapter->addRoute(r);
         }
     }
     else {
@@ -757,6 +767,8 @@ void Government::promptForNewFactory(int sector) {
         f->build();
         if (f->getBuilt()){
             cityGrowth->addBuilding(f, sector);
+            Road r(5, f->getType()); 
+            roadSystemAdapter->addRoute(r);
         }
     }
     else {
@@ -781,6 +793,8 @@ void Government::promptForNewWarehouse(int sector) {
         w->build();
         if (w->getBuilt()){
             cityGrowth->addBuilding(w, sector);
+            Road r(5, w->getType()); 
+            roadSystemAdapter->addRoute(r);
         }
     }
     else {
@@ -807,6 +821,8 @@ void Government::promptForNewPlant(int sector) {
         p->build();
         if (p->getBuilt()){
             cityGrowth->addBuilding(p, sector);
+            Road r(5, p->getType()); 
+            roadSystemAdapter->addRoute(r);
         }
     }
     else {
@@ -833,6 +849,8 @@ void Government::promptForNewShop(int sector) {
         s->build();
         if (s->getBuilt()){
             cityGrowth->addBuilding(s, sector);
+            Road r(5, s->getType()); 
+            roadSystemAdapter->addRoute(r);
         }
     }
     else {
@@ -859,6 +877,8 @@ void Government::promptForNewOffice(int sector) {
         o->build();
         if (o->getBuilt()){
             cityGrowth->addBuilding(o, sector);
+            Road r(5, o->getType()); 
+            roadSystemAdapter->addRoute(r);
         }
     }
     else {
@@ -885,6 +905,8 @@ void Government::promptForNewMall(int sector) {
         m->build();
         if (m->getBuilt()){
             cityGrowth->addBuilding(m, sector);
+            Road r(5, m->getType()); 
+            roadSystemAdapter->addRoute(r);
         }
     }
     else {
@@ -911,6 +933,8 @@ void Government::promptForNewSchool(int sector) {
         sc->build();
         if (sc->getBuilt()){
             cityGrowth->addBuilding(sc, sector);
+            Road r(5, sc->getType()); 
+            roadSystemAdapter->addRoute(r);
         }
     }
     else {
@@ -937,6 +961,8 @@ void Government::promptForNewHospital(int sector) {
         h->build();
         if (h->getBuilt()){
             cityGrowth->addBuilding(h, sector);
+            Road r(5, h->getType()); 
+            roadSystemAdapter->addRoute(r);
         }
     }
     else {
@@ -963,6 +989,8 @@ void Government::promptForNewGovernmentBuilding(int sector) {
         g->build();
         if (g->getBuilt()){
             cityGrowth->addBuilding(g, sector);
+            Road r(5, g->getType()); 
+            roadSystemAdapter->addRoute(r);
         }
     }
     else {
