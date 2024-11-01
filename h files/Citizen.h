@@ -21,6 +21,7 @@ class Citizen {
         virtual string getWorkplace();
         virtual float getSatisfaction();
         virtual void displayInfo() = 0;
+        void changeSatisfaction(int amt);
 };
 
 // Concrete Products

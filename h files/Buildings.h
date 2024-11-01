@@ -19,11 +19,12 @@ protected:
     Concrete* concrete;
     Steel* steel;
     Wood* wood;
+    std::vector<Citizen*> citizens;
 
 public:
     Building(std::string name, int numRooms, int m_squared, float value, std::string type);
     virtual ~Building() = default;
-    
+    std::vector<Citizen*> getCitizens() const {return citizens;}
     virtual void build() = 0;
     virtual Building* clone() = 0;
     virtual void displayCitizens();
@@ -34,6 +35,7 @@ public:
     std::string getName();
     std::string getBuildingType();
     bool getBuilt() const { return built; }
+    void renovate();
 };
 
 /******* RESIDENTIAL *******/
@@ -43,7 +45,7 @@ protected:
     int numBedrooms;
     int numBathrooms;
     int capacity;
-    std::vector<Citizen*> residents;
+    
 
 public:
     Residential(std::string name, int numRooms, int m_squared, float value, int numBedrooms, int numBathrooms, int capacity, std::string type);
@@ -97,7 +99,7 @@ class Commercial : public Building {
 protected:
     int capacity;
     int numFloors;
-    std::vector<Citizen*> employees;
+    
 
 public:
     Commercial(std::string name, int numRooms, int m_squared, float value, int capacity, int numFloors, std::string type);
@@ -149,7 +151,7 @@ class Industrial : public Building {
 protected:
     int carbonFootprint;
     int capacity;
-    std::vector<Citizen*> employees;
+    
 
 public:
     Industrial(std::string name, int numRooms, int m_squared, float value, int carbonFootprint, int capacity, std::string type);
@@ -191,7 +193,7 @@ public:
 class Instatutional : public Building {
 protected:
     int capacity;
-    std::vector<Citizen*> employees;
+    
 
 public:
     Instatutional(std::string name, int numRooms, int m_squared, float value, int capacity, std::string type);

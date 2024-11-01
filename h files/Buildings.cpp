@@ -34,26 +34,26 @@ Residential::Residential(std::string name, int numRooms, int m_squared, float va
 void Residential::addCitizen(Citizen* human){
     if (this->getLeftOverCapacity() != 0)
     {
-       residents.push_back(human);
+       citizens.push_back(human);
     }else{
         std::cout << "Total capacity reached for " <<  this->getName() << ". Make a new building... "<< "\n";
     }
  }
 
 void Residential::displayCitizens(){
-    if (residents.empty())
+    if (citizens.empty())
     {
         std::cout << this->getName() << ": has no residents"<< "\n";
     }else{
         std::cout << "Residents in " << this->getName() << ":\n";
-        for (Citizen* person : residents) {
+        for (Citizen* person : citizens) {
             person->displayInfo();  // Each Citizen class has its own displayInfo method
         }
     }
 }
 
 int Residential::getLeftOverCapacity(){
-    return (this->capacity - residents.size());
+    return (this->capacity - citizens.size());
 }
 
 int Residential::getCapacity() {
@@ -61,7 +61,7 @@ int Residential::getCapacity() {
 }
 
 std::vector<Citizen*> Residential::getCitizens() {
-    return this->residents;
+    return this->citizens;
 }
 
 
@@ -200,19 +200,19 @@ Commercial::Commercial(std::string name, int numRooms, int m_squared, float valu
 void Commercial::addCitizen(Citizen* human){
     if (this->getLeftOverCapacity() != 0)
     {
-       employees.push_back(human);
+       citizens.push_back(human);
     }else{
         std::cout << "No more employees needed for " <<  this->getName() << ". Make a new building... "<< "\n";
     }
  }
 
 void Commercial::displayCitizens(){
-    if (employees.empty())
+    if (citizens.empty())
     {
         std::cout << this->getName() << ": has no employees"<< "\n";
     }else{
         std::cout << "Employees in " << this->getName() << ":\n";
-        for (Citizen* person : employees) {
+        for (Citizen* person : citizens) {
             person->displayInfo();  // Each Citizen class has its own displayInfo method
         }
     }
@@ -221,7 +221,7 @@ void Commercial::displayCitizens(){
 }
 
 int Commercial::getLeftOverCapacity(){
-    return (this->capacity - employees.size());
+    return (this->capacity - citizens.size());
     
 }
 
@@ -363,26 +363,26 @@ Industrial::Industrial(std::string name, int numRooms, int m_squared, float valu
 void Industrial::addCitizen(Citizen* human){
     if (this->getLeftOverCapacity() != 0)
     {
-       employees.push_back(human);
+       citizens.push_back(human);
     }else{
         std::cout << "No more employees needed for " <<  this->getName() << ". Make a new building... "<< "\n";
     }
  }
 
 void Industrial::displayCitizens(){
-    if (employees.empty())
+    if (citizens.empty())
     {
         std::cout << this->getName() << ": has no employees"<< "\n";
     }else{
         std::cout << "Employees in " << this->getName() << ":\n";
-        for (Citizen* person : employees) {
+        for (Citizen* person : citizens) {
             person->displayInfo();  
         }
     }
 }
 
 int  Industrial::getLeftOverCapacity(){
-    return (this->capacity - employees.size());
+    return (this->capacity - citizens.size());
 }
 
 
@@ -504,26 +504,26 @@ Instatutional::Instatutional(std::string name, int numRooms, int m_squared, floa
 void Instatutional::addCitizen(Citizen* human){
    if (this->getLeftOverCapacity() != 0)
     {
-       employees.push_back(human);
+       citizens.push_back(human);
     }else{
         std::cout << "No more employees needed for " <<  this->getName() << ". Make a new building... "<< "\n";
     }
 }
 
 void Instatutional::displayCitizens(){
-     if (employees.empty())
+     if (citizens.empty())
     {
         std::cout << this->getName() << ": has no employees"<< "\n";
     }else{
         std::cout << "Employees in " << this->getName() << ":\n";
-        for (Citizen* person : employees) {
+        for (Citizen* person : citizens) {
             person->displayInfo();  
         }
     }
 }
 
 int  Instatutional::getLeftOverCapacity(){
-    return (this->capacity - employees.size());
+    return (this->capacity - citizens.size());
 }
 
 

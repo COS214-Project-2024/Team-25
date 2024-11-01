@@ -11,7 +11,7 @@
 #include "Resources.h"
 #include "CityGrowth.h"
 #include "TaxSystem.h"
-#include "Transportation.h"
+// #include "Transportation.h"
 #include "Utilities.h"
 #include "Routines.h"
 class Government{
@@ -25,10 +25,11 @@ private:
     Steel* steel;
     CityGrowth* cityGrowth;
     TaxSystem* taxSystem;
-    RoadSystem* roadSystem;
-    std::vector<PublicTransitAdapter*> publicTransitAdapter;
-    std::vector<RoadSystemAdapter*> roadSystemAdapter;
-    std::vector<RailSystemAdapter*> railSystemAdapter;
+    //RoadSystem* roadSystem;
+    RoadSystemAdapter* roadSystemAdapter;
+    // std::vector<PublicTransitAdapter*> publicTransitAdapter;
+    // std::vector<RoadSystemAdapter*> roadSystemAdapter;
+    // std::vector<RailSystemAdapter*> railSystemAdapter;
     std::vector<WaterSupply*> waterSupply;
     std::vector<WasteManagement*> wasteManagement;
     // std::vector<SewageSystems*> sewageSystems;
@@ -65,12 +66,14 @@ public:
     void repairUtilities();
     void createCitizen();
 
+    float avgSatisfaction();
+    void updateSatisfaction(int amt); 
     // virtual void attach(Citizen Citizen);
     // virtual void detach(Citizen Citizen);
     // virtual void notifyBuilding(Citizen Citizen);
-    void callRoutines();
-    void repair(std::string name); //name of utility, also notifies citizens
-    void mulfunction(std::string name); //name of utility, also notifies citizens
+    // void callRoutines();
+    // void repair(std::string name); //name of utility, also notifies citizens
+    // void mulfunction(std::string name); //name of utility, also notifies citizens
     
 
 };  

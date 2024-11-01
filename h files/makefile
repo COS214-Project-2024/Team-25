@@ -9,11 +9,12 @@ TARGET = main
 TEST_TARGET = doctest_exec
 
 # Source files and object files
-SRC = main.cpp Utilities.cpp Resources.cpp CityGrowth.cpp TaxSystem.cpp Buildings.cpp Citizen.cpp
+SRC = main.cpp Buildings.cpp Citizen.cpp CityGrowth.cpp Government.cpp Resources.cpp Routines.cpp TaxSystem.cpp Transportation.cpp Utilities.cpp 
+
 OBJ = $(SRC:.cpp=.o)
 
 # Test files
-TEST_SRC = doctest.cpp Utilities.cpp Resources.cpp CityGrowth.cpp TaxSystem.cpp Buildings.cpp Citizen.cpp
+TEST_SRC = doctest.cpp Buildings.cpp Citizen.cpp CityGrowth.cpp Government.cpp Resources.cpp Routines.cpp TaxSystem.cpp Transportation.cpp Utilities.cpp 
 TEST_OBJ = $(TEST_SRC:.cpp=.o)
 
 # Default target: build the executable

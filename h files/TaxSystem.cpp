@@ -18,7 +18,8 @@ TaxSystem::TaxSystem() {
     budget = Budget::getInstance();
 }
 
-TaxSystem::~TaxSystem() { delete this->strategy; }
+// TaxSystem::~TaxSystem() { delete this->strategy; }
+TaxSystem::~TaxSystem() {}
 
 void TaxSystem::setTaxStrategy(TaxStrategy* strategy) {
     if (this->strategy) {

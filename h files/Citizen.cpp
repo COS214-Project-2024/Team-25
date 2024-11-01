@@ -26,6 +26,10 @@ float Citizen:: getSatisfaction(){
     return satisfaction;
 }
 
+void Citizen::changeSatisfaction(int amt){
+    satisfaction += amt;
+}
+
 CommercialWorker:: CommercialWorker(): Citizen(){
     int operation = std::rand() % 3 + 1;
     std::string workplace;
