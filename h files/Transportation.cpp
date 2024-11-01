@@ -108,16 +108,11 @@ vector<Road> &RoadSystem::getRoads()
 }
 
 //class Railway
-Railway::Railway(string t){
-    type = t;
+Railway::Railway(){
 }
 
 void Railway::addTrain(PublicTransport train){
     trains.push_back(train);
-}
-
-string Railway::getType(){
-    return type;
 }
 
 int Railway::getNumTrains(){
@@ -132,20 +127,20 @@ void RailSystem::addRailway(Railway railway) {
 
 void RailSystem::upgrade() {
     int utilization = getUtilization();
-    //still need to figure out which type of railway is needed???
+
     if (utilization >= 7) {
-        Railway newRailway("??"); 
+        Railway newRailway; 
         addRailway(newRailway);
     } 
     else if (utilization >= 8) {
         for(int i = 0 ; i <=1 ; i++){
-            Railway newRailway("??"); 
+            Railway newRailway; 
             addRailway(newRailway);
         }
     } 
-    else if (utilization >= 9) {
+    else if (utilization > 9) {
         for(int i = 0 ; i <=2 ; i++){
-            Railway newRailway("??"); 
+            Railway newRailway; 
             addRailway(newRailway);
         }
     } 

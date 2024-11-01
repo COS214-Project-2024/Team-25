@@ -59,12 +59,10 @@ class Railway
 {
     private:
         int numOfTrains;
-        string type;
         vector<PublicTransport> trains;
     public:
-        Railway(string type);
+        Railway();
         void addTrain(PublicTransport train);
-        string getType();
         int getNumTrains();
 
 };
