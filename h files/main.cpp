@@ -90,9 +90,10 @@ void gameLoop(){
         printC("    6. Change Tax Strategy", Color::WHITE);
         printC("    7. Repair Utilities", Color::WHITE);
         printC("    8. Create Citizen", Color::WHITE);
+        printC("    9. EXIT", Color::RED);
 
         // Validate action input
-        int action = safeIntInput(1, 8);
+        int action = safeIntInput(1, 9);
 
         // Perform selected action
         switch(action) {
@@ -126,7 +127,10 @@ void gameLoop(){
                 break;
             case 8: 
                 printC("Creating a new citizen...", Color::GREEN);
-                government->createCitizen(); 
+                government->createCitizen();
+                break;
+            case 9:
+                game = false;
                 break;
         }
 
@@ -151,6 +155,7 @@ void gameLoop(){
         // if (government->isGameOver()) {
         //     game = false;
         // }
+        government->printSec();
     }
 
     delete government;
@@ -159,6 +164,7 @@ void gameLoop(){
 
 int main(int argc, char const *argv[])
 {
+    setvbuf(stdout, nullptr, _IONBF, 0);
     gameLoop();
     return 0;
 }

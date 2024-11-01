@@ -3,6 +3,7 @@
 Government::Government(){
     water = Water::getInstance();
     budget = Budget::getInstance();
+    budget->setCash(1000000);
     energy = Energy::getInstance();
     wood = Wood::getInstance();
     concrete = Concrete::getInstance();
@@ -94,7 +95,7 @@ void Government::createBuilding() {
     sector = safeIntInput(0, cityGrowth->getTotalSectorCount()-1);
 
     Building* b = nullptr;
-    bool check;
+    bool check = false;
 
     switch (type) {
         // case 1: {  // Residential
@@ -121,7 +122,6 @@ void Government::createBuilding() {
         //     }
         //     break;
         // }
-
         case 1: {  // Industrial
             int carbonFootprint, capacity;
             std::cout << "Select which type of industrial building would you like to create(1-3):" << std::endl;
@@ -138,13 +138,13 @@ void Government::createBuilding() {
 
             switch (type2) {
                 case 1:
-                    b = new Factory(name, capacity * 2, capacity * 4, carbonFootprint * 1000, carbonFootprint, capacity);
+                    b = new Factory(name, capacity * 2, capacity * 4, capacity * 1000, carbonFootprint, capacity);
                     break;
                 case 2:
-                    b = new Warehouse(name, capacity * 3, capacity * 5, carbonFootprint * 800, carbonFootprint, capacity);
+                    b = new Warehouse(name, capacity * 3, capacity * 5, capacity * 800, carbonFootprint, capacity);
                     break;
                 case 3:
-                    b = new Plant(name, capacity * 4, capacity * 6, carbonFootprint * 1200, carbonFootprint, capacity);
+                    b = new Plant(name, capacity * 4, capacity * 6, capacity * 1200, carbonFootprint, capacity);
                     break;
             }
             break;
@@ -227,14 +227,14 @@ void Government::createBuilding() {
 
 void Government::createUtility() {
     std::cout << "Select which type of utility you would like to create: " << std::endl;
-    std::cout << "1. PowerPlant \n2. Water Supply \n3. Waste Management Plant" << std::endl;
+    std::cout << "    1. PowerPlant \n    2. Water Supply \n    3. Waste Management Plant" << std::endl;
     int type;
     std::cin >> type;
 
     switch (type) {
         case 1:
             std::cout << "Select which type of Power Plant you would like to create: " << std::endl;
-            std::cout << "1. Hyrdo  \n2. Coal \n3. Wind \n4 Solar" << std::endl;
+            std::cout << "  1. Hyrdo  \n    2. Coal \n  3. Wind \n  4 Solar" << std::endl;
             int powerplant;
             std::cin >> powerplant;
             std::cout << "Creating Power Plant..." << std::endl;
@@ -256,7 +256,7 @@ void Government::createUtility() {
 
 void Government::increaseMaterials(){
     std::cout << "Select which type of resource you would like to obtain: " << std::endl;
-    std::cout << "1. Wood \n2. Steel \n3. Concrete \n4. All";
+    std::cout << "1. Wood \n2. Steel \n3. Concrete \n4. All\n";
     int type;
     std::cin >> type;
 

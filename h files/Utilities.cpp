@@ -164,7 +164,9 @@ WaterSupply::WaterSupply() : waterGeneration(0) {
 
     concrete->setKilo(concrete->getKilo() - waterGeneration);
     wood->setKilo(wood->getKilo() - waterGeneration);
-
+    
+    std::cout << "Used " << waterGeneration << " kgs of concrete and wood to create a Water Supply" << std::endl;
+    
     water = Water::getInstance();
     water->setliters(water->getLiters() + waterGeneration);
 }
@@ -249,6 +251,8 @@ WasteManagement::WasteManagement() : wasteCollection(0) {
 
     steel->setKilo(steel->getKilo() - wasteCollection);
     wood->setKilo(wood->getKilo() - wasteCollection);
+    std::cout << "Used " << wasteCollection << " kgs of steel and wood to create a Waste Management" << std::endl;
+
 }
 
 WasteManagement::~WasteManagement() {}

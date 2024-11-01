@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/james/OneDrive/Documents/GitHub/COS214-Project/h files",
-      "program": "c:/Users/james/OneDrive/Documents/GitHub/COS214-Project/h files/build/Debug/outDebug",
+      "cwd": "c:/Users/james/OneDrive/Documents/GitHub/sudo-apt-get-marks/h files",
+      "program": "c:/Users/james/OneDrive/Documents/GitHub/sudo-apt-get-marks/h files/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

@@ -55,19 +55,20 @@ public:
     ~Government();
     
     //Actions
-    void createBuilding(); //action 1
-    void createUtility(); //action 2
-    void increaseMaterials(); //action 2 as well
-    void naturalDisaster(); //action 3
-    void upgradeTransport(); //action 4
-    void upgradeBuildings(); //action 5
-    void taxCitizens(); //action 6
+    void createBuilding();    //action 1
+    void createUtility();     //action 2
+    void increaseMaterials(); //action 2
+    void naturalDisaster();   //action 3
+    void upgradeTransport();  //action 4
+    void upgradeBuildings();  //action 5
+    void taxCitizens();       //action 6
     void changeTaxStartegy(); //action 7
     void repairUtilities();
     void createCitizen();
 
     float avgSatisfaction();
-    void updateSatisfaction(int amt); 
+    void updateSatisfaction(int amt);
+    void printSec() {std::cout << cityGrowth->printSectors() << std::endl;} 
     // virtual void attach(Citizen Citizen);
     // virtual void detach(Citizen Citizen);
     // virtual void notifyBuilding(Citizen Citizen);
