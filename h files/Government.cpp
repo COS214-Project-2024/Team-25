@@ -3,7 +3,6 @@
 Government::Government(){
     water = Water::getInstance();
     budget = Budget::getInstance();
-    budget->setCash(1000000);
     energy = Energy::getInstance();
     wood = Wood::getInstance();
     concrete = Concrete::getInstance();
@@ -714,6 +713,79 @@ void Government::updateSatisfaction(int amt){
     }
         
  
+}
+
+void Government::setDifficulty(int difficulty)
+{
+    switch (difficulty)
+    {
+    case 1: 
+    {
+        wood->setKilo(30000);
+        concrete->setKilo(30000);
+        steel->setKilo(30000);
+
+        for (int i = 0; i < 4; i++)
+        {
+            powerPlant.push_back(new FunctionalPowerPlant(static_cast<powerPlants>(0)));
+            waterSupply.push_back(new FunctionalWaterSupply());
+            wasteManagement.push_back(new FunctionalWasteManagement());
+        }
+        
+        budget->setCash(200000.00);
+    }
+        break;
+    case 2: 
+    {
+        wood->setKilo(5000);
+        concrete->setKilo(5000);
+        steel->setKilo(5000);
+
+        for (int i = 0; i < 2; i++)
+        {
+            powerPlant.push_back(new FunctionalPowerPlant(static_cast<powerPlants>(0)));
+            waterSupply.push_back(new FunctionalWaterSupply());
+            wasteManagement.push_back(new FunctionalWasteManagement());
+        }
+        
+        budget->setCash(100000.00);
+    }
+        break;
+    case 3:
+    {
+        wood->setKilo(1000);
+        concrete->setKilo(1000);
+        steel->setKilo(1000);        
+        budget->setCash(10000.00);
+    }
+        break;      
+    default:
+    {
+        std::cout << "Invalid choice. Please choose a valid option." << std::endl;
+    }
+        break;
+    }
+}
+
+void Government::printresources()
+{
+    printC("\nCurrent Resources and Utilities:", Color::CYAN);
+    printC("-------------------------------", Color::CYAN);
+
+    printC("Materials:", Color::GREEN);
+    std::cout << "  Wood: " << wood->getKilo() << " kg" << std::endl;
+    std::cout << "  Concrete: " << concrete->getKilo() << " kg" << std::endl;
+    std::cout << "  Steel: " << steel->getKilo() << " kg" << std::endl;
+
+    printC("\nUtilities:", Color::GREEN);
+    std::cout << "  Power Plants: " << powerPlant.size() << std::endl;
+    std::cout << "  Water Supply Systems: " << waterSupply.size() << std::endl;
+    std::cout << "  Waste Management Facilities: " << wasteManagement.size() << std::endl;
+
+    printC("\nBudget:", Color::GREEN);
+    std::cout << "  Cash: $" << budget->getCash() << std::endl;
+
+    printC("-------------------------------\n", Color::CYAN); 
 }
 
 void Government::promptForNewApartment(int sector) {

@@ -73,9 +73,14 @@ void gameLoop(){
     printC("    3. Hard", Color::RED);
     int difficulty = safeIntInput(1,3);
 
+    government->setDifficulty(difficulty);
+    government->printresources();
+
+
     while(game){
         // Check for natural disaster (1/6 chance)
-        if (rand() % 6 == 0) {
+        if (actionCount != 0  && (actionCount % 6) == 0)
+        {
             printC("A natural disaster has struck!", Color::RED);
             government->naturalDisaster();
         }

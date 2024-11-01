@@ -40,9 +40,9 @@ protected:
     int powerGeneration; // in watts
     powerPlants type;
     Energy* energy;
-
+    bool isInitialBuild = false;
 public:
-    PowerPlant(powerPlants type);
+    PowerPlant(powerPlants type, bool isbuilt);
     ~PowerPlant();
     virtual PowerPlant* repair() = 0; // Changed to PowerPlant*
     virtual PowerPlant* mulfunction() = 0; // Changed to PowerPlant*
@@ -57,7 +57,8 @@ public:
     void setType(powerPlants value) { type = value; }
 };
 
-class FunctionalPowerPlant : public PowerPlant {
+class FunctionalPowerPlant : public PowerPlant 
+{
 public:
     FunctionalPowerPlant(powerPlants type);
     ~FunctionalPowerPlant();
@@ -77,9 +78,9 @@ class WaterSupply : public Utility {
 protected:
     int waterGeneration; // in liters
     Water* water;
-
+    bool isInitialBuild = false;
 public:
-    WaterSupply();
+    WaterSupply(bool built);
     ~WaterSupply();
     virtual WaterSupply* repair() = 0; // Changed to WaterSupply*
     virtual WaterSupply* mulfunction() = 0; // Changed to WaterSupply*
@@ -109,9 +110,9 @@ public:
 class WasteManagement : public Utility {
 protected:
     int wasteCollection; // in kgs
-
+    bool isInitialBuild = false;
 public:
-    WasteManagement(/* args */);
+    WasteManagement(bool built);
     ~WasteManagement();
     virtual WasteManagement* repair() = 0; // Changed to WasteManagement*
     virtual WasteManagement* mulfunction() = 0; // Changed to WasteManagement*

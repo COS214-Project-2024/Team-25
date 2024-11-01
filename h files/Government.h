@@ -76,6 +76,8 @@ public:
     // void repair(std::string name); //name of utility, also notifies citizens
     // void mulfunction(std::string name); //name of utility, also notifies citizens
     
+    void setDifficulty(int difficulty);
+    void printresources();
 
 };  
 
