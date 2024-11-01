@@ -22,6 +22,8 @@ Government::~Government(){
     delete concrete;
     delete steel;
     delete taxSystem;
+    delete monthlyRoutines;
+    delete cityGrowth;
     for (auto& water : waterSupply) {
         delete water;
     }
@@ -493,7 +495,7 @@ void Government::createCitizen(int numCitizens) {
     bool valid = false;
 
     while (!valid) {
-        std::cout << "Enter the sector you want the citizens to work in: (Select from 1-" << cityGrowth->getTotalSectorCount() << ")" << std::endl;
+        std::cout << "Enter the sector you want the citizens to work in: (Select from 0- " << cityGrowth->getTotalSectorCount() -1 << ")" << std::endl;
         std::cin >> sector;
 
         if (sector < 1 || sector > cityGrowth->getTotalSectorCount()) {
@@ -504,7 +506,6 @@ void Government::createCitizen(int numCitizens) {
         }
     }
 
-    CitySector* s = cityGrowth->getSectors()[sector - 1];
     CitizenFactory* factory = nullptr;
 
     switch (type) {
@@ -524,11 +525,13 @@ void Government::createCitizen(int numCitizens) {
 
             for(int i = 0; i < numCitizens; i++) {
                 bool assigned = false;
-                
+                CitySector* s = cityGrowth->getSectors()[sector];
+                Citizen* c = factory->createCitizen(buildingType);
+
                 // Try to assign to existing work building
-                for (auto* b : s->getBuildings()) {
+                for (auto* b : s->getBuildings()) 
+                {
                     if (b->getType() == buildingType && b->getLeftOverCapacity() > 0) {
-                        Citizen* c = factory->createCitizen(buildingType);
                         b->addCitizen(c);
                         assigned = true;
                         break;
@@ -545,8 +548,7 @@ void Government::createCitizen(int numCitizens) {
                 // Try to assign to existing apartment
                 bool housingAssigned = false;
                 for (auto* b : s->getBuildings()) {
-                    if (b->getType() == "Apartment Building" && b->getLeftOverCapacity() > 0) {
-                        Citizen* c = factory->createCitizen("Apartment Building");
+                    if (b->getType() == "Apartment" && b->getLeftOverCapacity() > 0) {
                         b->addCitizen(c);
                         housingAssigned = true;
                         break;
@@ -555,7 +557,6 @@ void Government::createCitizen(int numCitizens) {
                 
                 // If no apartment found, create new one
                 if (!housingAssigned) {
-                    Citizen* c = factory->createCitizen("Apartment");
                     promptForNewApartment(sector, c);
                 }
             }
@@ -578,11 +579,12 @@ void Government::createCitizen(int numCitizens) {
 
             for(int i = 0; i < numCitizens; i++) {
                 bool assigned = false;
-                
+                CitySector* s = cityGrowth->getSectors()[sector];
+                Citizen* c = factory->createCitizen(buildingType);
                 // Try to assign to existing work building
                 for (auto* b : s->getBuildings()) {
                     if (b->getType() == buildingType && b->getLeftOverCapacity() > 0) {
-                        Citizen* c = factory->createCitizen(buildingType);
+                        
                         b->addCitizen(c);
                         assigned = true;
                         break;
@@ -600,7 +602,6 @@ void Government::createCitizen(int numCitizens) {
                 bool housingAssigned = false;
                 for (auto* b : s->getBuildings()) {
                     if (b->getType() == "House" && b->getLeftOverCapacity() > 0) {
-                        Citizen* c = factory->createCitizen("House");
                         b->addCitizen(c);
                         housingAssigned = true;
                         break;
@@ -609,7 +610,6 @@ void Government::createCitizen(int numCitizens) {
                 
                 // If no house found, create new one
                 if (!housingAssigned) {
-                    Citizen* c = factory->createCitizen("House");
                     promptForNewHouse(sector, c);
                 }
             }
@@ -628,15 +628,15 @@ void Government::createCitizen(int numCitizens) {
             std::string buildingType;
             if (type2 == 1) buildingType = "School";
             else if (type2 == 2) buildingType = "Hospital";
-            else if (type2 == 3) buildingType = "Government Building";
+            else if (type2 == 3) buildingType = "GovernmentBuilding";
 
             for(int i = 0; i < numCitizens; i++) {
                 bool assigned = false;
-                
+                CitySector* s = cityGrowth->getSectors()[sector];
+                Citizen* c = factory->createCitizen(buildingType);
                 // Try to assign to existing work building
                 for (auto* b : s->getBuildings()) {
                     if (b->getType() == buildingType && b->getLeftOverCapacity() > 0) {
-                        Citizen* c = factory->createCitizen(buildingType);
                         b->addCitizen(c);
                         assigned = true;
                         break;
@@ -654,7 +654,6 @@ void Government::createCitizen(int numCitizens) {
                 bool housingAssigned = false;
                 for (auto* b : s->getBuildings()) {
                     if (b->getType() == "Mansion" && b->getLeftOverCapacity() > 0) {
-                        Citizen* c = factory->createCitizen("Mansion");
                         b->addCitizen(c);
                         housingAssigned = true;
                         break;
@@ -663,7 +662,6 @@ void Government::createCitizen(int numCitizens) {
                 
                 // If no mansion found, create new one
                 if (!housingAssigned) {
-                    Citizen* c = factory->createCitizen("Mansion");
                     promptForNewMansion(sector, c);
                 }
             }
@@ -736,7 +734,8 @@ void Government::setDifficulty(int difficulty)
         wood->setKilo(30000);
         concrete->setKilo(30000);
         steel->setKilo(30000);
-        budget->setCash(200000.00);
+
+        budget->setCash(2000000.00);
 
         // Add 4 of each utility type if they're functional
         for (int i = 0; i < 4; i++)

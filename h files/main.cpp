@@ -140,7 +140,7 @@ void gameLoop(){
                 break;
             case 8: 
                 printC("Creating a new citizen...", Color::GREEN);
-                government->createCitizen();
+                government->createCitizen(2);
                 break;
             case 9:
                 game = false;
