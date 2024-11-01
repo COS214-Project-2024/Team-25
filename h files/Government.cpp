@@ -77,7 +77,7 @@ inline int safeIntInput(int lowerBound, int upperBound) {
 }
 
 void Government::createBuilding() {
-    std::cout << "Select which type of building you would like to create(1-4):" << std::endl;
+    std::cout << "Select which type of building you would like to create(1-3):" << std::endl;
     //std::cout << "  1. Residential" << std::endl;
     std::cout << "  1. Industrial" << std::endl;
     std::cout << "  2. Commercial" << std::endl;
@@ -90,7 +90,8 @@ void Government::createBuilding() {
     std::cin >> name;
 
     std::cout << "Enter the sector you want the building: " << std::endl;
-    std::cin >> sector;
+
+    sector = safeIntInput(0, cityGrowth->getTotalSectorCount()-1);
 
     Building* b = nullptr;
     bool check;
@@ -212,7 +213,11 @@ void Government::createBuilding() {
             check = cityGrowth->addBuilding(b, sector);
             Road r(5, b->getType()); 
             roadSystemAdapter->addRoute(r);
-            
+        }
+        if(check){
+            printC("Successfully added a building!", Color::GREEN);
+        }else{
+            printC("Failed to add a building!", Color::RED);
         }
     }else{
         std::cout << "Tough cookies" << std::endl;

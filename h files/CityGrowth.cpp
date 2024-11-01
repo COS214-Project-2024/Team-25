@@ -32,7 +32,13 @@ std::vector<Building*> CitySector::getBlock() {
 
 /* ------------------------------- CityGrowth ------------------------------- */
 
-CityGrowth::CityGrowth() {}
+CityGrowth::CityGrowth() {
+    for (int i = 0; i < 5; i++)
+    {
+        addSector();
+    }
+    
+}
 
 CityGrowth::~CityGrowth() {
     for (CitySector* sectorOP : this->sectors) {

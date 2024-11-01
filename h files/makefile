@@ -1,46 +1,92 @@
-# Compiler and flags
+# Suppresses "Entering directory" and "Leaving directory" messages in recursive make calls
+MAKEFLAGS += --no-print-directory
+
+# The cpp file where int main() exists
+main = main
+test = test_runner
+
+# Compiler settings
 CXX = g++
-CXXFLAGS = -Wall -std=c++11 -I./h\ files
+CXXFLAGS = -std=c++11
+TEST_FLAGS = -DTESTING
 
-# Target executable
-TARGET = main
+# Find all cpp files except test files
+MAIN_SRCS = $(filter-out doctest%.cpp, $(wildcard *.cpp))
+MAIN_OBJS = $(MAIN_SRCS:.cpp=.o)
 
-# Target for doctest executable
-TEST_TARGET = doctest_exec
+# Test sources (including the test file)
+TEST_SRCS = $(filter-out main.cpp, $(wildcard *.cpp))
+TEST_OBJS = $(TEST_SRCS:.cpp=.o)
 
-# Source files and object files
-SRC = main.cpp Buildings.cpp Citizen.cpp CityGrowth.cpp Government.cpp Resources.cpp Routines.cpp TaxSystem.cpp Transportation.cpp Utilities.cpp 
+# Prevents output from file
+.SILENT:
 
-OBJ = $(SRC:.cpp=.o)
+# Default rule to build the executable
+$(main): $(MAIN_OBJS)
+	$(CXX) $^ -o $@
 
-# Test files
-TEST_SRC = doctest.cpp Buildings.cpp Citizen.cpp CityGrowth.cpp Government.cpp Resources.cpp Routines.cpp TaxSystem.cpp Transportation.cpp Utilities.cpp 
-TEST_OBJ = $(TEST_SRC:.cpp=.o)
+# Build tests
+$(test): $(TEST_OBJS)
+	$(CXX) $(CXXFLAGS) $(TEST_FLAGS) $^ -o $@
 
-# Default target: build the executable
-all: $(TARGET)
-
-# Link object files to create the final executable
-$(TARGET): $(OBJ)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJ)
-
-# Link object files to create the doctest executable
-$(TEST_TARGET): $(TEST_OBJ)
-	$(CXX) $(CXXFLAGS) -o $(TEST_TARGET) $(TEST_OBJ)
-
-# Compile source files into object files
-%.o: %.cpp
+# Rule to compile source files to object files
+%.o: %.cpp %.h
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Clean up object files and executable
+# Rule to run the main program
+run: $(main)
+	./$(main)
+	rm -f *.o *.gcda *.gcno *.gcov $(main) #optional
+
+# Rule to run tests
+test: $(test)
+	./$(test)
+	rm -f *.o *.gcda *.gcno *.gcov $(test) #optional
+
+# Rule to clean up generated files
 clean:
-	rm -f $(OBJ) $(TARGET)
+	rm -f *.o *.gcda *.gcno *.gcov *.gcov.json *.gcov.json.gz
+	rm -f debug $(main) $(test) coverage.info
+	rm -rf coverage_report
+	clear
 
-# Run the executable, ensuring it’s built first
-run: all
-	./$(TARGET)
+# Creates a debug build
+debug:
+	$(MAKE) run
+	$(CXX) $(CXXFLAGS) -g3 -DDEBUG *.cpp -o debug
 
+# Coverage analysis
+coverage:
+	$(CXX) $(CXXFLAGS) -g -fprofile-arcs -ftest-coverage *.cpp -o $(main) 
+	./$(main)
+	gcov -f -m -r -j $(main).cpp
+	if [ -f *.gcov.json ]; then gzip -f *.gcov.json; fi
+	rm -f *.o *.gcda *.gcno *.gcov *.gcov.json.gz debug $(main) coverage.info
+	rm -rf coverage_report
 
-# Target to build and run the doctest executable
-test: $(TEST_TARGET)
-	./$(TEST_TARGET)
+# Memory leak check
+valgrind:
+	$(CXX) $(CXXFLAGS) -g $(MAIN_SRCS) -o $(main)  # Changed from *.cpp to $(MAIN_SRCS)
+	valgrind --leak-check=full ./$(main)
+	rm -f *.o *.gcda *.gcno *.gcov debug $(main)
+
+# Shortcuts
+r:
+	@$(MAKE) run
+
+t:
+	@$(MAKE) test
+
+c:
+	$(MAKE) clean
+
+d: 
+	$(MAKE)	debug
+
+cv:
+	$(MAKE)	coverage
+
+v: 
+	$(MAKE)	valgrind
+
+.PHONY: run test clean debug coverage valgrind r t c d cv v
