@@ -43,9 +43,9 @@ private:
     void promptForNewSchool(int sector);
     void promptForNewHospital(int sector);
     void promptForNewGovernmentBuilding(int sector);
-    void promptForNewHouse(int sector);
-    void promptForNewApartment(int sector);
-    void promptForNewMansion(int sector);
+    void promptForNewHouse(int sector, Citizen* c);
+    void promptForNewApartment(int sector, Citizen* c);
+    void promptForNewMansion(int sector, Citizen* c);
 public:
     Government();
     ~Government();
@@ -60,7 +60,7 @@ public:
     void taxCitizens();       //action 6
     void changeTaxStartegy(); //action 7
     void repairUtilities();
-    void createCitizen();
+    void createCitizen(int numCitizens);
 
     float avgSatisfaction();
     void updateSatisfaction(int amt);

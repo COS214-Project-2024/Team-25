@@ -482,8 +482,8 @@ void Government::repairUtilities(){
     }
 }
 
-void Government::createCitizen() {
-    std::cout << "Select which work sector your citizen should work in: " << std::endl;
+void Government::createCitizen(int numCitizens) {
+    std::cout << "Select which work sector your citizens should work in: " << std::endl;
     std::cout << "  1. Industrial" << std::endl;
     std::cout << "  2. Commercial" << std::endl;
     std::cout << "  3. Institutional" << std::endl;
@@ -493,7 +493,7 @@ void Government::createCitizen() {
     bool valid = false;
 
     while (!valid) {
-        std::cout << "Enter the sector you want the citizen to work in: (Select from 1-" << cityGrowth->getTotalSectorCount() << ")" << std::endl;
+        std::cout << "Enter the sector you want the citizens to work in: (Select from 1-" << cityGrowth->getTotalSectorCount() << ")" << std::endl;
         std::cin >> sector;
 
         if (sector < 1 || sector > cityGrowth->getTotalSectorCount()) {
@@ -505,208 +505,169 @@ void Government::createCitizen() {
     }
 
     CitySector* s = cityGrowth->getSectors()[sector - 1];
-    bool assigned = false;
     CitizenFactory* factory = nullptr;
 
     switch (type) {
         case 1: {  // Industrial
             factory = new IndWorkerFactory();
-            std::cout << "Select which type of industrial building would you like your citizen to work at:" << std::endl;
+            std::cout << "Select which type of industrial building would you like your citizens to work at:" << std::endl;
             std::cout << "  1. Factory" << std::endl;
             std::cout << "  2. Warehouse" << std::endl;
             std::cout << "  3. Plant" << std::endl;
             std::cin >> type2;
 
-            // Handle assignment to industrial buildings
-            if (type2 == 1) {  // Factory
-                for (auto* b : s->getBuildings()) {
-                    if (b->getType() == "Factory" && b->getLeftOverCapacity() > 0) {
-                        Citizen* c = factory->createCitizen("Factory");
-                        b->addCitizen(c);
-                        assigned = true;
-                        break;
-                    }
-                }
-                if (!assigned) {
-                    promptForNewFactory(sector);
-                }
-            }
-            else if (type2 == 2) {  // Warehouse
-                for (auto* b : s->getBuildings()) {
-                    if (b->getType() == "Warehouse" && b->getLeftOverCapacity() > 0) {
-                        Citizen* c = factory->createCitizen("Warehouse");
-                        b->addCitizen(c);
-                        assigned = true;
-                        break;
-                    }
-                }
-                if (!assigned) {
-                    promptForNewWarehouse(sector);
-                }
-            }
-            else if (type2 == 3) {  // Plant
-                for (auto* b : s->getBuildings()) {
-                    if (b->getType() == "Plant" && b->getLeftOverCapacity() > 0) {
-                        Citizen* c = factory->createCitizen("Plant");
-                        b->addCitizen(c);
-                        assigned = true;
-                        break;
-                    }
-                }
-                if (!assigned) {
-                    promptForNewPlant(sector);
-                }
-            }
+            // Create all citizens of the same type
+            std::string buildingType;
+            if (type2 == 1) buildingType = "Factory";
+            else if (type2 == 2) buildingType = "Warehouse";
+            else if (type2 == 3) buildingType = "Plant";
 
-            // Check for Apartment Building assignment
-            if (assigned) {
+            for(int i = 0; i < numCitizens; i++) {
+                bool assigned = false;
+                
+                // Try to assign to existing work building
+                for (auto* b : s->getBuildings()) {
+                    if (b->getType() == buildingType && b->getLeftOverCapacity() > 0) {
+                        Citizen* c = factory->createCitizen(buildingType);
+                        b->addCitizen(c);
+                        assigned = true;
+                        break;
+                    }
+                }
+                
+                // If no existing building has space, create new one
+                if (!assigned) {
+                    if (type2 == 1) promptForNewFactory(sector);
+                    else if (type2 == 2) promptForNewWarehouse(sector);
+                    else if (type2 == 3) promptForNewPlant(sector);
+                }
+
+                // Try to assign to existing apartment
+                bool housingAssigned = false;
                 for (auto* b : s->getBuildings()) {
                     if (b->getType() == "Apartment Building" && b->getLeftOverCapacity() > 0) {
                         Citizen* c = factory->createCitizen("Apartment Building");
                         b->addCitizen(c);
+                        housingAssigned = true;
                         break;
                     }
                 }
-                // If no apartment found, prompt to create one
-                if (!assigned) {
-                    promptForNewApartment(sector);
+                
+                // If no apartment found, create new one
+                if (!housingAssigned) {
+                    Citizen* c = factory->createCitizen("Apartment");
+                    promptForNewApartment(sector, c);
                 }
             }
-            delete factory; // Clean up the factory
+            delete factory;
             break;
         }
 
         case 2: {  // Commercial
             factory = new ComWorkerFactory();
-            std::cout << "Select which type of commercial building would you like your citizen to work at:" << std::endl;
+            std::cout << "Select which type of commercial building would you like your citizens to work at:" << std::endl;
             std::cout << "  1. Shop" << std::endl;
             std::cout << "  2. Office" << std::endl;
             std::cout << "  3. Mall" << std::endl;
             std::cin >> type2;
 
-            // Handle assignment to commercial buildings
-            if (type2 == 1) {  // Shop
-                for (auto* b : s->getBuildings()) {
-                    if (b->getType() == "Shop" && b->getLeftOverCapacity() > 0) {
-                        Citizen* c = factory->createCitizen("Shop");
-                        b->addCitizen(c);
-                        assigned = true;
-                        break;
-                    }
-                }
-                if (!assigned) {
-                    promptForNewShop(sector);
-                }
-            }
-            else if (type2 == 2) {  // Office
-                for (auto* b : s->getBuildings()) {
-                    if (b->getType() == "Office" && b->getLeftOverCapacity() > 0) {
-                        Citizen* c = factory->createCitizen("Office");
-                        b->addCitizen(c);
-                        assigned = true;
-                        break;
-                    }
-                }
-                if (!assigned) {
-                    promptForNewOffice(sector);
-                }
-            }
-            else if (type2 == 3) {  // Mall
-                for (auto* b : s->getBuildings()) {
-                    if (b->getType() == "Mall" && b->getLeftOverCapacity() > 0) {
-                        Citizen* c = factory->createCitizen("Mall");
-                        b->addCitizen(c);
-                        assigned = true;
-                        break;
-                    }
-                }
-                if (!assigned) {
-                    promptForNewMall(sector);
-                }
-            }
+            std::string buildingType;
+            if (type2 == 1) buildingType = "Shop";
+            else if (type2 == 2) buildingType = "Office";
+            else if (type2 == 3) buildingType = "Mall";
 
-            // Check for House assignment
-            if (assigned) {
+            for(int i = 0; i < numCitizens; i++) {
+                bool assigned = false;
+                
+                // Try to assign to existing work building
+                for (auto* b : s->getBuildings()) {
+                    if (b->getType() == buildingType && b->getLeftOverCapacity() > 0) {
+                        Citizen* c = factory->createCitizen(buildingType);
+                        b->addCitizen(c);
+                        assigned = true;
+                        break;
+                    }
+                }
+                
+                // If no existing building has space, create new one
+                if (!assigned) {
+                    if (type2 == 1) promptForNewShop(sector);
+                    else if (type2 == 2) promptForNewOffice(sector);
+                    else if (type2 == 3) promptForNewMall(sector);
+                }
+
+                // Try to assign to existing house
+                bool housingAssigned = false;
                 for (auto* b : s->getBuildings()) {
                     if (b->getType() == "House" && b->getLeftOverCapacity() > 0) {
                         Citizen* c = factory->createCitizen("House");
                         b->addCitizen(c);
+                        housingAssigned = true;
                         break;
                     }
                 }
-                // If no house found, prompt to create one
-                if (!assigned) {
-                    promptForNewHouse(sector);
+                
+                // If no house found, create new one
+                if (!housingAssigned) {
+                    Citizen* c = factory->createCitizen("House");
+                    promptForNewHouse(sector, c);
                 }
             }
-            delete factory; // Clean up the factory
+            delete factory;
             break;
         }
 
         case 3: {  // Institutional
             factory = new GovernmentWorkerFactory();
-            std::cout << "Select which type of institutional building would you like your citizen to work at:" << std::endl;
+            std::cout << "Select which type of institutional building would you like your citizens to work at:" << std::endl;
             std::cout << "  1. School" << std::endl;
             std::cout << "  2. Hospital" << std::endl;
             std::cout << "  3. Government Building" << std::endl;
             std::cin >> type2;
 
-            // Handle assignment to institutional buildings
-            if (type2 == 1) {  // School
-                for (auto* b : s->getBuildings()) {
-                    if (b->getType() == "School" && b->getLeftOverCapacity() > 0) {
-                        Citizen* c = factory->createCitizen("School");
-                        b->addCitizen(c);
-                        assigned = true;
-                        break;
-                    }
-                }
-                if (!assigned) {
-                    promptForNewSchool(sector);
-                }
-            }
-            else if (type2 == 2) {  // Hospital
-                for (auto* b : s->getBuildings()) {
-                    if (b->getType() == "Hospital" && b->getLeftOverCapacity() > 0) {
-                        Citizen* c = factory->createCitizen("Hospital");
-                        b->addCitizen(c);
-                        assigned = true;
-                        break;
-                    }
-                }
-                if (!assigned) {
-                    promptForNewHospital(sector);
-                }
-            }
-            else if (type2 == 3) {  // Government Building
-                for (auto* b : s->getBuildings()) {
-                    if (b->getType() == "Government Building" && b->getLeftOverCapacity() > 0) {
-                        Citizen* c = factory->createCitizen("Government Building");
-                        b->addCitizen(c);
-                        assigned = true;
-                        break;
-                    }
-                }
-                if (!assigned) {
-                    promptForNewGovernmentBuilding(sector);
-                }
-            }
+            std::string buildingType;
+            if (type2 == 1) buildingType = "School";
+            else if (type2 == 2) buildingType = "Hospital";
+            else if (type2 == 3) buildingType = "Government Building";
 
-            // Check for Mansion assignment
-            if (assigned) {
+            for(int i = 0; i < numCitizens; i++) {
+                bool assigned = false;
+                
+                // Try to assign to existing work building
+                for (auto* b : s->getBuildings()) {
+                    if (b->getType() == buildingType && b->getLeftOverCapacity() > 0) {
+                        Citizen* c = factory->createCitizen(buildingType);
+                        b->addCitizen(c);
+                        assigned = true;
+                        break;
+                    }
+                }
+                
+                // If no existing building has space, create new one
+                if (!assigned) {
+                    if (type2 == 1) promptForNewSchool(sector);
+                    else if (type2 == 2) promptForNewHospital(sector);
+                    else if (type2 == 3) promptForNewGovernmentBuilding(sector);
+                }
+
+                // Try to assign to existing mansion
+                bool housingAssigned = false;
                 for (auto* b : s->getBuildings()) {
                     if (b->getType() == "Mansion" && b->getLeftOverCapacity() > 0) {
                         Citizen* c = factory->createCitizen("Mansion");
                         b->addCitizen(c);
+                        housingAssigned = true;
                         break;
                     }
                 }
-                // If no mansion found, prompt to create one
-                if (!assigned) {
-                    promptForNewMansion(sector);
+                
+                // If no mansion found, create new one
+                if (!housingAssigned) {
+                    Citizen* c = factory->createCitizen("Mansion");
+                    promptForNewMansion(sector, c);
                 }
             }
-            delete factory; // Clean up the factory
+            delete factory;
             break;
         }
 
@@ -945,7 +906,7 @@ void Government::printUtilitiesDetails()
     printC("\n================================\n", Color::CYAN);
 }
 
-void Government::promptForNewApartment(int sector) {
+void Government::promptForNewApartment(int sector, Citizen* c) {
     std::cout << "No current apartment building available. Create a new one? (Type Y or N)" << std::endl;
     std::string choice;
     std::cin >> choice;
@@ -962,6 +923,7 @@ void Government::promptForNewApartment(int sector) {
         Building* a =new Apartment(name, capacity * capacity, 5 * capacity * capacity, capacity * 5000, capacity, capacity, capacity, 2);
         a->build();
         if (a->getBuilt()){
+            a->addCitizen(c);
             cityGrowth->addBuilding(a, sector);
             Road r(5, "Industrial"); 
             roadSystemAdapter->addRoute(r);
@@ -973,7 +935,7 @@ void Government::promptForNewApartment(int sector) {
 }
 
 // Function to prompt for creating a new house
-void Government::promptForNewHouse(int sector) {
+void Government::promptForNewHouse(int sector, Citizen* c) {
     std::cout << "No current house available. Create a new one? (Type Y or N)" << std::endl;
     std::string choice;
     std::cin >> choice;
@@ -990,6 +952,7 @@ void Government::promptForNewHouse(int sector) {
         Building* h = new House(name, capacity * capacity, 10 * capacity * capacity, capacity * 10000, capacity, capacity, capacity, capacity * 10);
         h->build();
         if (h->getBuilt()){
+            h->addCitizen(c);
             cityGrowth->addBuilding(h, sector);
             Road r(5, "Commercial"); 
             roadSystemAdapter->addRoute(r);
@@ -1000,8 +963,7 @@ void Government::promptForNewHouse(int sector) {
     }
 }
 
-// Function to prompt for creating a new mansion
-void Government::promptForNewMansion(int sector) {
+void Government::promptForNewMansion(int sector, Citizen* c) {
     std::cout << "No current mansion available. Create a new one? (Type Y or N)" << std::endl;
     std::string choice;
     std::cin >> choice;
@@ -1018,6 +980,7 @@ void Government::promptForNewMansion(int sector) {
         Building* m = new Mansion(name, capacity * capacity + 5, 15 * capacity * capacity, capacity * 15000, capacity + 3, capacity + 2, capacity, true);
         m->build();
         if (m->getBuilt()){
+            m->addCitizen(c);
             cityGrowth->addBuilding(m, sector);
             Road r(5,"Government"); 
             roadSystemAdapter->addRoute(r);
