@@ -22,6 +22,15 @@ Government::~Government(){
     delete concrete;
     delete steel;
     delete taxSystem;
+    for (auto& water : waterSupply) {
+        delete water;
+    }
+    for (auto& waste : wasteManagement) {
+        delete waste;
+    }
+    for (auto& plant : powerPlant) {
+        delete plant;
+    }
 }
 
 enum class Color {
@@ -231,22 +240,51 @@ void Government::createUtility() {
     std::cin >> type;
 
     switch (type) {
-        case 1:
+        case 1:{
             std::cout << "Select which type of Power Plant you would like to create: " << std::endl;
-            std::cout << "  1. Hyrdo  \n    2. Coal \n  3. Wind \n  4 Solar" << std::endl;
+            std::cout << "    1. Hydro  \n    2. Coal \n    3. Wind \n    4. Solar" << std::endl;
             int powerplant;
             std::cin >> powerplant;
-            std::cout << "Creating Power Plant..." << std::endl;
-            powerPlant.push_back(new FunctionalPowerPlant(static_cast<powerPlants>(powerplant-1)));
+            
+            if (powerplant >= 1 && powerplant <= 4) {
+                std::cout << "Creating Power Plant..." << std::endl;
+                PowerPlant* plant = new FunctionalPowerPlant(static_cast<powerPlants>(powerplant-1), true);
+                if (plant->getPowerGenerationRaw() > 0) {
+                    powerPlant.push_back(plant);
+                    std::cout << "Power Plant created successfully!" << std::endl;
+                } else {
+                    delete plant;
+                    std::cout << "Failed to create Power Plant: No power generation capacity!" << std::endl;
+                }
+            } else {
+                std::cout << "Invalid Power Plant type selected!" << std::endl;
+            }
             break;
-        case 2:
+        }
+        case 2:{
             std::cout << "Creating Water Supply..." << std::endl;
-            waterSupply.push_back(new FunctionalWaterSupply());
+            WaterSupply* water = new FunctionalWaterSupply(true);
+            if (water->getWaterGenerationRaw() > 0) {
+                waterSupply.push_back(water);
+                std::cout << "Water Supply created successfully!" << std::endl;
+            } else {
+                delete water;
+                std::cout << "Failed to create Water Supply: No water generation capacity!" << std::endl;
+            }
             break;
-        case 3:
+        }
+        case 3:{
             std::cout << "Creating Waste Management Plant..." << std::endl;
-            wasteManagement.push_back(new FunctionalWasteManagement());
+            WasteManagement* waste = new FunctionalWasteManagement(true);
+            if (waste->getWasteCollectionRaw() > 0) {
+                wasteManagement.push_back(waste);
+                std::cout << "Waste Management Plant created successfully!" << std::endl;
+            } else {
+                delete waste;
+                std::cout << "Failed to create Waste Management Plant: No waste collection capacity!" << std::endl;
+            }
             break;
+        }
         default:
             std::cout << "Invalid selection!" << std::endl;
             break;
@@ -290,7 +328,7 @@ void Government::naturalDisaster(){
 
     std::uniform_int_distribution<> numDist(0, powerPlant.size());
     int numMalfunctions = numDist(gen);
-
+    int counter = 0;
     for(int i = 0; i < numMalfunctions; i++) {
         std::uniform_int_distribution<> indexDist(0, powerPlant.size() - 1);
         int randomIndex = indexDist(gen);
@@ -300,10 +338,11 @@ void Government::naturalDisaster(){
             powerPlant.erase(powerPlant.begin() + randomIndex);
             delete plantToDelete;
             powerPlant.push_back(p);
+            counter++;
         }
         
     }
-    std::cout << numMalfunctions << " PowerPlants have mulfunctioned." << std::endl;
+    std::cout << counter << " PowerPlants have mulfunctioned." << std::endl;
 
 
 //Random waterSupply
@@ -312,7 +351,7 @@ void Government::naturalDisaster(){
 
     std::uniform_int_distribution<> numDist2(0, waterSupply.size());
      numMalfunctions = numDist2(gen2);
-
+    counter = 0;
     for(int i = 0; i < numMalfunctions; i++) {
         std::uniform_int_distribution<> indexDist(0, waterSupply.size() - 1);
         int randomIndex = indexDist(gen2);
@@ -322,9 +361,10 @@ void Government::naturalDisaster(){
             waterSupply.erase(waterSupply.begin() + randomIndex);
             delete supplyToDelete;
             waterSupply.push_back(w);
+            counter++;
         }
     }
-    std::cout << numMalfunctions << " Water Supplies have mulfunctioned." << std::endl;
+    std::cout << counter << " Water Supplies have mulfunctioned." << std::endl;
 
 
 
@@ -334,7 +374,7 @@ void Government::naturalDisaster(){
 
     std::uniform_int_distribution<> numDist3(0, wasteManagement.size());
      numMalfunctions = numDist3(gen3);
-
+    counter = 0;
     for(int i = 0; i < numMalfunctions; i++) {
     // Get random index
         std::uniform_int_distribution<> indexDist(0, wasteManagement.size() - 1);
@@ -345,9 +385,10 @@ void Government::naturalDisaster(){
             wasteManagement.erase(wasteManagement.begin() + randomIndex);
             delete wasteToDelete;
             wasteManagement.push_back(w);
+            counter++;
         }
     }
-    std::cout << numMalfunctions << " Waste Management Plants have mulfunctioned." << std::endl;
+    std::cout << counter << " Waste Management Plants have mulfunctioned." << std::endl;
 
 }
 
@@ -379,7 +420,9 @@ void Government::repairUtilities(){
         for (auto it = powerPlant.begin(); it != powerPlant.end(); ) {
             if (!(*it)->getFunctional()) {
                 PowerPlant* repairedPlant = (*it)->repair();
-                delete *it;
+                if(repairedPlant->getFunctional()){
+                    delete *it;
+                }
                 
                 if (repairedPlant) {
                     *it = repairedPlant;
@@ -397,7 +440,9 @@ void Government::repairUtilities(){
         for (auto it = waterSupply.begin(); it != waterSupply.end(); ) {
             if (!(*it)->getFunctional()) {
                 WaterSupply* repairedSupply = (*it)->repair();
-                delete *it;
+                if(repairedSupply->getFunctional()){
+                    delete *it;
+                }
                 
                 if (repairedSupply) {
                     *it = repairedSupply;
@@ -415,7 +460,9 @@ void Government::repairUtilities(){
         for (auto it = wasteManagement.begin(); it != wasteManagement.end(); ) {
             if (!(*it)->getFunctional()) {
                 WasteManagement* repairedWaste = (*it)->repair();
-                delete *it;
+                if(repairedWaste->getFunctional()){
+                    delete *it;
+                }
                 
                 if (repairedWaste) {
                     *it = repairedWaste;
@@ -451,7 +498,10 @@ void Government::createCitizen() {
 
         if (sector < 1 || sector > cityGrowth->getTotalSectorCount()) {
             std::cout << "Invalid sector number" << std::endl;
-        } else valid = true;
+        } else 
+        {
+            valid = true;
+        }
     }
 
     CitySector* s = cityGrowth->getSectors()[sector - 1];
@@ -721,47 +771,93 @@ void Government::setDifficulty(int difficulty)
     {
     case 1: 
     {
+        // Set base resources
         wood->setKilo(30000);
         concrete->setKilo(30000);
         steel->setKilo(30000);
+        budget->setCash(200000.00);
 
+        // Add 4 of each utility type if they're functional
         for (int i = 0; i < 4; i++)
         {
-            powerPlant.push_back(new FunctionalPowerPlant(static_cast<powerPlants>(0)));
-            waterSupply.push_back(new FunctionalWaterSupply());
-            wasteManagement.push_back(new FunctionalWasteManagement());
+            // Create and validate PowerPlant
+            FunctionalPowerPlant* plant = new FunctionalPowerPlant(static_cast<powerPlants>(i), true);
+            if (plant->getPowerGenerationRaw() > 0) {
+                powerPlant.push_back(plant);
+            } else {
+                delete plant;  // Clean up if not adding to vector
+            }
+
+            // Create and validate WaterSupply
+            FunctionalWaterSupply* water = new FunctionalWaterSupply(true);
+            if (water->getWaterGenerationRaw() > 0) {
+                waterSupply.push_back(water);
+            } else {
+                delete water;
+            }
+
+            // Create and validate WasteManagement
+            FunctionalWasteManagement* waste = new FunctionalWasteManagement(true);
+            if (waste->getWasteCollectionRaw() > 0) {
+                wasteManagement.push_back(waste);
+            } else {
+                delete waste;
+            }
         }
-        
-        budget->setCash(200000.00);
     }
         break;
+
     case 2: 
     {
-        wood->setKilo(5000);
-        concrete->setKilo(5000);
-        steel->setKilo(5000);
-
-        for (int i = 0; i < 2; i++)
-        {
-            powerPlant.push_back(new FunctionalPowerPlant(static_cast<powerPlants>(0)));
-            waterSupply.push_back(new FunctionalWaterSupply());
-            wasteManagement.push_back(new FunctionalWasteManagement());
-        }
-        
+        // Set base resources
+        wood->setKilo(10000);
+        concrete->setKilo(10000);
+        steel->setKilo(10000);
         budget->setCash(100000.00);
+
+        // Add 2 of each utility type if they're functional
+        for (int i = 0; i < 1; i++)
+        {
+            // Create and validate PowerPlant
+            FunctionalPowerPlant* plant = new FunctionalPowerPlant(static_cast<powerPlants>(i), true);
+            if (plant->getPowerGenerationRaw() > 0) {
+                powerPlant.push_back(plant);
+            } else {
+                delete plant;
+            }
+
+            // Create and validate WaterSupply
+            FunctionalWaterSupply* water = new FunctionalWaterSupply(true);
+            if (water->getWaterGenerationRaw() > 0) {
+                waterSupply.push_back(water);
+            } else {
+                delete water;
+            }
+
+            // Create and validate WasteManagement
+            FunctionalWasteManagement* waste = new FunctionalWasteManagement(true);
+            if (waste->getWasteCollectionRaw() > 0) {
+                wasteManagement.push_back(waste);
+            } else {
+                delete waste;
+            }
+        }
     }
         break;
+
     case 3:
     {
+        // Hardest difficulty - only basic resources, no utilities
         wood->setKilo(1000);
         concrete->setKilo(1000);
         steel->setKilo(1000);        
         budget->setCash(10000.00);
     }
         break;      
+
     default:
     {
-        std::cout << "Invalid choice. Please choose a valid option." << std::endl;
+        std::cout << "Invalid difficulty level. Please choose 1 (Easy), 2 (Medium), or 3 (Hard)." << std::endl;
     }
         break;
     }
@@ -788,12 +884,73 @@ void Government::printresources()
     printC("-------------------------------\n", Color::CYAN); 
 }
 
+void Government::printUtilitiesDetails()
+{
+    printC("================================", Color::CYAN);
+    printC("Detailed Utilities Information:", Color::CYAN);
+    printC("================================", Color::CYAN);
+
+    // Power Plants
+    printC("------------------------------", Color::GREEN);
+    printC("Power Plants:", Color::GREEN);
+    printC("------------------------------", Color::GREEN);
+    if (powerPlant.empty()) {
+        printC("  No power plants built yet.", Color::YELLOW);
+    } else {
+        for (size_t i = 0; i < powerPlant.size(); i++) {
+            printC("\nPower Plant #" + std::to_string(i + 1) + ":", Color::YELLOW);
+            std::cout << "  Type: " << static_cast<int>(powerPlant[i]->getType()) << std::endl;
+            printC("  Status: " + std::string(powerPlant[i]->getFunctional() ? "Functional" : "Malfunctioning"), 
+                   powerPlant[i]->getFunctional() ? Color::GREEN : Color::RED);
+            printC("  Efficiency: " + std::to_string(powerPlant[i]->getEfficiency()) + "%", Color::MAGENTA);
+            printC("  Power Generation: " + std::to_string(powerPlant[i]->getPowerGeneration()) + " watts", Color::BLUE);
+            printC("  Raw Generation Capacity: " + std::to_string(powerPlant[i]->getPowerGenerationRaw()) + " watts", Color::WHITE);
+        }
+    }
+
+    // Water Supply Systems
+    printC("------------------------------", Color::GREEN);
+    printC("Water Supply Systems:", Color::GREEN);
+    printC("------------------------------", Color::GREEN);
+    if (waterSupply.empty()) {
+        printC("  No water supply systems built yet.", Color::YELLOW);
+    } else {
+        for (size_t i = 0; i < waterSupply.size(); i++) {
+            printC("\nWater Supply System #" + std::to_string(i + 1) + ":", Color::YELLOW);
+            printC("  Status: " + std::string(waterSupply[i]->getFunctional() ? "Functional" : "Malfunctioning"),
+                   waterSupply[i]->getFunctional() ? Color::GREEN : Color::RED);
+            printC("  Efficiency: " + std::to_string(waterSupply[i]->getEfficiency()) + "%", Color::MAGENTA);
+            printC("  Water Generation: " + std::to_string(waterSupply[i]->getWaterGeneration()) + " liters", Color::BLUE);
+            printC("  Raw Generation Capacity: " + std::to_string(waterSupply[i]->getWaterGenerationRaw()) + " liters", Color::WHITE);
+        }
+    }
+
+    // Waste Management Facilities
+    printC("------------------------------", Color::GREEN);
+    printC("Waste Management Facilities:", Color::GREEN);
+    printC("------------------------------", Color::GREEN);
+    if (wasteManagement.empty()) {
+        printC("  No waste management facilities built yet.", Color::YELLOW);
+    } else {
+        for (size_t i = 0; i < wasteManagement.size(); i++) {
+            printC("\nWaste Management Facility #" + std::to_string(i + 1) + ":", Color::YELLOW);
+            printC("  Status: " + std::string(wasteManagement[i]->getFunctional() ? "Functional" : "Malfunctioning"),
+                   wasteManagement[i]->getFunctional() ? Color::GREEN : Color::RED);
+            printC("  Efficiency: " + std::to_string(wasteManagement[i]->getEfficiency()) + "%", Color::MAGENTA);
+            printC("  Waste Collection: " + std::to_string(wasteManagement[i]->getWasteCollection()) + " kg", Color::BLUE);
+            printC("  Raw Collection Capacity: " + std::to_string(wasteManagement[i]->getWasteCollectionRaw()) + " kg", Color::WHITE);
+        }
+    }
+
+    printC("\n================================\n", Color::CYAN);
+}
+
 void Government::promptForNewApartment(int sector) {
     std::cout << "No current apartment building available. Create a new one? (Type Y or N)" << std::endl;
     std::string choice;
     std::cin >> choice;
 
-    if (choice == "Y") {
+    if (choice == "Y" || choice == "y") {
         int capacity, floors;
         std::string name;
         std::cout << "Enter the name of the building: ";
@@ -821,7 +978,7 @@ void Government::promptForNewHouse(int sector) {
     std::string choice;
     std::cin >> choice;
 
-    if (choice == "Y") {
+    if (choice == "Y" || choice == "y") {
         int capacity, floors;
         std::string name;
         std::cout << "Enter the name of the building: ";
@@ -849,7 +1006,7 @@ void Government::promptForNewMansion(int sector) {
     std::string choice;
     std::cin >> choice;
 
-    if (choice == "Y") {
+    if (choice == "Y" || choice == "y") {
         int capacity, floors;
         std::string name;
         std::cout << "Enter the name of the building: ";
@@ -879,7 +1036,7 @@ void Government::promptForNewFactory(int sector) {
     std::string choice;
     std::cin >> choice;
 
-    if (choice == "Y") {
+    if (choice == "Y" || choice == "y") {
         int capacity, carbonFootprint;
         std::string name;
         std::cout << "Enter the name of the building: ";
@@ -907,7 +1064,7 @@ void Government::promptForNewWarehouse(int sector) {
     std::string choice;
     std::cin >> choice;
 
-    if (choice == "Y") {
+    if (choice == "Y" || choice == "y") {
         int capacity;
         std::string name;
         std::cout << "Enter the name of the building: ";
@@ -933,7 +1090,7 @@ void Government::promptForNewPlant(int sector) {
     std::string choice;
     std::cin >> choice;
 
-    if (choice == "Y") {
+    if (choice == "Y" || choice == "y") {
         int capacity, carbonFootprint;
         std::string name;
         std::cout << "Enter the name of the building: ";
@@ -961,7 +1118,7 @@ void Government::promptForNewShop(int sector) {
     std::string choice;
     std::cin >> choice;
 
-    if (choice == "Y") {
+    if (choice == "Y" || choice == "y") {
         int capacity, floors;
         std::string name;
         std::cout << "Enter the name of the building: ";
@@ -989,7 +1146,7 @@ void Government::promptForNewOffice(int sector) {
     std::string choice;
     std::cin >> choice;
 
-    if (choice == "Y") {
+    if (choice == "Y" || choice == "y") {
         int capacity, floors;
         std::string name;
         std::cout << "Enter the name of the building: ";
@@ -1017,7 +1174,7 @@ void Government::promptForNewMall(int sector) {
     std::string choice;
     std::cin >> choice;
 
-    if (choice == "Y") {
+    if (choice == "Y" || choice == "y") {
         int capacity, floors;
         std::string name;
         std::cout << "Enter the name of the building: ";
@@ -1045,7 +1202,7 @@ void Government::promptForNewSchool(int sector) {
     std::string choice;
     std::cin >> choice;
 
-    if (choice == "Y") {
+    if (choice == "Y" || choice == "y") {
         int capacity, floors;
         std::string name;
         std::cout << "Enter the name of the building: ";
@@ -1073,7 +1230,7 @@ void Government::promptForNewHospital(int sector) {
     std::string choice;
     std::cin >> choice;
 
-    if (choice == "Y") {
+    if (choice == "Y" || choice == "y") {
         int capacity, floors;
         std::string name;
         std::cout << "Enter the name of the building: ";
@@ -1101,7 +1258,7 @@ void Government::promptForNewGovernmentBuilding(int sector) {
     std::string choice;
     std::cin >> choice;
 
-    if (choice == "Y") {
+    if (choice == "Y" || choice == "y") {
         int capacity, floors;
         std::string name;
         std::cout << "Enter the name of the building: ";

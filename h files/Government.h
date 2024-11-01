@@ -6,6 +6,7 @@
 #include <string>
 #include <math.h>
 #include <random>
+#include <iomanip>
 
 #include "Citizen.h"
 #include "Resources.h"
@@ -25,14 +26,9 @@ private:
     Steel* steel;
     CityGrowth* cityGrowth;
     TaxSystem* taxSystem;
-    //RoadSystem* roadSystem;
     RoadSystemAdapter* roadSystemAdapter;
-    // std::vector<PublicTransitAdapter*> publicTransitAdapter;
-    // std::vector<RoadSystemAdapter*> roadSystemAdapter;
-    // std::vector<RailSystemAdapter*> railSystemAdapter;
     std::vector<WaterSupply*> waterSupply;
     std::vector<WasteManagement*> wasteManagement;
-    // std::vector<SewageSystems*> sewageSystems;
     std::vector<PowerPlant*> powerPlant;
     MonthlyRoutines* monthlyRoutines;
 
@@ -78,6 +74,8 @@ public:
     
     void setDifficulty(int difficulty);
     void printresources();
+
+    void printUtilitiesDetails();
 
 };  
 

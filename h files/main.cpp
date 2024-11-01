@@ -75,14 +75,15 @@ void gameLoop(){
 
     government->setDifficulty(difficulty);
     government->printresources();
-
+    government->printUtilitiesDetails();
 
     while(game){
         // Check for natural disaster (1/6 chance)
-        if (actionCount != 0  && (actionCount % 6) == 0)
+        if (actionCount != 0 && (rand() % 6) == 0)
         {
             printC("A natural disaster has struck!", Color::RED);
             government->naturalDisaster();
+            government->printUtilitiesDetails();
         }
 
         // Display available actions
@@ -105,22 +106,27 @@ void gameLoop(){
             case 1: 
                 printC("Creating a building...", Color::GREEN);
                 government->createBuilding(); 
+                government->printSec();
                 break;
             case 2: 
                 printC("Creating a utility...", Color::GREEN);
                 government->createUtility(); 
+                government->printUtilitiesDetails();
                 break;
             case 3: 
                 printC("Upgrading transport...", Color::GREEN);
                 government->upgradeTransport(); 
+                government->printSec();
                 break;
             case 4: 
                 printC("Upgrading buildings...", Color::GREEN);
-                government->upgradeBuildings(); 
+                government->upgradeBuildings();
+                government->printSec(); 
                 break;
             case 5: 
                 printC("Increasing materials...", Color::GREEN);
                 government->increaseMaterials(); 
+                government->printresources();
                 break;
             case 6: 
                 printC("Changing tax strategy...", Color::GREEN);
@@ -129,6 +135,8 @@ void gameLoop(){
             case 7: 
                 printC("Repairing utilities...", Color::GREEN);
                 government->repairUtilities(); 
+                government->printUtilitiesDetails();
+
                 break;
             case 8: 
                 printC("Creating a new citizen...", Color::GREEN);
@@ -160,7 +168,7 @@ void gameLoop(){
         // if (government->isGameOver()) {
         //     game = false;
         // }
-        government->printSec();
+        
     }
 
     delete government;

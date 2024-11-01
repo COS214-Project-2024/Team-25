@@ -67,6 +67,7 @@ bool CityGrowth::addBuilding(Building* building, int sectorId) {
     }
 
     this->sectors[sectorId]->addBuilding(building);
+    std::cout << "Building added successfully to sector " << sectorId << std::endl;
     return true;
 }
 
