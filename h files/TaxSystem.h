@@ -30,7 +30,7 @@ class TaxSystem {
 class TaxStrategy {
    public:
     // TaxStrategy();
-    // ~TaxStrategy();
+    virtual ~TaxStrategy() = default;
     virtual float calculateTax(CityGrowth* growth) = 0;
     virtual std::string getStrategy() = 0;
    private:

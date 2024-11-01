@@ -35,7 +35,7 @@ enum class Color {
     RESET
 };
 
-void printC(const std::string& text, Color color) {
+inline void printC(const std::string& text, Color color) {
     // ANSI escape codes for text colors
     switch (color) {
         case Color::RED:     std::cout << "\033[31m"; break;
@@ -51,11 +51,11 @@ void printC(const std::string& text, Color color) {
     std::cout << "\033[0m\n";
 }
 
-bool validateIntInput(int value, int lowerBound, int upperBound) {
+inline bool validateIntInput(int value, int lowerBound, int upperBound) {
     return (value >= lowerBound && value <= upperBound);
 }
 
-int safeIntInput(int lowerBound, int upperBound) {
+inline int safeIntInput(int lowerBound, int upperBound) {
     int input;
     while (true) {
         printC("Enter an integer between " + std::to_string(lowerBound) + " and " + std::to_string(upperBound) + ": ", Color::CYAN);

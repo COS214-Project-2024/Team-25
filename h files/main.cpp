@@ -1,7 +1,13 @@
-#ifndef DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+// #ifndef DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+// #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include <iostream>
 #include "Government.h"
+
+// #include "Utilities.h"
+// #include "Resources.h"
+// #include "CityGrowth.h"
+// #include "TaxSystem.h"
+// #include "Buildings.h"
 
 enum class Color {
     RED,
@@ -155,7 +161,7 @@ int main(int argc, char const *argv[])
     gameLoop();
     return 0;
 }
-#endif
+// #endif
 
 // #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 // #include <iostream>
