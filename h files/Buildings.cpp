@@ -497,93 +497,6 @@ Plant *Plant::clone()
     );
 }
 
-
-
-
-
-/******* LANDMARK CLASS *******/
-Landmark::Landmark(std::string name, int numRooms, int m_squared, float value, int culturalRelevance, std::string type)
-    : Building(name, numRooms, m_squared, value, type), culturalRelevance(culturalRelevance) {}
-
-// Park class
-Park::Park(std::string name, int numRooms, int m_squared, float value, int culturalRelevance, int numTrees, bool river)
-    : Landmark(name, numRooms, m_squared, value, culturalRelevance, "Park"), numTrees(numTrees), river(river) {}
-
-void Park::build() {
-    int concreteNeeded = m_squared + (numRooms * 100) + (river ? 200 : 0);
-    int woodNeeded = m_squared + (numRooms * 100) + (river ? 200 : 0) + (numTrees * 10);
-    
-    if (concrete->getKilo() >= concreteNeeded && wood->getKilo() >= woodNeeded && budget->getCash() >= value) {
-        concrete->setKilo(concrete->getKilo() - concreteNeeded);
-        wood->setKilo(wood->getKilo() - woodNeeded);
-        budget->setCash(budget->getCash() - value);
-        built = true;
-        std::cout << "Park built successfully!" << std::endl;
-    } else {
-        built = false;
-        std::cout << "Not enough resources to build the park." << std::endl;
-    }
-}
-
-Park *Park::clone()
-{
-    if (this == nullptr) 
-    {
-        std::cout << "No Parks are currently built" << std::endl;    
-    }
-
-    return new Park(
-        this->name,
-        this->numRooms,
-        this->m_squared,
-        this->value,
-        this->culturalRelevance,
-        this->numTrees,
-        this->river
-    );
-}
-
-// Monument class
-Monument::Monument(std::string name, int numRooms, int m_squared, float value, int culturalRelevance, int detail)
-    : Landmark(name, numRooms, m_squared, value, culturalRelevance, "Monument"), detail(detail) {}
-
-void Monument::build() {
-    int concreteNeeded = m_squared + (numRooms * 100) + (detail * 150);
-    int woodNeeded = m_squared + (numRooms * 100) + (detail * 150);
-    
-    if (concrete->getKilo() >= concreteNeeded && wood->getKilo() >= woodNeeded && budget->getCash() >= value) {
-        concrete->setKilo(concrete->getKilo() - concreteNeeded);
-        wood->setKilo(wood->getKilo() - woodNeeded);
-        budget->setCash(budget->getCash() - value);
-        built = true;
-        std::cout << "Monument built successfully!" << std::endl;
-    } else {
-        built = false;
-        std::cout << "Not enough resources to build the monument." << std::endl;
-    }
-}
-
-Monument *Monument::clone()
-{
-    if (this == nullptr) 
-    {
-        std::cout << "No Monuments are currently built" << std::endl;    
-    }
-
-    return new Monument(
-        this->name,
-        this->numRooms,
-        this->m_squared,
-        this->value,
-        this->culturalRelevance,
-        this->detail
-    );
-}
-
-
-
-
-
 /******* INSTATUTIONAL CLASS *******/
 Instatutional::Instatutional(std::string name, int numRooms, int m_squared, float value, int capacity, std::string type)
  : Building(name, numRooms, m_squared, value, type), capacity(capacity) {}
@@ -700,11 +613,11 @@ Hospital* Hospital::clone(){
 }
 
 
-//GovermentBuilding
-GovermentBuilding::GovermentBuilding(std::string name, int numRooms, int m_squared, float value, int capacity, int numfloors)
-    : Instatutional(name, numRooms, m_squared, value, capacity,"GovermentBuilding"), numfloors(numfloors) {}
+//GovernmentBuilding
+GovernmentBuilding::GovernmentBuilding(std::string name, int numRooms, int m_squared, float value, int capacity, int numfloors)
+    : Instatutional(name, numRooms, m_squared, value, capacity,"GovernmentBuilding"), numfloors(numfloors) {}
 
-void GovermentBuilding::build(){
+void GovernmentBuilding::build(){
     int baseNeeded = m_squared + (numRooms * 150) + (numfloors * 200);
     int concreteNeeded = baseNeeded * numfloors;
     int woodNeeded = baseNeeded * numfloors;
@@ -725,14 +638,14 @@ void GovermentBuilding::build(){
     }
 }
 
-GovermentBuilding* GovermentBuilding::clone(){
+GovernmentBuilding* GovernmentBuilding::clone(){
     //Check if materials are avialable to clone the current house
     if (this == nullptr) 
     {
         std::cout << "No hospital was currently built" << std::endl;    
     }
 
-    return new GovermentBuilding(
+    return new GovernmentBuilding(
         this->name,
         this->numRooms,
         this->m_squared,
