@@ -18,7 +18,7 @@ void PublicTransport::add(int amount) {
             std::cout << "Passengers added to" + type + " bus" << std::endl;
         }
         else if (TransportType == "train"){
-            std::cout << "Material added to" + type + " train" << std::endl;
+            std::cout << "Material added to train" << std::endl;
         }
     }
     else{
@@ -46,7 +46,7 @@ void Road::addBus(PublicTransport bus){
     busses.push_back(bus);
 }
 
-string Road::getType() const{
+string Road::getType () const{
     return type;
 }
 
