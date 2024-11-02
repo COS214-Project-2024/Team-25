@@ -23,7 +23,7 @@ protected:
 
 public:
     Building(std::string name, int numRooms, int m_squared, float value, std::string type);
-    virtual ~Building() = default;
+    virtual ~Building();
     std::vector<Citizen*> getCitizens() const {return citizens;}
     virtual void build() = 0;
     virtual Building* clone() = 0;
@@ -45,8 +45,6 @@ protected:
     int numBedrooms;
     int numBathrooms;
     int capacity;
-    
-
 public:
     Residential(std::string name, int numRooms, int m_squared, float value, int numBedrooms, int numBathrooms, int capacity, std::string type);
     virtual void build() = 0;
@@ -63,7 +61,6 @@ public:
 class House : public Residential {
 private:
     int kitchenSize;
-
 public:
     House(std::string name, int numRooms, int m_squared, float value, int numBedrooms, int numBathrooms, int capacity, int kitchenSize);
     void build() override;
@@ -85,7 +82,6 @@ public:
 class Mansion : public Residential {
 private:
     bool waterFeature;
-
 public:
     Mansion(std::string name, int numRooms, int m_squared, float value, int numBedrooms, int numBathrooms, int capacity, bool waterFeature);
     void build() override;
@@ -99,8 +95,6 @@ class Commercial : public Building {
 protected:
     int capacity;
     int numFloors;
-    
-
 public:
     Commercial(std::string name, int numRooms, int m_squared, float value, int capacity, int numFloors, std::string type);
     virtual void build() = 0;
@@ -115,7 +109,6 @@ public:
 class Shop : public Commercial {
 private:
     int storageRooms;
-
 public:
     Shop(std::string name, int numRooms, int m_squared, float value, int capacity, int numFloors, int storageRooms);
     void build() override;
@@ -126,7 +119,6 @@ public:
 class Office : public Commercial {
 private:
     int offices;
-
 public:
     Office(std::string name, int numRooms, int m_squared, float value, int capacity, int numFloors, int offices);
     void build() override;
@@ -137,7 +129,6 @@ public:
 class Mall : public Commercial {
 private:
     int shops;
-
 public:
     Mall(std::string name, int numRooms, int m_squared, float value, int capacity, int numFloors, int shops);
     void build() override;
@@ -151,8 +142,6 @@ class Industrial : public Building {
 protected:
     int carbonFootprint;
     int capacity;
-    
-
 public:
     Industrial(std::string name, int numRooms, int m_squared, float value, int carbonFootprint, int capacity, std::string type);
     virtual void build() = 0;
@@ -193,8 +182,6 @@ public:
 class Instatutional : public Building {
 protected:
     int capacity;
-    
-
 public:
     Instatutional(std::string name, int numRooms, int m_squared, float value, int capacity, std::string type);
     virtual void build() = 0;
@@ -209,7 +196,6 @@ public:
 class School : public Instatutional {
 private:
     int numfloors;
-
 public:
     School(std::string name, int numRooms, int m_squared, float value, int capacity, int numfloors);
     void build() override;
@@ -220,7 +206,6 @@ public:
 class Hospital : public Instatutional {
 private:
     int numfloors;
-
 public:
     Hospital(std::string name, int numRooms, int m_squared, float value, int capacity, int numfloors);
     void build() override;
@@ -231,7 +216,6 @@ public:
 class GovernmentBuilding : public Instatutional {
 private:
     int numfloors;
-
 public:
     GovernmentBuilding(std::string name, int numRooms, int m_squared, float value, int capacity, int numfloors);
     void build() override;

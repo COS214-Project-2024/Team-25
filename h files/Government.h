@@ -56,21 +56,15 @@ public:
     void increaseMaterials(); //action 2
     void naturalDisaster();   //action 3
     void upgradeTransport();  //action 4
-    void upgradeBuildings();  //action 5
+    void cleanCity(); 	      //action 5
     void taxCitizens();       //action 6
     void changeTaxStartegy(); //action 7
-    void repairUtilities();
+    void repairUtilities();   
     void createCitizen(int numCitizens);
 
     float avgSatisfaction();
-    void updateSatisfaction(int amt);
+    void updateSatisfaction(float amt);
     void printSec() {std::cout << cityGrowth->printSectors() << std::endl;} 
-    // virtual void attach(Citizen Citizen);
-    // virtual void detach(Citizen Citizen);
-    // virtual void notifyBuilding(Citizen Citizen);
-    // void callRoutines();
-    // void repair(std::string name); //name of utility, also notifies citizens
-    // void mulfunction(std::string name); //name of utility, also notifies citizens
     
     void setDifficulty(int difficulty);
     void printresources();

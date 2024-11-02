@@ -91,17 +91,18 @@ void gameLoop(){
         printC("    1. Create Building", Color::WHITE);
         printC("    2. Create Utility", Color::WHITE);
         printC("    3. Upgrade Transport", Color::WHITE);
-        printC("    4. Upgrade Buildings", Color::WHITE);
+        printC("    4. Clean city", Color::WHITE);
         printC("    5. Increase Materials", Color::WHITE);
         printC("    6. Change Tax Strategy", Color::WHITE);
         printC("    7. Repair Utilities", Color::WHITE);
-        printC("    8. Create Citizen", Color::WHITE);
+        printC("    8. Create Citizens", Color::WHITE);
         printC("    9. EXIT", Color::RED);
 
         // Validate action input
         int action = safeIntInput(1, 9);
 
         // Perform selected action
+        int numCitizen = 0;
         switch(action) {
             case 1: 
                 printC("Creating a building...", Color::GREEN);
@@ -119,9 +120,9 @@ void gameLoop(){
                 government->printSec();
                 break;
             case 4: 
-                printC("Upgrading buildings...", Color::GREEN);
-                government->upgradeBuildings();
-                government->printSec(); 
+                printC("Cleaning city and distributing water...", Color::GREEN);
+                government->cleanCity();
+                std::cout << government->avgSatisfaction() << std::endl;
                 break;
             case 5: 
                 printC("Increasing materials...", Color::GREEN);
@@ -136,11 +137,14 @@ void gameLoop(){
                 printC("Repairing utilities...", Color::GREEN);
                 government->repairUtilities(); 
                 government->printUtilitiesDetails();
-
                 break;
             case 8: 
-                printC("Creating a new citizen...", Color::GREEN);
-                government->createCitizen(2);
+                printC("Creating new citizens...", Color::GREEN);
+                printC("Enter how many citizens you would like to create: ", Color::CYAN);
+                printC("NOTE! All the citizens you create now will be added to the same sector, and will have the same job. ", Color::RED);
+                numCitizen = safeIntInput(1,10);
+                government->createCitizen(numCitizen);
+                government->printSec(); 
                 break;
             case 9:
                 game = false;

@@ -9,6 +9,14 @@ Building::Building(std::string name, int numRooms, int m_squared, float value, s
     budget = Budget::getInstance();
 }
 
+Building::~Building(){
+    if(type != "House" && type != "Mansion" && type != "Apartment"){
+        for(Citizen* c : citizens){
+            delete c;
+        }
+    }
+}
+
 std::string Building::getName(){
     return this->name;
 }
@@ -75,8 +83,8 @@ House::House(std::string name, int numRooms, int m_squared, float value, int num
     : Residential(name, numRooms, m_squared, value, numBedrooms, numBathrooms, capacity,"House"), kitchenSize(kitchenSize) {}
 
 void House::build() {
-    int concreteNeeded = m_squared + (numRooms * 100) + ((numBedrooms + numBathrooms) * 50);
-    int woodNeeded = m_squared + (numRooms * 100) + ((numBedrooms + numBathrooms) * 50);
+    int concreteNeeded = m_squared + (numRooms * 20) + ((numBedrooms + numBathrooms) * 50);
+    int woodNeeded = m_squared + (numRooms * 20) + ((numBedrooms + numBathrooms) * 50);
     
     if (concrete->getKilo() >= concreteNeeded && wood->getKilo() >= woodNeeded && budget->getCash() >= value) {
         concrete->setKilo(concrete->getKilo() - concreteNeeded);
@@ -116,7 +124,7 @@ Apartment::Apartment(std::string name, int numRooms, int m_squared, float value,
     : Residential(name, numRooms, m_squared, value, numBedrooms, numBathrooms, capacity, "Apartment"), numFloors(numFloors) {}
 
 void Apartment::build() {
-    int baseNeeded = m_squared + (numRooms * 100) + ((numBedrooms + numBathrooms) * 50);
+    int baseNeeded = m_squared + (numRooms * 20) + ((numBedrooms + numBathrooms) * 50);
     int concreteNeeded = baseNeeded * numFloors;
     int woodNeeded = baseNeeded * numFloors;
     int steelNeeded = baseNeeded * numFloors;
@@ -161,8 +169,8 @@ Mansion::Mansion(std::string name, int numRooms, int m_squared, float value, int
     : Residential(name, numRooms, m_squared, value, numBedrooms, numBathrooms, capacity, "Mansion"), waterFeature(waterFeature) {}
 
 void Mansion::build() {
-    int concreteNeeded = m_squared + (numRooms * 100) + ((numBedrooms + numBathrooms) * 50) + (waterFeature ? 100 : 0);
-    int woodNeeded = m_squared + (numRooms * 100) + ((numBedrooms + numBathrooms) * 50) + (waterFeature ? 100 : 0);
+    int concreteNeeded = m_squared + (numRooms * 20) + ((numBedrooms + numBathrooms) * 50) + (waterFeature ? 100 : 0);
+    int woodNeeded = m_squared + (numRooms * 20) + ((numBedrooms + numBathrooms) * 50) + (waterFeature ? 100 : 0);
     
     if (concrete->getKilo() >= concreteNeeded && wood->getKilo() >= woodNeeded && budget->getCash() >= value) {
         concrete->setKilo(concrete->getKilo() - concreteNeeded);
@@ -235,7 +243,7 @@ Shop::Shop(std::string name, int numRooms, int m_squared, float value, int capac
     : Commercial(name, numRooms, m_squared, value, capacity, numFloors, "Shop"), storageRooms(storageRooms) {}
 
 void Shop::build() {
-    int baseNeeded = m_squared + (numRooms * 100) + (capacity * 100) + (storageRooms * 100);
+    int baseNeeded = m_squared + (numRooms * 20) + (capacity * 20) + (storageRooms * 20);
     int concreteNeeded = baseNeeded * numFloors;
     int woodNeeded = baseNeeded * numFloors;
     int steelNeeded = baseNeeded * numFloors;
@@ -277,7 +285,7 @@ Office::Office(std::string name, int numRooms, int m_squared, float value, int c
     : Commercial(name, numRooms, m_squared, value, capacity, numFloors, "Office"), offices(offices) {}
 
 void Office::build() {
-    int baseNeeded = m_squared + (numRooms * 100) + (capacity * 100) + (offices * 50);
+    int baseNeeded = m_squared + (numRooms * 20) + (capacity * 20) + (offices * 50);
     int concreteNeeded = baseNeeded * numFloors;
     int woodNeeded = baseNeeded * numFloors;
     int steelNeeded = baseNeeded * numFloors;
@@ -319,7 +327,7 @@ Mall::Mall(std::string name, int numRooms, int m_squared, float value, int capac
     : Commercial(name, numRooms, m_squared, value, capacity, numFloors, "Mall"), shops(shops) {}
 
 void Mall::build() {
-    int baseNeeded = m_squared + (numRooms * 100) + (capacity * 100) + (shops * 250);
+    int baseNeeded = m_squared + (numRooms * 20) + (capacity * 20) + (shops * 250);
     int concreteNeeded = baseNeeded * numFloors;
     int woodNeeded = baseNeeded * numFloors;
     int steelNeeded = baseNeeded * numFloors;
@@ -395,8 +403,8 @@ Factory::Factory(std::string name, int numRooms, int m_squared, float value, int
     : Industrial(name, numRooms, m_squared, value, carbonFootprint, capacity, "Factory") {}
 
 void Factory::build() {
-    int steelNeeded = m_squared + (numRooms * 100) + (carbonFootprint * 50);
-    int concreteNeeded = m_squared + (numRooms * 100) + (carbonFootprint * 50);
+    int steelNeeded = m_squared + (numRooms * 20) + (carbonFootprint * 50);
+    int concreteNeeded = m_squared + (numRooms * 20) + (carbonFootprint * 50);
     
     if (steel->getKilo() >= steelNeeded && concrete->getKilo() >= concreteNeeded && budget->getCash() >= value) {
         steel->setKilo(steel->getKilo() - steelNeeded);
@@ -432,8 +440,8 @@ Warehouse::Warehouse(std::string name, int numRooms, int m_squared, float value,
     : Industrial(name, numRooms, m_squared, value, carbonFootprint, capacity, "Warehouse") {}
 
 void Warehouse::build() {
-    int steelNeeded = m_squared + (numRooms * 100) + (carbonFootprint * 50);
-    int concreteNeeded = m_squared + (numRooms * 100) + (carbonFootprint * 50);
+    int steelNeeded = m_squared + (numRooms * 20) + (carbonFootprint * 50);
+    int concreteNeeded = m_squared + (numRooms * 20) + (carbonFootprint * 50);
     
     if (steel->getKilo() >= steelNeeded && concrete->getKilo() >= concreteNeeded && budget->getCash() >= value) {
         steel->setKilo(steel->getKilo() - steelNeeded);
@@ -469,8 +477,8 @@ Plant::Plant(std::string name, int numRooms, int m_squared, float value, int car
     : Industrial(name, numRooms, m_squared, value, carbonFootprint, capacity, "Plant") {}
 
 void Plant::build() {
-    int steelNeeded = m_squared + (numRooms * 100) + (carbonFootprint * 50);
-    int concreteNeeded = m_squared + (numRooms * 100) + (carbonFootprint * 50);
+    int steelNeeded = m_squared + (numRooms * 20) + (carbonFootprint * 50);
+    int concreteNeeded = m_squared + (numRooms * 20) + (carbonFootprint * 50);
     
     if (steel->getKilo() >= steelNeeded && concrete->getKilo() >= concreteNeeded && budget->getCash() >= value) {
         steel->setKilo(steel->getKilo() - steelNeeded);

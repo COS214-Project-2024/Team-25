@@ -196,7 +196,7 @@ int WaterSupply::getWaterGeneration() {
 }
 
 void WaterSupply::distribute() {
-    std::cout << "Distributing water..." << std::endl;
+    std::cout << "Distributing " << waterGeneration * efficiency/100 << " liters of water..." << std::endl;
 }
 
 // FunctionalWaterSupply class implementation
@@ -289,11 +289,11 @@ int WasteManagement::getWasteCollection() {
 }
 
 void WasteManagement::recycle() {
-    std::cout << "Recycling waste..." << std::endl;
+    std::cout << "Recycling " << wasteCollection * efficiency/100 << " kgs of waste..." << std::endl;
 }
 
 void WasteManagement::collect() {
-    std::cout << "Collecting waste..." << std::endl;
+    std::cout << "Collecting " << wasteCollection * efficiency/100 << " kgs of waste..." << std::endl;
 }
 
 // FunctionalWasteManagement class implementation

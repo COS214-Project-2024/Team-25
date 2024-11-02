@@ -74,9 +74,7 @@ void TaxSystem::collectTax(CityGrowth* growth) {
 float TaxSystem::getCollectedTaxes() {
     // Value to be returned
     float collectedAmount = this->collectedTaxes;
-
     this->collectedTaxes = 0;
-
     return collectedAmount;
 }
 

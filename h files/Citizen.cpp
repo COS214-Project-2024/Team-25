@@ -28,10 +28,10 @@ float Citizen:: getSatisfaction(){
     return satisfaction;
 }
 
-void Citizen::changeSatisfaction(int amt){
+void Citizen::changeSatisfaction(float amt){
     satisfaction += amt;
-    satisfaction = satisfaction < 0 ? 0 : satisfaction;
-    satisfaction = satisfaction > 100 ? 100 : satisfaction;
+    satisfaction = satisfaction < 0 ? 0.0 : satisfaction;
+    satisfaction = satisfaction > 100 ? 100.0 : satisfaction;
 }
 
 CommercialWorker:: CommercialWorker(): Citizen(){

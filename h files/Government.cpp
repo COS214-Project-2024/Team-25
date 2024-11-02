@@ -23,6 +23,7 @@ Government::~Government(){
     delete steel;
     delete taxSystem;
     delete monthlyRoutines;
+    delete roadSystemAdapter;
     delete cityGrowth;
     for (auto& water : waterSupply) {
         delete water;
@@ -398,11 +399,40 @@ void Government::upgradeTransport(){
     monthlyRoutines->executueTransport();
 }
 
-void Government::upgradeBuildings(){
-    monthlyRoutines->executueBuilding();
+// void Government::upgradeBuildings(){
+//     monthlyRoutines->executueBuilding();
+// }
+
+void Government::cleanCity(){
+    float i = 0;
+    for (WasteManagement* w : wasteManagement){
+        if(w->getFunctional()){
+            w->collect();
+            w->recycle();
+            i += 1;
+        }else{
+            w->collect();
+            w->recycle();
+            i += 0.5;
+        }
+    }
+
+    for (WaterSupply* ws : waterSupply){
+        if(ws->getFunctional()){
+            ws->distribute();
+            i += 1;
+        }else{
+            ws->distribute();
+            i += 0.5;
+        }
+    }
+    printC("Citizen satisfaction increased by: " + std::to_string(i), Color::MAGENTA);
+    updateSatisfaction(i);
+    
 }
 
-void Government::taxCitizens(){
+void Government::taxCitizens()
+{
     taxSystem->collectTax(cityGrowth);
 }
 
@@ -495,10 +525,10 @@ void Government::createCitizen(int numCitizens) {
     bool valid = false;
 
     while (!valid) {
-        std::cout << "Enter the sector you want the citizens to work in: (Select from 0- " << cityGrowth->getTotalSectorCount() -1 << ")" << std::endl;
+        std::cout << "Enter the sector you want the citizens to work in: (Select from 0-" << cityGrowth->getTotalSectorCount() -1 << ")" << std::endl;
         std::cin >> sector;
 
-        if (sector < 1 || sector > cityGrowth->getTotalSectorCount()) {
+        if (sector < 0 || sector > cityGrowth->getTotalSectorCount()-1) {
             std::cout << "Invalid sector number" << std::endl;
         } else 
         {
@@ -533,6 +563,7 @@ void Government::createCitizen(int numCitizens) {
                 {
                     if (b->getType() == buildingType && b->getLeftOverCapacity() > 0) {
                         b->addCitizen(c);
+                        printC("Citizen added to " + buildingType, Color::GREEN);
                         assigned = true;
                         break;
                     }
@@ -543,22 +574,46 @@ void Government::createCitizen(int numCitizens) {
                     if (type2 == 1) promptForNewFactory(sector);
                     else if (type2 == 2) promptForNewWarehouse(sector);
                     else if (type2 == 3) promptForNewPlant(sector);
-                }
 
-                // Try to assign to existing apartment
-                bool housingAssigned = false;
-                for (auto* b : s->getBuildings()) {
-                    if (b->getType() == "Apartment" && b->getLeftOverCapacity() > 0) {
-                        b->addCitizen(c);
-                        housingAssigned = true;
-                        break;
+                    for (auto* b : s->getBuildings()) 
+                    {
+                        if (b->getType() == buildingType && b->getLeftOverCapacity() > 0) {
+                            b->addCitizen(c); 
+                            printC("Citizen added to " + buildingType, Color::GREEN);
+                            assigned = true;
+                            break;
+                        }
                     }
                 }
-                
-                // If no apartment found, create new one
-                if (!housingAssigned) {
-                    promptForNewApartment(sector, c);
+
+                if(assigned){
+                    bool housingAssigned = false;
+                    for (auto* b : s->getBuildings()) {
+                        if (b->getType() == "Apartment" && b->getLeftOverCapacity() > 0) {
+                            b->addCitizen(c); 
+                            printC("Citizen added to " + buildingType, Color::GREEN);
+                            housingAssigned = true;
+                            break;
+                        }
+                    }
+                    
+                    // If no apartment found, create new one
+                    if (!housingAssigned) {
+                        promptForNewApartment(sector, c);
+                        for (auto* b : s->getBuildings()) {
+                            if (b->getType() == "Apartment" && b->getLeftOverCapacity() > 0) {
+                                b->addCitizen(c); 
+                                printC("Citizen added to " + buildingType, Color::GREEN);
+                                housingAssigned = true;
+                                break;
+                            }
+                        }
+                    }
+                }else{
+                    delete c;
+                    c = nullptr;
                 }
+                
             }
             delete factory;
             break;
@@ -584,8 +639,8 @@ void Government::createCitizen(int numCitizens) {
                 // Try to assign to existing work building
                 for (auto* b : s->getBuildings()) {
                     if (b->getType() == buildingType && b->getLeftOverCapacity() > 0) {
-                        
-                        b->addCitizen(c);
+                        b->addCitizen(c); 
+                        printC("Citizen added to " + buildingType, Color::GREEN);
                         assigned = true;
                         break;
                     }
@@ -596,21 +651,42 @@ void Government::createCitizen(int numCitizens) {
                     if (type2 == 1) promptForNewShop(sector);
                     else if (type2 == 2) promptForNewOffice(sector);
                     else if (type2 == 3) promptForNewMall(sector);
-                }
-
-                // Try to assign to existing house
-                bool housingAssigned = false;
-                for (auto* b : s->getBuildings()) {
-                    if (b->getType() == "House" && b->getLeftOverCapacity() > 0) {
-                        b->addCitizen(c);
-                        housingAssigned = true;
-                        break;
+                    for (auto* b : s->getBuildings()) {
+                        if (b->getType() == buildingType && b->getLeftOverCapacity() > 0) {
+                            b->addCitizen(c); 
+                            printC("Citizen added to " + buildingType, Color::GREEN);
+                            assigned = true;
+                            break;
+                        }
                     }
                 }
-                
-                // If no house found, create new one
-                if (!housingAssigned) {
-                    promptForNewHouse(sector, c);
+
+                if(assigned){
+                    bool housingAssigned = false;
+                    for (auto* b : s->getBuildings()) {
+                        if (b->getType() == "House" && b->getLeftOverCapacity() > 0) {
+                            b->addCitizen(c); 
+                            printC("Citizen added to " + buildingType, Color::GREEN);
+                            housingAssigned = true;
+                            break;
+                        }
+                    }
+                    
+                    // If no house found, create new one
+                    if (!housingAssigned) {
+                        promptForNewHouse(sector, c);
+                        for (auto* b : s->getBuildings()) {
+                            if (b->getType() == "House" && b->getLeftOverCapacity() > 0) {
+                                b->addCitizen(c); 
+                                printC("Citizen added to " + buildingType, Color::GREEN);
+                                housingAssigned = true;
+                                break;
+                            }
+                        }
+                    }
+                }else{
+                    delete c;
+                    c = nullptr;
                 }
             }
             delete factory;
@@ -637,7 +713,8 @@ void Government::createCitizen(int numCitizens) {
                 // Try to assign to existing work building
                 for (auto* b : s->getBuildings()) {
                     if (b->getType() == buildingType && b->getLeftOverCapacity() > 0) {
-                        b->addCitizen(c);
+                        b->addCitizen(c); 
+                        printC("Citizen added to " + buildingType, Color::GREEN);
                         assigned = true;
                         break;
                     }
@@ -648,21 +725,43 @@ void Government::createCitizen(int numCitizens) {
                     if (type2 == 1) promptForNewSchool(sector);
                     else if (type2 == 2) promptForNewHospital(sector);
                     else if (type2 == 3) promptForNewGovernmentBuilding(sector);
+                    for (auto* b : s->getBuildings()) {
+                        if (b->getType() == buildingType && b->getLeftOverCapacity() > 0) {
+                            b->addCitizen(c); 
+                            printC("Citizen added to " + buildingType, Color::GREEN);
+                            assigned = true;
+                            break;
+                        }
+                    }
                 }
 
                 // Try to assign to existing mansion
-                bool housingAssigned = false;
-                for (auto* b : s->getBuildings()) {
-                    if (b->getType() == "Mansion" && b->getLeftOverCapacity() > 0) {
-                        b->addCitizen(c);
-                        housingAssigned = true;
-                        break;
+                if(assigned){
+                    bool housingAssigned = false;
+                    for (auto* b : s->getBuildings()) {
+                        if (b->getType() == "Mansion" && b->getLeftOverCapacity() > 0) {
+                            b->addCitizen(c); 
+                            printC("Citizen added to " + buildingType, Color::GREEN);
+                            housingAssigned = true;
+                            break;
+                        }
                     }
-                }
-                
-                // If no mansion found, create new one
-                if (!housingAssigned) {
-                    promptForNewMansion(sector, c);
+                    
+                    // If no mansion found, create new one
+                    if (!housingAssigned) {
+                        promptForNewMansion(sector, c);
+                        for (auto* b : s->getBuildings()) {
+                            if (b->getType() == "Mansion" && b->getLeftOverCapacity() > 0) {
+                                b->addCitizen(c); 
+                                printC("Citizen added to " + buildingType, Color::GREEN);
+                                housingAssigned = true;
+                                break;
+                            }
+                        }
+                    }
+                }else{
+                    delete c;
+                    c = nullptr;
                 }
             }
             delete factory;
@@ -701,7 +800,7 @@ float Government::avgSatisfaction(){
     
 }
 
-void Government::updateSatisfaction(int amt){
+void Government::updateSatisfaction(float amt){
     std::vector<CitySector*> sectors = cityGrowth->getSectors();
     float total = 0;
     float count  = 0.0;
@@ -922,10 +1021,13 @@ void Government::promptForNewApartment(int sector, Citizen* c) {
         Building* a =new Apartment(name, capacity * capacity, 5 * capacity * capacity, capacity * 5000, capacity, capacity, capacity, 2);
         a->build();
         if (a->getBuilt()){
-            a->addCitizen(c);
+            // a->addCitizen(c);
             cityGrowth->addBuilding(a, sector);
             Road r(5, "Industrial"); 
             roadSystemAdapter->addRoute(r);
+        }else{
+            delete a;
+            a = nullptr;
         }
     }
     else {
@@ -951,10 +1053,13 @@ void Government::promptForNewHouse(int sector, Citizen* c) {
         Building* h = new House(name, capacity * capacity, 10 * capacity * capacity, capacity * 10000, capacity, capacity, capacity, capacity * 10);
         h->build();
         if (h->getBuilt()){
-            h->addCitizen(c);
+            // h->addCitizen(c);
             cityGrowth->addBuilding(h, sector);
             Road r(5, "Commercial"); 
             roadSystemAdapter->addRoute(r);
+        }else{
+            delete h;
+            h = nullptr;
         }
     }
     else {
@@ -979,10 +1084,13 @@ void Government::promptForNewMansion(int sector, Citizen* c) {
         Building* m = new Mansion(name, capacity * capacity + 5, 15 * capacity * capacity, capacity * 15000, capacity + 3, capacity + 2, capacity, true);
         m->build();
         if (m->getBuilt()){
-            m->addCitizen(c);
+            // m->addCitizen(c);
             cityGrowth->addBuilding(m, sector);
             Road r(5,"Government"); 
             roadSystemAdapter->addRoute(r);
+        }else{
+            delete m;
+            m = nullptr;
         }
     }
     else {
@@ -1013,6 +1121,9 @@ void Government::promptForNewFactory(int sector) {
             cityGrowth->addBuilding(f, sector);
             Road r(5, f->getType()); 
             roadSystemAdapter->addRoute(r);
+        }else{
+            delete f;
+            f = nullptr;
         }
     }
     else {
@@ -1039,6 +1150,9 @@ void Government::promptForNewWarehouse(int sector) {
             cityGrowth->addBuilding(w, sector);
             Road r(5, w->getType()); 
             roadSystemAdapter->addRoute(r);
+        }else{
+            delete w;
+            w = nullptr;
         }
     }
     else {
@@ -1067,6 +1181,9 @@ void Government::promptForNewPlant(int sector) {
             cityGrowth->addBuilding(p, sector);
             Road r(5, p->getType()); 
             roadSystemAdapter->addRoute(r);
+        }else{
+            delete p;
+            p = nullptr;
         }
     }
     else {
@@ -1095,6 +1212,9 @@ void Government::promptForNewShop(int sector) {
             cityGrowth->addBuilding(s, sector);
             Road r(5, s->getType()); 
             roadSystemAdapter->addRoute(r);
+        }else{
+            delete s;
+            s = nullptr;
         }
     }
     else {
@@ -1123,6 +1243,9 @@ void Government::promptForNewOffice(int sector) {
             cityGrowth->addBuilding(o, sector);
             Road r(5, o->getType()); 
             roadSystemAdapter->addRoute(r);
+        }else{
+            delete o;
+            o = nullptr;
         }
     }
     else {
@@ -1151,6 +1274,9 @@ void Government::promptForNewMall(int sector) {
             cityGrowth->addBuilding(m, sector);
             Road r(5, m->getType()); 
             roadSystemAdapter->addRoute(r);
+        }else{
+            delete m;
+            m = nullptr;
         }
     }
     else {
@@ -1179,6 +1305,9 @@ void Government::promptForNewSchool(int sector) {
             cityGrowth->addBuilding(sc, sector);
             Road r(5, sc->getType()); 
             roadSystemAdapter->addRoute(r);
+        }else{
+            delete sc;
+            sc = nullptr;
         }
     }
     else {
@@ -1207,6 +1336,9 @@ void Government::promptForNewHospital(int sector) {
             cityGrowth->addBuilding(h, sector);
             Road r(5, h->getType()); 
             roadSystemAdapter->addRoute(r);
+        }else{
+            delete h;
+            h = nullptr;
         }
     }
     else {
@@ -1235,6 +1367,9 @@ void Government::promptForNewGovernmentBuilding(int sector) {
             cityGrowth->addBuilding(g, sector);
             Road r(5, g->getType()); 
             roadSystemAdapter->addRoute(r);
+        }else{
+            delete g;
+            g = nullptr;
         }
     }
     else {

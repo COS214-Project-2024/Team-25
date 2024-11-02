@@ -115,7 +115,7 @@ private:
 
 public:
     RoadSystemAdapter(RoadSystem* rs);
-
+    ~RoadSystemAdapter();
     void addRoute(Road road);
 
     vector<Road>& getRoads();

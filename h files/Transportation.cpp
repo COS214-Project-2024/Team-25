@@ -187,6 +187,10 @@ void PublicTransitAdapter::performMaintenance() {
 RoadSystemAdapter::RoadSystemAdapter(RoadSystem* roadSystem)
     :roadSystem(roadSystem){}
 
+RoadSystemAdapter::~RoadSystemAdapter(){
+    delete roadSystem;
+}
+
 void RoadSystemAdapter::addRoute(Road road) {
     roadSystem->addRoad(road);
 }
