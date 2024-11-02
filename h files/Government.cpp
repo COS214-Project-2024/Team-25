@@ -120,65 +120,38 @@ inline int safeIntInput(int lowerBound, int upperBound)
 
 void Government::createBuilding()
 {
-    std::cout << "Select which type of building you would like to create(1-3):" << std::endl;
-    // std::cout << "  1. Residential" << std::endl;
-    std::cout << "  1. Industrial" << std::endl;
-    std::cout << "  2. Commercial" << std::endl;
-    std::cout << "  3. Institutional" << std::endl;
-    int type, type2, sector;
-    std::cin >> type;
+    printC("Select which type of building you would like to create (1-3):", Color::CYAN);
+    printC("    1. Industrial", Color::WHITE);
+    printC("    2. Commercial", Color::WHITE);
+    printC("    3. Institutional", Color::WHITE);
+    int type = safeIntInput(1, 3);
 
     std::string name;
-    std::cout << "Enter the name of the building: ";
+    printC("Enter the name of the building: ", Color::CYAN);
     std::cin >> name;
 
-    std::cout << "Enter the sector you want the building: " << std::endl;
-
-    sector = safeIntInput(0, cityGrowth->getTotalSectorCount() - 1);
+    printC("Enter the sector you want the building (0-" + std::to_string(cityGrowth->getTotalSectorCount() - 1) + "):", Color::CYAN);
+    int sector = safeIntInput(0, cityGrowth->getTotalSectorCount() - 1);
 
     Building *b = nullptr;
     bool check = false;
 
     switch (type)
     {
-    // case 1: {  // Residential
-    //     int capacity;
-    //     std::cout << "Select which type of residential building would you like to create(1-3):" << std::endl;
-    //     std::cout << "  1. House" << std::endl;
-    //     std::cout << "  2. Apartment" << std::endl;
-    //     std::cout << "  3. Mansion" << std::endl;
-    //     std::cin >> type2;
-
-    //     std::cout << "Enter how many people can live in the residential building: " << std::endl;
-    //     std::cin >> capacity;
-
-    //     switch (type2) {
-    //         case 1:
-    //             b = new House(name, capacity * capacity, 10 * capacity * capacity, capacity * 10000, capacity, capacity, capacity, capacity * 10);
-    //             break;
-    //         case 2:
-    //             b = new Apartment(name, capacity * capacity, 5 * capacity * capacity, capacity * 5000, capacity, capacity, capacity, 2);
-    //             break;
-    //         case 3:
-    //             b = new Mansion(name, capacity * capacity + 5, 15 * capacity * capacity, capacity * 15000, capacity + 3, capacity + 2, capacity, true);
-    //             break;
-    //     }
-    //     break;
-    // }
     case 1:
     { // Industrial
         int carbonFootprint, capacity;
-        std::cout << "Select which type of industrial building would you like to create(1-3):" << std::endl;
-        std::cout << "  1. Factory" << std::endl;
-        std::cout << "  2. Warehouse" << std::endl;
-        std::cout << "  3. Plant" << std::endl;
-        std::cin >> type2;
+        printC("Select which type of industrial building would you like to create (1-3):", Color::CYAN);
+        printC("    1. Factory", Color::WHITE);
+        printC("    2. Warehouse", Color::WHITE);
+        printC("    3. Plant", Color::WHITE);
+        int type2 = safeIntInput(1, 3);
 
-        std::cout << "Enter carbon footprint: ";
-        std::cin >> carbonFootprint;
+        printC("Enter carbon footprint: ", Color::CYAN);
+        carbonFootprint = safeIntInput(0, 50);
 
-        std::cout << "Enter capacity: ";
-        std::cin >> capacity;
+        printC("Enter capacity: ", Color::CYAN);
+        capacity = safeIntInput(0, 50);
 
         switch (type2)
         {
@@ -198,17 +171,17 @@ void Government::createBuilding()
     case 2:
     { // Commercial
         int capacity, numFloors;
-        std::cout << "Select which type of commercial building would you like to create(1-3):" << std::endl;
-        std::cout << "  1. Shop" << std::endl;
-        std::cout << "  2. Office" << std::endl;
-        std::cout << "  3. Mall" << std::endl;
-        std::cin >> type2;
+        printC("Select which type of commercial building would you like to create (1-3):", Color::CYAN);
+        printC("    1. Shop", Color::WHITE);
+        printC("    2. Office", Color::WHITE);
+        printC("    3. Mall", Color::WHITE);
+        int type2 = safeIntInput(1, 3);
 
-        std::cout << "Enter capacity: ";
-        std::cin >> capacity;
+        printC("Enter capacity: ", Color::CYAN);
+        capacity = safeIntInput(0, 50);
 
-        std::cout << "Enter number of floors: ";
-        std::cin >> numFloors;
+        printC("Enter number of floors: ", Color::CYAN);
+        numFloors = safeIntInput(0, 50);
 
         switch (type2)
         {
@@ -228,17 +201,17 @@ void Government::createBuilding()
     case 3:
     { // Institutional
         int capacity, numFloors;
-        std::cout << "Select which type of institutional building you would like to create(1-3):" << std::endl;
-        std::cout << "  1. School" << std::endl;
-        std::cout << "  2. Hospital" << std::endl;
-        std::cout << "  3. Government Building" << std::endl;
-        std::cin >> type2;
+        printC("Select which type of institutional building you would like to create (1-3):", Color::CYAN);
+        printC("    1. School", Color::WHITE);
+        printC("    2. Hospital", Color::WHITE);
+        printC("    3. Government Building", Color::WHITE);
+        int type2 = safeIntInput(1, 3);
 
-        std::cout << "Enter capacity: ";
-        std::cin >> capacity;
+        printC("Enter capacity: ", Color::CYAN);
+        capacity = safeIntInput(0, 50);
 
-        std::cout << "Enter number of floors: ";
-        std::cin >> numFloors;
+        printC("Enter number of floors: ", Color::CYAN);
+        numFloors = safeIntInput(0, 50);
 
         switch (type2)
         {
@@ -262,6 +235,9 @@ void Government::createBuilding()
         if (b->getBuilt())
         {
             check = cityGrowth->addBuilding(b, sector);
+            //they dont like working
+            this->updateSatisfaction(-5);
+            
             Road r(5, b->getType());
             roadSystemAdapter->addRoute(r);
         }
@@ -272,126 +248,150 @@ void Government::createBuilding()
         else
         {
             printC("Failed to add a building!", Color::RED);
+            delete b;
+            b = nullptr;
         }
     }
     else
     {
-        std::cout << "Tough cookies" << std::endl;
+        printC("Something went quite wrong!", Color::RED);
     }
 }
 
 void Government::createUtility()
 {
-    std::cout << "Select which type of utility you would like to create: " << std::endl;
-    std::cout << "    1. PowerPlant \n    2. Water Supply \n    3. Waste Management Plant" << std::endl;
-    int type;
-    std::cin >> type;
+    printC("Select which type of utility you would like to create:", Color::CYAN);
+    printC("    1. PowerPlant", Color::WHITE);
+    printC("    2. Water Supply", Color::WHITE);
+    printC("    3. Waste Management Plant", Color::WHITE);
+    int type = safeIntInput(1, 3);
 
     switch (type)
     {
     case 1:
     {
-        std::cout << "Select which type of Power Plant you would like to create: " << std::endl;
-        std::cout << "    1. Hydro  \n    2. Coal \n    3. Wind \n    4. Solar" << std::endl;
-        int powerplant;
-        std::cin >> powerplant;
+        printC("Select which type of Power Plant you would like to create:", Color::CYAN);
+        printC("    1. Hydro", Color::WHITE);
+        printC("    2. Coal", Color::WHITE);
+        printC("    3. Wind", Color::WHITE);
+        printC("    4. Solar", Color::WHITE);
+        int powerplant = safeIntInput(1, 4);
 
         if (powerplant >= 1 && powerplant <= 4)
         {
-            std::cout << "Creating Power Plant..." << std::endl;
+            printC("Creating Power Plant...", Color::CYAN);
             PowerPlant *plant = new FunctionalPowerPlant(static_cast<powerPlants>(powerplant - 1), true);
             if (plant->getPowerGenerationRaw() > 0)
             {
                 powerPlant.push_back(plant);
-                std::cout << "Power Plant created successfully!" << std::endl;
+                if(powerplant == 2){
+                    updateSatisfaction(-3);
+                }else{
+                    updateSatisfaction(3);
+                }
+                updateBudget(-5000);
+                printC("Power Plant created successfully! (Cost: 5000)", Color::GREEN);
             }
             else
             {
                 delete plant;
-                std::cout << "Failed to create Power Plant: No power generation capacity!" << std::endl;
+                printC("Failed to create Power Plant: No power generation capacity!", Color::RED);
             }
         }
         else
         {
-            std::cout << "Invalid Power Plant type selected!" << std::endl;
+            printC("Invalid Power Plant type selected!", Color::RED);
         }
         break;
     }
     case 2:
     {
-        std::cout << "Creating Water Supply..." << std::endl;
+        printC("Creating Water Supply...", Color::CYAN);
         WaterSupply *water = new FunctionalWaterSupply(true);
         if (water->getWaterGenerationRaw() > 0)
         {
             waterSupply.push_back(water);
-            std::cout << "Water Supply created successfully!" << std::endl;
+            updateSatisfaction(3);
+            updateBudget(-5000);
+            printC("Water Supply created successfully! (Cost: 5000)", Color::GREEN);
         }
         else
         {
             delete water;
-            std::cout << "Failed to create Water Supply: No water generation capacity!" << std::endl;
+            printC("Failed to create Water Supply: No water generation capacity!", Color::RED);
         }
         break;
     }
     case 3:
     {
-        std::cout << "Creating Waste Management Plant..." << std::endl;
+        printC("Creating Waste Management Plant...", Color::CYAN);
         WasteManagement *waste = new FunctionalWasteManagement(true);
         if (waste->getWasteCollectionRaw() > 0)
         {
             wasteManagement.push_back(waste);
-            std::cout << "Waste Management Plant created successfully!" << std::endl;
+            updateSatisfaction(3);
+            updateBudget(-5000);
+            printC("Waste Management created successfully! (Cost: 5000)", Color::GREEN);
         }
         else
         {
             delete waste;
-            std::cout << "Failed to create Waste Management Plant: No waste collection capacity!" << std::endl;
+            printC("Failed to create Waste Management Plant: No waste collection capacity!", Color::RED);
         }
         break;
     }
     default:
-        std::cout << "Invalid selection!" << std::endl;
+        printC("Invalid selection!", Color::RED);
         break;
     }
 }
 
 void Government::increaseMaterials()
 {
-    std::cout << "Select which type of resource you would like to obtain: " << std::endl;
-    std::cout << "1. Wood \n2. Steel \n3. Concrete \n4. All\n";
-    int type;
-    std::cin >> type;
+    printC("Select which type of resource you would like to obtain:", Color::CYAN);
+    printC("    1. Wood", Color::WHITE);
+    printC("    2. Steel", Color::WHITE);
+    printC("    3. Concrete", Color::WHITE);
+    printC("    4. All", Color::WHITE);
+    int type = safeIntInput(1, 4);
 
     switch (type)
     {
     case 1:
         wood->increase();
+        updateBudget(-10000);
+        printC("Wood resources increased! (Cost: 10000)", Color::GREEN);
         break;
     case 2:
         steel->increase();
+        updateBudget(-6000);
+        printC("Steel resources increased!  (Cost: 6000)", Color::GREEN);
         break;
     case 3:
         concrete->increase();
+        updateBudget(-10000);
+        printC("Concrete resources increased! (Cost: 10000)", Color::GREEN);
         break;
     case 4:
         wood->increase();
         concrete->increase();
         steel->increase();
+        updateBudget(-26000);
+        printC("All resources increased! (Cost: 26000)", Color::GREEN);
         break;
     default:
-        std::cout << "Invalid selection!" << std::endl;
         break;
     }
 }
 
 void Government::naturalDisaster()
 {
-    std::cout << "Oh no, there was a natural distaster!" << std::endl;
+    printC("Oh no, there was a natural disaster!", Color::RED);
 
     // Random PowerPlants
     std::random_device rd;
     std::mt19937 gen(rd());
-
+    float totCounter = 0;
     std::uniform_int_distribution<> numDist(0, powerPlant.size());
     int numMalfunctions = numDist(gen);
     int counter = 0;
@@ -409,8 +409,8 @@ void Government::naturalDisaster()
             counter++;
         }
     }
-    std::cout << counter << " PowerPlants have mulfunctioned." << std::endl;
-
+    printC(std::to_string(counter) + " PowerPlants have malfunctioned.", Color::MAGENTA);
+    totCounter += counter;
     // Random waterSupply
     std::random_device rd2;
     std::mt19937 gen2(rd2());
@@ -432,8 +432,8 @@ void Government::naturalDisaster()
             counter++;
         }
     }
-    std::cout << counter << " Water Supplies have mulfunctioned." << std::endl;
-
+    printC(std::to_string(counter) + " Water Supplies have malfunctioned.", Color::MAGENTA);
+    totCounter += counter;
     // Random wasteManagement
     std::random_device rd3;
     std::mt19937 gen3(rd3());
@@ -456,17 +456,19 @@ void Government::naturalDisaster()
             counter++;
         }
     }
-    std::cout << counter << " Waste Management Plants have mulfunctioned." << std::endl;
+    printC(std::to_string(counter) + " Waste Management Plants have malfunctioned.", Color::MAGENTA);
+    totCounter += counter;
+
+    updateSatisfaction(-totCounter);
 }
 
 void Government::upgradeTransport()
 {
     monthlyRoutines->executueTransport();
+    updateBudget(-5000);
+    printC("Transport Upgraded (Cost: 5000)", Color::GREEN);
+    updateSatisfaction(5);
 }
-
-// void Government::upgradeBuildings(){
-//     monthlyRoutines->executueBuilding();
-// }
 
 void Government::cleanCity()
 {
@@ -500,6 +502,8 @@ void Government::cleanCity()
             i += 0.5;
         }
     }
+    updateBudget(-3000);
+    printC("Cleaned the city (Cost: 3000)", Color::GREEN);
     printC("Citizen satisfaction increased by: " + std::to_string(i), Color::MAGENTA);
     updateSatisfaction(i);
 }
@@ -507,6 +511,8 @@ void Government::cleanCity()
 void Government::taxCitizens()
 {
     taxSystem->collectTax(cityGrowth);
+    printC("Citizen satisfaction decreased by: 5" , Color::RED);
+    updateSatisfaction(-5);
 }
 
 void Government::changeTaxStartegy()
@@ -521,7 +527,7 @@ void Government::repairUtilities()
     printC("    2. Water Supplies", Color::WHITE);
     printC("    3. Waste Management", Color::WHITE);
     int u = safeIntInput(1, 3);
-
+    int c = 0;
     switch (u)
     {
     case 1:
@@ -532,6 +538,7 @@ void Government::repairUtilities()
                 PowerPlant *repairedPlant = (*it)->repair();
                 if (repairedPlant->getFunctional())
                 {
+                    c++;
                     delete *it;
                 }
 
@@ -560,6 +567,7 @@ void Government::repairUtilities()
                 WaterSupply *repairedSupply = (*it)->repair();
                 if (repairedSupply->getFunctional())
                 {
+                    c++;
                     delete *it;
                 }
 
@@ -588,6 +596,7 @@ void Government::repairUtilities()
                 WasteManagement *repairedWaste = (*it)->repair();
                 if (repairedWaste->getFunctional())
                 {
+                    c++;
                     delete *it;
                 }
 
@@ -612,6 +621,10 @@ void Government::repairUtilities()
         printC("Invalid utility selection.", Color::RED);
         break;
     }
+    updateBudget(-1000 * c);
+    printC("Citizen satisfaction increased by: "+ std::to_string(c), Color::GREEN);
+    updateSatisfaction(c);
+
 }
 
 void Government::createCitizen(int numCitizens)
@@ -694,6 +707,7 @@ void Government::createCitizen(int numCitizens)
                 {
                     if (b->getType() == buildingType && b->getLeftOverCapacity() > 0)
                     {
+                        updateSatisfaction(-5);
                         b->addCitizen(c);
                         printC("Citizen added to " + buildingType, Color::GREEN);
                         assigned = true;
@@ -724,6 +738,7 @@ void Government::createCitizen(int numCitizens)
                     {
                         if (b->getType() == "Apartment" && b->getLeftOverCapacity() > 0)
                         {
+                            updateSatisfaction(5);
                             b->addCitizen(c);
                             printC("Citizen added to " + buildingType, Color::GREEN);
                             housingAssigned = true;
@@ -789,6 +804,7 @@ void Government::createCitizen(int numCitizens)
                 {
                     if (b->getType() == buildingType && b->getLeftOverCapacity() > 0)
                     {
+                        updateSatisfaction(-5);
                         b->addCitizen(c);
                         printC("Citizen added to " + buildingType, Color::GREEN);
                         assigned = true;
@@ -819,6 +835,7 @@ void Government::createCitizen(int numCitizens)
                     {
                         if (b->getType() == "House" && b->getLeftOverCapacity() > 0)
                         {
+                            updateSatisfaction(5);
                             b->addCitizen(c);
                             printC("Citizen added to " + buildingType, Color::GREEN);
                             housingAssigned = true;
@@ -884,6 +901,7 @@ void Government::createCitizen(int numCitizens)
                 {
                     if (b->getType() == buildingType && b->getLeftOverCapacity() > 0)
                     {
+                        updateSatisfaction(-5);
                         b->addCitizen(c);
                         printC("Citizen added to " + buildingType, Color::GREEN);
                         assigned = true;
@@ -915,6 +933,7 @@ void Government::createCitizen(int numCitizens)
                     {
                         if (b->getType() == "Mansion" && b->getLeftOverCapacity() > 0)
                         {
+                            updateSatisfaction(5);
                             b->addCitizen(c);
                             printC("Citizen added to " + buildingType, Color::GREEN);
                             housingAssigned = true;
@@ -985,6 +1004,18 @@ void Government::updateSatisfaction(float amt)
             }
         }
     }
+}
+
+void Government::updateBudget(double amt)
+{
+    budget->setCash(budget->getCash() + amt);
+}
+
+void Government::insuffcientTransporrt()
+{
+    printC("There is insuffcient transport for citizens to go to work", Color::MAGENTA);
+    updateSatisfaction(-5);
+    printC("Citizen satisfaction decreased by: 5" , Color::RED);
 }
 
 void Government::setDifficulty(int difficulty)
@@ -1083,7 +1114,7 @@ void Government::setDifficulty(int difficulty)
         concrete->setKilo(100000);
         steel->setKilo(100000);
 
-        budget->setCash(2000000.00);
+        budget->setCash(200000.00);
 
         for (int i = 0; i < 4; i++)
         {
@@ -1132,6 +1163,7 @@ void Government::setDifficulty(int difficulty)
         wood->setKilo(100000);
         concrete->setKilo(100000);
         steel->setKilo(100000);
+
         budget->setCash(100000.00);
 
         // Add 2 of each utility type if they're functional
@@ -1180,10 +1212,10 @@ void Government::setDifficulty(int difficulty)
     case 3:
     {
         // Hardest difficulty - only basic resources, no utilities
-        wood->setKilo(2000);
-        concrete->setKilo(2000);
-        steel->setKilo(2000);
-        budget->setCash(10000.00);
+        wood->setKilo(5000);
+        concrete->setKilo(5000);
+        steel->setKilo(5000);
+        budget->setCash(50000.00);
     }
     break;
 
@@ -1214,6 +1246,22 @@ void Government::printresources()
     std::cout << "  Cash: $" << budget->getCash() << std::endl;
 
     printC("-------------------------------\n", Color::CYAN);
+}
+
+void Government::printSec()
+{
+    std::cout << cityGrowth->printSectors();
+}
+
+void Government::printSatisfaction()
+{
+    printC("---------------------------------", Color::YELLOW);
+    printC("|     Satisfaction: " + std::to_string(std::round(avgSatisfaction())) + "   |", Color::YELLOW);
+    printC("---------------------------------", Color::YELLOW);
+    printC("|     Budget:       " + std::to_string(std::round(getBudget())) + "   |", Color::YELLOW);
+    printC("---------------------------------", Color::YELLOW);
+    printC("|     Debt:         " + std::to_string(std::round(getDebt())) + "   |", Color::YELLOW);
+    printC("---------------------------------", Color::YELLOW);
 }
 
 void Government::printUtilitiesDetails()

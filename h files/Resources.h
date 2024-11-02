@@ -65,7 +65,13 @@ public:
     double getCash() const {return cash;}
     double getDebt() const {return debt;}
 
-    void setCash(double cash) {this->cash = cash;} 
+    void setCash(double cash) 
+    {
+        this->cash = cash;
+        if(cash < 0){
+            setDebt(-cash);
+        }
+    } 
     void setDebt(double debt) {this->debt = debt;} 
 };
 

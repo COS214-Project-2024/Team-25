@@ -64,12 +64,18 @@ public:
 
     float avgSatisfaction();
     void updateSatisfaction(float amt);
-    void printSec() {std::cout << cityGrowth->printSectors() << std::endl;} 
-    
-    void setDifficulty(int difficulty);
-    void printresources();
+    void updateBudget(double amt);
+    void insuffcientTransporrt();
 
+    void setDifficulty(int difficulty);
+
+    void printresources();
+    void printSec();
+    void printSatisfaction();
     void printUtilitiesDetails();
+
+    float getBudget(){return budget->getCash();}
+    float getDebt(){return budget->getDebt();}
 
 };  
 

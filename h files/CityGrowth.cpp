@@ -176,6 +176,7 @@ std::string CityGrowth::printSectors()
     // Print building types
     for (auto it = buildingMap.begin(); it != buildingMap.end(); it++)
     {
+
         BuildingType << "| " << std::setw(10) << std::left << it->first
                      << " : " << std::setw(2) << std::right << it->second
                      << std::setw(17) << std::right << "|\n";
@@ -202,9 +203,15 @@ std::string CityGrowth::printSectors()
     // Display building count for each sector
     for (int i = 0; i < this->sectors.size(); i++)
     {
+        if(this->sectors[i]->getBuildingCount() < 10){
         output << "| Sector[" << i << "]: " << std::setw(1) << std::left
                << this->sectors[i]->getBuildingCount() << " buildings"
                << std::setw(10) << std::right << "|\n";
+        }else{
+            output << "| Sector[" << i << "]: " << std::setw(1) << std::left
+               << this->sectors[i]->getBuildingCount() << " buildings"
+               << std::setw(9) << std::right << "|\n";
+        }
     }
 
     output << "---------------------------------\n\n";

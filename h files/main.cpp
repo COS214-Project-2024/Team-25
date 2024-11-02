@@ -103,16 +103,59 @@ void gameLoop()
     government->printUtilitiesDetails();
     government->printresources();
     government->printSec();
+    government->printSatisfaction();
 
     while (game)
     {
+
+        if (government->avgSatisfaction() >= 100)
+        {
+            printC("YOU HAVE WON BASED ON SATISFACTION",Color::GREEN);
+            government->printUtilitiesDetails();
+            government->printresources();
+            government->printSec();
+            government->printSatisfaction();
+            break;
+        }
+        
+        if (government->avgSatisfaction() <= 0)
+        {
+            printC("YOU HAVE LOST BASED ON SATISFACTION",Color::RED);
+            government->printUtilitiesDetails();
+            government->printresources();
+            government->printSec();
+            government->printSatisfaction();
+            break;
+        }
+
+        if (government->getBudget() >= 300000)
+        {
+            printC("YOU HAVE WON BASED ON CASH",Color::GREEN);
+            government->printUtilitiesDetails();
+            government->printresources();
+            government->printSec();
+            government->printSatisfaction();
+            break;
+        }
+        
+        if (government->getDebt() <= -50000)
+        {
+            printC("YOU HAVE LOST BASED ON DEBT",Color::RED);
+            government->printUtilitiesDetails();
+            government->printresources();
+            government->printSec();
+            government->printSatisfaction();
+            break;
+        }
+
         // Check for natural disaster (1/6 chance)
         if (actionCount != 0 && (rand() % 6) == 0)
         {
             printC("A natural disaster has struck!", Color::RED);
             government->naturalDisaster();
-            government->printUtilitiesDetails();
+            government->printSatisfaction();
         }
+
 
         // Display available actions
         printC("Choose an action to perform:", Color::CYAN);
@@ -129,6 +172,11 @@ void gameLoop()
         // Validate action input
         int action = safeIntInput(1, 9);
 
+        if (actionCount != 0 && (rand() % 4) == 0 && action != 3)
+        {
+            government->insuffcientTransporrt();
+        }
+
         // Perform selected action
         int numCitizen = 0;
         switch (action)
@@ -136,36 +184,37 @@ void gameLoop()
         case 1:
             printC("Creating a building...", Color::GREEN);
             government->createBuilding();
-            government->printSec();
+            government->printSatisfaction();
             break;
         case 2:
             printC("Creating a utility...", Color::GREEN);
             government->createUtility();
-            government->printUtilitiesDetails();
+            government->printSatisfaction();
             break;
         case 3:
             printC("Upgrading transport...", Color::GREEN);
             government->upgradeTransport();
-            government->printSec();
+            government->printSatisfaction();
             break;
         case 4:
             printC("Cleaning city and distributing water...", Color::GREEN);
             government->cleanCity();
-            std::cout << government->avgSatisfaction() << std::endl;
+            government->printSatisfaction();
             break;
         case 5:
             printC("Increasing materials...", Color::GREEN);
             government->increaseMaterials();
-            government->printresources();
+            government->printSatisfaction();
             break;
         case 6:
             printC("Changing tax strategy...", Color::GREEN);
             government->changeTaxStartegy();
+            government->printSatisfaction();
             break;
         case 7:
             printC("Repairing utilities...", Color::GREEN);
             government->repairUtilities();
-            government->printUtilitiesDetails();
+            government->printSatisfaction();
             break;
         case 8:
             printC("Creating new citizens...", Color::GREEN);
@@ -173,35 +222,61 @@ void gameLoop()
             printC("NOTE! All the citizens you create now will be added to the same sector, and will have the same job. ", Color::RED);
             numCitizen = safeIntInput(1, 10);
             government->createCitizen(numCitizen);
-            government->printSec();
+            government->printSatisfaction();
             break;
         case 9:
             game = false;
             break;
         }
 
-        // Increment action count
-        actionCount++;
+        printC("See a more detailed report:", Color::CYAN);
+        printC("    1. Print Utilities", Color::WHITE);
+        printC("    2. Print Resources", Color::WHITE);
+        printC("    3. Print Sector", Color::WHITE);
+        printC("    4. Print Satisfaction", Color::WHITE);
+        printC("    5. Print All", Color::WHITE);
+        printC("    6. Skip", Color::WHITE);
 
-        // Check if a year (8 actions) has passed
-        if (actionCount >= 8)
+        int choice = safeIntInput(1,6);
+        std::string s = "";
+        switch (choice)
         {
-            // Collect taxes at the end of the year
-            printC("Collecting annual taxes...", Color::YELLOW);
-            government->taxCitizens();
-
-            // Reset action count
-            actionCount = 0;
-
-            // Optional: Add game end condition or year summary
-            printC("A year has passed!", Color::CYAN);
+        case 1: government->printUtilitiesDetails();
+                std::cout << "Press any button to continue." << std::endl;
+                cin >> s;
+            break;
+        case 2: government->printresources();
+                std::cout << "Press any button to continue." << std::endl;
+                cin >> s;
+            break;
+        case 3: government->printSec();
+                std::cout << "Press any button to continue." << std::endl;
+                cin >> s;
+            break;
+        case 4: government->printSatisfaction();    
+                std::cout << "Press any button to continue." << std::endl;
+                cin >> s;
+            break;
+        case 5: government->printUtilitiesDetails();
+                government->printresources();
+                government->printSec();
+                government->printSatisfaction();
+                std::cout << "Press any button to continue." << std::endl;
+                cin >> s;
+            break;
+        case 6: break;    
         }
 
-        // Optional: Add game end condition
-        // For example, check if government is still viable
-        // if (government->isGameOver()) {
-        //     game = false;
-        // }
+        actionCount++;
+        if (actionCount >= 8)
+        {
+            printC("Collecting annual taxes...", Color::YELLOW);
+            government->taxCitizens();
+            actionCount = 0;
+            printC("A year has passed!", Color::CYAN);
+            
+        }
+
     }
 
     delete government;
