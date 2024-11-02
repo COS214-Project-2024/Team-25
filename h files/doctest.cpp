@@ -62,3 +62,56 @@ TEST_CASE("Testing TaxStrategies")
         CHECK(taxSystem->currentStrategy() == "FlatTaxStrategy");
     }
 }
+
+
+TEST_CASE("Testing Buildings"){
+    SUBCASE("Testing connecting buildings and citizens"){
+        House* myHouse = new House("Dream House", 5, 120, 250000.0f, 3, 2, 5, 9);
+
+        ComWorkerFactory comWorkerFactory;
+        
+        // Add citizens (workers) to the house
+
+        myHouse->addCitizen(comWorkerFactory.createCitizen("Shop"));
+        CHECK(comWorkerFactory.createCitizen("Shop")->getType() == "Commercial worker");
+        CHECK(comWorkerFactory.createCitizen("Shop")->getResidence() == "House");
+        CHECK(comWorkerFactory.createCitizen("Shop")->getWorkplace() == "Shop");
+        myHouse->addCitizen(comWorkerFactory.createCitizen("Shop"));
+        myHouse->addCitizen(comWorkerFactory.createCitizen("Mall"));
+        myHouse->addCitizen(comWorkerFactory.createCitizen("Office"));
+        myHouse->addCitizen(comWorkerFactory.createCitizen("Office"));
+        CHECK(myHouse->getLeftOverCapacity() == 0);
+        myHouse->addCitizen(comWorkerFactory.createCitizen("Mall"));
+
+        myHouse->displayCitizens();
+
+        Warehouse* myWarehouse =
+        new Warehouse("Warehouse 2", 5, 120, 250000.0f, 3, 200);
+
+        CityGrowth* citygrowth = new CityGrowth();
+       std::cout << citygrowth->printSectors();
+
+        CitySector* newSector1 = new CitySector();
+        citygrowth->addSector(newSector1);
+
+        citygrowth->addBuilding(myHouse, 0);
+
+        CitySector* newSector2 = new CitySector();
+        citygrowth->addSector(newSector2);
+        citygrowth->addBuilding(myWarehouse, 1);
+        CHECK(citygrowth->getBuildingCount() == 0);
+
+        std::cout << "\n" << citygrowth->printSectors();
+        citygrowth->printSectorsCitizens(0);
+        std::cout << "\n";
+        citygrowth->printSectorsCitizens(1);
+        std::cout << "\n";
+        citygrowth->printSectorsCitizens(2);
+
+      delete myHouse;
+      delete myWarehouse;
+      delete newSector1;
+      delete newSector2;
+    }
+}
+
