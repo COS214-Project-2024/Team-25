@@ -23,6 +23,7 @@ Government::~Government(){
     delete steel;
     delete taxSystem;
     delete monthlyRoutines;
+    delete roadSystemAdapter;
     delete cityGrowth;
     for (auto& water : waterSupply) {
         delete water;
@@ -734,18 +735,103 @@ void Government::updateSatisfaction(int amt){
 
 void Government::setDifficulty(int difficulty)
 {
+    CitizenFactory* residentialFactory = nullptr;
+    CitizenFactory* commercialFactory = nullptr;
+    CitizenFactory* industrialFactory = nullptr;
+    CitizenFactory* institutionalFactory = nullptr;
+
+    commercialFactory = new ComWorkerFactory();
+    industrialFactory = new IndWorkerFactory();
+    institutionalFactory = new GovernmentWorkerFactory();
+
+    int k = cityGrowth->getTotalSectorCount();
+     for (int i = 0; i < k; i++)
+    {
+        Building* f = new Factory("Factory 1", 5, 500, 10000.00, 100, 5);
+        Building* a = new Apartment("Apartment 1", 2, 50, 2000.00, 1, 1, 5, 2);
+        Road r(5, "Industrial"); 
+        roadSystemAdapter->addRoute(r);
+        for (int j = 0; j < 3; j++)
+        {
+            Citizen* c = industrialFactory->createCitizen("Factory");
+            f->addCitizen(c);
+            a->addCitizen(c);
+        }
+        cityGrowth->addBuilding(f,i);
+        cityGrowth->addBuilding(a,i);
+
+
+        Building* p = new Plant("Plant 1", 5, 500, 10000.00, 100, 5);
+        Building* a1 = new Apartment("Apartment 2", 2, 50, 2000.00, 1, 1, 5, 2);
+        Road r2(5, "Industrial"); 
+        roadSystemAdapter->addRoute(r2);
+        for (int j = 0; j < 4; j++)
+        {
+            Citizen* c = industrialFactory->createCitizen("Plant");
+            p->addCitizen(c);
+            a1->addCitizen(c);
+        }
+        cityGrowth->addBuilding(p,i);
+        cityGrowth->addBuilding(a1,i);
+
+        Building* s = new Shop("Shop 1", 1, 50, 1000.00, 10, 1, 1);
+        Building* h = new House("House 1",2,50,100.00,2,2,5,3);
+        Road com(5, "Commercial"); 
+        roadSystemAdapter->addRoute(com);
+        for (int n = 0; n < 4; n++)
+        {
+            Citizen* c = commercialFactory->createCitizen("Shop");
+            s->addCitizen(c);
+            h->addCitizen(c);
+        }
+
+        cityGrowth->addBuilding(s,i);
+        cityGrowth->addBuilding(h,i);
+
+        Building* m1 = new Mall("Mall 1", 1, 50, 1000.00, 10, 1, 1);
+        Building* h1 = new House("House 1",2,50,100.00,2,2,7,3);
+        Road com1(5, "Commercial"); 
+        roadSystemAdapter->addRoute(com1);
+        for (int n = 0; n < 6; n++)
+        {
+            Citizen* c = commercialFactory->createCitizen("Mall");
+            m1->addCitizen(c);
+            h1->addCitizen(c);
+        }
+
+        cityGrowth->addBuilding(m1,i);
+        cityGrowth->addBuilding(h1,i);
+        
+        Building* g = new GovernmentBuilding("Government Building 1", 5, 500, 10000.00, 50, 2);
+        Building* m = new Mansion("Mansion 1",6,500,2000.00,6,6,10,false);
+
+        Road in(5,"Instatutional");
+        roadSystemAdapter->addRoute(in);
+        for (int l = 0; l < 8; l++)
+        {
+            Citizen* c = institutionalFactory->createCitizen("GovernmentBuilding");
+            g->addCitizen(c);
+            m->addCitizen(c);
+        }
+
+        cityGrowth->addBuilding(g,i);
+        cityGrowth->addBuilding(m,i);
+    }
+
+    delete commercialFactory;
+    delete industrialFactory;
+    delete institutionalFactory; 
+
     switch (difficulty)
     {
     case 1: 
     {
-        // Set base resources
-        wood->setKilo(30000);
-        concrete->setKilo(30000);
-        steel->setKilo(30000);
+        wood->setKilo(100000);
+        concrete->setKilo(100000);
+        steel->setKilo(100000);
 
         budget->setCash(2000000.00);
 
-        // Add 4 of each utility type if they're functional
         for (int i = 0; i < 4; i++)
         {
             // Create and validate PowerPlant
@@ -753,7 +839,7 @@ void Government::setDifficulty(int difficulty)
             if (plant->getPowerGenerationRaw() > 0) {
                 powerPlant.push_back(plant);
             } else {
-                delete plant;  // Clean up if not adding to vector
+                delete plant;  
             }
 
             // Create and validate WaterSupply
@@ -772,15 +858,19 @@ void Government::setDifficulty(int difficulty)
                 delete waste;
             }
         }
+
+        wood->setKilo(30000);
+        concrete->setKilo(30000);
+        steel->setKilo(30000);
+        
     }
         break;
 
     case 2: 
     {
-        // Set base resources
-        wood->setKilo(10000);
-        concrete->setKilo(10000);
-        steel->setKilo(10000);
+        wood->setKilo(100000);
+        concrete->setKilo(100000);
+        steel->setKilo(100000);
         budget->setCash(100000.00);
 
         // Add 2 of each utility type if they're functional
@@ -810,16 +900,21 @@ void Government::setDifficulty(int difficulty)
                 delete waste;
             }
         }
+
+        wood->setKilo(10000);
+        concrete->setKilo(10000);
+        steel->setKilo(10000);
     }
         break;
 
     case 3:
     {
         // Hardest difficulty - only basic resources, no utilities
-        wood->setKilo(1000);
-        concrete->setKilo(1000);
-        steel->setKilo(1000);        
+        wood->setKilo(2000);
+        concrete->setKilo(2000);
+        steel->setKilo(2000);        
         budget->setCash(10000.00);
+
     }
         break;      
 

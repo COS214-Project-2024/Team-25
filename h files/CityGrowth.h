@@ -12,7 +12,7 @@
 class CitySector {
     public:
         // CitySector();
-        // ~CitySector();
+        ~CitySector();
         void addBuilding(Building* building);
         int getBuildingCount();
         const std::vector<Building*>& getBuildings() const;

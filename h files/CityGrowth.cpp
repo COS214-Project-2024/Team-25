@@ -11,7 +11,15 @@ using namespace std;
 
 /* ------------------------------- CitySector ------------------------------- */
 
-void CitySector::addBuilding(Building* building) {
+CitySector::~CitySector()
+{
+     for (auto b : block) {
+        delete b;
+    }
+}
+
+void CitySector::addBuilding(Building *building)
+{
     this->block.push_back(building);
 }
 
