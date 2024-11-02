@@ -629,29 +629,14 @@ void Government::repairUtilities()
 
 void Government::createCitizen(int numCitizens)
 {
-    std::cout << "Select which work sector your citizens should work in: " << std::endl;
-    std::cout << "  1. Industrial" << std::endl;
-    std::cout << "  2. Commercial" << std::endl;
-    std::cout << "  3. Institutional" << std::endl;
-
-    int sector, type2, type;
-    std::cin >> type;
-    bool valid = false;
-
-    while (!valid)
-    {
-        std::cout << "Enter the sector you want the citizens to work in: (Select from 0-" << cityGrowth->getTotalSectorCount() - 1 << ")" << std::endl;
-        std::cin >> sector;
-
-        if (sector < 0 || sector > cityGrowth->getTotalSectorCount() - 1)
-        {
-            std::cout << "Invalid sector number" << std::endl;
-        }
-        else
-        {
-            valid = true;
-        }
-    }
+    printC("Select which work sector your citizens should work in:", Color::CYAN);
+    printC("  1. Industrial", Color::WHITE);
+    printC("  2. Commercial", Color::WHITE);
+    printC("  3. Institutional", Color::WHITE);
+    int type = safeIntInput(1, 3);
+    int type2;
+    printC("Enter the sector you want the citizens to work in: (Select from 0-" + std::to_string(cityGrowth->getTotalSectorCount() - 1) + ")", Color::CYAN);
+    int sector = safeIntInput(0, cityGrowth->getTotalSectorCount() - 1);
 
     CitizenFactory *factory = nullptr;
 
@@ -660,7 +645,7 @@ void Government::createCitizen(int numCitizens)
     case 1:
     { // Industrial
         factory = new IndWorkerFactory();
-        std::cout << "Select which type of industrial building would you like your citizens to work at:" << std::endl;
+        printC("Select which type of industrial building would you like your citizens to work at:", Color::CYAN);
         std::cout << "  1. Factory" << std::endl;
         std::cout << "  2. Warehouse" << std::endl;
         std::cout << "  3. Plant" << std::endl;
@@ -760,7 +745,7 @@ void Government::createCitizen(int numCitizens)
     case 2:
     { // Commercial
         factory = new ComWorkerFactory();
-        std::cout << "Select which type of commercial building would you like your citizens to work at:" << std::endl;
+        printC("Select which type of commercial building would you like your citizens to work at:", Color::CYAN);
         std::cout << "  1. Shop" << std::endl;
         std::cout << "  2. Office" << std::endl;
         std::cout << "  3. Mall" << std::endl;
@@ -857,7 +842,7 @@ void Government::createCitizen(int numCitizens)
     case 3:
     { // Institutional
         factory = new GovernmentWorkerFactory();
-        std::cout << "Select which type of institutional building would you like your citizens to work at:" << std::endl;
+        printC("Select which type of institutional building would you like your citizens to work at:", Color::CYAN);
         std::cout << "  1. School" << std::endl;
         std::cout << "  2. Hospital" << std::endl;
         std::cout << "  3. Government Building" << std::endl;
@@ -1339,20 +1324,22 @@ void Government::printUtilitiesDetails()
 
 void Government::promptForNewApartment(int sector, Citizen *c)
 {
-    std::cout << "No current apartment building available. Create a new one? (Type Y or N)" << std::endl;
+    printC("No current apartment building available. Create a new one? (Type Y or N)", Color::CYAN);
     std::string choice;
     std::cin >> choice;
 
     if (choice == "Y" || choice == "y")
     {
-        int capacity, floors;
         std::string name;
-        std::cout << "Enter the name of the building: ";
+        printC("Enter the name of the building: ", Color::CYAN);
         std::cin >> name;
-        std::cout << "Enter capacity: ";
-        std::cin >> capacity;
-        std::cout << "Enter number of floors: ";
-        std::cin >> floors;
+
+        printC("Enter capacity: ", Color::CYAN);
+        int capacity = safeIntInput(1, 50);
+        
+        printC("Enter number of floors: ", Color::CYAN);
+        int floors = safeIntInput(1, 5);
+
         Building *a = new Apartment(name, capacity * capacity, 5 * capacity * capacity, capacity * 5000, capacity, capacity, capacity, 2);
         a->build();
         if (a->getBuilt())
@@ -1370,27 +1357,29 @@ void Government::promptForNewApartment(int sector, Citizen *c)
     }
     else
     {
-        std::cout << "No apartment building created" << std::endl;
+        printC("No apartment building created", Color::RED);
     }
 }
 
 // Function to prompt for creating a new house
 void Government::promptForNewHouse(int sector, Citizen *c)
 {
-    std::cout << "No current house available. Create a new one? (Type Y or N)" << std::endl;
+    printC("No current house available. Create a new one? (Type Y or N)", Color::CYAN);
     std::string choice;
     std::cin >> choice;
 
     if (choice == "Y" || choice == "y")
     {
-        int capacity, floors;
         std::string name;
-        std::cout << "Enter the name of the building: ";
+        printC("Enter the name of the building: ", Color::CYAN);
         std::cin >> name;
-        std::cout << "Enter capacity: ";
-        std::cin >> capacity;
-        std::cout << "Enter number of floors: ";
-        std::cin >> floors;
+
+        printC("Enter capacity: ", Color::CYAN);
+        int capacity = safeIntInput(1, 50);
+        
+        printC("Enter number of floors: ", Color::CYAN);
+        int floors = safeIntInput(1, 5);
+
         Building *h = new House(name, capacity * capacity, 10 * capacity * capacity, capacity * 10000, capacity, capacity, capacity, capacity * 10);
         h->build();
         if (h->getBuilt())
@@ -1408,26 +1397,28 @@ void Government::promptForNewHouse(int sector, Citizen *c)
     }
     else
     {
-        std::cout << "No house created" << std::endl;
+        printC("No house created", Color::RED);
     }
 }
 
 void Government::promptForNewMansion(int sector, Citizen *c)
 {
-    std::cout << "No current mansion available. Create a new one? (Type Y or N)" << std::endl;
+    printC("No current mansion available. Create a new one? (Type Y or N)", Color::CYAN);
     std::string choice;
     std::cin >> choice;
 
     if (choice == "Y" || choice == "y")
     {
-        int capacity, floors;
         std::string name;
-        std::cout << "Enter the name of the building: ";
+        printC("Enter the name of the building: ", Color::CYAN);
         std::cin >> name;
-        std::cout << "Enter capacity: ";
-        std::cin >> capacity;
-        std::cout << "Enter number of floors: ";
-        std::cin >> floors;
+
+        printC("Enter capacity: ", Color::CYAN);
+        int capacity = safeIntInput(1, 50);
+        
+        printC("Enter number of floors: ", Color::CYAN);
+        int floors = safeIntInput(1, 5);
+
         Building *m = new Mansion(name, capacity * capacity + 5, 15 * capacity * capacity, capacity * 15000, capacity + 3, capacity + 2, capacity, true);
         m->build();
         if (m->getBuilt())
@@ -1445,28 +1436,28 @@ void Government::promptForNewMansion(int sector, Citizen *c)
     }
     else
     {
-        std::cout << "No mansion created" << std::endl;
+        printC("No mansion created", Color::RED);
     }
 }
 
-// Function definitions
 void Government::promptForNewFactory(int sector)
 {
-    // Prompt for new factory details
-    std::cout << "No current factory available. Create a new one? (Type Y or N)" << std::endl;
+    printC("No current factory available. Create a new one? (Type Y or N)", Color::CYAN);
     std::string choice;
     std::cin >> choice;
 
     if (choice == "Y" || choice == "y")
     {
-        int capacity, carbonFootprint;
         std::string name;
-        std::cout << "Enter the name of the building: ";
+        printC("Enter the name of the building: ", Color::CYAN);
         std::cin >> name;
-        std::cout << "Enter carbon footprint: ";
-        std::cin >> carbonFootprint;
-        std::cout << "Enter capacity: ";
-        std::cin >> capacity;
+
+        printC("Enter carbon footprint: ", Color::CYAN);
+        int carbonFootprint = safeIntInput(1, 100);
+
+        printC("Enter capacity: ", Color::CYAN);
+        int capacity = safeIntInput(1, 50);
+
         Building *f = new Factory(name, capacity * 2, capacity * 4, carbonFootprint * 1000, carbonFootprint, capacity);
         f->build();
         if (f->getBuilt())
@@ -1483,25 +1474,25 @@ void Government::promptForNewFactory(int sector)
     }
     else
     {
-        std::cout << "No factory created" << std::endl;
+        printC("No factory created", Color::RED);
     }
 }
 
 void Government::promptForNewWarehouse(int sector)
 {
-    // Prompt for new warehouse details
-    std::cout << "No current warehouse available. Create a new one? (Type Y or N)" << std::endl;
+    printC("No current warehouse available. Create a new one? (Type Y or N)", Color::CYAN);
     std::string choice;
     std::cin >> choice;
 
     if (choice == "Y" || choice == "y")
     {
-        int capacity;
         std::string name;
-        std::cout << "Enter the name of the building: ";
+        printC("Enter the name of the building: ", Color::CYAN);
         std::cin >> name;
-        std::cout << "Enter capacity: ";
-        std::cin >> capacity;
+
+        printC("Enter capacity: ", Color::CYAN);
+        int capacity = safeIntInput(1, 50);
+
         Building *w = new Warehouse(name, capacity * 3, capacity * 5, capacity * 3000, capacity, 2);
         w->build();
         if (w->getBuilt())
@@ -1518,27 +1509,28 @@ void Government::promptForNewWarehouse(int sector)
     }
     else
     {
-        std::cout << "No warehouse created" << std::endl;
+        printC("No warehouse created", Color::RED);
     }
 }
 
 void Government::promptForNewPlant(int sector)
 {
-    // Prompt for new plant details
-    std::cout << "No current plant available. Create a new one? (Type Y or N)" << std::endl;
+    printC("No current plant available. Create a new one? (Type Y or N)", Color::CYAN);
     std::string choice;
     std::cin >> choice;
 
     if (choice == "Y" || choice == "y")
     {
-        int capacity, carbonFootprint;
         std::string name;
-        std::cout << "Enter the name of the building: ";
+        printC("Enter the name of the building: ", Color::CYAN);
         std::cin >> name;
-        std::cout << "Enter carbon footprint: ";
-        std::cin >> carbonFootprint;
-        std::cout << "Enter capacity: ";
-        std::cin >> capacity;
+
+        printC("Enter carbon footprint: ", Color::CYAN);
+        int carbonFootprint = safeIntInput(1, 100);
+
+        printC("Enter capacity: ", Color::CYAN);
+        int capacity = safeIntInput(1, 50);
+
         Building *p = new Plant(name, capacity * 3, capacity * 5, carbonFootprint * 1000, carbonFootprint, capacity);
         p->build();
         if (p->getBuilt())
@@ -1555,27 +1547,28 @@ void Government::promptForNewPlant(int sector)
     }
     else
     {
-        std::cout << "No plant created" << std::endl;
+        printC("No plant created", Color::RED);
     }
 }
 
 void Government::promptForNewShop(int sector)
 {
-    // Prompt for new shop details
-    std::cout << "No current shop available. Create a new one? (Type Y or N)" << std::endl;
+    printC("No current shop available. Create a new one? (Type Y or N)", Color::CYAN);
     std::string choice;
     std::cin >> choice;
 
     if (choice == "Y" || choice == "y")
     {
-        int capacity, floors;
         std::string name;
-        std::cout << "Enter the name of the building: ";
+        printC("Enter the name of the building: ", Color::CYAN);
         std::cin >> name;
-        std::cout << "Enter capacity: ";
-        std::cin >> capacity;
-        std::cout << "Enter number of floors: ";
-        std::cin >> floors;
+
+        printC("Enter capacity: ", Color::CYAN);
+        int capacity = safeIntInput(1, 50);
+        
+        printC("Enter number of floors: ", Color::CYAN);
+        int floors = safeIntInput(1, 5);
+
         Building *s = new Shop(name, capacity * 2, capacity * 5, capacity * 1000, capacity, floors, 3);
         s->build();
         if (s->getBuilt())
@@ -1592,27 +1585,28 @@ void Government::promptForNewShop(int sector)
     }
     else
     {
-        std::cout << "No shop created" << std::endl;
+        printC("No shop created", Color::RED);
     }
 }
 
 void Government::promptForNewOffice(int sector)
 {
-    // Prompt for new office details
-    std::cout << "No current office available. Create a new one? (Type Y or N)" << std::endl;
+    printC("No current office available. Create a new one? (Type Y or N)", Color::CYAN);
     std::string choice;
     std::cin >> choice;
 
     if (choice == "Y" || choice == "y")
     {
-        int capacity, floors;
         std::string name;
-        std::cout << "Enter the name of the building: ";
+        printC("Enter the name of the building: ", Color::CYAN);
         std::cin >> name;
-        std::cout << "Enter capacity: ";
-        std::cin >> capacity;
-        std::cout << "Enter number of floors: ";
-        std::cin >> floors;
+
+        printC("Enter capacity: ", Color::CYAN);
+        int capacity = safeIntInput(1, 50);
+        
+        printC("Enter number of floors: ", Color::CYAN);
+        int floors = safeIntInput(1, 5);
+
         Building *o = new Office(name, capacity * 4, capacity * 15, capacity * 8000, capacity, floors, 5);
         o->build();
         if (o->getBuilt())
@@ -1629,27 +1623,28 @@ void Government::promptForNewOffice(int sector)
     }
     else
     {
-        std::cout << "No office created" << std::endl;
+        printC("No office created", Color::RED);
     }
 }
 
 void Government::promptForNewMall(int sector)
 {
-    // Prompt for new mall details
-    std::cout << "No current mall available. Create a new one? (Type Y or N)" << std::endl;
+    printC("No current mall available. Create a new one? (Type Y or N)", Color::CYAN);
     std::string choice;
     std::cin >> choice;
 
     if (choice == "Y" || choice == "y")
     {
-        int capacity, floors;
         std::string name;
-        std::cout << "Enter the name of the building: ";
+        printC("Enter the name of the building: ", Color::CYAN);
         std::cin >> name;
-        std::cout << "Enter capacity: ";
-        std::cin >> capacity;
-        std::cout << "Enter number of floors: ";
-        std::cin >> floors;
+
+        printC("Enter capacity: ", Color::CYAN);
+        int capacity = safeIntInput(1, 50);
+        
+        printC("Enter number of floors: ", Color::CYAN);
+        int floors = safeIntInput(1, 8);
+
         Building *m = new Mall(name, capacity * 6, capacity * 20, capacity * 15000, capacity, floors, 8);
         m->build();
         if (m->getBuilt())
@@ -1666,27 +1661,28 @@ void Government::promptForNewMall(int sector)
     }
     else
     {
-        std::cout << "No mall created" << std::endl;
+        printC("No mall created", Color::RED);
     }
 }
 
 void Government::promptForNewSchool(int sector)
 {
-    // Prompt for new school details
-    std::cout << "No current school available. Create a new one? (Type Y or N)" << std::endl;
+    printC("No current school available. Create a new one? (Type Y or N)", Color::CYAN);
     std::string choice;
     std::cin >> choice;
 
     if (choice == "Y" || choice == "y")
     {
-        int capacity, floors;
         std::string name;
-        std::cout << "Enter the name of the building: ";
+        printC("Enter the name of the building: ", Color::CYAN);
         std::cin >> name;
-        std::cout << "Enter capacity: ";
-        std::cin >> capacity;
-        std::cout << "Enter number of floors: ";
-        std::cin >> floors;
+
+        printC("Enter capacity: ", Color::CYAN);
+        int capacity = safeIntInput(1, 50);
+        
+        printC("Enter number of floors: ", Color::CYAN);
+        int floors = safeIntInput(1, 5);
+
         Building *sc = new School(name, capacity * 5, capacity * 15, capacity * 20000, capacity, floors);
         sc->build();
         if (sc->getBuilt())
@@ -1703,27 +1699,28 @@ void Government::promptForNewSchool(int sector)
     }
     else
     {
-        std::cout << "No school created" << std::endl;
+        printC("No school created", Color::RED);
     }
 }
 
 void Government::promptForNewHospital(int sector)
 {
-    // Prompt for new hospital details
-    std::cout << "No current hospital available. Create a new one? (Type Y or N)" << std::endl;
+    printC("No current hospital available. Create a new one? (Type Y or N)", Color::CYAN);
     std::string choice;
     std::cin >> choice;
 
     if (choice == "Y" || choice == "y")
     {
-        int capacity, floors;
         std::string name;
-        std::cout << "Enter the name of the building: ";
+        printC("Enter the name of the building: ", Color::CYAN);
         std::cin >> name;
-        std::cout << "Enter capacity: ";
-        std::cin >> capacity;
-        std::cout << "Enter number of floors: ";
-        std::cin >> floors;
+
+        printC("Enter capacity: ", Color::CYAN);
+        int capacity = safeIntInput(1, 50);
+        
+        printC("Enter number of floors: ", Color::CYAN);
+        int floors = safeIntInput(1, 10);
+
         Building *h = new Hospital(name, capacity * 10, capacity * 20, capacity * 50000, capacity, floors);
         h->build();
         if (h->getBuilt())
@@ -1740,27 +1737,28 @@ void Government::promptForNewHospital(int sector)
     }
     else
     {
-        std::cout << "No hospital created" << std::endl;
+        printC("No hospital created", Color::RED);
     }
 }
 
 void Government::promptForNewGovernmentBuilding(int sector)
 {
-    // Prompt for new government building details
-    std::cout << "No current government building available. Create a new one? (Type Y or N)" << std::endl;
+    printC("No current government building available. Create a new one? (Type Y or N)", Color::CYAN);
     std::string choice;
     std::cin >> choice;
 
     if (choice == "Y" || choice == "y")
     {
-        int capacity, floors;
         std::string name;
-        std::cout << "Enter the name of the building: ";
+        printC("Enter the name of the building: ", Color::CYAN);
         std::cin >> name;
-        std::cout << "Enter capacity: ";
-        std::cin >> capacity;
-        std::cout << "Enter number of floors: ";
-        std::cin >> floors;
+
+        printC("Enter capacity: ", Color::CYAN);
+        int capacity = safeIntInput(1, 50);
+        
+        printC("Enter number of floors: ", Color::CYAN);
+        int floors = safeIntInput(1, 8);
+
         Building *g = new GovernmentBuilding(name, capacity * 8, capacity * 25, capacity * 40000, capacity, floors);
         g->build();
         if (g->getBuilt())
@@ -1777,6 +1775,6 @@ void Government::promptForNewGovernmentBuilding(int sector)
     }
     else
     {
-        std::cout << "No government building created" << std::endl;
+        printC("No government building created", Color::RED);
     }
 }
