@@ -8,24 +8,28 @@
 #include "Buildings.h"
 #include "doctest.h"
 
-TEST_CASE("Testing TaxStrategies") {
-    static bool firstRun = true;  // Control to avoid multiple header prints
+TEST_CASE("Testing TaxStrategies")
+{
+    static bool firstRun = true; // Control to avoid multiple header prints
 
-    TaxSystem* taxSystem = new TaxSystem();
+    TaxSystem *taxSystem = new TaxSystem();
 
-    if (firstRun) {
+    if (firstRun)
+    {
         std::cout << "----------\033[1;32m   Testing  doctest  \033[0m----------\n";
         firstRun = false;
     }
 
-    SUBCASE("Initial Strategy") {
+    SUBCASE("Initial Strategy")
+    {
         std::cout << "TaxSystem initial Strategy: " << taxSystem->currentStrategy() << "\n";
         CHECK(taxSystem->currentStrategy() == "FlatTaxStrategy");
     }
 
-    SUBCASE("Change to ProgressiveTaxStrategy") {
-        TaxStrategy* flatStrat = new FlatTaxStrategy();
-        TaxStrategy* progStrat = new ProgressiveTaxStrategy();
+    SUBCASE("Change to ProgressiveTaxStrategy")
+    {
+        TaxStrategy *flatStrat = new FlatTaxStrategy();
+        TaxStrategy *progStrat = new ProgressiveTaxStrategy();
 
         taxSystem->setTaxStrategy(progStrat);
         std::cout << "TaxSystem current Strategy: " << taxSystem->currentStrategy() << "\n";
@@ -33,9 +37,10 @@ TEST_CASE("Testing TaxStrategies") {
         CHECK(taxSystem->currentStrategy() == "ProgressiveTaxStrategy");
     }
 
-    SUBCASE("Change to ProgressiveTaxStrategy then back to FlatTaxStrategy") {
-        TaxStrategy* flatStrat = new FlatTaxStrategy(); 
-        TaxStrategy* progStrat = new ProgressiveTaxStrategy();
+    SUBCASE("Change to ProgressiveTaxStrategy then back to FlatTaxStrategy")
+    {
+        TaxStrategy *flatStrat = new FlatTaxStrategy();
+        TaxStrategy *progStrat = new ProgressiveTaxStrategy();
 
         taxSystem->setTaxStrategy(progStrat);
         std::cout << "TaxSystem current Strategy: " << taxSystem->currentStrategy() << "\n";
@@ -43,22 +48,17 @@ TEST_CASE("Testing TaxStrategies") {
         taxSystem->setTaxStrategy(flatStrat);
         std::cout << "TaxSystem current Strategy: " << taxSystem->currentStrategy() << "\n";
 
-
         CHECK(taxSystem->currentStrategy() == "FlatTaxStrategy");
     }
 
-    SUBCASE("Test toggleStrategy") {
+    SUBCASE("Test toggleStrategy")
+    {
         taxSystem->toggleStrategy();
         std::cout << "TaxSystem current Strategy: " << taxSystem->currentStrategy() << "\n";
 
         taxSystem->toggleStrategy();
         std::cout << "TaxSystem current Strategy: " << taxSystem->currentStrategy() << "\n";
 
-
         CHECK(taxSystem->currentStrategy() == "FlatTaxStrategy");
     }
-
 }
-
-
-

@@ -2,26 +2,32 @@
 #include <iostream>
 
 // Base Building class
-Building::Building(std::string name, int numRooms, int m_squared, float value, std::string type): name(name), numRooms(numRooms), m_squared(m_squared), value(value), built(false), type(type) {
+Building::Building(std::string name, int numRooms, int m_squared, float value, std::string type) : name(name), numRooms(numRooms), m_squared(m_squared), value(value), built(false), type(type)
+{
     concrete = Concrete::getInstance();
     steel = Steel::getInstance();
     wood = Wood::getInstance();
     budget = Budget::getInstance();
 }
 
-Building::~Building(){
-    if(type != "House" && type != "Mansion" && type != "Apartment"){
-        for(Citizen* c : citizens){
+Building::~Building()
+{
+    if (type != "House" && type != "Mansion" && type != "Apartment")
+    {
+        for (Citizen *c : citizens)
+        {
             delete c;
         }
     }
 }
 
-std::string Building::getName(){
+std::string Building::getName()
+{
     return this->name;
 }
 
-std::string Building::getBuildingType(){
+std::string Building::getBuildingType()
+{
     return this->type;
 }
 
@@ -31,80 +37,90 @@ void Building::renovate()
     {
         value = value + value * 0.1;
     }
-    
 }
 
-void Building::displayCitizens(){
-
+void Building::displayCitizens()
+{
 }
-
 
 /******* RESIDENTAIL CLASS *******/
 Residential::Residential(std::string name, int numRooms, int m_squared, float value, int numBedrooms, int numBathrooms, int capacity, std::string type)
     : Building(name, numRooms, m_squared, value, type), numBedrooms(numBedrooms), numBathrooms(numBathrooms), capacity(capacity) {}
 
-void Residential::addCitizen(Citizen* human){
+void Residential::addCitizen(Citizen *human)
+{
     if (this->getLeftOverCapacity() != 0)
     {
-       citizens.push_back(human);
-    }else{
-        std::cout << "Total capacity reached for " <<  this->getName() << ". Make a new building... "<< "\n";
+        citizens.push_back(human);
     }
- }
+    else
+    {
+        std::cout << "Total capacity reached for " << this->getName() << ". Make a new building... " << "\n";
+    }
+}
 
-void Residential::displayCitizens(){
+void Residential::displayCitizens()
+{
     if (citizens.empty())
     {
-        std::cout << this->getName() << ": has no residents"<< "\n";
-    }else{
+        std::cout << this->getName() << ": has no residents" << "\n";
+    }
+    else
+    {
         std::cout << "Residents in " << this->getName() << ":\n";
-        for (Citizen* person : citizens) {
-            person->displayInfo();  // Each Citizen class has its own displayInfo method
+        for (Citizen *person : citizens)
+        {
+            person->displayInfo(); // Each Citizen class has its own displayInfo method
         }
     }
 }
 
-int Residential::getLeftOverCapacity(){
+int Residential::getLeftOverCapacity()
+{
     return (this->capacity - citizens.size());
 }
 
-int Residential::getCapacity() {
+int Residential::getCapacity()
+{
     return this->capacity;
 }
 
-std::vector<Citizen*> Residential::getCitizens() {
+std::vector<Citizen *> Residential::getCitizens()
+{
     return this->citizens;
 }
 
-
-
 // House class
 House::House(std::string name, int numRooms, int m_squared, float value, int numBedrooms, int numBathrooms, int capacity, int kitchenSize)
-    : Residential(name, numRooms, m_squared, value, numBedrooms, numBathrooms, capacity,"House"), kitchenSize(kitchenSize) {}
+    : Residential(name, numRooms, m_squared, value, numBedrooms, numBathrooms, capacity, "House"), kitchenSize(kitchenSize) {}
 
-void House::build() {
+void House::build()
+{
     int concreteNeeded = m_squared + (numRooms * 20) + ((numBedrooms + numBathrooms) * 50);
     int woodNeeded = m_squared + (numRooms * 20) + ((numBedrooms + numBathrooms) * 50);
-    
-    if (concrete->getKilo() >= concreteNeeded && wood->getKilo() >= woodNeeded && budget->getCash() >= value) {
+
+    if (concrete->getKilo() >= concreteNeeded && wood->getKilo() >= woodNeeded && budget->getCash() >= value)
+    {
         concrete->setKilo(concrete->getKilo() - concreteNeeded);
         wood->setKilo(wood->getKilo() - woodNeeded);
         budget->setCash(budget->getCash() - value);
         built = true;
         std::cout << "House built successfully!" << std::endl;
-    } else {
+    }
+    else
+    {
         built = false;
         std::cout << "Not enough resources to build the house." << std::endl;
     }
 }
 
-House* House::clone()
+House *House::clone()
 {
 
-    //Check if materials are avialable to clone the current house
-    if (this == nullptr) 
+    // Check if materials are avialable to clone the current house
+    if (this == nullptr)
     {
-        std::cout << "No Houses are currently built" << std::endl;    
+        std::cout << "No Houses are currently built" << std::endl;
     }
 
     return new House(
@@ -115,29 +131,32 @@ House* House::clone()
         this->numBedrooms,
         this->numBathrooms,
         this->capacity,
-        this->kitchenSize
-    );
+        this->kitchenSize);
 }
 
 // Apartment class
 Apartment::Apartment(std::string name, int numRooms, int m_squared, float value, int numBedrooms, int numBathrooms, int capacity, int numFloors)
     : Residential(name, numRooms, m_squared, value, numBedrooms, numBathrooms, capacity, "Apartment"), numFloors(numFloors) {}
 
-void Apartment::build() {
+void Apartment::build()
+{
     int baseNeeded = m_squared + (numRooms * 20) + ((numBedrooms + numBathrooms) * 50);
     int concreteNeeded = baseNeeded * numFloors;
     int woodNeeded = baseNeeded * numFloors;
     int steelNeeded = baseNeeded * numFloors;
-    
-    if (concrete->getKilo() >= concreteNeeded && wood->getKilo() >= woodNeeded && 
-        steel->getKilo() >= steelNeeded && budget->getCash() >= value) {
+
+    if (concrete->getKilo() >= concreteNeeded && wood->getKilo() >= woodNeeded &&
+        steel->getKilo() >= steelNeeded && budget->getCash() >= value)
+    {
         concrete->setKilo(concrete->getKilo() - concreteNeeded);
         wood->setKilo(wood->getKilo() - woodNeeded);
         steel->setKilo(steel->getKilo() - steelNeeded);
         budget->setCash(budget->getCash() - value);
         built = true;
         std::cout << "Apartment built successfully!" << std::endl;
-    } else {
+    }
+    else
+    {
         built = false;
         std::cout << "Not enough resources to build the apartment." << std::endl;
     }
@@ -145,9 +164,9 @@ void Apartment::build() {
 
 Apartment *Apartment::clone()
 {
-    if (this == nullptr) 
+    if (this == nullptr)
     {
-        std::cout << "No Apartments are currently built" << std::endl;    
+        std::cout << "No Apartments are currently built" << std::endl;
     }
 
     return new Apartment(
@@ -158,27 +177,28 @@ Apartment *Apartment::clone()
         this->numBedrooms,
         this->numBathrooms,
         this->capacity,
-        this->numFloors
-    );
+        this->numFloors);
 }
-
-
 
 // Mansion class
 Mansion::Mansion(std::string name, int numRooms, int m_squared, float value, int numBedrooms, int numBathrooms, int capacity, bool waterFeature)
     : Residential(name, numRooms, m_squared, value, numBedrooms, numBathrooms, capacity, "Mansion"), waterFeature(waterFeature) {}
 
-void Mansion::build() {
+void Mansion::build()
+{
     int concreteNeeded = m_squared + (numRooms * 20) + ((numBedrooms + numBathrooms) * 50) + (waterFeature ? 100 : 0);
     int woodNeeded = m_squared + (numRooms * 20) + ((numBedrooms + numBathrooms) * 50) + (waterFeature ? 100 : 0);
-    
-    if (concrete->getKilo() >= concreteNeeded && wood->getKilo() >= woodNeeded && budget->getCash() >= value) {
+
+    if (concrete->getKilo() >= concreteNeeded && wood->getKilo() >= woodNeeded && budget->getCash() >= value)
+    {
         concrete->setKilo(concrete->getKilo() - concreteNeeded);
         wood->setKilo(wood->getKilo() - woodNeeded);
         budget->setCash(budget->getCash() - value);
         built = true;
         std::cout << "Mansion built successfully!" << std::endl;
-    } else {
+    }
+    else
+    {
         built = false;
         std::cout << "Not enough resources to build the mansion." << std::endl;
     }
@@ -186,10 +206,10 @@ void Mansion::build() {
 
 Mansion *Mansion::clone()
 {
-    
-    if (this == nullptr) 
+
+    if (this == nullptr)
     {
-        std::cout << "No Mansions are currently built" << std::endl;    
+        std::cout << "No Mansions are currently built" << std::endl;
     }
 
     return new Mansion(
@@ -200,63 +220,69 @@ Mansion *Mansion::clone()
         this->numBedrooms,
         this->numBathrooms,
         this->capacity,
-        this->waterFeature
-    );
+        this->waterFeature);
 }
-
 
 /******* COMMERCIAL CLASS *******/
 Commercial::Commercial(std::string name, int numRooms, int m_squared, float value, int capacity, int numFloors, std::string type)
-    : Building(name, numRooms, m_squared, value,type), capacity(capacity), numFloors(numFloors) {}
+    : Building(name, numRooms, m_squared, value, type), capacity(capacity), numFloors(numFloors) {}
 
-void Commercial::addCitizen(Citizen* human){
+void Commercial::addCitizen(Citizen *human)
+{
     if (this->getLeftOverCapacity() != 0)
     {
-       citizens.push_back(human);
-    }else{
-        std::cout << "No more employees needed for " <<  this->getName() << ". Make a new building... "<< "\n";
+        citizens.push_back(human);
     }
- }
+    else
+    {
+        std::cout << "No more employees needed for " << this->getName() << ". Make a new building... " << "\n";
+    }
+}
 
-void Commercial::displayCitizens(){
+void Commercial::displayCitizens()
+{
     if (citizens.empty())
     {
-        std::cout << this->getName() << ": has no employees"<< "\n";
-    }else{
+        std::cout << this->getName() << ": has no employees" << "\n";
+    }
+    else
+    {
         std::cout << "Employees in " << this->getName() << ":\n";
-        for (Citizen* person : citizens) {
-            person->displayInfo();  // Each Citizen class has its own displayInfo method
+        for (Citizen *person : citizens)
+        {
+            person->displayInfo(); // Each Citizen class has its own displayInfo method
         }
     }
-    
-    
 }
 
-int Commercial::getLeftOverCapacity(){
+int Commercial::getLeftOverCapacity()
+{
     return (this->capacity - citizens.size());
-    
 }
-
 
 // Shop class
 Shop::Shop(std::string name, int numRooms, int m_squared, float value, int capacity, int numFloors, int storageRooms)
     : Commercial(name, numRooms, m_squared, value, capacity, numFloors, "Shop"), storageRooms(storageRooms) {}
 
-void Shop::build() {
+void Shop::build()
+{
     int baseNeeded = m_squared + (numRooms * 20) + (capacity * 20) + (storageRooms * 20);
     int concreteNeeded = baseNeeded * numFloors;
     int woodNeeded = baseNeeded * numFloors;
     int steelNeeded = baseNeeded * numFloors;
-    
-    if (concrete->getKilo() >= concreteNeeded && wood->getKilo() >= woodNeeded && 
-        steel->getKilo() >= steelNeeded && budget->getCash() >= value) {
+
+    if (concrete->getKilo() >= concreteNeeded && wood->getKilo() >= woodNeeded &&
+        steel->getKilo() >= steelNeeded && budget->getCash() >= value)
+    {
         concrete->setKilo(concrete->getKilo() - concreteNeeded);
         wood->setKilo(wood->getKilo() - woodNeeded);
         steel->setKilo(steel->getKilo() - steelNeeded);
         budget->setCash(budget->getCash() - value);
         built = true;
         std::cout << "Shop built successfully!" << std::endl;
-    } else {
+    }
+    else
+    {
         built = false;
         std::cout << "Not enough resources to build the shop." << std::endl;
     }
@@ -264,9 +290,9 @@ void Shop::build() {
 
 Shop *Shop::clone()
 {
-    if (this == nullptr) 
+    if (this == nullptr)
     {
-        std::cout << "No Shops are currently built" << std::endl;    
+        std::cout << "No Shops are currently built" << std::endl;
     }
 
     return new Shop(
@@ -276,29 +302,32 @@ Shop *Shop::clone()
         this->value,
         this->capacity,
         this->numFloors,
-        this->storageRooms
-    );
+        this->storageRooms);
 }
 
 // Office class
 Office::Office(std::string name, int numRooms, int m_squared, float value, int capacity, int numFloors, int offices)
     : Commercial(name, numRooms, m_squared, value, capacity, numFloors, "Office"), offices(offices) {}
 
-void Office::build() {
+void Office::build()
+{
     int baseNeeded = m_squared + (numRooms * 20) + (capacity * 20) + (offices * 50);
     int concreteNeeded = baseNeeded * numFloors;
     int woodNeeded = baseNeeded * numFloors;
     int steelNeeded = baseNeeded * numFloors;
-    
-    if (concrete->getKilo() >= concreteNeeded && wood->getKilo() >= woodNeeded && 
-        steel->getKilo() >= steelNeeded && budget->getCash() >= value) {
+
+    if (concrete->getKilo() >= concreteNeeded && wood->getKilo() >= woodNeeded &&
+        steel->getKilo() >= steelNeeded && budget->getCash() >= value)
+    {
         concrete->setKilo(concrete->getKilo() - concreteNeeded);
         wood->setKilo(wood->getKilo() - woodNeeded);
         steel->setKilo(steel->getKilo() - steelNeeded);
         budget->setCash(budget->getCash() - value);
         built = true;
         std::cout << "Office built successfully!" << std::endl;
-    } else {
+    }
+    else
+    {
         built = false;
         std::cout << "Not enough resources to build the office." << std::endl;
     }
@@ -306,9 +335,9 @@ void Office::build() {
 
 Office *Office::clone()
 {
-    if (this == nullptr) 
+    if (this == nullptr)
     {
-        std::cout << "No Offices are currently built" << std::endl;    
+        std::cout << "No Offices are currently built" << std::endl;
     }
 
     return new Office(
@@ -318,29 +347,32 @@ Office *Office::clone()
         this->value,
         this->capacity,
         this->numFloors,
-        this->offices
-    );
+        this->offices);
 }
 
 // Mall class
 Mall::Mall(std::string name, int numRooms, int m_squared, float value, int capacity, int numFloors, int shops)
     : Commercial(name, numRooms, m_squared, value, capacity, numFloors, "Mall"), shops(shops) {}
 
-void Mall::build() {
+void Mall::build()
+{
     int baseNeeded = m_squared + (numRooms * 20) + (capacity * 20) + (shops * 250);
     int concreteNeeded = baseNeeded * numFloors;
     int woodNeeded = baseNeeded * numFloors;
     int steelNeeded = baseNeeded * numFloors;
-    
-    if (concrete->getKilo() >= concreteNeeded && wood->getKilo() >= woodNeeded && 
-        steel->getKilo() >= steelNeeded && budget->getCash() >= value) {
+
+    if (concrete->getKilo() >= concreteNeeded && wood->getKilo() >= woodNeeded &&
+        steel->getKilo() >= steelNeeded && budget->getCash() >= value)
+    {
         concrete->setKilo(concrete->getKilo() - concreteNeeded);
         wood->setKilo(wood->getKilo() - woodNeeded);
         steel->setKilo(steel->getKilo() - steelNeeded);
         budget->setCash(budget->getCash() - value);
         built = true;
         std::cout << "Mall built successfully!" << std::endl;
-    } else {
+    }
+    else
+    {
         built = false;
         std::cout << "Not enough resources to build the mall." << std::endl;
     }
@@ -348,9 +380,9 @@ void Mall::build() {
 
 Mall *Mall::clone()
 {
-    if (this == nullptr) 
+    if (this == nullptr)
     {
-        std::cout << "No Malls are currently built" << std::endl;    
+        std::cout << "No Malls are currently built" << std::endl;
     }
 
     return new Mall(
@@ -360,59 +392,65 @@ Mall *Mall::clone()
         this->value,
         this->capacity,
         this->numFloors,
-        this->shops
-    );
+        this->shops);
 }
-
-
-
-
 
 /******* INDUSTRIAL CLASS *******/
 Industrial::Industrial(std::string name, int numRooms, int m_squared, float value, int carbonFootprint, int capacity, std::string type)
     : Building(name, numRooms, m_squared, value, type), carbonFootprint(carbonFootprint), capacity(capacity) {}
 
-void Industrial::addCitizen(Citizen* human){
+void Industrial::addCitizen(Citizen *human)
+{
     if (this->getLeftOverCapacity() != 0)
     {
-       citizens.push_back(human);
-    }else{
-        std::cout << "No more employees needed for " <<  this->getName() << ". Make a new building... "<< "\n";
+        citizens.push_back(human);
     }
- }
+    else
+    {
+        std::cout << "No more employees needed for " << this->getName() << ". Make a new building... " << "\n";
+    }
+}
 
-void Industrial::displayCitizens(){
+void Industrial::displayCitizens()
+{
     if (citizens.empty())
     {
-        std::cout << this->getName() << ": has no employees"<< "\n";
-    }else{
+        std::cout << this->getName() << ": has no employees" << "\n";
+    }
+    else
+    {
         std::cout << "Employees in " << this->getName() << ":\n";
-        for (Citizen* person : citizens) {
-            person->displayInfo();  
+        for (Citizen *person : citizens)
+        {
+            person->displayInfo();
         }
     }
 }
 
-int  Industrial::getLeftOverCapacity(){
+int Industrial::getLeftOverCapacity()
+{
     return (this->capacity - citizens.size());
 }
-
 
 // Factory class
 Factory::Factory(std::string name, int numRooms, int m_squared, float value, int carbonFootprint, int capacity)
     : Industrial(name, numRooms, m_squared, value, carbonFootprint, capacity, "Factory") {}
 
-void Factory::build() {
+void Factory::build()
+{
     int steelNeeded = m_squared + (numRooms * 20) + (carbonFootprint * 50);
     int concreteNeeded = m_squared + (numRooms * 20) + (carbonFootprint * 50);
-    
-    if (steel->getKilo() >= steelNeeded && concrete->getKilo() >= concreteNeeded && budget->getCash() >= value) {
+
+    if (steel->getKilo() >= steelNeeded && concrete->getKilo() >= concreteNeeded && budget->getCash() >= value)
+    {
         steel->setKilo(steel->getKilo() - steelNeeded);
         concrete->setKilo(concrete->getKilo() - concreteNeeded);
         budget->setCash(budget->getCash() - value);
         built = true;
         std::cout << "Factory built successfully!" << std::endl;
-    } else {
+    }
+    else
+    {
         built = false;
         std::cout << "Not enough resources to build the factory." << std::endl;
     }
@@ -420,9 +458,9 @@ void Factory::build() {
 
 Factory *Factory::clone()
 {
-    if (this == nullptr) 
+    if (this == nullptr)
     {
-        std::cout << "No Factories are currently built" << std::endl;    
+        std::cout << "No Factories are currently built" << std::endl;
     }
 
     return new Factory(
@@ -431,25 +469,28 @@ Factory *Factory::clone()
         this->m_squared,
         this->value,
         this->carbonFootprint,
-        this->capacity
-    );
+        this->capacity);
 }
 
 // Warehouse class
 Warehouse::Warehouse(std::string name, int numRooms, int m_squared, float value, int carbonFootprint, int capacity)
     : Industrial(name, numRooms, m_squared, value, carbonFootprint, capacity, "Warehouse") {}
 
-void Warehouse::build() {
+void Warehouse::build()
+{
     int steelNeeded = m_squared + (numRooms * 20) + (carbonFootprint * 50);
     int concreteNeeded = m_squared + (numRooms * 20) + (carbonFootprint * 50);
-    
-    if (steel->getKilo() >= steelNeeded && concrete->getKilo() >= concreteNeeded && budget->getCash() >= value) {
+
+    if (steel->getKilo() >= steelNeeded && concrete->getKilo() >= concreteNeeded && budget->getCash() >= value)
+    {
         steel->setKilo(steel->getKilo() - steelNeeded);
         concrete->setKilo(concrete->getKilo() - concreteNeeded);
         budget->setCash(budget->getCash() - value);
         built = true;
         std::cout << "Warehouse built successfully!" << std::endl;
-    } else {
+    }
+    else
+    {
         built = false;
         std::cout << "Not enough resources to build the warehouse." << std::endl;
     }
@@ -457,9 +498,9 @@ void Warehouse::build() {
 
 Warehouse *Warehouse::clone()
 {
-    if (this == nullptr) 
+    if (this == nullptr)
     {
-        std::cout << "No Warehouses are currently built" << std::endl;    
+        std::cout << "No Warehouses are currently built" << std::endl;
     }
 
     return new Warehouse(
@@ -468,25 +509,28 @@ Warehouse *Warehouse::clone()
         this->m_squared,
         this->value,
         this->carbonFootprint,
-        this->capacity
-    );
+        this->capacity);
 }
 
 // Plant class
 Plant::Plant(std::string name, int numRooms, int m_squared, float value, int carbonFootprint, int capacity)
     : Industrial(name, numRooms, m_squared, value, carbonFootprint, capacity, "Plant") {}
 
-void Plant::build() {
+void Plant::build()
+{
     int steelNeeded = m_squared + (numRooms * 20) + (carbonFootprint * 50);
     int concreteNeeded = m_squared + (numRooms * 20) + (carbonFootprint * 50);
-    
-    if (steel->getKilo() >= steelNeeded && concrete->getKilo() >= concreteNeeded && budget->getCash() >= value) {
+
+    if (steel->getKilo() >= steelNeeded && concrete->getKilo() >= concreteNeeded && budget->getCash() >= value)
+    {
         steel->setKilo(steel->getKilo() - steelNeeded);
         concrete->setKilo(concrete->getKilo() - concreteNeeded);
         budget->setCash(budget->getCash() - value);
         built = true;
         std::cout << "Plant built successfully!" << std::endl;
-    } else {
+    }
+    else
+    {
         built = false;
         std::cout << "Not enough resources to build the plant." << std::endl;
     }
@@ -494,9 +538,9 @@ void Plant::build() {
 
 Plant *Plant::clone()
 {
-    if (this == nullptr) 
+    if (this == nullptr)
     {
-        std::cout << "No Warehouses are currently built" << std::endl;    
+        std::cout << "No Warehouses are currently built" << std::endl;
     }
 
     return new Plant(
@@ -505,70 +549,81 @@ Plant *Plant::clone()
         this->m_squared,
         this->value,
         this->carbonFootprint,
-        this->capacity
-    );
+        this->capacity);
 }
 
 /******* INSTATUTIONAL CLASS *******/
 Instatutional::Instatutional(std::string name, int numRooms, int m_squared, float value, int capacity, std::string type)
- : Building(name, numRooms, m_squared, value, type), capacity(capacity) {}
+    : Building(name, numRooms, m_squared, value, type), capacity(capacity) {}
 
-void Instatutional::addCitizen(Citizen* human){
-   if (this->getLeftOverCapacity() != 0)
+void Instatutional::addCitizen(Citizen *human)
+{
+    if (this->getLeftOverCapacity() != 0)
     {
-       citizens.push_back(human);
-    }else{
-        std::cout << "No more employees needed for " <<  this->getName() << ". Make a new building... "<< "\n";
+        citizens.push_back(human);
+    }
+    else
+    {
+        std::cout << "No more employees needed for " << this->getName() << ". Make a new building... " << "\n";
     }
 }
 
-void Instatutional::displayCitizens(){
-     if (citizens.empty())
+void Instatutional::displayCitizens()
+{
+    if (citizens.empty())
     {
-        std::cout << this->getName() << ": has no employees"<< "\n";
-    }else{
+        std::cout << this->getName() << ": has no employees" << "\n";
+    }
+    else
+    {
         std::cout << "Employees in " << this->getName() << ":\n";
-        for (Citizen* person : citizens) {
-            person->displayInfo();  
+        for (Citizen *person : citizens)
+        {
+            person->displayInfo();
         }
     }
 }
 
-int  Instatutional::getLeftOverCapacity(){
+int Instatutional::getLeftOverCapacity()
+{
     return (this->capacity - citizens.size());
 }
 
-
-//School
+// School
 School::School(std::string name, int numRooms, int m_squared, float value, int capacity, int numfloors)
-    : Instatutional(name, numRooms, m_squared, value, capacity,"School"), numfloors(numfloors) {}
+    : Instatutional(name, numRooms, m_squared, value, capacity, "School"), numfloors(numfloors) {}
 
-void School::build(){
+void School::build()
+{
     int baseNeeded = m_squared + (numRooms * 150) + (numfloors * 200);
     int concreteNeeded = baseNeeded * numfloors;
     int woodNeeded = baseNeeded * numfloors;
     int steelNeeded = baseNeeded * numfloors;
 
     if (concrete->getKilo() >= concreteNeeded && wood->getKilo() >= woodNeeded &&
-        steel->getKilo() >= steelNeeded && budget->getCash() >= value) {
-        
+        steel->getKilo() >= steelNeeded && budget->getCash() >= value)
+    {
+
         concrete->setKilo(concrete->getKilo() - concreteNeeded);
         wood->setKilo(wood->getKilo() - woodNeeded);
         steel->setKilo(steel->getKilo() - steelNeeded);
         budget->setCash(budget->getCash() - value);
         built = true;
         std::cout << "School built successfully!" << std::endl;
-    } else {
+    }
+    else
+    {
         built = false;
         std::cout << "Not enough resources to build the school." << std::endl;
     }
 }
 
-School* School::clone(){
-    //Check if materials are avialable to clone the current house
-    if (this == nullptr) 
+School *School::clone()
+{
+    // Check if materials are avialable to clone the current house
+    if (this == nullptr)
     {
-        std::cout << "No School was currently built" << std::endl;    
+        std::cout << "No School was currently built" << std::endl;
     }
 
     return new School(
@@ -577,41 +632,44 @@ School* School::clone(){
         this->m_squared,
         this->value,
         this->capacity,
-        this->numfloors
-    );
+        this->numfloors);
 }
 
-
-//Hospital
+// Hospital
 Hospital::Hospital(std::string name, int numRooms, int m_squared, float value, int capacity, int numfloors)
-    : Instatutional(name, numRooms, m_squared, value, capacity,"Hospital"), numfloors(numfloors) {}
+    : Instatutional(name, numRooms, m_squared, value, capacity, "Hospital"), numfloors(numfloors) {}
 
-void Hospital::build(){
+void Hospital::build()
+{
     int baseNeeded = m_squared + (numRooms * 150) + (numfloors * 200);
     int concreteNeeded = baseNeeded * numfloors;
     int woodNeeded = baseNeeded * numfloors;
     int steelNeeded = baseNeeded * numfloors;
 
     if (concrete->getKilo() >= concreteNeeded && wood->getKilo() >= woodNeeded &&
-        steel->getKilo() >= steelNeeded && budget->getCash() >= value) {
-        
+        steel->getKilo() >= steelNeeded && budget->getCash() >= value)
+    {
+
         concrete->setKilo(concrete->getKilo() - concreteNeeded);
         wood->setKilo(wood->getKilo() - woodNeeded);
         steel->setKilo(steel->getKilo() - steelNeeded);
         budget->setCash(budget->getCash() - value);
         built = true;
         std::cout << "Hospital built successfully!" << std::endl;
-    } else {
+    }
+    else
+    {
         built = false;
         std::cout << "Not enough resources to build the hospital." << std::endl;
     }
 }
 
-Hospital* Hospital::clone(){
-    //Check if materials are avialable to clone the current house
-    if (this == nullptr) 
+Hospital *Hospital::clone()
+{
+    // Check if materials are avialable to clone the current house
+    if (this == nullptr)
     {
-        std::cout << "No hospital was currently built" << std::endl;    
+        std::cout << "No hospital was currently built" << std::endl;
     }
 
     return new Hospital(
@@ -620,41 +678,44 @@ Hospital* Hospital::clone(){
         this->m_squared,
         this->value,
         this->capacity,
-        this->numfloors
-    );
+        this->numfloors);
 }
 
-
-//GovernmentBuilding
+// GovernmentBuilding
 GovernmentBuilding::GovernmentBuilding(std::string name, int numRooms, int m_squared, float value, int capacity, int numfloors)
-    : Instatutional(name, numRooms, m_squared, value, capacity,"GovernmentBuilding"), numfloors(numfloors) {}
+    : Instatutional(name, numRooms, m_squared, value, capacity, "GovernmentBuilding"), numfloors(numfloors) {}
 
-void GovernmentBuilding::build(){
+void GovernmentBuilding::build()
+{
     int baseNeeded = m_squared + (numRooms * 150) + (numfloors * 200);
     int concreteNeeded = baseNeeded * numfloors;
     int woodNeeded = baseNeeded * numfloors;
     int steelNeeded = baseNeeded * numfloors;
 
     if (concrete->getKilo() >= concreteNeeded && wood->getKilo() >= woodNeeded &&
-        steel->getKilo() >= steelNeeded && budget->getCash() >= value) {
-        
+        steel->getKilo() >= steelNeeded && budget->getCash() >= value)
+    {
+
         concrete->setKilo(concrete->getKilo() - concreteNeeded);
         wood->setKilo(wood->getKilo() - woodNeeded);
         steel->setKilo(steel->getKilo() - steelNeeded);
         budget->setCash(budget->getCash() - value);
         built = true;
         std::cout << "Goverment building built successfully!" << std::endl;
-    } else {
+    }
+    else
+    {
         built = false;
         std::cout << "Not enough resources to build the Goverment building." << std::endl;
     }
 }
 
-GovernmentBuilding* GovernmentBuilding::clone(){
-    //Check if materials are avialable to clone the current house
-    if (this == nullptr) 
+GovernmentBuilding *GovernmentBuilding::clone()
+{
+    // Check if materials are avialable to clone the current house
+    if (this == nullptr)
     {
-        std::cout << "No hospital was currently built" << std::endl;    
+        std::cout << "No hospital was currently built" << std::endl;
     }
 
     return new GovernmentBuilding(
@@ -663,6 +724,5 @@ GovernmentBuilding* GovernmentBuilding::clone(){
         this->m_squared,
         this->value,
         this->capacity,
-        this->numfloors
-    );
+        this->numfloors);
 }

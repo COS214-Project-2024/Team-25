@@ -47,7 +47,6 @@ public:
     static Water* getInstance();
     Water(const Water&) = delete;
     void operator=(const Water&) = delete;
-
     int getLiters() const { return litres; }
     void setliters(int value) { litres = value; }
 };

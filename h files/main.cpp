@@ -10,7 +10,8 @@
 // #include "TaxSystem.h"
 // #include "Buildings.h"
 
-enum class Color {
+enum class Color
+{
     RED,
     GREEN,
     YELLOW,
@@ -21,39 +22,63 @@ enum class Color {
     RESET
 };
 
-void printC(const std::string& text, Color color) {
+void printC(const std::string &text, Color color)
+{
     // ANSI escape codes for text colors
-    switch (color) {
-        case Color::RED:     std::cout << "\033[31m"; break;
-        case Color::GREEN:   std::cout << "\033[32m"; break;
-        case Color::YELLOW:  std::cout << "\033[33m"; break;
-        case Color::BLUE:    std::cout << "\033[34m"; break;
-        case Color::MAGENTA: std::cout << "\033[35m"; break;
-        case Color::CYAN:    std::cout << "\033[36m"; break;
-        case Color::WHITE:   std::cout << "\033[37m"; break;
-        case Color::RESET:   std::cout << "\033[0m";  break;
+    switch (color)
+    {
+    case Color::RED:
+        std::cout << "\033[31m";
+        break;
+    case Color::GREEN:
+        std::cout << "\033[32m";
+        break;
+    case Color::YELLOW:
+        std::cout << "\033[33m";
+        break;
+    case Color::BLUE:
+        std::cout << "\033[34m";
+        break;
+    case Color::MAGENTA:
+        std::cout << "\033[35m";
+        break;
+    case Color::CYAN:
+        std::cout << "\033[36m";
+        break;
+    case Color::WHITE:
+        std::cout << "\033[37m";
+        break;
+    case Color::RESET:
+        std::cout << "\033[0m";
+        break;
     }
     std::cout << text;
     std::cout << "\033[0m\n";
 }
 
-bool validateIntInput(int value, int lowerBound, int upperBound) {
+bool validateIntInput(int value, int lowerBound, int upperBound)
+{
     return (value >= lowerBound && value <= upperBound);
 }
 
-int safeIntInput(int lowerBound, int upperBound) {
+int safeIntInput(int lowerBound, int upperBound)
+{
     int input;
-    while (true) {
+    while (true)
+    {
         printC("Enter an integer between " + std::to_string(lowerBound) + " and " + std::to_string(upperBound) + ": ", Color::CYAN);
-        
-        if (std::cin >> input) {
-            if (validateIntInput(input, lowerBound, upperBound)) {
+
+        if (std::cin >> input)
+        {
+            if (validateIntInput(input, lowerBound, upperBound))
+            {
                 printC("Valid input received.", Color::GREEN);
                 return input;
             }
             printC("Input out of range. Try again.", Color::RED);
         }
-        else {
+        else
+        {
             // Clear error flags and ignore invalid input
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -62,22 +87,25 @@ int safeIntInput(int lowerBound, int upperBound) {
     }
 }
 
-void gameLoop(){
-    Government* government = new Government();
+void gameLoop()
+{
+    Government *government = new Government();
     bool game = true;
     int actionCount = 0;
-    
+
     printC("Select which difficulty to play on:", Color::CYAN);
     printC("    1. Easy", Color::GREEN);
     printC("    2. Medium", Color::YELLOW);
     printC("    3. Hard", Color::RED);
-    int difficulty = safeIntInput(1,3);
+    int difficulty = safeIntInput(1, 3);
 
     government->setDifficulty(difficulty);
-    government->printresources();
     government->printUtilitiesDetails();
+    government->printresources();
+    government->printSec();
 
-    while(game){
+    while (game)
+    {
         // Check for natural disaster (1/6 chance)
         if (actionCount != 0 && (rand() % 6) == 0)
         {
@@ -103,59 +131,61 @@ void gameLoop(){
 
         // Perform selected action
         int numCitizen = 0;
-        switch(action) {
-            case 1: 
-                printC("Creating a building...", Color::GREEN);
-                government->createBuilding(); 
-                government->printSec();
-                break;
-            case 2: 
-                printC("Creating a utility...", Color::GREEN);
-                government->createUtility(); 
-                government->printUtilitiesDetails();
-                break;
-            case 3: 
-                printC("Upgrading transport...", Color::GREEN);
-                government->upgradeTransport(); 
-                government->printSec();
-                break;
-            case 4: 
-                printC("Cleaning city and distributing water...", Color::GREEN);
-                government->cleanCity();
-                std::cout << government->avgSatisfaction() << std::endl;
-                break;
-            case 5: 
-                printC("Increasing materials...", Color::GREEN);
-                government->increaseMaterials(); 
-                government->printresources();
-                break;
-            case 6: 
-                printC("Changing tax strategy...", Color::GREEN);
-                government->changeTaxStartegy(); 
-                break;
-            case 7: 
-                printC("Repairing utilities...", Color::GREEN);
-                government->repairUtilities(); 
-                government->printUtilitiesDetails();
-                break;
-            case 8: 
-                printC("Creating new citizens...", Color::GREEN);
-                printC("Enter how many citizens you would like to create: ", Color::CYAN);
-                printC("NOTE! All the citizens you create now will be added to the same sector, and will have the same job. ", Color::RED);
-                numCitizen = safeIntInput(1,10);
-                government->createCitizen(numCitizen);
-                government->printSec(); 
-                break;
-            case 9:
-                game = false;
-                break;
+        switch (action)
+        {
+        case 1:
+            printC("Creating a building...", Color::GREEN);
+            government->createBuilding();
+            government->printSec();
+            break;
+        case 2:
+            printC("Creating a utility...", Color::GREEN);
+            government->createUtility();
+            government->printUtilitiesDetails();
+            break;
+        case 3:
+            printC("Upgrading transport...", Color::GREEN);
+            government->upgradeTransport();
+            government->printSec();
+            break;
+        case 4:
+            printC("Cleaning city and distributing water...", Color::GREEN);
+            government->cleanCity();
+            std::cout << government->avgSatisfaction() << std::endl;
+            break;
+        case 5:
+            printC("Increasing materials...", Color::GREEN);
+            government->increaseMaterials();
+            government->printresources();
+            break;
+        case 6:
+            printC("Changing tax strategy...", Color::GREEN);
+            government->changeTaxStartegy();
+            break;
+        case 7:
+            printC("Repairing utilities...", Color::GREEN);
+            government->repairUtilities();
+            government->printUtilitiesDetails();
+            break;
+        case 8:
+            printC("Creating new citizens...", Color::GREEN);
+            printC("Enter how many citizens you would like to create: ", Color::CYAN);
+            printC("NOTE! All the citizens you create now will be added to the same sector, and will have the same job. ", Color::RED);
+            numCitizen = safeIntInput(1, 10);
+            government->createCitizen(numCitizen);
+            government->printSec();
+            break;
+        case 9:
+            game = false;
+            break;
         }
 
         // Increment action count
         actionCount++;
 
         // Check if a year (8 actions) has passed
-        if (actionCount >= 8) {
+        if (actionCount >= 8)
+        {
             // Collect taxes at the end of the year
             printC("Collecting annual taxes...", Color::YELLOW);
             government->taxCitizens();
@@ -167,12 +197,11 @@ void gameLoop(){
             printC("A year has passed!", Color::CYAN);
         }
 
-        // Optional: Add game end condition 
+        // Optional: Add game end condition
         // For example, check if government is still viable
         // if (government->isGameOver()) {
         //     game = false;
         // }
-        
     }
 
     delete government;
@@ -195,8 +224,6 @@ int main(int argc, char const *argv[])
 // #include "CityGrowth.h"
 // #include "TaxSystem.h"
 // #include "Buildings.h"
-
-
 
 // void testCitizenFactories() {
 //     // Creating factories for each type of worker
@@ -235,12 +262,11 @@ int main(int argc, char const *argv[])
 //     delete industrialWorker2;
 // }
 
-
 // int main(int argc, char const *argv[])
 // {
 //     testCitizenFactories();
 //     std::cout << "\n\n";
-    
+
 //      Energy* energy = Energy::getInstance();
 //      Water* water = Water::getInstance();
 //      Concrete* concrete = Concrete::getInstance();
@@ -253,9 +279,7 @@ int main(int argc, char const *argv[])
 
 //      Utility* powerPlant = new FunctionalPowerPlant(HYDRO);
 //     //  powerPlant = powerPlant->mulfunction();
-//     // commented out because of error 
-
-
+//     // commented out because of error
 
 //     /* --------------------------- Testing CityGrowth --------------------------- */
 //     std::cout << "\n\n";
@@ -283,7 +307,7 @@ int main(int argc, char const *argv[])
 //         CommercialWorker* commercialWorker = new CommercialWorker();
 //         // make sure the new houses only go into the valid sector positions
 //         newHouse->addCitizen(commercialWorker);
-        
+
 //         citygrowth->addBuilding(newHouse,i % citygrowth->getTotalSectorCount());
 //     }
 //     Apartment* newApartment = new Apartment("0", 1, 500, 100000, 1, 1, 20, 2);
