@@ -2,6 +2,10 @@
 // #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 // #ifndef TESTING
 #include <iostream>
+#include <cstdlib>
+#include <fstream>
+#include <iomanip>
+#include <sstream>
 #include "Government.h"
 
 // #include "Utilities.h"
@@ -62,10 +66,37 @@ int safeIntInput(int lowerBound, int upperBound) {
     }
 }
 
+void openNewTerminal() {
+    // Use this command to open a cmd terminal
+    // const char* command = "cmd.exe /c start cmd.exe /k \"terminal_script.bat\"";
+
+    // Use this command to open a wsl bash terminal
+    const char* command = "cmd.exe /c start wsl.exe bash -c \"bash terminal_script.sh; exec bash\"";
+
+    system(command);
+}
+
+void sendMessageToTerminal(const std::string& message) {
+    std::string command = "echo " + message + " > COM1"; // Use COM ports to redirect output
+    system(command.c_str());
+}
+
+void writeMessageToFile(const std::string& message) {
+    // std::ofstream file("temp_messages.txt", std::ios::app); // Open in append mode
+    std::ofstream file("temp_messages.txt", std::ios::trunc); // Open in truncation mode
+    if (file.is_open()) {
+        file << message << std::endl; // Write message to file
+        file.close();
+    } else {
+        std::cerr << "Unable to open file." << std::endl;
+    }
+}
+
 void gameLoop(){
     Government* government = new Government();
     bool game = true;
     int actionCount = 0;
+    std::ostringstream message;
     
     printC("Select which difficulty to play on:", Color::CYAN);
     printC("    1. Easy", Color::GREEN);
@@ -133,6 +164,16 @@ void gameLoop(){
         // Increment action count
         actionCount++;
 
+        message.str("");
+        message.clear();
+        message << "---------\n";
+        message << "| Day " + to_string(actionCount) << " |\n";
+        message << "---------\n";
+
+        message << "\n\n (imagine City stats being here)";
+        writeMessageToFile(message.str());
+        // sendMessageToTerminal(message.str());
+
         // Check if a year (8 actions) has passed
         if (actionCount >= 8) {
             // Collect taxes at the end of the year
@@ -159,8 +200,25 @@ void gameLoop(){
 
 int main(int argc, char const *argv[])
 {
+    // gameLoop();
+    // return 0;
+
+    std::ostringstream message;
+
+    openNewTerminal();
+    writeMessageToFile(" ");  // Write message to temp file
+
+    message << "---------\n";
+    message << "| Day 0" << " |\n";
+    message << "---------\n";
+
+    writeMessageToFile(message.str());  // Write message to temp file
+    // sendMessageToTerminal(message.str());
+
     gameLoop();
+
     return 0;
+
 }
 // #endif
 

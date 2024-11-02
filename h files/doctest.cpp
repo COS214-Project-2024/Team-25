@@ -60,5 +60,70 @@ TEST_CASE("Testing TaxStrategies") {
 
 }
 
+TEST_CASE("Testing CityGrowth") {
+        /* --------------------------- Testing CityGrowth --------------------------- */
+    std::cout << "\n\n";
+
+    CityGrowth* citygrowth = new CityGrowth();
+
+    std::cout << citygrowth->printSectors();
+
+    // CitySector* citySector0 = new CitySector();
+    // citygrowth->addSector(citySector0);
+    // CitySector* citySector1 = new CitySector();
+    // citygrowth->addSector(citySector1);
+
+    for (int i = 0; i < 5; i++) {
+        CitySector* newSector = new CitySector();
+        citygrowth->addSector(newSector);
+    }
+
+    std::cout << citygrowth->printSectors();
+
+    for (int i = 0; i < 18; i++) {
+        // House(std::string name, int numRooms, int m_squared, float value,
+        // int numBedrooms, int numBathrooms, int kitchenSize)
+        House* newHouse = new House("0", 1, 500, 100000, 1, 1, 10, 2);
+        CommercialWorker* commercialWorker = new CommercialWorker();
+        // make sure the new houses only go into the valid sector positions
+        newHouse->addCitizen(commercialWorker);
+        
+        citygrowth->addBuilding(newHouse,i % citygrowth->getTotalSectorCount());
+    }
+    Apartment* newApartment = new Apartment("0", 1, 500, 100000, 1, 1, 20, 2);
+    citygrowth->addBuilding(newApartment, 2);
+
+    std::cout << citygrowth->printSectors();
+
+    // House(std::string name, int numRooms, int m_squared, float value, int
+    // numBedrooms, int numBathrooms, int kitchenSize) House* house0 = new
+    // House("0", 1, 500, 100000, 1, 1, 20); citygrowth->addBuilding(house0,
+    // 0);
+
+    /* ------------------------------ Testing Taxes ----------------------------- */
+    TaxStrategy* flatStrat = new FlatTaxStrategy();
+    TaxStrategy* progStrat = new ProgressiveTaxStrategy();
+    TaxSystem* taxSystem = new TaxSystem();
+
+    std::cout << "Using FlatTaxStrategy:\n";
+    // taxSystem->setTaxStrategy(flatStrat);
+    taxSystem->collectTax(citygrowth);
+
+    std::cout <<"\n";
+    taxSystem->toggleStrategy();
+    taxSystem->toggleStrategy();
+    std::cout <<"\n";
+
+    std::cout << "Using ProgressiveTaxStrategy:\n";
+    taxSystem->setTaxStrategy(progStrat);
+    // taxSystem->toggleStrategy();
+    taxSystem->collectTax(citygrowth);
+
+    std::cout << "\n";
+    std::cout << "Total collected taxes: " << taxSystem->getCollectedTaxes() << "\n";
+    std::cout << "\n";
+    std::cout << "Total collected taxes: " << taxSystem->getCollectedTaxes() << "\n";
+}
+
 
 

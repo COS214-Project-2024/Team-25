@@ -46,7 +46,7 @@ test: $(test)
 # Rule to clean up generated files
 clean:
 	rm -f *.o *.gcda *.gcno *.gcov *.gcov.json *.gcov.json.gz
-	rm -f debug $(main) $(test) coverage.info
+	rm -f debug $(main) $(test) coverage.info COM1
 	rm -rf coverage_report
 	clear
 
