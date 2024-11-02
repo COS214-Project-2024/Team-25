@@ -22,7 +22,6 @@ public:
     static Energy* getInstance();
     Energy(const Energy&) = delete;
     void operator=(const Energy&) = delete;
-
     // Getters
     int getWattsCoal() const { return wattsCoal; }
     int getWattsHydro() const { return wattsHydro; }

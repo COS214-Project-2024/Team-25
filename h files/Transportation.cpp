@@ -176,7 +176,7 @@ void PublicTransitAdapter::addRoute(int amount) {
 }
 
 int PublicTransitAdapter::getUtilization() {
-    transitSystem->getAmount();
+    return transitSystem->getAmount();
 }
 
 void PublicTransitAdapter::performMaintenance() {
@@ -197,7 +197,7 @@ vector<Road>& RoadSystemAdapter::getRoads()
 }
 
 int RoadSystemAdapter::getUtilization() {
-    roadSystem->getUtilization();
+    return roadSystem->getUtilization();
 }
 
 void RoadSystemAdapter::performMaintenance() {

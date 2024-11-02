@@ -2,7 +2,7 @@
 #include <iostream>
 
 // Utility class implementation
-Utility::Utility() : name(""), efficiency(100.0f) {
+Utility::Utility() : efficiency(100.0f) {
     concrete = Concrete::getInstance();
     wood = Wood::getInstance();
     steel = Steel::getInstance();
@@ -13,37 +13,46 @@ Utility::Utility() : name(""), efficiency(100.0f) {
 Utility::~Utility() {}
 
 // PowerPlant class implementation
-PowerPlant::PowerPlant(powerPlants type) : powerGeneration(0), type(type) {
-    srand(time(0));
-    int randomNumber = (rand() % 5) + 1;
-    powerGeneration = randomNumber * 1000;
+PowerPlant::PowerPlant(powerPlants type, bool built, int powerGen ) : powerGeneration(0), type(type) {
+    if (built)
+    {
+        srand(time(0));
+        int randomNumber = (rand() % 5) + 1;
+        powerGeneration = randomNumber * 1000;
 
-    if (concrete->getKilo() < powerGeneration && steel->getKilo() < powerGeneration) {
-        std::cout << "Could not create new PowerPlant" << std::endl;
-        powerGeneration = 0;
-        return;
-    }
+        if (concrete->getKilo() < powerGeneration || steel->getKilo() < powerGeneration) {
+            std::cout << "Could not create new PowerPlant" << std::endl;
+            powerGeneration = 0;
+            return;
+        }
 
-    concrete->setKilo(concrete->getKilo() - powerGeneration);
-    steel->setKilo(steel->getKilo() - powerGeneration);
-    std::cout << "Used " << powerGeneration << " kgs of concrete and steel to create a power plant" << std::endl; 
+        concrete->setKilo(concrete->getKilo() - powerGeneration);
+        steel->setKilo(steel->getKilo() - powerGeneration);
 
-    energy = Energy::getInstance();
-    switch (this->type) {
-        case HYDRO:
-            energy->setWattsHydro(energy->getWattsHydro() + powerGeneration);
-            break;
-        case COAL:
-            energy->setWattsCoal(energy->getWattsCoal() + powerGeneration);
-            break;
-        case WIND:
-            energy->setWattsWind(energy->getWattsWind() + powerGeneration);
-            break;
-        case SOLAR:
-            energy->setWattsSolar(energy->getWattsSolar() + powerGeneration);
-            break;
-        default:
-            break;
+        std::cout << "Used " << powerGeneration << " kgs of concrete and steel to create a power plant" << std::endl;     
+        
+    
+        energy = Energy::getInstance();
+        switch (this->type) {
+            case HYDRO:
+                energy->setWattsHydro(energy->getWattsHydro() + powerGeneration);
+                break;
+            case COAL:
+                energy->setWattsCoal(energy->getWattsCoal() + powerGeneration);
+                break;
+            case WIND:
+                energy->setWattsWind(energy->getWattsWind() + powerGeneration);
+                break;
+            case SOLAR:
+                energy->setWattsSolar(energy->getWattsSolar() + powerGeneration);
+                break;
+            default:
+                break;
+        }
+    }else{
+        powerGeneration = powerGen;
+        this->type = type;
+        energy = Energy::getInstance();
     }
 }
 
@@ -62,7 +71,7 @@ void PowerPlant::generate() {
 }
 
 // FunctionalPowerPlant class implementation
-FunctionalPowerPlant::FunctionalPowerPlant(powerPlants type) : PowerPlant(type) {}
+FunctionalPowerPlant::FunctionalPowerPlant(powerPlants type, bool built, int powerGen ) : PowerPlant(type, built) {}
 
 FunctionalPowerPlant::~FunctionalPowerPlant() {}
 
@@ -71,14 +80,16 @@ PowerPlant* FunctionalPowerPlant::repair() {
 }
 
 PowerPlant* FunctionalPowerPlant::mulfunction() {
-    if (powerGeneration == 0) {
+    if (powerGeneration == 0) 
+    {
         std::cout << "Utility does not exist" << std::endl;
         return this;
     }
     isFunctional = false;
-    NonFunctionalPowerPlant* nonFunctional = new NonFunctionalPowerPlant(this->getType());
+    NonFunctionalPowerPlant* nonFunctional = new NonFunctionalPowerPlant(this->getType(), false, powerGeneration);
     nonFunctional->setPowerGeneration(this->getPowerGeneration());
     nonFunctional->setEfficiency(this->getEfficiency() * 0.333);
+    nonFunctional->setFunctional(false);
 
     switch (this->type) {
         case HYDRO:
@@ -97,12 +108,12 @@ PowerPlant* FunctionalPowerPlant::mulfunction() {
             break;
     }
 
-    std::cout << "Power plant malfunctioned." << std::endl;
+    //std::cout << "Power plant malfunctioned." << std::endl;
     return nonFunctional;
 }
 
 // NonFunctionalPowerPlant class implementation
-NonFunctionalPowerPlant::NonFunctionalPowerPlant(powerPlants type) : PowerPlant(type) {}
+NonFunctionalPowerPlant::NonFunctionalPowerPlant(powerPlants type, bool built, int powerGen ) : PowerPlant(type, built) {}
 
 NonFunctionalPowerPlant::~NonFunctionalPowerPlant() {}
 
@@ -120,7 +131,7 @@ PowerPlant* NonFunctionalPowerPlant::repair() {
     concrete->setKilo(concrete->getKilo() - powerGeneration * 0.2);
     steel->setKilo(steel->getKilo() - powerGeneration * 0.2);
 
-    FunctionalPowerPlant* functional = new FunctionalPowerPlant(this->getType());
+    FunctionalPowerPlant* functional = new FunctionalPowerPlant(this->getType(), false, powerGeneration);
     functional->setPowerGeneration(this->getPowerGenerationRaw());
     functional->setEfficiency(100.0f);  // Reset efficiency to 100%
 
@@ -142,7 +153,7 @@ PowerPlant* NonFunctionalPowerPlant::repair() {
     }
 
     std::cout << "Power plant repaired." << std::endl;
-    isFunctional = true;
+    functional->setFunctional(true);
     return functional;
 }
 
@@ -151,22 +162,31 @@ PowerPlant* NonFunctionalPowerPlant::mulfunction() {
 }
 
 // WaterSupply class implementation
-WaterSupply::WaterSupply() : waterGeneration(0) {
-    srand(time(0));
-    int randomNumber = (rand() % 5) + 1;
-    waterGeneration = randomNumber * 1000;
+WaterSupply::WaterSupply(bool built, int powerGen ) : waterGeneration(0) {
+    if (built)
+    {
+        srand(time(0));
+        int randomNumber = (rand() % 5) + 1;
+        waterGeneration = randomNumber * 1000;
 
-    if (concrete->getKilo() < waterGeneration && wood->getKilo() < waterGeneration) {
-        std::cout << "Could not create new water supply" << std::endl;
-        waterGeneration = 0;
-        return;
+        if (concrete->getKilo() < waterGeneration || wood->getKilo() < waterGeneration) {
+            std::cout << "Could not create new water supply" << std::endl;
+            waterGeneration = 0;
+            return;
+        }
+
+    
+        concrete->setKilo(concrete->getKilo() - waterGeneration);
+        wood->setKilo(wood->getKilo() - waterGeneration);
+
+        std::cout << "Used " << waterGeneration << " kgs of concrete and wood to create a Water Supply" << std::endl;
+    
+        water = Water::getInstance();
+        water->setliters(water->getLiters() + waterGeneration);
+    }else{
+        waterGeneration =   powerGen;
+        water = Water::getInstance();
     }
-
-    concrete->setKilo(concrete->getKilo() - waterGeneration);
-    wood->setKilo(wood->getKilo() - waterGeneration);
-
-    water = Water::getInstance();
-    water->setliters(water->getLiters() + waterGeneration);
 }
 
 WaterSupply::~WaterSupply() {}
@@ -180,7 +200,7 @@ void WaterSupply::distribute() {
 }
 
 // FunctionalWaterSupply class implementation
-FunctionalWaterSupply::FunctionalWaterSupply() {}
+FunctionalWaterSupply::FunctionalWaterSupply(bool built, int powerGen ) :  WaterSupply(built) {}
 
 FunctionalWaterSupply::~FunctionalWaterSupply() {}
 
@@ -193,17 +213,17 @@ WaterSupply* FunctionalWaterSupply::mulfunction() {
         std::cout << "Utility does not exist" << std::endl;
         return this;
     }
-    NonFunctionalWaterSupply* nonFunctional = new NonFunctionalWaterSupply();
+    NonFunctionalWaterSupply* nonFunctional = new NonFunctionalWaterSupply(false, waterGeneration);
     nonFunctional->setWaterGeneration(this->getWaterGenerationRaw());
     nonFunctional->setEfficiency(this->getEfficiency() * 0.333);
     water->setliters(water->getLiters() - waterGeneration * getEfficiency() + waterGeneration * nonFunctional->getEfficiency());
-    std::cout << "Water supply malfunctioned." << std::endl;
-    isFunctional = false;
+    //std::cout << "Water supply malfunctioned." << std::endl;
+    nonFunctional->setFunctional(false);
     return nonFunctional;
 }
 
 // NonFunctionalWaterSupply class implementation
-NonFunctionalWaterSupply::NonFunctionalWaterSupply() {}
+NonFunctionalWaterSupply::NonFunctionalWaterSupply(bool built, int powerGen ) : WaterSupply(built) {}
 
 NonFunctionalWaterSupply::~NonFunctionalWaterSupply() {}
 
@@ -221,13 +241,13 @@ WaterSupply* NonFunctionalWaterSupply::repair() {
     concrete->setKilo(concrete->getKilo() - waterGeneration * 0.2);
     wood->setKilo(wood->getKilo() - waterGeneration * 0.2);
 
-    FunctionalWaterSupply* functional = new FunctionalWaterSupply();
+    FunctionalWaterSupply* functional = new FunctionalWaterSupply(false, waterGeneration);
     functional->setWaterGeneration(this->getWaterGenerationRaw());
     functional->setEfficiency(100.0f);  // Reset efficiency to 100%
 
     water->setliters(water->getLiters() - waterGeneration * getEfficiency() + waterGeneration * functional->getEfficiency());
     std::cout << "Water supply repaired." << std::endl;
-    isFunctional = true;
+    functional->setFunctional(true);
     return functional;
 }
 
@@ -236,19 +256,30 @@ WaterSupply* NonFunctionalWaterSupply::mulfunction() {
 }
 
 // WasteManagement class implementation
-WasteManagement::WasteManagement() : wasteCollection(0) {
-    srand(time(0));
-    int randomNumber = (rand() % 5) + 1;
-    wasteCollection = randomNumber * 1000;
+WasteManagement::WasteManagement(bool built, int powerGen ) : wasteCollection(0) {
+    if (built){
+        srand(time(0));
+        int randomNumber = (rand() % 5) + 1;
+        wasteCollection = randomNumber * 1000;
 
-    if (steel->getKilo() < wasteCollection && wood->getKilo() < wasteCollection) {
-        std::cout << "Waste management failed due to lack of resources." << std::endl;
-        wasteCollection = 0;
-        return;
+        if (steel->getKilo() < wasteCollection || wood->getKilo() < wasteCollection) {
+            std::cout << "Waste management failed due to lack of resources." << std::endl;
+            wasteCollection = 0;
+            return;
+        }
+
+
+    
+        steel->setKilo(steel->getKilo() - wasteCollection);
+        wood->setKilo(wood->getKilo() - wasteCollection);
+
+        std::cout << "Used " << wasteCollection << " kgs of steel and wood to create a Waste Management" << std::endl;
+        
+    }else{
+        wasteCollection =   powerGen;
+        
     }
 
-    steel->setKilo(steel->getKilo() - wasteCollection);
-    wood->setKilo(wood->getKilo() - wasteCollection);
 }
 
 WasteManagement::~WasteManagement() {}
@@ -266,7 +297,7 @@ void WasteManagement::collect() {
 }
 
 // FunctionalWasteManagement class implementation
-FunctionalWasteManagement::FunctionalWasteManagement() {}
+FunctionalWasteManagement::FunctionalWasteManagement(bool built, int powerGen ) : WasteManagement(built) {}
 
 FunctionalWasteManagement::~FunctionalWasteManagement() {}
 
@@ -279,16 +310,16 @@ WasteManagement* FunctionalWasteManagement::mulfunction() {
         std::cout << "Utility does not exist" << std::endl;
         return this;
     }
-    NonFunctionalWasteManagement* nonFunctional = new NonFunctionalWasteManagement();
+    NonFunctionalWasteManagement* nonFunctional = new NonFunctionalWasteManagement(false, wasteCollection);
     nonFunctional->setWasteCollection(this->getWasteCollectionRaw());
     nonFunctional->setEfficiency(this->getEfficiency() * 0.333);
-    std::cout << "Waste management malfunctioned." << std::endl;
-    isFunctional = false;
+    //std::cout << "Waste management malfunctioned." << std::endl;
+    nonFunctional->setFunctional(false);
     return nonFunctional;
 }
 
 // NonFunctionalWasteManagement class implementation
-NonFunctionalWasteManagement::NonFunctionalWasteManagement() {}
+NonFunctionalWasteManagement::NonFunctionalWasteManagement(bool built, int powerGen ) : WasteManagement(built) {}
 
 NonFunctionalWasteManagement::~NonFunctionalWasteManagement() {}
 
@@ -306,11 +337,11 @@ WasteManagement* NonFunctionalWasteManagement::repair() {
     steel->setKilo(steel->getKilo() - wasteCollection * 0.2);
     wood->setKilo(wood->getKilo() - wasteCollection * 0.2);
 
-    FunctionalWasteManagement* functional = new FunctionalWasteManagement();
+    FunctionalWasteManagement* functional = new FunctionalWasteManagement(false, wasteCollection);
     functional->setWasteCollection(this->getWasteCollectionRaw());
     functional->setEfficiency(100.0f);  // Reset efficiency to 100%
     std::cout << "Waste management repaired." << std::endl;
-    isFunctional = true;
+    functional->setFunctional(true);
     return functional;
 }
 

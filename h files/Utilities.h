@@ -14,7 +14,6 @@ enum powerPlants {
 
 class Utility {
 protected:
-    std::string name;
     float efficiency; // percent of utility that is running
     Budget* budget;
     Concrete* concrete;
@@ -25,14 +24,10 @@ protected:
 public:
     Utility();
     ~Utility();
-
-    std::string getName() const { return name; }
     float getEfficiency() const { return efficiency; }
-
-    void setName(const std::string& value) { name = value; }
     void setEfficiency(float value) { efficiency = value; }
-
     bool getFunctional() const { return isFunctional; }
+    void setFunctional(bool value) { isFunctional = value; }
 };
 
 class PowerPlant : public Utility {
@@ -40,9 +35,9 @@ protected:
     int powerGeneration; // in watts
     powerPlants type;
     Energy* energy;
-
+    bool isInitialBuild = false;
 public:
-    PowerPlant(powerPlants type);
+    PowerPlant(powerPlants type, bool isbuilt, int powerGen = 0);
     ~PowerPlant();
     virtual PowerPlant* repair() = 0; // Changed to PowerPlant*
     virtual PowerPlant* mulfunction() = 0; // Changed to PowerPlant*
@@ -57,9 +52,10 @@ public:
     void setType(powerPlants value) { type = value; }
 };
 
-class FunctionalPowerPlant : public PowerPlant {
+class FunctionalPowerPlant : public PowerPlant 
+{
 public:
-    FunctionalPowerPlant(powerPlants type);
+    FunctionalPowerPlant(powerPlants type, bool built, int powerGen = 0);
     ~FunctionalPowerPlant();
     PowerPlant* repair() override; // Changed to PowerPlant*
     PowerPlant* mulfunction() override; // Changed to PowerPlant*
@@ -67,7 +63,7 @@ public:
 
 class NonFunctionalPowerPlant : public PowerPlant {
 public:
-    NonFunctionalPowerPlant(powerPlants type);
+    NonFunctionalPowerPlant(powerPlants type, bool built, int powerGen = 0);
     ~NonFunctionalPowerPlant();
     PowerPlant* repair() override; // Changed to PowerPlant*
     PowerPlant* mulfunction() override; // Changed to PowerPlant*
@@ -77,9 +73,9 @@ class WaterSupply : public Utility {
 protected:
     int waterGeneration; // in liters
     Water* water;
-
+    bool isInitialBuild = false;
 public:
-    WaterSupply();
+    WaterSupply(bool built, int powerGen = 0);
     ~WaterSupply();
     virtual WaterSupply* repair() = 0; // Changed to WaterSupply*
     virtual WaterSupply* mulfunction() = 0; // Changed to WaterSupply*
@@ -92,7 +88,7 @@ public:
 
 class FunctionalWaterSupply : public WaterSupply {
 public:
-    FunctionalWaterSupply();
+    FunctionalWaterSupply(bool built, int powerGen = 0);
     ~FunctionalWaterSupply();
     WaterSupply* repair() override; // Changed to WaterSupply*
     WaterSupply* mulfunction() override; // Changed to WaterSupply*
@@ -100,7 +96,7 @@ public:
 
 class NonFunctionalWaterSupply : public WaterSupply {
 public:
-    NonFunctionalWaterSupply();
+    NonFunctionalWaterSupply(bool built, int powerGen = 0);
     ~NonFunctionalWaterSupply();
     WaterSupply* repair() override; // Changed to WaterSupply*
     WaterSupply* mulfunction() override; // Changed to WaterSupply*
@@ -109,9 +105,9 @@ public:
 class WasteManagement : public Utility {
 protected:
     int wasteCollection; // in kgs
-
+    bool isInitialBuild = false;
 public:
-    WasteManagement(/* args */);
+    WasteManagement(bool built, int powerGen = 0);
     ~WasteManagement();
     virtual WasteManagement* repair() = 0; // Changed to WasteManagement*
     virtual WasteManagement* mulfunction() = 0; // Changed to WasteManagement*
@@ -126,7 +122,7 @@ public:
 
 class FunctionalWasteManagement : public WasteManagement {
 public:
-    FunctionalWasteManagement();
+    FunctionalWasteManagement(bool built, int powerGen = 0);
     ~FunctionalWasteManagement();
     WasteManagement* repair() override; // Changed to WasteManagement*
     WasteManagement* mulfunction() override; // Changed to WasteManagement*
@@ -134,7 +130,7 @@ public:
 
 class NonFunctionalWasteManagement : public WasteManagement {
 public:
-    NonFunctionalWasteManagement();
+    NonFunctionalWasteManagement(bool built, int powerGen = 0);
     ~NonFunctionalWasteManagement();
     WasteManagement* repair() override; // Changed to WasteManagement*
     WasteManagement* mulfunction() override; // Changed to WasteManagement*

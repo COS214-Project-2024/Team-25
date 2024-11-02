@@ -6,6 +6,7 @@
 #include <string>
 #include <math.h>
 #include <random>
+#include <iomanip>
 
 #include "Citizen.h"
 #include "Resources.h"
@@ -25,14 +26,9 @@ private:
     Steel* steel;
     CityGrowth* cityGrowth;
     TaxSystem* taxSystem;
-    //RoadSystem* roadSystem;
     RoadSystemAdapter* roadSystemAdapter;
-    // std::vector<PublicTransitAdapter*> publicTransitAdapter;
-    // std::vector<RoadSystemAdapter*> roadSystemAdapter;
-    // std::vector<RailSystemAdapter*> railSystemAdapter;
     std::vector<WaterSupply*> waterSupply;
     std::vector<WasteManagement*> wasteManagement;
-    // std::vector<SewageSystems*> sewageSystems;
     std::vector<PowerPlant*> powerPlant;
     MonthlyRoutines* monthlyRoutines;
 
@@ -47,27 +43,28 @@ private:
     void promptForNewSchool(int sector);
     void promptForNewHospital(int sector);
     void promptForNewGovernmentBuilding(int sector);
-    void promptForNewHouse(int sector);
-    void promptForNewApartment(int sector);
-    void promptForNewMansion(int sector);
+    void promptForNewHouse(int sector, Citizen* c);
+    void promptForNewApartment(int sector, Citizen* c);
+    void promptForNewMansion(int sector, Citizen* c);
 public:
     Government();
     ~Government();
     
     //Actions
-    void createBuilding(); //action 1
-    void createUtility(); //action 2
-    void increaseMaterials(); //action 2 as well
-    void naturalDisaster(); //action 3
-    void upgradeTransport(); //action 4
-    void upgradeBuildings(); //action 5
-    void taxCitizens(); //action 6
+    void createBuilding();    //action 1
+    void createUtility();     //action 2
+    void increaseMaterials(); //action 2
+    void naturalDisaster();   //action 3
+    void upgradeTransport();  //action 4
+    void upgradeBuildings();  //action 5
+    void taxCitizens();       //action 6
     void changeTaxStartegy(); //action 7
     void repairUtilities();
-    void createCitizen();
+    void createCitizen(int numCitizens);
 
     float avgSatisfaction();
-    void updateSatisfaction(int amt); 
+    void updateSatisfaction(int amt);
+    void printSec() {std::cout << cityGrowth->printSectors() << std::endl;} 
     // virtual void attach(Citizen Citizen);
     // virtual void detach(Citizen Citizen);
     // virtual void notifyBuilding(Citizen Citizen);
@@ -75,6 +72,10 @@ public:
     // void repair(std::string name); //name of utility, also notifies citizens
     // void mulfunction(std::string name); //name of utility, also notifies citizens
     
+    void setDifficulty(int difficulty);
+    void printresources();
+
+    void printUtilitiesDetails();
 
 };  
 

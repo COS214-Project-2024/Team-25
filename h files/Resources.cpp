@@ -64,9 +64,8 @@ void Concrete::obtain() {
 }
 
 void Concrete::refine() {
-    
-    
-    kilograms *= 0.9;  
+
+    kilograms -= 10000 * 0.1;  
     std::cout << "Concrete refined: " << kilograms << " kg" << std::endl;
 }
 
@@ -88,7 +87,7 @@ void Steel::obtain() {
 }
 
 void Steel::refine() {
-    kilograms *= 0.95;  
+    kilograms -= 6000 * 0.05;  
     std::cout << "Steel refined: " << kilograms << " kg" << std::endl;
 }
 
@@ -110,6 +109,6 @@ void Wood::obtain() {
 }
 
 void Wood::refine() { 
-    kilograms *= 0.9;  
+    kilograms -= 20000 * 0.1;  
     std::cout << "Wood refined: " << kilograms << " kg" << std::endl;
 }

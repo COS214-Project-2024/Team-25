@@ -32,7 +32,13 @@ std::vector<Building*> CitySector::getBlock() {
 
 /* ------------------------------- CityGrowth ------------------------------- */
 
-CityGrowth::CityGrowth() {}
+CityGrowth::CityGrowth() {
+    for (int i = 0; i < 5; i++)
+    {
+        addSector();
+    }
+    
+}
 
 CityGrowth::~CityGrowth() {
     for (CitySector* sectorOP : this->sectors) {
@@ -60,7 +66,8 @@ bool CityGrowth::addBuilding(Building* building, int sectorId) {
         return false;
     }
 
-    this->sectors[sectorId]->addBuilding(building);
+    this->sectors.at(sectorId)->addBuilding(building);
+    std::cout << "Building added successfully to sector " << sectorId << std::endl;
     return true;
 }
 

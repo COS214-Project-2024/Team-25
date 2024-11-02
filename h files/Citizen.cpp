@@ -2,7 +2,9 @@
 #include <iostream>
 
 
-Citizen::Citizen() : residence(""), type(""), workplace(""), satisfaction(50.00){}//, age(0) {}
+Citizen::Citizen() : residence(""), type(""), workplace(""){
+    satisfaction = rand() % 61 + 20;
+}//, age(0) {}
 
 void Citizen:: setCitizen(std::string type, std::string building, std::string work){
     this->residence = building;
@@ -28,6 +30,8 @@ float Citizen:: getSatisfaction(){
 
 void Citizen::changeSatisfaction(int amt){
     satisfaction += amt;
+    satisfaction = satisfaction < 0 ? 0 : satisfaction;
+    satisfaction = satisfaction > 100 ? 100 : satisfaction;
 }
 
 CommercialWorker:: CommercialWorker(): Citizen(){

@@ -2,8 +2,12 @@
 #include <iostream>
 
 // Base Building class
-Building::Building(std::string name, int numRooms, int m_squared, float value, std::string type)
-    : name(name), numRooms(numRooms), m_squared(m_squared), value(value), built(false), type(type) {}
+Building::Building(std::string name, int numRooms, int m_squared, float value, std::string type): name(name), numRooms(numRooms), m_squared(m_squared), value(value), built(false), type(type) {
+    concrete = Concrete::getInstance();
+    steel = Steel::getInstance();
+    wood = Wood::getInstance();
+    budget = Budget::getInstance();
+}
 
 std::string Building::getName(){
     return this->name;

@@ -19,7 +19,10 @@ TaxSystem::TaxSystem() {
 }
 
 // TaxSystem::~TaxSystem() { delete this->strategy; }
-TaxSystem::~TaxSystem() {}
+TaxSystem::~TaxSystem() 
+{
+    delete strategy;
+}
 
 void TaxSystem::setTaxStrategy(TaxStrategy* strategy) {
     if (this->strategy) {

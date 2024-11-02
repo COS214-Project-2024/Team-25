@@ -1,5 +1,6 @@
 // #ifndef DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 // #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+// #ifndef TESTING
 #include <iostream>
 #include "Government.h"
 
@@ -72,11 +73,17 @@ void gameLoop(){
     printC("    3. Hard", Color::RED);
     int difficulty = safeIntInput(1,3);
 
+    government->setDifficulty(difficulty);
+    government->printresources();
+    government->printUtilitiesDetails();
+
     while(game){
         // Check for natural disaster (1/6 chance)
-        if (rand() % 6 == 0) {
+        if (actionCount != 0 && (rand() % 6) == 0)
+        {
             printC("A natural disaster has struck!", Color::RED);
             government->naturalDisaster();
+            government->printUtilitiesDetails();
         }
 
         // Display available actions
@@ -89,31 +96,37 @@ void gameLoop(){
         printC("    6. Change Tax Strategy", Color::WHITE);
         printC("    7. Repair Utilities", Color::WHITE);
         printC("    8. Create Citizen", Color::WHITE);
+        printC("    9. EXIT", Color::RED);
 
         // Validate action input
-        int action = safeIntInput(1, 8);
+        int action = safeIntInput(1, 9);
 
         // Perform selected action
         switch(action) {
             case 1: 
                 printC("Creating a building...", Color::GREEN);
                 government->createBuilding(); 
+                government->printSec();
                 break;
             case 2: 
                 printC("Creating a utility...", Color::GREEN);
                 government->createUtility(); 
+                government->printUtilitiesDetails();
                 break;
             case 3: 
                 printC("Upgrading transport...", Color::GREEN);
                 government->upgradeTransport(); 
+                government->printSec();
                 break;
             case 4: 
                 printC("Upgrading buildings...", Color::GREEN);
-                government->upgradeBuildings(); 
+                government->upgradeBuildings();
+                government->printSec(); 
                 break;
             case 5: 
                 printC("Increasing materials...", Color::GREEN);
                 government->increaseMaterials(); 
+                government->printresources();
                 break;
             case 6: 
                 printC("Changing tax strategy...", Color::GREEN);
@@ -122,10 +135,15 @@ void gameLoop(){
             case 7: 
                 printC("Repairing utilities...", Color::GREEN);
                 government->repairUtilities(); 
+                government->printUtilitiesDetails();
+
                 break;
             case 8: 
                 printC("Creating a new citizen...", Color::GREEN);
-                government->createCitizen(); 
+                government->createCitizen(2);
+                break;
+            case 9:
+                game = false;
                 break;
         }
 
@@ -150,6 +168,7 @@ void gameLoop(){
         // if (government->isGameOver()) {
         //     game = false;
         // }
+        
     }
 
     delete government;
@@ -158,6 +177,7 @@ void gameLoop(){
 
 int main(int argc, char const *argv[])
 {
+    setvbuf(stdout, nullptr, _IONBF, 0);
     gameLoop();
     return 0;
 }
