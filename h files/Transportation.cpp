@@ -81,25 +81,42 @@ void RoadSystem::addRoad(Road road)
 void RoadSystem::upgrade()
 {
     int utilization = getUtilization();
-    // still need to figure out which type of road is needed???
-    if (utilization >= 60 && utilization <= 69)
-    {
-        Road newRoad(10, "??");
-        addRoad(newRoad);
+    int CommercialTotal = 0;
+    int GovernmentTotal = 0;
+    int IndustrialTotal = 0;
+
+
+    for (vector<Road>::iterator it = roads.begin(); it != roads.end(); ++it) {
+        Road& road = *it;
+        string currentType = road.getType();
+
+        if(currentType=="Commercial") {CommercialTotal++;}
+        if(currentType=="Government") {GovernmentTotal++;}
+        if(currentType=="Industrial") {IndustrialTotal++;}
+
     }
-    else if (utilization >= 70 && utilization <= 79)
-    {
-        Road newRoad(20, "??");
+
+    int smallestTotal = std::min(CommercialTotal, std::min(GovernmentTotal, IndustrialTotal));
+    string fewestRoadType;
+
+    if(smallestTotal==CommercialTotal){fewestRoadType="Commercial";}
+    if(smallestTotal==GovernmentTotal){fewestRoadType="Government";}
+    if(smallestTotal==IndustrialTotal){fewestRoadType="Industrial";}
+
+    if (utilization >= 60 && utilization <= 69) {
+        Road newRoad(10, fewestRoadType); 
         addRoad(newRoad);
-    }
-    else if (utilization >= 80 && utilization <= 89)
-    {
-        Road newRoad(30, "??");
+    } 
+    else if (utilization >= 70 && utilization <= 79) {
+        Road newRoad(20, fewestRoadType);
         addRoad(newRoad);
-    }
-    else if (utilization >= 90 && utilization <= 100)
-    {
-        Road newRoad(40, "??");
+    } 
+    else if (utilization >= 80 && utilization <= 89) {
+        Road newRoad(30, fewestRoadType);
+        addRoad(newRoad);
+    } 
+    else if (utilization >= 90 && utilization <= 100) {
+        Road newRoad(40, fewestRoadType);
         addRoad(newRoad);
     }
 }
@@ -129,19 +146,12 @@ vector<Road> &RoadSystem::getRoads()
 }
 
 // class Railway
-Railway::Railway(string t)
-{
-    type = t;
+Railway::Railway(){
 }
 
 void Railway::addTrain(PublicTransport train)
 {
     trains.push_back(train);
-}
-
-string Railway::getType()
-{
-    return type;
 }
 
 int Railway::getNumTrains()
@@ -162,14 +172,14 @@ void RailSystem::upgrade()
     // still need to figure out which type of railway is needed???
     if (utilization >= 7)
     {
-        Railway newRailway("??");
+        Railway newRailway;
         addRailway(newRailway);
     }
     else if (utilization >= 8)
     {
         for (int i = 0; i <= 1; i++)
         {
-            Railway newRailway("??");
+            Railway newRailway;
             addRailway(newRailway);
         }
     }
@@ -177,7 +187,7 @@ void RailSystem::upgrade()
     {
         for (int i = 0; i <= 2; i++)
         {
-            Railway newRailway("??");
+            Railway newRailway;
             addRailway(newRailway);
         }
     }

@@ -152,27 +152,19 @@ class Railway
 {
     private:
         int numOfTrains; ///< The current number of trains in operation.
-        string type; ///< The type of railway (e.g., Freight, Passenger).
         vector<PublicTransport> trains; ///< List of public transport trains.
 
     public:
         /**
          * @brief Constructs a Railway object.
-         * @param type The type of railway.
          */
-        Railway(string type);
+        Railway();
 
         /**
          * @brief Adds a train to the railway system.
          * @param train The PublicTransport object representing the train to add.
          */
         void addTrain(PublicTransport train);
-
-        /**
-         * @brief Gets the type of the railway.
-         * @return The type of the railway.
-         */
-        string getType();
 
         /**
          * @brief Gets the current number of trains in operation.
