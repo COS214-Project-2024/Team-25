@@ -1,0 +1,105 @@
+\doxysection{Rail\+System\+Adapter Class Reference}
+\hypertarget{class_rail_system_adapter}{}\label{class_rail_system_adapter}\index{RailSystemAdapter@{RailSystemAdapter}}
+
+
+Adapter for integrating \doxylink{class_rail_system}{Rail\+System} into a unified transport system.  
+
+
+
+
+{\ttfamily \#include $<$Transportation.\+h$>$}
+
+Inheritance diagram for Rail\+System\+Adapter\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_rail_system_adapter}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_rail_system_adapter_afc2205f26069b8d26519090d31cbb589}{Rail\+System\+Adapter}} (\mbox{\hyperlink{class_rail_system}{Rail\+System}} \texorpdfstring{$\ast$}{*}rs)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_rail_system_adapter}{Rail\+System\+Adapter} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_rail_system_adapter_a3aa4a1116769dc4e47777b18ee524f78}{add\+Route}} (\mbox{\hyperlink{class_railway}{Railway}} railway)
+\begin{DoxyCompactList}\small\item\em Adds a railway to the rail system. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_rail_system_adapter_a2acc8fecdcc11d2e85cb7b3fb1c40e12}{get\+Utilization}} () override
+\begin{DoxyCompactList}\small\item\em Gets the utilization of the rail system. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_rail_system_adapter_a91adbbe722c6230d958d36f434846ed8}{perform\+Maintenance}} () override
+\begin{DoxyCompactList}\small\item\em Performs maintenance on the rail system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_unified_transport_system}{Unified\+Transport\+System}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Unified\+Transport\+System} ()
+\begin{DoxyCompactList}\small\item\em Virtual destructor for proper cleanup of derived classes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Adapter for integrating \doxylink{class_rail_system}{Rail\+System} into a unified transport system. 
+
+This class adapts the \doxylink{class_rail_system}{Rail\+System} class to fit the \doxylink{class_unified_transport_system}{Unified\+Transport\+System} interface. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_rail_system_adapter_afc2205f26069b8d26519090d31cbb589}\index{RailSystemAdapter@{RailSystemAdapter}!RailSystemAdapter@{RailSystemAdapter}}
+\index{RailSystemAdapter@{RailSystemAdapter}!RailSystemAdapter@{RailSystemAdapter}}
+\doxysubsubsection{\texorpdfstring{RailSystemAdapter()}{RailSystemAdapter()}}
+{\footnotesize\ttfamily \label{class_rail_system_adapter_afc2205f26069b8d26519090d31cbb589} 
+Rail\+System\+Adapter\+::\+Rail\+System\+Adapter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_rail_system}{Rail\+System}} \texorpdfstring{$\ast$}{*}}]{rs}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_rail_system_adapter}{Rail\+System\+Adapter} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rs} & Pointer to the \doxylink{class_rail_system}{Rail\+System} to adapt. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_rail_system_adapter_a3aa4a1116769dc4e47777b18ee524f78}\index{RailSystemAdapter@{RailSystemAdapter}!addRoute@{addRoute}}
+\index{addRoute@{addRoute}!RailSystemAdapter@{RailSystemAdapter}}
+\doxysubsubsection{\texorpdfstring{addRoute()}{addRoute()}}
+{\footnotesize\ttfamily \label{class_rail_system_adapter_a3aa4a1116769dc4e47777b18ee524f78} 
+void Rail\+System\+Adapter\+::add\+Route (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_railway}{Railway}}}]{railway}{}\end{DoxyParamCaption})}
+
+
+
+Adds a railway to the rail system. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em railway} & The \doxylink{class_railway}{Railway} object to add. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_rail_system_adapter_a2acc8fecdcc11d2e85cb7b3fb1c40e12}\index{RailSystemAdapter@{RailSystemAdapter}!getUtilization@{getUtilization}}
+\index{getUtilization@{getUtilization}!RailSystemAdapter@{RailSystemAdapter}}
+\doxysubsubsection{\texorpdfstring{getUtilization()}{getUtilization()}}
+{\footnotesize\ttfamily \label{class_rail_system_adapter_a2acc8fecdcc11d2e85cb7b3fb1c40e12} 
+int Rail\+System\+Adapter\+::get\+Utilization (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Gets the utilization of the rail system. 
+
+\begin{DoxyReturn}{Returns}
+The utilization percentage. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_unified_transport_system_afe753d7f792d5d908df3b6ad5b9d3546}{Unified\+Transport\+System}}.
+
+\Hypertarget{class_rail_system_adapter_a91adbbe722c6230d958d36f434846ed8}\index{RailSystemAdapter@{RailSystemAdapter}!performMaintenance@{performMaintenance}}
+\index{performMaintenance@{performMaintenance}!RailSystemAdapter@{RailSystemAdapter}}
+\doxysubsubsection{\texorpdfstring{performMaintenance()}{performMaintenance()}}
+{\footnotesize\ttfamily \label{class_rail_system_adapter_a91adbbe722c6230d958d36f434846ed8} 
+void Rail\+System\+Adapter\+::perform\+Maintenance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Performs maintenance on the rail system. 
+
+
+
+Implements \mbox{\hyperlink{class_unified_transport_system_a84d23952d167e2e6e670cea76181447f}{Unified\+Transport\+System}}.
+

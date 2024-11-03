@@ -1,0 +1,66 @@
+\doxysection{Unified\+Transport\+System Class Reference}
+\hypertarget{class_unified_transport_system}{}\label{class_unified_transport_system}\index{UnifiedTransportSystem@{UnifiedTransportSystem}}
+
+
+Interface for a unified transport system.  
+
+
+
+
+{\ttfamily \#include $<$Transportation.\+h$>$}
+
+Inheritance diagram for Unified\+Transport\+System\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_unified_transport_system}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual int \mbox{\hyperlink{class_unified_transport_system_afe753d7f792d5d908df3b6ad5b9d3546}{get\+Utilization}} ()=0
+\begin{DoxyCompactList}\small\item\em Gets the utilization of the transport system. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_unified_transport_system_a84d23952d167e2e6e670cea76181447f}{perform\+Maintenance}} ()=0
+\begin{DoxyCompactList}\small\item\em Performs maintenance on the transport system. \end{DoxyCompactList}\item 
+\Hypertarget{class_unified_transport_system_a857c037b2dc6770c40adc209027f900a}\label{class_unified_transport_system_a857c037b2dc6770c40adc209027f900a} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Unified\+Transport\+System} ()
+\begin{DoxyCompactList}\small\item\em Virtual destructor for proper cleanup of derived classes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for a unified transport system. 
+
+This interface defines methods that all transport systems must implement for maintenance and utilization. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_unified_transport_system_afe753d7f792d5d908df3b6ad5b9d3546}\index{UnifiedTransportSystem@{UnifiedTransportSystem}!getUtilization@{getUtilization}}
+\index{getUtilization@{getUtilization}!UnifiedTransportSystem@{UnifiedTransportSystem}}
+\doxysubsubsection{\texorpdfstring{getUtilization()}{getUtilization()}}
+{\footnotesize\ttfamily \label{class_unified_transport_system_afe753d7f792d5d908df3b6ad5b9d3546} 
+virtual int Unified\+Transport\+System\+::get\+Utilization (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Gets the utilization of the transport system. 
+
+\begin{DoxyReturn}{Returns}
+The utilization percentage. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_public_transit_adapter_ac1de9842033377acba424d97963a121e}{Public\+Transit\+Adapter}}, \mbox{\hyperlink{class_rail_system_adapter_a2acc8fecdcc11d2e85cb7b3fb1c40e12}{Rail\+System\+Adapter}}, and \mbox{\hyperlink{class_road_system_adapter_ae9fe200c1219531c79a33de383ce72f1}{Road\+System\+Adapter}}.
+
+\Hypertarget{class_unified_transport_system_a84d23952d167e2e6e670cea76181447f}\index{UnifiedTransportSystem@{UnifiedTransportSystem}!performMaintenance@{performMaintenance}}
+\index{performMaintenance@{performMaintenance}!UnifiedTransportSystem@{UnifiedTransportSystem}}
+\doxysubsubsection{\texorpdfstring{performMaintenance()}{performMaintenance()}}
+{\footnotesize\ttfamily \label{class_unified_transport_system_a84d23952d167e2e6e670cea76181447f} 
+virtual void Unified\+Transport\+System\+::perform\+Maintenance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Performs maintenance on the transport system. 
+
+
+
+Implemented in \mbox{\hyperlink{class_public_transit_adapter_acd073de65c9dc4ad2c305e6b586fb3fc}{Public\+Transit\+Adapter}}, \mbox{\hyperlink{class_rail_system_adapter_a91adbbe722c6230d958d36f434846ed8}{Rail\+System\+Adapter}}, and \mbox{\hyperlink{class_road_system_adapter_a8832971e5154367be1dcef2130ddc2c4}{Road\+System\+Adapter}}.
+

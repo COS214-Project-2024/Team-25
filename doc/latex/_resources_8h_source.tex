@@ -1,0 +1,224 @@
+\doxysection{Resources.\+h}
+\hypertarget{_resources_8h_source}{}\label{_resources_8h_source}\index{h files/Resources.h@{h files/Resources.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ RESOURCES\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ RESOURCES\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_resources}{Resources}}\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{class_resources_ab09435991b8c485f92e0aa1fd00828b9}{Resources}}();}
+\DoxyCodeLine{00019\ \};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_energy}{Energy}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_resources}{Resources}}\ \{}
+\DoxyCodeLine{00033\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{class_energy}{Energy}}();}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_energy}{Energy}}*\ instance;\ }
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{int}\ wattsCoal;\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{int}\ wattsHydro;\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{int}\ wattsWind;\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{int}\ wattsSolar;\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{int}\ totalWatts;\ }
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_energy}{Energy}}*\ \mbox{\hyperlink{class_energy_a3da523efd1cc6bf9b294f799c39febf5}{getInstance}}();}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{comment}{//\ Deleted\ copy\ constructor\ and\ assignment\ operator\ to\ prevent\ copying.}}
+\DoxyCodeLine{00062\ \ \ \ \ \mbox{\hyperlink{class_energy}{Energy}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_energy}{Energy}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_energy}{Energy}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{comment}{//\ Getters}}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_energy_ac59c98a181753973dc9cf8168f99aad4}{getWattsCoal}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ wattsCoal;\ \}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_energy_af70778b52aa9da66308e3b8061c07cbd}{getWattsHydro}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ wattsHydro;\ \}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_energy_a047d2aa93aea9c17af8f12a4a78bb2d7}{getWattsWind}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ wattsWind;\ \}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_energy_ac20199ff6cb3e9889fdeea67011ec879}{getWattsSolar}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ wattsSolar;\ \}}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_energy_a490cd71834e49c6e967624d6cefeea8f}{getTotalWatts}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ totalWatts;\ \}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{comment}{//\ Setters}}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_energy_a42be597626cd796e9fcea30228d5966f}{setWattsCoal}}(\textcolor{keywordtype}{int}\ value)\ \{\ wattsCoal\ =\ value;\ \}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_energy_a312dba768f600fb42e6f5c2f0a19ba9b}{setWattsHydro}}(\textcolor{keywordtype}{int}\ value)\ \{\ wattsHydro\ =\ value;\ \}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_energy_ac18941911d7339634d8156d124ab5cec}{setWattsWind}}(\textcolor{keywordtype}{int}\ value)\ \{\ wattsWind\ =\ value;\ \}}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_energy_ae6c186ffdbdd4eecabe13d07d9316324}{setWattsSolar}}(\textcolor{keywordtype}{int}\ value)\ \{\ wattsSolar\ =\ value;\ \}}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_energy_a3319006305e373c5e21ea88bc207aa22}{setTotalWatts}}(\textcolor{keywordtype}{int}\ value)\ \{\ totalWatts\ =\ value;\ \}}
+\DoxyCodeLine{00126\ \};}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00141\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_water}{Water}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_resources}{Resources}}\ \{}
+\DoxyCodeLine{00142\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00149\ \ \ \ \ \mbox{\hyperlink{class_water}{Water}}();}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_water}{Water}}*\ instance;\ }
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordtype}{int}\ litres;\ }
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_water}{Water}}*\ \mbox{\hyperlink{class_water_a24b9af8d9255660ff52795c963f796e9}{getInstance}}();}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{comment}{//\ Deleted\ copy\ constructor\ and\ assignment\ operator\ to\ prevent\ copying.}}
+\DoxyCodeLine{00167\ \ \ \ \ \mbox{\hyperlink{class_water}{Water}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_water}{Water}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00168\ \ \ \ \ \textcolor{keywordtype}{void}\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_water}{Water}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00174\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_water_a0dfb045d3ee771cbb63ca180abddedbb}{getLiters}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ litres;\ \}}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00180\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_water_ad1ce6ccc07eada6c2355b7690317db87}{setliters}}(\textcolor{keywordtype}{int}\ value)\ \{\ litres\ =\ value;\ \}}
+\DoxyCodeLine{00181\ \};}
+\DoxyCodeLine{00182\ }
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00195\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_budget}{Budget}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_resources}{Resources}}\ \{}
+\DoxyCodeLine{00196\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00203\ \ \ \ \ \mbox{\hyperlink{class_budget}{Budget}}();}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00205\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_budget}{Budget}}*\ instance;\ }
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00207\ \ \ \ \ \textcolor{keywordtype}{double}\ cash;\ }
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{keywordtype}{double}\ debt;\ }
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00210\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00219\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_budget}{Budget}}*\ \mbox{\hyperlink{class_budget_a52e524f2fd8f176eb879c61e4e9377e0}{getInstance}}();}
+\DoxyCodeLine{00220\ }
+\DoxyCodeLine{00221\ \ \ \ \ \textcolor{comment}{//\ Deleted\ copy\ constructor\ and\ assignment\ operator\ to\ prevent\ copying.}}
+\DoxyCodeLine{00222\ \ \ \ \ \mbox{\hyperlink{class_budget}{Budget}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_budget}{Budget}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00223\ \ \ \ \ \textcolor{keywordtype}{void}\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_budget}{Budget}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00229\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_budget_a3442a5792a37e342f42256eef2b2a0eb}{getCash}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ cash;\ \}}
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00235\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_budget_a64d449a95b975aa6a5108905d005f4d8}{getDebt}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ debt;\ \}}
+\DoxyCodeLine{00236\ }
+\DoxyCodeLine{00244\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_budget_ab94e291a96f2fc2f5bb33298ae86b07f}{setCash}}(\textcolor{keywordtype}{double}\ cash)\ }
+\DoxyCodeLine{00245\ \ \ \ \ \{}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ this-\/>cash\ =\ cash;}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cash\ <\ 0)\ \{}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_budget_af2bfc53c51a9ab0e64c94b7bf25ff0c3}{setDebt}}(-\/cash);}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00250\ \ \ \ \ \}}
+\DoxyCodeLine{00251\ }
+\DoxyCodeLine{00256\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_budget_af2bfc53c51a9ab0e64c94b7bf25ff0c3}{setDebt}}(\textcolor{keywordtype}{double}\ debt)\ \{\ this-\/>debt\ =\ debt;\ \}}
+\DoxyCodeLine{00257\ \};}
+\DoxyCodeLine{00258\ }
+\DoxyCodeLine{00259\ }
+\DoxyCodeLine{00260\ }
+\DoxyCodeLine{00261\ }
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00271\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_materials}{Materials}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_resources}{Resources}}\ \{}
+\DoxyCodeLine{00272\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00273\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_materials_a7b362e61e52ea59ad885254692b4c8ce}{kilograms}};\ }
+\DoxyCodeLine{00274\ }
+\DoxyCodeLine{00275\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00281\ \ \ \ \ \mbox{\hyperlink{class_materials_a2dfa37c118bd29053598f9ae6b53f810}{Materials}}();}
+\DoxyCodeLine{00282\ }
+\DoxyCodeLine{00289\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_materials_a004c8a7c4506862a9ce3fcdcf859bd09}{increase}}();\ \textcolor{comment}{//\ calls\ obtain\ and\ refine}}
+\DoxyCodeLine{00290\ }
+\DoxyCodeLine{00296\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_materials_a1403907d0f139b25337a61ebebaa49d5}{obtain}}()\ =\ 0;}
+\DoxyCodeLine{00297\ }
+\DoxyCodeLine{00303\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_materials_ab53b9bfb6f30a3888b463cb8363b84f0}{refine}}()\ =\ 0;}
+\DoxyCodeLine{00304\ }
+\DoxyCodeLine{00309\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_materials_a5abd1537f213ff1f5477f85f7585c944}{getKilo}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_materials_a7b362e61e52ea59ad885254692b4c8ce}{kilograms}};\ \}}
+\DoxyCodeLine{00310\ }
+\DoxyCodeLine{00315\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_materials_a89e15ea05fe3aea9edac53489ace75b5}{setKilo}}(\textcolor{keywordtype}{int}\ k)\ \{\ \mbox{\hyperlink{class_materials_a7b362e61e52ea59ad885254692b4c8ce}{kilograms}}\ =\ k;\ \}}
+\DoxyCodeLine{00316\ \};}
+\DoxyCodeLine{00317\ }
+\DoxyCodeLine{00318\ }
+\DoxyCodeLine{00319\ }
+\DoxyCodeLine{00320\ }
+\DoxyCodeLine{00321\ \textcolor{comment}{//\ Derived\ classes\ from\ Materials}}
+\DoxyCodeLine{00322\ }
+\DoxyCodeLine{00323\ \textcolor{comment}{/***************************\ Example\ implementation\ of\ the\ singleton\ **********************************/}}
+\DoxyCodeLine{00324\ }
+\DoxyCodeLine{00325\ \textcolor{comment}{//\ Concrete*\ Concrete::instance\ =\ nullptr;}}
+\DoxyCodeLine{00326\ }
+\DoxyCodeLine{00327\ \textcolor{comment}{//\ Concrete*\ Concrete::getInstance()\ \{}}
+\DoxyCodeLine{00328\ \textcolor{comment}{//\ \ \ \ \ if\ (instance\ ==\ nullptr)\ \{}}
+\DoxyCodeLine{00329\ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ instance\ =\ new\ Concrete();}}
+\DoxyCodeLine{00330\ \textcolor{comment}{//\ \ \ \ \ \}}}
+\DoxyCodeLine{00331\ \textcolor{comment}{//\ \ \ \ \ return\ instance;}}
+\DoxyCodeLine{00332\ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{00333\ }
+\DoxyCodeLine{00334\ \textcolor{comment}{/***************************\ creating\ the\ singletons\ in\ the\ Government\ class\ **********************************/}}
+\DoxyCodeLine{00335\ }
+\DoxyCodeLine{00336\ \textcolor{comment}{//\ Energy*\ energy\ =\ Energy::getInstance();}}
+\DoxyCodeLine{00337\ \textcolor{comment}{//\ Water*\ water\ =\ Water::getInstance();}}
+\DoxyCodeLine{00338\ \textcolor{comment}{//\ Concrete*\ concrete\ =\ Concrete::getInstance();}}
+\DoxyCodeLine{00339\ }
+\DoxyCodeLine{00340\ }
+\DoxyCodeLine{00341\ }
+\DoxyCodeLine{00350\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_concrete}{Concrete}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_materials}{Materials}}\ \{}
+\DoxyCodeLine{00351\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00352\ \ \ \ \ \mbox{\hyperlink{class_concrete}{Concrete}}();\ }
+\DoxyCodeLine{00353\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_concrete}{Concrete}}*\ instance;\ }
+\DoxyCodeLine{00354\ }
+\DoxyCodeLine{00355\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00360\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_concrete}{Concrete}}*\ \mbox{\hyperlink{class_concrete_a2dc90af990997172f2b37e2d02388888}{getInstance}}();}
+\DoxyCodeLine{00361\ }
+\DoxyCodeLine{00362\ \ \ \ \ \textcolor{comment}{//\ Delete\ copy\ constructor\ and\ assignment\ operator\ to\ prevent\ copies.}}
+\DoxyCodeLine{00363\ \ \ \ \ \mbox{\hyperlink{class_concrete}{Concrete}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_concrete}{Concrete}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00364\ \ \ \ \ \textcolor{keywordtype}{void}\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_concrete}{Concrete}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00365\ }
+\DoxyCodeLine{00371\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_concrete_a20cb40702ad1956e762826fa10138042}{obtain}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00372\ }
+\DoxyCodeLine{00378\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_concrete_a1acf4624dafbeb4904215983026fced5}{refine}}()\ \textcolor{keyword}{override};\ \ \ }
+\DoxyCodeLine{00379\ \};}
+\DoxyCodeLine{00380\ }
+\DoxyCodeLine{00389\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_steel}{Steel}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_materials}{Materials}}\ \{}
+\DoxyCodeLine{00390\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00391\ \ \ \ \ \mbox{\hyperlink{class_steel}{Steel}}();\ }
+\DoxyCodeLine{00392\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_steel}{Steel}}*\ instance;\ }
+\DoxyCodeLine{00393\ }
+\DoxyCodeLine{00394\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00399\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_steel}{Steel}}*\ \mbox{\hyperlink{class_steel_a754a343e9f29ce238e3c459e06c6757a}{getInstance}}();}
+\DoxyCodeLine{00400\ }
+\DoxyCodeLine{00401\ \ \ \ \ \textcolor{comment}{//\ Delete\ copy\ constructor\ and\ assignment\ operator\ to\ prevent\ copies.}}
+\DoxyCodeLine{00402\ \ \ \ \ \mbox{\hyperlink{class_steel}{Steel}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_steel}{Steel}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00403\ \ \ \ \ \textcolor{keywordtype}{void}\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_steel}{Steel}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00404\ }
+\DoxyCodeLine{00410\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_steel_ad459ddf341b7e555fa184f25958adf5d}{obtain}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00411\ }
+\DoxyCodeLine{00417\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_steel_aaad627e1b2c4152bb90f792be16a01ab}{refine}}()\ \textcolor{keyword}{override};\ \ }
+\DoxyCodeLine{00418\ \};}
+\DoxyCodeLine{00419\ }
+\DoxyCodeLine{00420\ }
+\DoxyCodeLine{00421\ }
+\DoxyCodeLine{00422\ }
+\DoxyCodeLine{00423\ }
+\DoxyCodeLine{00432\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_wood}{Wood}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_materials}{Materials}}\ \{}
+\DoxyCodeLine{00433\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00434\ \ \ \ \ \mbox{\hyperlink{class_wood}{Wood}}();\ }
+\DoxyCodeLine{00435\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_wood}{Wood}}*\ instance;\ }
+\DoxyCodeLine{00436\ }
+\DoxyCodeLine{00437\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00442\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_wood}{Wood}}*\ \mbox{\hyperlink{class_wood_a6dd43388c4216890dc6803b2e9bbe696}{getInstance}}();}
+\DoxyCodeLine{00443\ }
+\DoxyCodeLine{00444\ \ \ \ \ \textcolor{comment}{//\ Delete\ copy\ constructor\ and\ assignment\ operator\ to\ prevent\ copies.}}
+\DoxyCodeLine{00445\ \ \ \ \ \mbox{\hyperlink{class_wood}{Wood}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_wood}{Wood}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00446\ \ \ \ \ \textcolor{keywordtype}{void}\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_wood}{Wood}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00447\ }
+\DoxyCodeLine{00453\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_wood_aeb2e3856c54a961c3581a5ca81e6be16}{obtain}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00454\ }
+\DoxyCodeLine{00460\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_wood_a342e7c8eb256a5d00855674031ae4bfc}{refine}}()\ \textcolor{keyword}{override};\ \ }
+\DoxyCodeLine{00461\ \};}
+\DoxyCodeLine{00462\ }
+\DoxyCodeLine{00463\ }
+\DoxyCodeLine{00464\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

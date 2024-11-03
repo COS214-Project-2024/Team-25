@@ -1,0 +1,105 @@
+\doxysection{Public\+Transit\+Adapter Class Reference}
+\hypertarget{class_public_transit_adapter}{}\label{class_public_transit_adapter}\index{PublicTransitAdapter@{PublicTransitAdapter}}
+
+
+Adapter for integrating \doxylink{class_public_transport}{Public\+Transport} into a unified transport system.  
+
+
+
+
+{\ttfamily \#include $<$Transportation.\+h$>$}
+
+Inheritance diagram for Public\+Transit\+Adapter\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_public_transit_adapter}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_public_transit_adapter_aaa0625af76980902fbcdea5b920531d3}{Public\+Transit\+Adapter}} (\mbox{\hyperlink{class_public_transport}{Public\+Transport}} \texorpdfstring{$\ast$}{*}pts)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_public_transit_adapter}{Public\+Transit\+Adapter} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_public_transit_adapter_abf9881a3375e37b3d61424ba05ef8079}{add\+Route}} (int amount)
+\begin{DoxyCompactList}\small\item\em Adds a route to the public transport system. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_public_transit_adapter_ac1de9842033377acba424d97963a121e}{get\+Utilization}} () override
+\begin{DoxyCompactList}\small\item\em Gets the utilization of the public transport system. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_public_transit_adapter_acd073de65c9dc4ad2c305e6b586fb3fc}{perform\+Maintenance}} () override
+\begin{DoxyCompactList}\small\item\em Performs maintenance on the public transport system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_unified_transport_system}{Unified\+Transport\+System}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Unified\+Transport\+System} ()
+\begin{DoxyCompactList}\small\item\em Virtual destructor for proper cleanup of derived classes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Adapter for integrating \doxylink{class_public_transport}{Public\+Transport} into a unified transport system. 
+
+This class adapts the \doxylink{class_public_transport}{Public\+Transport} class to fit the \doxylink{class_unified_transport_system}{Unified\+Transport\+System} interface. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_public_transit_adapter_aaa0625af76980902fbcdea5b920531d3}\index{PublicTransitAdapter@{PublicTransitAdapter}!PublicTransitAdapter@{PublicTransitAdapter}}
+\index{PublicTransitAdapter@{PublicTransitAdapter}!PublicTransitAdapter@{PublicTransitAdapter}}
+\doxysubsubsection{\texorpdfstring{PublicTransitAdapter()}{PublicTransitAdapter()}}
+{\footnotesize\ttfamily \label{class_public_transit_adapter_aaa0625af76980902fbcdea5b920531d3} 
+Public\+Transit\+Adapter\+::\+Public\+Transit\+Adapter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_public_transport}{Public\+Transport}} \texorpdfstring{$\ast$}{*}}]{pts}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_public_transit_adapter}{Public\+Transit\+Adapter} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pts} & Pointer to the \doxylink{class_public_transport}{Public\+Transport} system to adapt. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_public_transit_adapter_abf9881a3375e37b3d61424ba05ef8079}\index{PublicTransitAdapter@{PublicTransitAdapter}!addRoute@{addRoute}}
+\index{addRoute@{addRoute}!PublicTransitAdapter@{PublicTransitAdapter}}
+\doxysubsubsection{\texorpdfstring{addRoute()}{addRoute()}}
+{\footnotesize\ttfamily \label{class_public_transit_adapter_abf9881a3375e37b3d61424ba05ef8079} 
+void Public\+Transit\+Adapter\+::add\+Route (\begin{DoxyParamCaption}\item[{int}]{amount}{}\end{DoxyParamCaption})}
+
+
+
+Adds a route to the public transport system. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount} & The number of vehicles to add. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_public_transit_adapter_ac1de9842033377acba424d97963a121e}\index{PublicTransitAdapter@{PublicTransitAdapter}!getUtilization@{getUtilization}}
+\index{getUtilization@{getUtilization}!PublicTransitAdapter@{PublicTransitAdapter}}
+\doxysubsubsection{\texorpdfstring{getUtilization()}{getUtilization()}}
+{\footnotesize\ttfamily \label{class_public_transit_adapter_ac1de9842033377acba424d97963a121e} 
+int Public\+Transit\+Adapter\+::get\+Utilization (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Gets the utilization of the public transport system. 
+
+\begin{DoxyReturn}{Returns}
+The utilization percentage. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_unified_transport_system_afe753d7f792d5d908df3b6ad5b9d3546}{Unified\+Transport\+System}}.
+
+\Hypertarget{class_public_transit_adapter_acd073de65c9dc4ad2c305e6b586fb3fc}\index{PublicTransitAdapter@{PublicTransitAdapter}!performMaintenance@{performMaintenance}}
+\index{performMaintenance@{performMaintenance}!PublicTransitAdapter@{PublicTransitAdapter}}
+\doxysubsubsection{\texorpdfstring{performMaintenance()}{performMaintenance()}}
+{\footnotesize\ttfamily \label{class_public_transit_adapter_acd073de65c9dc4ad2c305e6b586fb3fc} 
+void Public\+Transit\+Adapter\+::perform\+Maintenance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Performs maintenance on the public transport system. 
+
+
+
+Implements \mbox{\hyperlink{class_unified_transport_system_a84d23952d167e2e6e670cea76181447f}{Unified\+Transport\+System}}.
+

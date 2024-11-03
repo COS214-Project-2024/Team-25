@@ -1,0 +1,69 @@
+\doxysection{Renovate\+All\+Buildings Class Reference}
+\hypertarget{class_renovate_all_buildings}{}\label{class_renovate_all_buildings}\index{RenovateAllBuildings@{RenovateAllBuildings}}
+
+
+\doxylink{class_concrete}{Concrete} command class that renovates all buildings.  
+
+
+
+
+{\ttfamily \#include $<$Routines.\+h$>$}
+
+Inheritance diagram for Renovate\+All\+Buildings\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_renovate_all_buildings}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_renovate_all_buildings_a13e44bd6762b20acdcc26b36473eeadf}{Renovate\+All\+Buildings}} (const std\+::vector$<$ \mbox{\hyperlink{class_building}{Building}} \texorpdfstring{$\ast$}{*} $>$ \&buildings)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_renovate_all_buildings}{Renovate\+All\+Buildings} command. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_renovate_all_buildings_a1ae95aec8dd5c7f9b190bc7d711c435f}{execute}} () override
+\begin{DoxyCompactList}\small\item\em Executes the renovation of all buildings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_government_commands}{Government\+Commands}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Government\+Commands} ()
+\begin{DoxyCompactList}\small\item\em Virtual destructor for proper cleanup of derived classes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_concrete}{Concrete} command class that renovates all buildings. 
+
+This command class encapsulates the action of renovating all buildings in the city. It holds a vector of \doxylink{class_building}{Building} pointers to operate on during execution. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_renovate_all_buildings_a13e44bd6762b20acdcc26b36473eeadf}\index{RenovateAllBuildings@{RenovateAllBuildings}!RenovateAllBuildings@{RenovateAllBuildings}}
+\index{RenovateAllBuildings@{RenovateAllBuildings}!RenovateAllBuildings@{RenovateAllBuildings}}
+\doxysubsubsection{\texorpdfstring{RenovateAllBuildings()}{RenovateAllBuildings()}}
+{\footnotesize\ttfamily \label{class_renovate_all_buildings_a13e44bd6762b20acdcc26b36473eeadf} 
+Renovate\+All\+Buildings\+::\+Renovate\+All\+Buildings (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{class_building}{Building}} \texorpdfstring{$\ast$}{*} $>$ \&}]{buildings}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_renovate_all_buildings}{Renovate\+All\+Buildings} command. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buildings} & Vector of pointers to the buildings to be renovated. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_renovate_all_buildings_a1ae95aec8dd5c7f9b190bc7d711c435f}\index{RenovateAllBuildings@{RenovateAllBuildings}!execute@{execute}}
+\index{execute@{execute}!RenovateAllBuildings@{RenovateAllBuildings}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \label{class_renovate_all_buildings_a1ae95aec8dd5c7f9b190bc7d711c435f} 
+void Renovate\+All\+Buildings\+::execute (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Executes the renovation of all buildings. 
+
+This function implements the renovation logic for each building in the list. 
+
+Implements \mbox{\hyperlink{class_government_commands_ad68264081c8fe0c9b28a12afe43986ed}{Government\+Commands}}.
+

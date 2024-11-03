@@ -1,0 +1,148 @@
+\doxysection{Citizen Class Reference}
+\hypertarget{class_citizen}{}\label{class_citizen}\index{Citizen@{Citizen}}
+
+
+Abstract base class representing a citizen.  
+
+
+
+
+{\ttfamily \#include $<$Citizen.\+h$>$}
+
+Inheritance diagram for Citizen\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_citizen}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_citizen_a3951355c9f2d7260debedd29b163dbe6}\label{class_citizen_a3951355c9f2d7260debedd29b163dbe6} 
+{\bfseries Citizen} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_citizen}{Citizen}. \end{DoxyCompactList}\item 
+\Hypertarget{class_citizen_a86f8b74f3eae4ee63c9d4a08abba83de}\label{class_citizen_a86f8b74f3eae4ee63c9d4a08abba83de} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Citizen} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor for \doxylink{class_citizen}{Citizen}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_citizen_ae43ab15fddd41bbeaf7af8b525e8acfd}{set\+Citizen}} (string type, string residence, string workplace)
+\begin{DoxyCompactList}\small\item\em Sets the properties of the citizen. \end{DoxyCompactList}\item 
+virtual std\+::string \mbox{\hyperlink{class_citizen_ad0542e5fc1dd7b3343471d222921ac72}{get\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Gets the type of the citizen. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{class_citizen_a9cebf4b8521be8f6ed434af163bd51be}{get\+Residence}} ()
+\begin{DoxyCompactList}\small\item\em Gets the residence of the citizen. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{class_citizen_a037943487bd269fb8a5d390b5314d035}{get\+Workplace}} ()
+\begin{DoxyCompactList}\small\item\em Gets the workplace of the citizen. \end{DoxyCompactList}\item 
+virtual float \mbox{\hyperlink{class_citizen_a0a875195b487daf901eceaf3e7dc6914}{get\+Satisfaction}} ()
+\begin{DoxyCompactList}\small\item\em Gets the satisfaction level of the citizen. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_citizen_a69f234b80bb89dbe0407103b6cd17add}{display\+Info}} ()=0
+\begin{DoxyCompactList}\small\item\em Pure virtual function to display citizen information. This function must be implemented by derived classes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_citizen_a662ec8e43c4c55c3e4a5e92c07e144e2}{change\+Satisfaction}} (float amt)
+\begin{DoxyCompactList}\small\item\em Changes the satisfaction level of the citizen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract base class representing a citizen. 
+
+The \doxylink{class_citizen}{Citizen} class serves as a base class for various types of citizens, encapsulating common properties such as residence, workplace, and satisfaction levels. This class defines the interface for all citizen types. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_citizen_a662ec8e43c4c55c3e4a5e92c07e144e2}\index{Citizen@{Citizen}!changeSatisfaction@{changeSatisfaction}}
+\index{changeSatisfaction@{changeSatisfaction}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{changeSatisfaction()}{changeSatisfaction()}}
+{\footnotesize\ttfamily \label{class_citizen_a662ec8e43c4c55c3e4a5e92c07e144e2} 
+void Citizen\+::change\+Satisfaction (\begin{DoxyParamCaption}\item[{float}]{amt}{}\end{DoxyParamCaption})}
+
+
+
+Changes the satisfaction level of the citizen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em amt} & The amount to change satisfaction by (can be positive or negative). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_citizen_a69f234b80bb89dbe0407103b6cd17add}\index{Citizen@{Citizen}!displayInfo@{displayInfo}}
+\index{displayInfo@{displayInfo}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{displayInfo()}{displayInfo()}}
+{\footnotesize\ttfamily \label{class_citizen_a69f234b80bb89dbe0407103b6cd17add} 
+virtual void Citizen\+::display\+Info (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Pure virtual function to display citizen information. This function must be implemented by derived classes. 
+
+
+
+Implemented in \mbox{\hyperlink{class_commercial_worker_a4f9ecb67927ebeb490ad6fc2376924e7}{Commercial\+Worker}}, \mbox{\hyperlink{class_government_worker_a2a35f8a011f6f5e134e638f5162950bc}{Government\+Worker}}, and \mbox{\hyperlink{class_industrial_worker_a5610bd63553569b90641e0fd342c7acc}{Industrial\+Worker}}.
+
+\Hypertarget{class_citizen_a9cebf4b8521be8f6ed434af163bd51be}\index{Citizen@{Citizen}!getResidence@{getResidence}}
+\index{getResidence@{getResidence}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{getResidence()}{getResidence()}}
+{\footnotesize\ttfamily \label{class_citizen_a9cebf4b8521be8f6ed434af163bd51be} 
+std\+::string Citizen\+::get\+Residence (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the residence of the citizen. 
+
+\begin{DoxyReturn}{Returns}
+The residence of the citizen as a string. 
+\end{DoxyReturn}
+\Hypertarget{class_citizen_a0a875195b487daf901eceaf3e7dc6914}\index{Citizen@{Citizen}!getSatisfaction@{getSatisfaction}}
+\index{getSatisfaction@{getSatisfaction}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{getSatisfaction()}{getSatisfaction()}}
+{\footnotesize\ttfamily \label{class_citizen_a0a875195b487daf901eceaf3e7dc6914} 
+float Citizen\+::get\+Satisfaction (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the satisfaction level of the citizen. 
+
+\begin{DoxyReturn}{Returns}
+The satisfaction level as a float. 
+\end{DoxyReturn}
+\Hypertarget{class_citizen_ad0542e5fc1dd7b3343471d222921ac72}\index{Citizen@{Citizen}!getType@{getType}}
+\index{getType@{getType}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \label{class_citizen_ad0542e5fc1dd7b3343471d222921ac72} 
+std\+::string Citizen\+::get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the type of the citizen. 
+
+\begin{DoxyReturn}{Returns}
+The type of the citizen as a string. 
+\end{DoxyReturn}
+\Hypertarget{class_citizen_a037943487bd269fb8a5d390b5314d035}\index{Citizen@{Citizen}!getWorkplace@{getWorkplace}}
+\index{getWorkplace@{getWorkplace}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{getWorkplace()}{getWorkplace()}}
+{\footnotesize\ttfamily \label{class_citizen_a037943487bd269fb8a5d390b5314d035} 
+std\+::string Citizen\+::get\+Workplace (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the workplace of the citizen. 
+
+\begin{DoxyReturn}{Returns}
+The workplace of the citizen as a string. 
+\end{DoxyReturn}
+\Hypertarget{class_citizen_ae43ab15fddd41bbeaf7af8b525e8acfd}\index{Citizen@{Citizen}!setCitizen@{setCitizen}}
+\index{setCitizen@{setCitizen}!Citizen@{Citizen}}
+\doxysubsubsection{\texorpdfstring{setCitizen()}{setCitizen()}}
+{\footnotesize\ttfamily \label{class_citizen_ae43ab15fddd41bbeaf7af8b525e8acfd} 
+void Citizen\+::set\+Citizen (\begin{DoxyParamCaption}\item[{string}]{type}{, }\item[{string}]{residence}{, }\item[{string}]{workplace}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Sets the properties of the citizen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The type of the citizen. \\
+\hline
+{\em residence} & The residence of the citizen. \\
+\hline
+{\em workplace} & The workplace of the citizen. \\
+\hline
+\end{DoxyParams}

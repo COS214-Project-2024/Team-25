@@ -1,0 +1,217 @@
+\doxysection{Energy Class Reference}
+\hypertarget{class_energy}{}\label{class_energy}\index{Energy@{Energy}}
+
+
+Singleton class representing energy resources in the city.  
+
+
+
+
+{\ttfamily \#include $<$Resources.\+h$>$}
+
+Inheritance diagram for Energy\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_energy}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_energy_a38c8647ca7bc1da79e11365b71aa1b07}\label{class_energy_a38c8647ca7bc1da79e11365b71aa1b07} 
+{\bfseries Energy} (const \mbox{\hyperlink{class_energy}{Energy}} \&)=delete
+\item 
+\Hypertarget{class_energy_a7a085520ef4a02666772cbce70db6716}\label{class_energy_a7a085520ef4a02666772cbce70db6716} 
+void {\bfseries operator=} (const \mbox{\hyperlink{class_energy}{Energy}} \&)=delete
+\item 
+int \mbox{\hyperlink{class_energy_ac59c98a181753973dc9cf8168f99aad4}{get\+Watts\+Coal}} () const
+\begin{DoxyCompactList}\small\item\em Gets the amount of energy generated from coal. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_energy_af70778b52aa9da66308e3b8061c07cbd}{get\+Watts\+Hydro}} () const
+\begin{DoxyCompactList}\small\item\em Gets the amount of energy generated from hydro. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_energy_a047d2aa93aea9c17af8f12a4a78bb2d7}{get\+Watts\+Wind}} () const
+\begin{DoxyCompactList}\small\item\em Gets the amount of energy generated from wind. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_energy_ac20199ff6cb3e9889fdeea67011ec879}{get\+Watts\+Solar}} () const
+\begin{DoxyCompactList}\small\item\em Gets the amount of energy generated from solar. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_energy_a490cd71834e49c6e967624d6cefeea8f}{get\+Total\+Watts}} () const
+\begin{DoxyCompactList}\small\item\em Gets the total amount of energy generated. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_energy_a42be597626cd796e9fcea30228d5966f}{set\+Watts\+Coal}} (int value)
+\begin{DoxyCompactList}\small\item\em Sets the amount of energy generated from coal. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_energy_a312dba768f600fb42e6f5c2f0a19ba9b}{set\+Watts\+Hydro}} (int value)
+\begin{DoxyCompactList}\small\item\em Sets the amount of energy generated from hydro. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_energy_ac18941911d7339634d8156d124ab5cec}{set\+Watts\+Wind}} (int value)
+\begin{DoxyCompactList}\small\item\em Sets the amount of energy generated from wind. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_energy_ae6c186ffdbdd4eecabe13d07d9316324}{set\+Watts\+Solar}} (int value)
+\begin{DoxyCompactList}\small\item\em Sets the amount of energy generated from solar. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_energy_a3319006305e373c5e21ea88bc207aa22}{set\+Total\+Watts}} (int value)
+\begin{DoxyCompactList}\small\item\em Sets the total amount of energy generated. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_resources}{Resources}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Resources} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_resources}{Resources}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_energy}{Energy}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_energy_a3da523efd1cc6bf9b294f799c39febf5}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Gets the singleton instance of the \doxylink{class_energy}{Energy} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Singleton class representing energy resources in the city. 
+
+The \doxylink{class_energy}{Energy} class manages different types of energy sources such as coal, hydro, wind, and solar. It provides access to their wattage values and follows the Singleton design pattern to ensure that only one instance of this class exists throughout the application. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_energy_a3da523efd1cc6bf9b294f799c39febf5}\index{Energy@{Energy}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!Energy@{Energy}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \label{class_energy_a3da523efd1cc6bf9b294f799c39febf5} 
+\mbox{\hyperlink{class_energy}{Energy}} \texorpdfstring{$\ast$}{*} Energy\+::get\+Instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Gets the singleton instance of the \doxylink{class_energy}{Energy} class. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the singleton \doxylink{class_energy}{Energy} instance.
+\end{DoxyReturn}
+This method checks if an instance of the \doxylink{class_energy}{Energy} class already exists; if not, it creates one and returns it. This guarantees that there is only one instance of \doxylink{class_energy}{Energy} throughout the application. \Hypertarget{class_energy_a490cd71834e49c6e967624d6cefeea8f}\index{Energy@{Energy}!getTotalWatts@{getTotalWatts}}
+\index{getTotalWatts@{getTotalWatts}!Energy@{Energy}}
+\doxysubsubsection{\texorpdfstring{getTotalWatts()}{getTotalWatts()}}
+{\footnotesize\ttfamily \label{class_energy_a490cd71834e49c6e967624d6cefeea8f} 
+int Energy\+::get\+Total\+Watts (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the total amount of energy generated. 
+
+\begin{DoxyReturn}{Returns}
+The total energy generated (in watts). 
+\end{DoxyReturn}
+\Hypertarget{class_energy_ac59c98a181753973dc9cf8168f99aad4}\index{Energy@{Energy}!getWattsCoal@{getWattsCoal}}
+\index{getWattsCoal@{getWattsCoal}!Energy@{Energy}}
+\doxysubsubsection{\texorpdfstring{getWattsCoal()}{getWattsCoal()}}
+{\footnotesize\ttfamily \label{class_energy_ac59c98a181753973dc9cf8168f99aad4} 
+int Energy\+::get\+Watts\+Coal (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the amount of energy generated from coal. 
+
+\begin{DoxyReturn}{Returns}
+The amount of energy from coal (in watts). 
+\end{DoxyReturn}
+\Hypertarget{class_energy_af70778b52aa9da66308e3b8061c07cbd}\index{Energy@{Energy}!getWattsHydro@{getWattsHydro}}
+\index{getWattsHydro@{getWattsHydro}!Energy@{Energy}}
+\doxysubsubsection{\texorpdfstring{getWattsHydro()}{getWattsHydro()}}
+{\footnotesize\ttfamily \label{class_energy_af70778b52aa9da66308e3b8061c07cbd} 
+int Energy\+::get\+Watts\+Hydro (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the amount of energy generated from hydro. 
+
+\begin{DoxyReturn}{Returns}
+The amount of energy from hydro (in watts). 
+\end{DoxyReturn}
+\Hypertarget{class_energy_ac20199ff6cb3e9889fdeea67011ec879}\index{Energy@{Energy}!getWattsSolar@{getWattsSolar}}
+\index{getWattsSolar@{getWattsSolar}!Energy@{Energy}}
+\doxysubsubsection{\texorpdfstring{getWattsSolar()}{getWattsSolar()}}
+{\footnotesize\ttfamily \label{class_energy_ac20199ff6cb3e9889fdeea67011ec879} 
+int Energy\+::get\+Watts\+Solar (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the amount of energy generated from solar. 
+
+\begin{DoxyReturn}{Returns}
+The amount of energy from solar (in watts). 
+\end{DoxyReturn}
+\Hypertarget{class_energy_a047d2aa93aea9c17af8f12a4a78bb2d7}\index{Energy@{Energy}!getWattsWind@{getWattsWind}}
+\index{getWattsWind@{getWattsWind}!Energy@{Energy}}
+\doxysubsubsection{\texorpdfstring{getWattsWind()}{getWattsWind()}}
+{\footnotesize\ttfamily \label{class_energy_a047d2aa93aea9c17af8f12a4a78bb2d7} 
+int Energy\+::get\+Watts\+Wind (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the amount of energy generated from wind. 
+
+\begin{DoxyReturn}{Returns}
+The amount of energy from wind (in watts). 
+\end{DoxyReturn}
+\Hypertarget{class_energy_a3319006305e373c5e21ea88bc207aa22}\index{Energy@{Energy}!setTotalWatts@{setTotalWatts}}
+\index{setTotalWatts@{setTotalWatts}!Energy@{Energy}}
+\doxysubsubsection{\texorpdfstring{setTotalWatts()}{setTotalWatts()}}
+{\footnotesize\ttfamily \label{class_energy_a3319006305e373c5e21ea88bc207aa22} 
+void Energy\+::set\+Total\+Watts (\begin{DoxyParamCaption}\item[{int}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the total amount of energy generated. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The total energy to set (in watts). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_energy_a42be597626cd796e9fcea30228d5966f}\index{Energy@{Energy}!setWattsCoal@{setWattsCoal}}
+\index{setWattsCoal@{setWattsCoal}!Energy@{Energy}}
+\doxysubsubsection{\texorpdfstring{setWattsCoal()}{setWattsCoal()}}
+{\footnotesize\ttfamily \label{class_energy_a42be597626cd796e9fcea30228d5966f} 
+void Energy\+::set\+Watts\+Coal (\begin{DoxyParamCaption}\item[{int}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the amount of energy generated from coal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The amount of energy to set (in watts). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_energy_a312dba768f600fb42e6f5c2f0a19ba9b}\index{Energy@{Energy}!setWattsHydro@{setWattsHydro}}
+\index{setWattsHydro@{setWattsHydro}!Energy@{Energy}}
+\doxysubsubsection{\texorpdfstring{setWattsHydro()}{setWattsHydro()}}
+{\footnotesize\ttfamily \label{class_energy_a312dba768f600fb42e6f5c2f0a19ba9b} 
+void Energy\+::set\+Watts\+Hydro (\begin{DoxyParamCaption}\item[{int}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the amount of energy generated from hydro. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The amount of energy to set (in watts). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_energy_ae6c186ffdbdd4eecabe13d07d9316324}\index{Energy@{Energy}!setWattsSolar@{setWattsSolar}}
+\index{setWattsSolar@{setWattsSolar}!Energy@{Energy}}
+\doxysubsubsection{\texorpdfstring{setWattsSolar()}{setWattsSolar()}}
+{\footnotesize\ttfamily \label{class_energy_ae6c186ffdbdd4eecabe13d07d9316324} 
+void Energy\+::set\+Watts\+Solar (\begin{DoxyParamCaption}\item[{int}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the amount of energy generated from solar. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The amount of energy to set (in watts). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_energy_ac18941911d7339634d8156d124ab5cec}\index{Energy@{Energy}!setWattsWind@{setWattsWind}}
+\index{setWattsWind@{setWattsWind}!Energy@{Energy}}
+\doxysubsubsection{\texorpdfstring{setWattsWind()}{setWattsWind()}}
+{\footnotesize\ttfamily \label{class_energy_ac18941911d7339634d8156d124ab5cec} 
+void Energy\+::set\+Watts\+Wind (\begin{DoxyParamCaption}\item[{int}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the amount of energy generated from wind. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The amount of energy to set (in watts). \\
+\hline
+\end{DoxyParams}

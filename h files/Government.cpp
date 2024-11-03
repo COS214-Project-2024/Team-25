@@ -709,7 +709,7 @@ void Government::createCitizen(int numCitizens)
                     if (b->getType() == "Apartment" && b->getLeftOverCapacity() > 0)
                     {
                         b->addCitizen(c);
-                        printC("Citizen added to " + buildingType, Color::GREEN);
+                        printC("Citizen added to Apartment", Color::GREEN);
                         housingAssigned = true;
                         break;
                     }
@@ -725,7 +725,7 @@ void Government::createCitizen(int numCitizens)
                         {
                             updateSatisfaction(5);
                             b->addCitizen(c);
-                            printC("Citizen added to " + buildingType, Color::GREEN);
+                            printC("Citizen added to Apartment", Color::GREEN);
                             housingAssigned = true;
                             break;
                         }
@@ -806,7 +806,7 @@ void Government::createCitizen(int numCitizens)
                     if (b->getType() == "House" && b->getLeftOverCapacity() > 0)
                     {
                         b->addCitizen(c);
-                        printC("Citizen added to " + buildingType, Color::GREEN);
+                        printC("Citizen added to House", Color::GREEN);
                         housingAssigned = true;
                         break;
                     }
@@ -822,7 +822,7 @@ void Government::createCitizen(int numCitizens)
                         {
                             updateSatisfaction(5);
                             b->addCitizen(c);
-                            printC("Citizen added to " + buildingType, Color::GREEN);
+                            printC("Citizen added to House", Color::GREEN);
                             housingAssigned = true;
                             break;
                         }
@@ -904,7 +904,7 @@ void Government::createCitizen(int numCitizens)
                     if (b->getType() == "Mansion" && b->getLeftOverCapacity() > 0)
                     {
                         b->addCitizen(c);
-                        printC("Citizen added to " + buildingType, Color::GREEN);
+                        printC("Citizen added to Mansion", Color::GREEN);
                         housingAssigned = true;
                         break;
                     }
@@ -920,7 +920,7 @@ void Government::createCitizen(int numCitizens)
                         {
                             updateSatisfaction(5);
                             b->addCitizen(c);
-                            printC("Citizen added to " + buildingType, Color::GREEN);
+                            printC("Citizen added to Mansion", Color::GREEN);
                             housingAssigned = true;
                             break;
                         }
@@ -1014,82 +1014,102 @@ void Government::setDifficulty(int difficulty)
     industrialFactory = new IndWorkerFactory();
     institutionalFactory = new GovernmentWorkerFactory();
 
+    Building *f = new Factory("Factory 1", 5, 500, 10000.00, 100, 5);    
+    Building *a = new Apartment("Apartment 1", 2, 50, 2000.00, 1, 1, 5, 2);
+    Building *p = new Plant("Plant 1", 5, 500, 10000.00, 100, 5);
+    Building *a1 = new Apartment("Apartment 2", 2, 50, 2000.00, 1, 1, 5, 2);
+    Building *s = new Shop("Shop 1", 1, 50, 1000.00, 10, 1, 1);
+    Building *h = new House("House 1", 2, 50, 100.00, 2, 2, 5, 3);
+    Building *m1 = new Mall("Mall 1", 1, 50, 1000.00, 10, 1, 1);
+    Building *h1 = new House("House 1", 2, 50, 100.00, 2, 2, 7, 3);
+    Building *g = new GovernmentBuilding("Government Building 1", 5, 500, 10000.00, 50, 2);
+    Building *m = new Mansion("Mansion 1", 6, 500, 2000.00, 6, 6, 10, false);
+
     int k = cityGrowth->getTotalSectorCount();
     for (int i = 0; i < k; i++)
     {
-        Building *f = new Factory("Factory 1", 5, 500, 10000.00, 100, 5);
-        Building *a = new Apartment("Apartment 1", 2, 50, 2000.00, 1, 1, 5, 2);
+        Building* f1 = f->clone();
+        Building* a2 = a->clone();
         Road r(5, "Industrial");
         roadSystemAdapter->addRoute(r);
         for (int j = 0; j < 3; j++)
         {
             Citizen *c = industrialFactory->createCitizen("Factory");
-            f->addCitizen(c);
-            a->addCitizen(c);
+            f1->addCitizen(c);
+            a2->addCitizen(c);
         }
-        cityGrowth->addBuilding(f, i);
-        cityGrowth->addBuilding(a, i);
+        cityGrowth->addBuilding(f1, i);
+        cityGrowth->addBuilding(a2, i);
 
-        Building *p = new Plant("Plant 1", 5, 500, 10000.00, 100, 5);
-        Building *a1 = new Apartment("Apartment 2", 2, 50, 2000.00, 1, 1, 5, 2);
+        Building* p1 = p->clone();
+        Building* a3 = a1->clone();
         Road r2(5, "Industrial");
         roadSystemAdapter->addRoute(r2);
         for (int j = 0; j < 4; j++)
         {
             Citizen *c = industrialFactory->createCitizen("Plant");
-            p->addCitizen(c);
-            a1->addCitizen(c);
+            p1->addCitizen(c);
+            a3->addCitizen(c);
         }
-        cityGrowth->addBuilding(p, i);
-        cityGrowth->addBuilding(a1, i);
+        cityGrowth->addBuilding(p1, i);
+        cityGrowth->addBuilding(a3, i);
 
-        Building *s = new Shop("Shop 1", 1, 50, 1000.00, 10, 1, 1);
-        Building *h = new House("House 1", 2, 50, 100.00, 2, 2, 5, 3);
+        Building* s1 = s->clone();
+        Building *h2 = h->clone();
         Road com(5, "Commercial");
         roadSystemAdapter->addRoute(com);
         for (int n = 0; n < 4; n++)
         {
             Citizen *c = commercialFactory->createCitizen("Shop");
-            s->addCitizen(c);
-            h->addCitizen(c);
+            s1->addCitizen(c);
+            h2->addCitizen(c);
         }
 
-        cityGrowth->addBuilding(s, i);
-        cityGrowth->addBuilding(h, i);
+        cityGrowth->addBuilding(s1, i);
+        cityGrowth->addBuilding(h2, i);
 
-        Building *m1 = new Mall("Mall 1", 1, 50, 1000.00, 10, 1, 1);
-        Building *h1 = new House("House 1", 2, 50, 100.00, 2, 2, 7, 3);
+        Building* m3 = m1->clone();
+        Building* h3 = h1->clone();
         Road com1(5, "Commercial");
         roadSystemAdapter->addRoute(com1);
         for (int n = 0; n < 6; n++)
         {
             Citizen *c = commercialFactory->createCitizen("Mall");
-            m1->addCitizen(c);
-            h1->addCitizen(c);
+            m3->addCitizen(c);
+            h3->addCitizen(c);
         }
 
-        cityGrowth->addBuilding(m1, i);
-        cityGrowth->addBuilding(h1, i);
+        cityGrowth->addBuilding(m3, i);
+        cityGrowth->addBuilding(h3, i);
 
-        Building *g = new GovernmentBuilding("Government Building 1", 5, 500, 10000.00, 50, 2);
-        Building *m = new Mansion("Mansion 1", 6, 500, 2000.00, 6, 6, 10, false);
-
+        Building* g1 = g->clone();
+        Building* m4 = m->clone();
         Road in(5, "Instatutional");
         roadSystemAdapter->addRoute(in);
         for (int l = 0; l < 8; l++)
         {
             Citizen *c = institutionalFactory->createCitizen("GovernmentBuilding");
-            g->addCitizen(c);
-            m->addCitizen(c);
+            g1->addCitizen(c);
+            m4->addCitizen(c);
         }
 
-        cityGrowth->addBuilding(g, i);
-        cityGrowth->addBuilding(m, i);
+        cityGrowth->addBuilding(g1, i);
+        cityGrowth->addBuilding(m4, i);
     }
 
     delete commercialFactory;
     delete industrialFactory;
     delete institutionalFactory;
+    delete f;
+    delete a;
+    delete p;
+    delete a1;
+    delete s;
+    delete h;
+    delete m1;
+    delete h1;
+    delete g;
+    delete m;
 
     switch (difficulty)
     {
@@ -1239,13 +1259,31 @@ void Government::printSec()
 
 void Government::printSatisfaction()
 {
+    // printC("---------------------------------", Color::YELLOW);
+    // printC("|     Satisfaction: " + std::to_string(std::round(avgSatisfaction())) + "   |", Color::YELLOW);
+    // printC("---------------------------------", Color::YELLOW);
+    // printC("|     Budget:       " + std::to_string(std::round(getBudget())) + "   |", Color::YELLOW);
+    // printC("---------------------------------", Color::YELLOW);
+    // printC("|     Debt:         " + std::to_string(std::round(getDebt())) + "   |", Color::YELLOW);
+    // printC("---------------------------------", Color::YELLOW);
+
+    std::stringstream satisfactionStream;
+    satisfactionStream << std::fixed << std::setprecision(2) << avgSatisfaction();
+
+    std::stringstream budgetStream;
+    budgetStream << std::fixed << std::setprecision(2) << getBudget();
+
+    std::stringstream debtStream;
+    debtStream << std::fixed << std::setprecision(2) << getDebt();
+
     printC("---------------------------------", Color::YELLOW);
-    printC("|     Satisfaction: " + std::to_string(std::round(avgSatisfaction())) + "   |", Color::YELLOW);
+    printC("|     Satisfaction: " + satisfactionStream.str() + "       |", Color::YELLOW);
     printC("---------------------------------", Color::YELLOW);
-    printC("|     Budget:       " + std::to_string(std::round(getBudget())) + "   |", Color::YELLOW);
+    printC("|     Budget:       " + budgetStream.str() + "   |", Color::YELLOW);
     printC("---------------------------------", Color::YELLOW);
-    printC("|     Debt:         " + std::to_string(std::round(getDebt())) + "   |", Color::YELLOW);
+    printC("|     Debt:         " + debtStream.str() + "        |", Color::YELLOW);
     printC("---------------------------------", Color::YELLOW);
+
 }
 
 void Government::printUtilitiesDetails()
@@ -1492,7 +1530,7 @@ void Government::promptForNewWarehouse(int sector)
         printC("Enter capacity: ", Color::CYAN);
         int capacity = safeIntInput(1, 50);
 
-        Building *w = new Warehouse(name, capacity * 3, capacity * 5, capacity * 3000, capacity, 2);
+        Building *w = new Warehouse(name, capacity * 3, capacity * 5, capacity * 3000, capacity, capacity);
         w->build();
         if (w->getBuilt())
         {

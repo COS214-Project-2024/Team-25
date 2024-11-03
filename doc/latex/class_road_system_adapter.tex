@@ -1,0 +1,123 @@
+\doxysection{Road\+System\+Adapter Class Reference}
+\hypertarget{class_road_system_adapter}{}\label{class_road_system_adapter}\index{RoadSystemAdapter@{RoadSystemAdapter}}
+
+
+Adapter for integrating \doxylink{class_road_system}{Road\+System} into a unified transport system.  
+
+
+
+
+{\ttfamily \#include $<$Transportation.\+h$>$}
+
+Inheritance diagram for Road\+System\+Adapter\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_road_system_adapter}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_road_system_adapter_a8d60d4b9a2407508246376b6f0a11c67}{Road\+System\+Adapter}} (\mbox{\hyperlink{class_road_system}{Road\+System}} \texorpdfstring{$\ast$}{*}rs)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_road_system_adapter}{Road\+System\+Adapter} object. \end{DoxyCompactList}\item 
+\Hypertarget{class_road_system_adapter_a314411ce3d0655f180e0352c989e77aa}\label{class_road_system_adapter_a314411ce3d0655f180e0352c989e77aa} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Road\+System\+Adapter} ()
+\begin{DoxyCompactList}\small\item\em Destroys the \doxylink{class_road_system_adapter}{Road\+System\+Adapter} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_road_system_adapter_a94bb557e886df8514475d58b6dcaf204}{add\+Route}} (\mbox{\hyperlink{class_road}{Road}} road)
+\begin{DoxyCompactList}\small\item\em Adds a road to the road system. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{class_road}{Road}} $>$ \& \mbox{\hyperlink{class_road_system_adapter_aee3e981d990a79965189dbb40bcffecd}{get\+Roads}} ()
+\begin{DoxyCompactList}\small\item\em Gets the list of roads in the road system. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_road_system_adapter_ae9fe200c1219531c79a33de383ce72f1}{get\+Utilization}} () override
+\begin{DoxyCompactList}\small\item\em Gets the utilization of the road system. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_road_system_adapter_a8832971e5154367be1dcef2130ddc2c4}{perform\+Maintenance}} () override
+\begin{DoxyCompactList}\small\item\em Performs maintenance on the road system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_unified_transport_system}{Unified\+Transport\+System}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Unified\+Transport\+System} ()
+\begin{DoxyCompactList}\small\item\em Virtual destructor for proper cleanup of derived classes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Adapter for integrating \doxylink{class_road_system}{Road\+System} into a unified transport system. 
+
+This class adapts the \doxylink{class_road_system}{Road\+System} class to fit the \doxylink{class_unified_transport_system}{Unified\+Transport\+System} interface. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_road_system_adapter_a8d60d4b9a2407508246376b6f0a11c67}\index{RoadSystemAdapter@{RoadSystemAdapter}!RoadSystemAdapter@{RoadSystemAdapter}}
+\index{RoadSystemAdapter@{RoadSystemAdapter}!RoadSystemAdapter@{RoadSystemAdapter}}
+\doxysubsubsection{\texorpdfstring{RoadSystemAdapter()}{RoadSystemAdapter()}}
+{\footnotesize\ttfamily \label{class_road_system_adapter_a8d60d4b9a2407508246376b6f0a11c67} 
+Road\+System\+Adapter\+::\+Road\+System\+Adapter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_road_system}{Road\+System}} \texorpdfstring{$\ast$}{*}}]{rs}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_road_system_adapter}{Road\+System\+Adapter} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rs} & Pointer to the \doxylink{class_road_system}{Road\+System} to adapt. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_road_system_adapter_a94bb557e886df8514475d58b6dcaf204}\index{RoadSystemAdapter@{RoadSystemAdapter}!addRoute@{addRoute}}
+\index{addRoute@{addRoute}!RoadSystemAdapter@{RoadSystemAdapter}}
+\doxysubsubsection{\texorpdfstring{addRoute()}{addRoute()}}
+{\footnotesize\ttfamily \label{class_road_system_adapter_a94bb557e886df8514475d58b6dcaf204} 
+void Road\+System\+Adapter\+::add\+Route (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_road}{Road}}}]{road}{}\end{DoxyParamCaption})}
+
+
+
+Adds a road to the road system. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em road} & The \doxylink{class_road}{Road} object to add. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_road_system_adapter_aee3e981d990a79965189dbb40bcffecd}\index{RoadSystemAdapter@{RoadSystemAdapter}!getRoads@{getRoads}}
+\index{getRoads@{getRoads}!RoadSystemAdapter@{RoadSystemAdapter}}
+\doxysubsubsection{\texorpdfstring{getRoads()}{getRoads()}}
+{\footnotesize\ttfamily \label{class_road_system_adapter_aee3e981d990a79965189dbb40bcffecd} 
+vector$<$ \mbox{\hyperlink{class_road}{Road}} $>$ \& Road\+System\+Adapter\+::get\+Roads (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Gets the list of roads in the road system. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the vector of roads. 
+\end{DoxyReturn}
+\Hypertarget{class_road_system_adapter_ae9fe200c1219531c79a33de383ce72f1}\index{RoadSystemAdapter@{RoadSystemAdapter}!getUtilization@{getUtilization}}
+\index{getUtilization@{getUtilization}!RoadSystemAdapter@{RoadSystemAdapter}}
+\doxysubsubsection{\texorpdfstring{getUtilization()}{getUtilization()}}
+{\footnotesize\ttfamily \label{class_road_system_adapter_ae9fe200c1219531c79a33de383ce72f1} 
+int Road\+System\+Adapter\+::get\+Utilization (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Gets the utilization of the road system. 
+
+\begin{DoxyReturn}{Returns}
+The utilization percentage. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_unified_transport_system_afe753d7f792d5d908df3b6ad5b9d3546}{Unified\+Transport\+System}}.
+
+\Hypertarget{class_road_system_adapter_a8832971e5154367be1dcef2130ddc2c4}\index{RoadSystemAdapter@{RoadSystemAdapter}!performMaintenance@{performMaintenance}}
+\index{performMaintenance@{performMaintenance}!RoadSystemAdapter@{RoadSystemAdapter}}
+\doxysubsubsection{\texorpdfstring{performMaintenance()}{performMaintenance()}}
+{\footnotesize\ttfamily \label{class_road_system_adapter_a8832971e5154367be1dcef2130ddc2c4} 
+void Road\+System\+Adapter\+::perform\+Maintenance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Performs maintenance on the road system. 
+
+
+
+Implements \mbox{\hyperlink{class_unified_transport_system_a84d23952d167e2e6e670cea76181447f}{Unified\+Transport\+System}}.
+

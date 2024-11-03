@@ -1,0 +1,130 @@
+\doxysection{Materials Class Reference}
+\hypertarget{class_materials}{}\label{class_materials}\index{Materials@{Materials}}
+
+
+Abstract base class representing materials used in resource management.  
+
+
+
+
+{\ttfamily \#include $<$Resources.\+h$>$}
+
+Inheritance diagram for Materials\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_materials}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_materials_a2dfa37c118bd29053598f9ae6b53f810}{Materials}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for the \doxylink{class_materials}{Materials} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_materials_a004c8a7c4506862a9ce3fcdcf859bd09}{increase}} ()
+\begin{DoxyCompactList}\small\item\em Increases the quantity of materials. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_materials_a1403907d0f139b25337a61ebebaa49d5}{obtain}} ()=0
+\begin{DoxyCompactList}\small\item\em Abstract method to obtain materials. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_materials_ab53b9bfb6f30a3888b463cb8363b84f0}{refine}} ()=0
+\begin{DoxyCompactList}\small\item\em Abstract method to refine materials. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_materials_a5abd1537f213ff1f5477f85f7585c944}{get\+Kilo}} () const
+\begin{DoxyCompactList}\small\item\em Gets the quantity of materials in kilograms. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_materials_a89e15ea05fe3aea9edac53489ace75b5}{set\+Kilo}} (int k)
+\begin{DoxyCompactList}\small\item\em Sets the quantity of materials in kilograms. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_resources}{Resources}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Resources} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_resources}{Resources}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_materials_a7b362e61e52ea59ad885254692b4c8ce}\label{class_materials_a7b362e61e52ea59ad885254692b4c8ce} 
+int {\bfseries kilograms}
+\begin{DoxyCompactList}\small\item\em The quantity of materials in kilograms. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract base class representing materials used in resource management. 
+
+The \doxylink{class_materials}{Materials} class serves as an abstract base for different types of materials that can be obtained and refined. It defines common functionality and properties related to materials used within the city management system. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_materials_a2dfa37c118bd29053598f9ae6b53f810}\index{Materials@{Materials}!Materials@{Materials}}
+\index{Materials@{Materials}!Materials@{Materials}}
+\doxysubsubsection{\texorpdfstring{Materials()}{Materials()}}
+{\footnotesize\ttfamily \label{class_materials_a2dfa37c118bd29053598f9ae6b53f810} 
+Materials\+::\+Materials (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Default constructor for the \doxylink{class_materials}{Materials} class. 
+
+This constructor initializes the materials with default values. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_materials_a5abd1537f213ff1f5477f85f7585c944}\index{Materials@{Materials}!getKilo@{getKilo}}
+\index{getKilo@{getKilo}!Materials@{Materials}}
+\doxysubsubsection{\texorpdfstring{getKilo()}{getKilo()}}
+{\footnotesize\ttfamily \label{class_materials_a5abd1537f213ff1f5477f85f7585c944} 
+int Materials\+::get\+Kilo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the quantity of materials in kilograms. 
+
+\begin{DoxyReturn}{Returns}
+The amount of materials in kilograms. 
+\end{DoxyReturn}
+\Hypertarget{class_materials_a004c8a7c4506862a9ce3fcdcf859bd09}\index{Materials@{Materials}!increase@{increase}}
+\index{increase@{increase}!Materials@{Materials}}
+\doxysubsubsection{\texorpdfstring{increase()}{increase()}}
+{\footnotesize\ttfamily \label{class_materials_a004c8a7c4506862a9ce3fcdcf859bd09} 
+void Materials\+::increase (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Increases the quantity of materials. 
+
+This method is responsible for calling the {\ttfamily obtain} and {\ttfamily refine} methods to manage the material acquisition and refinement processes. \Hypertarget{class_materials_a1403907d0f139b25337a61ebebaa49d5}\index{Materials@{Materials}!obtain@{obtain}}
+\index{obtain@{obtain}!Materials@{Materials}}
+\doxysubsubsection{\texorpdfstring{obtain()}{obtain()}}
+{\footnotesize\ttfamily \label{class_materials_a1403907d0f139b25337a61ebebaa49d5} 
+virtual void Materials\+::obtain (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Abstract method to obtain materials. 
+
+Derived classes must implement this method to define how materials are obtained. 
+
+Implemented in \mbox{\hyperlink{class_concrete_a20cb40702ad1956e762826fa10138042}{Concrete}}, \mbox{\hyperlink{class_steel_ad459ddf341b7e555fa184f25958adf5d}{Steel}}, and \mbox{\hyperlink{class_wood_aeb2e3856c54a961c3581a5ca81e6be16}{Wood}}.
+
+\Hypertarget{class_materials_ab53b9bfb6f30a3888b463cb8363b84f0}\index{Materials@{Materials}!refine@{refine}}
+\index{refine@{refine}!Materials@{Materials}}
+\doxysubsubsection{\texorpdfstring{refine()}{refine()}}
+{\footnotesize\ttfamily \label{class_materials_ab53b9bfb6f30a3888b463cb8363b84f0} 
+virtual void Materials\+::refine (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Abstract method to refine materials. 
+
+Derived classes must implement this method to define how materials are refined. 
+
+Implemented in \mbox{\hyperlink{class_concrete_a1acf4624dafbeb4904215983026fced5}{Concrete}}, \mbox{\hyperlink{class_steel_aaad627e1b2c4152bb90f792be16a01ab}{Steel}}, and \mbox{\hyperlink{class_wood_a342e7c8eb256a5d00855674031ae4bfc}{Wood}}.
+
+\Hypertarget{class_materials_a89e15ea05fe3aea9edac53489ace75b5}\index{Materials@{Materials}!setKilo@{setKilo}}
+\index{setKilo@{setKilo}!Materials@{Materials}}
+\doxysubsubsection{\texorpdfstring{setKilo()}{setKilo()}}
+{\footnotesize\ttfamily \label{class_materials_a89e15ea05fe3aea9edac53489ace75b5} 
+void Materials\+::set\+Kilo (\begin{DoxyParamCaption}\item[{int}]{k}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the quantity of materials in kilograms. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em k} & The quantity of materials to set in kilograms. \\
+\hline
+\end{DoxyParams}

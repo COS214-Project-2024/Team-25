@@ -1,0 +1,175 @@
+\doxysection{Office Class Reference}
+\hypertarget{class_office}{}\label{class_office}\index{Office@{Office}}
+
+
+Class representing an office, a specific type of commercial building.  
+
+
+
+
+{\ttfamily \#include $<$Buildings.\+h$>$}
+
+Inheritance diagram for Office\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_office}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_office_a41fc95e7f616b8d6029e8b8a02913a2c}{Office}} (std\+::string \mbox{\hyperlink{class_building_a6e62ddc243a1f5b900c34c797bff3569}{name}}, int \mbox{\hyperlink{class_building_ac67eae238324a4ad8f435232caa15f12}{num\+Rooms}}, int \mbox{\hyperlink{class_building_a2f7028f06f0973c27abe924495bf4294}{m\+\_\+squared}}, float \mbox{\hyperlink{class_building_a21eb2373e2ef24b51f85a1f6cf8c734f}{value}}, int \mbox{\hyperlink{class_commercial_a3484107fdd213c7590ccd38cd48303df}{capacity}}, int \mbox{\hyperlink{class_commercial_a05e156cc8babe4a7604e6189c7472c5b}{num\+Floors}}, int offices)
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{class_office}{Office} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_office_a78a69f914e6e2664e73f140894191c33}{build}} () override
+\begin{DoxyCompactList}\small\item\em Builds the office building. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_office}{Office}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_office_adb769b3c6ee59fb8895374a5d3c46280}{clone}} () override
+\begin{DoxyCompactList}\small\item\em Clones the \doxylink{class_office}{Office} object. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_office_a3b96e079a593b1f83c2ef826ef097794}{get\+Type}} () const override
+\begin{DoxyCompactList}\small\item\em Gets the type of the building (\doxylink{class_office}{Office}). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_commercial}{Commercial}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_commercial_a055ac2eb47e4acfb66cf50c414da4347}{Commercial}} (std\+::string \mbox{\hyperlink{class_building_a6e62ddc243a1f5b900c34c797bff3569}{name}}, int \mbox{\hyperlink{class_building_ac67eae238324a4ad8f435232caa15f12}{num\+Rooms}}, int \mbox{\hyperlink{class_building_a2f7028f06f0973c27abe924495bf4294}{m\+\_\+squared}}, float \mbox{\hyperlink{class_building_a21eb2373e2ef24b51f85a1f6cf8c734f}{value}}, int \mbox{\hyperlink{class_commercial_a3484107fdd213c7590ccd38cd48303df}{capacity}}, int \mbox{\hyperlink{class_commercial_a05e156cc8babe4a7604e6189c7472c5b}{num\+Floors}}, std\+::string \mbox{\hyperlink{class_building_a2984e4d0f7890dd8d1a5ed73f1b87ea5}{type}})
+\begin{DoxyCompactList}\small\item\em Constructor for a \doxylink{class_commercial}{Commercial} building. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_commercial_a2bd2a5b19d731052a34a40042f02dd9d}{add\+Citizen}} (\mbox{\hyperlink{class_citizen}{Citizen}} \texorpdfstring{$\ast$}{*}human) override
+\begin{DoxyCompactList}\small\item\em Adds a citizen to the commercial building. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_commercial_aaacb9d63bdff5626f0c72635d92fd21e}{display\+Citizens}} () override
+\begin{DoxyCompactList}\small\item\em Displays the list of citizens in the commercial building. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_commercial_a48fd12ca6ddffa3d3ac95f187cf60096}{get\+Left\+Over\+Capacity}} () override
+\begin{DoxyCompactList}\small\item\em Gets the remaining capacity of the commercial building. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_building}{Building}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_building_aa339d5eed58b9de44f90eb0182afd704}{Building}} (std\+::string \mbox{\hyperlink{class_building_a6e62ddc243a1f5b900c34c797bff3569}{name}}, int \mbox{\hyperlink{class_building_ac67eae238324a4ad8f435232caa15f12}{num\+Rooms}}, int \mbox{\hyperlink{class_building_a2f7028f06f0973c27abe924495bf4294}{m\+\_\+squared}}, float \mbox{\hyperlink{class_building_a21eb2373e2ef24b51f85a1f6cf8c734f}{value}}, std\+::string \mbox{\hyperlink{class_building_a2984e4d0f7890dd8d1a5ed73f1b87ea5}{type}})
+\begin{DoxyCompactList}\small\item\em Constructor to initialize a \doxylink{class_building}{Building} object. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Building} ()
+\begin{DoxyCompactList}\small\item\em Virtual destructor for the \doxylink{class_building}{Building} class. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_citizen}{Citizen}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_building_ab2bbacb4f1520d7ae73a6771610529be}{get\+Citizens}} () const
+\begin{DoxyCompactList}\small\item\em Gets the list of citizens in the building. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_building_a114ab2f15d5d734175110c64bfe94002}{get\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Gets the name of the building. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_building_a0b8afd153bcf210bc29081e3bed66559}{get\+Building\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Gets the building\textquotesingle{}s type description. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_building_a44d6b21513c8573c81f075f8eebecc0c}{get\+Built}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the building is built. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_building_ac9c4ce3446623eab4ad8a548144365ac}{renovate}} ()
+\begin{DoxyCompactList}\small\item\em Renovates the building, updating any necessary properties. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_commercial}{Commercial}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries capacity}
+\begin{DoxyCompactList}\small\item\em Maximum occupancy capacity of the commercial building. \end{DoxyCompactList}\item 
+int {\bfseries num\+Floors}
+\begin{DoxyCompactList}\small\item\em Number of floors in the commercial building. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_building}{Building}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string {\bfseries name}
+\begin{DoxyCompactList}\small\item\em Name of the building. \end{DoxyCompactList}\item 
+std\+::string {\bfseries type}
+\begin{DoxyCompactList}\small\item\em Type of the building (e.\+g., \doxylink{class_residential}{Residential}, \doxylink{class_commercial}{Commercial}) \end{DoxyCompactList}\item 
+int {\bfseries num\+Rooms}
+\begin{DoxyCompactList}\small\item\em Number of rooms in the building. \end{DoxyCompactList}\item 
+int {\bfseries m\+\_\+squared}
+\begin{DoxyCompactList}\small\item\em Area of the building in square meters. \end{DoxyCompactList}\item 
+float {\bfseries value}
+\begin{DoxyCompactList}\small\item\em Value of the building. \end{DoxyCompactList}\item 
+bool {\bfseries built} = false
+\begin{DoxyCompactList}\small\item\em Flag indicating if the building is built. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_budget}{Budget}} \texorpdfstring{$\ast$}{*} {\bfseries budget}
+\begin{DoxyCompactList}\small\item\em Pointer to a \doxylink{class_budget}{Budget} object for managing building finances. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_concrete}{Concrete}} \texorpdfstring{$\ast$}{*} {\bfseries concrete}
+\begin{DoxyCompactList}\small\item\em Pointer to a \doxylink{class_concrete}{Concrete} object for building materials. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_steel}{Steel}} \texorpdfstring{$\ast$}{*} {\bfseries steel}
+\begin{DoxyCompactList}\small\item\em Pointer to a \doxylink{class_steel}{Steel} object for building materials. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_wood}{Wood}} \texorpdfstring{$\ast$}{*} {\bfseries wood}
+\begin{DoxyCompactList}\small\item\em Pointer to a \doxylink{class_wood}{Wood} object for building materials. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_citizen}{Citizen}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries citizens}
+\begin{DoxyCompactList}\small\item\em List of citizens associated with the building. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class representing an office, a specific type of commercial building. 
+
+The \doxylink{class_office}{Office} class inherits from \doxylink{class_commercial}{Commercial} and includes attributes specific to offices, such as the number of offices. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_office_a41fc95e7f616b8d6029e8b8a02913a2c}\index{Office@{Office}!Office@{Office}}
+\index{Office@{Office}!Office@{Office}}
+\doxysubsubsection{\texorpdfstring{Office()}{Office()}}
+{\footnotesize\ttfamily \label{class_office_a41fc95e7f616b8d6029e8b8a02913a2c} 
+Office\+::\+Office (\begin{DoxyParamCaption}\item[{std\+::string}]{name}{, }\item[{int}]{num\+Rooms}{, }\item[{int}]{m\+\_\+squared}{, }\item[{float}]{value}{, }\item[{int}]{capacity}{, }\item[{int}]{num\+Floors}{, }\item[{int}]{offices}{}\end{DoxyParamCaption})}
+
+
+
+Constructor for the \doxylink{class_office}{Office} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the office building. \\
+\hline
+{\em num\+Rooms} & Number of rooms in the office building. \\
+\hline
+{\em m\+\_\+squared} & Area of the office building in square meters. \\
+\hline
+{\em value} & Value of the office building. \\
+\hline
+{\em capacity} & Maximum capacity of the office building. \\
+\hline
+{\em num\+Floors} & Number of floors in the office building. \\
+\hline
+{\em offices} & Number of individual office spaces in the building. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_office_a78a69f914e6e2664e73f140894191c33}\index{Office@{Office}!build@{build}}
+\index{build@{build}!Office@{Office}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily \label{class_office_a78a69f914e6e2664e73f140894191c33} 
+void Office\+::build (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Builds the office building. 
+
+
+
+Implements \mbox{\hyperlink{class_commercial_a3f68e2312427016b8a751f24ad14446e}{Commercial}}.
+
+\Hypertarget{class_office_adb769b3c6ee59fb8895374a5d3c46280}\index{Office@{Office}!clone@{clone}}
+\index{clone@{clone}!Office@{Office}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \label{class_office_adb769b3c6ee59fb8895374a5d3c46280} 
+\mbox{\hyperlink{class_office}{Office}} \texorpdfstring{$\ast$}{*} Office\+::clone (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clones the \doxylink{class_office}{Office} object. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to a new \doxylink{class_office}{Office} object that is a clone of the current instance. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_commercial_a66c312f1d0b0cb368849267b6965ced0}{Commercial}}.
+
+\Hypertarget{class_office_a3b96e079a593b1f83c2ef826ef097794}\index{Office@{Office}!getType@{getType}}
+\index{getType@{getType}!Office@{Office}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \label{class_office_a3b96e079a593b1f83c2ef826ef097794} 
+std\+::string Office\+::get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Gets the type of the building (\doxylink{class_office}{Office}). 
+
+\begin{DoxyReturn}{Returns}
+A string indicating the type of the building. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_commercial_ac1fe45e223c9d0f08ec7f815da3b1ceb}{Commercial}}.
+

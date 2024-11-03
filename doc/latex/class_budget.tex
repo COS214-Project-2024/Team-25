@@ -1,0 +1,121 @@
+\doxysection{Budget Class Reference}
+\hypertarget{class_budget}{}\label{class_budget}\index{Budget@{Budget}}
+
+
+Singleton class representing the financial budget of the city.  
+
+
+
+
+{\ttfamily \#include $<$Resources.\+h$>$}
+
+Inheritance diagram for Budget\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_budget}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_budget_a365d980971fa0fb88298c59d3bf0347b}\label{class_budget_a365d980971fa0fb88298c59d3bf0347b} 
+{\bfseries Budget} (const \mbox{\hyperlink{class_budget}{Budget}} \&)=delete
+\item 
+\Hypertarget{class_budget_ad68348de75233a1aef206c0214806d20}\label{class_budget_ad68348de75233a1aef206c0214806d20} 
+void {\bfseries operator=} (const \mbox{\hyperlink{class_budget}{Budget}} \&)=delete
+\item 
+double \mbox{\hyperlink{class_budget_a3442a5792a37e342f42256eef2b2a0eb}{get\+Cash}} () const
+\begin{DoxyCompactList}\small\item\em Gets the current amount of cash in the budget. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_budget_a64d449a95b975aa6a5108905d005f4d8}{get\+Debt}} () const
+\begin{DoxyCompactList}\small\item\em Gets the total amount of debt incurred by the city. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_budget_ab94e291a96f2fc2f5bb33298ae86b07f}{set\+Cash}} (double cash)
+\begin{DoxyCompactList}\small\item\em Sets the amount of cash in the budget. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_budget_af2bfc53c51a9ab0e64c94b7bf25ff0c3}{set\+Debt}} (double debt)
+\begin{DoxyCompactList}\small\item\em Sets the total amount of debt incurred by the city. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_resources}{Resources}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Resources} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_resources}{Resources}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_budget}{Budget}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_budget_a52e524f2fd8f176eb879c61e4e9377e0}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Gets the singleton instance of the \doxylink{class_budget}{Budget} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Singleton class representing the financial budget of the city. 
+
+The \doxylink{class_budget}{Budget} class manages the city\textquotesingle{}s financial resources, including cash and debt. It follows the Singleton design pattern to ensure that only one instance of this class exists throughout the application. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_budget_a3442a5792a37e342f42256eef2b2a0eb}\index{Budget@{Budget}!getCash@{getCash}}
+\index{getCash@{getCash}!Budget@{Budget}}
+\doxysubsubsection{\texorpdfstring{getCash()}{getCash()}}
+{\footnotesize\ttfamily \label{class_budget_a3442a5792a37e342f42256eef2b2a0eb} 
+double Budget\+::get\+Cash (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the current amount of cash in the budget. 
+
+\begin{DoxyReturn}{Returns}
+The amount of cash available. 
+\end{DoxyReturn}
+\Hypertarget{class_budget_a64d449a95b975aa6a5108905d005f4d8}\index{Budget@{Budget}!getDebt@{getDebt}}
+\index{getDebt@{getDebt}!Budget@{Budget}}
+\doxysubsubsection{\texorpdfstring{getDebt()}{getDebt()}}
+{\footnotesize\ttfamily \label{class_budget_a64d449a95b975aa6a5108905d005f4d8} 
+double Budget\+::get\+Debt (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the total amount of debt incurred by the city. 
+
+\begin{DoxyReturn}{Returns}
+The total debt. 
+\end{DoxyReturn}
+\Hypertarget{class_budget_a52e524f2fd8f176eb879c61e4e9377e0}\index{Budget@{Budget}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!Budget@{Budget}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \label{class_budget_a52e524f2fd8f176eb879c61e4e9377e0} 
+\mbox{\hyperlink{class_budget}{Budget}} \texorpdfstring{$\ast$}{*} Budget\+::get\+Instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Gets the singleton instance of the \doxylink{class_budget}{Budget} class. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the singleton \doxylink{class_budget}{Budget} instance.
+\end{DoxyReturn}
+This method checks if an instance of the \doxylink{class_budget}{Budget} class already exists; if not, it creates one and returns it. This guarantees that there is only one instance of \doxylink{class_budget}{Budget} throughout the application. \Hypertarget{class_budget_ab94e291a96f2fc2f5bb33298ae86b07f}\index{Budget@{Budget}!setCash@{setCash}}
+\index{setCash@{setCash}!Budget@{Budget}}
+\doxysubsubsection{\texorpdfstring{setCash()}{setCash()}}
+{\footnotesize\ttfamily \label{class_budget_ab94e291a96f2fc2f5bb33298ae86b07f} 
+void Budget\+::set\+Cash (\begin{DoxyParamCaption}\item[{double}]{cash}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the amount of cash in the budget. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cash} & The amount of cash to set.\\
+\hline
+\end{DoxyParams}
+If the new cash amount is negative, this method will automatically set the debt to the absolute value of the cash amount. \Hypertarget{class_budget_af2bfc53c51a9ab0e64c94b7bf25ff0c3}\index{Budget@{Budget}!setDebt@{setDebt}}
+\index{setDebt@{setDebt}!Budget@{Budget}}
+\doxysubsubsection{\texorpdfstring{setDebt()}{setDebt()}}
+{\footnotesize\ttfamily \label{class_budget_af2bfc53c51a9ab0e64c94b7bf25ff0c3} 
+void Budget\+::set\+Debt (\begin{DoxyParamCaption}\item[{double}]{debt}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the total amount of debt incurred by the city. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em debt} & The amount of debt to set. \\
+\hline
+\end{DoxyParams}

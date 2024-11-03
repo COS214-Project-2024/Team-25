@@ -7,6 +7,7 @@
 #include <math.h>
 #include <random>
 #include <iomanip>
+#include <sstream>
 
 #include "Citizen.h"
 #include "Resources.h"

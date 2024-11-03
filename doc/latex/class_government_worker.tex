@@ -1,0 +1,86 @@
+\doxysection{Government\+Worker Class Reference}
+\hypertarget{class_government_worker}{}\label{class_government_worker}\index{GovernmentWorker@{GovernmentWorker}}
+
+
+Class representing a government worker, a type of citizen.  
+
+
+
+
+{\ttfamily \#include $<$Citizen.\+h$>$}
+
+Inheritance diagram for Government\+Worker\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_government_worker}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_government_worker_a85e4218b048efadeadf36536bf778da3}\label{class_government_worker_a85e4218b048efadeadf36536bf778da3} 
+{\bfseries Government\+Worker} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_government_worker}{Government\+Worker}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_government_worker_a50e2c75aa5e9b2e18c17d9655a44d044}{Government\+Worker}} (string workplace)
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{class_government_worker}{Government\+Worker} with specified workplace. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_government_worker_a2a35f8a011f6f5e134e638f5162950bc}{display\+Info}} ()
+\begin{DoxyCompactList}\small\item\em Displays information about the government worker. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_citizen}{Citizen}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Citizen} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_citizen}{Citizen}. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Citizen} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor for \doxylink{class_citizen}{Citizen}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_citizen_ae43ab15fddd41bbeaf7af8b525e8acfd}{set\+Citizen}} (string type, string residence, string workplace)
+\begin{DoxyCompactList}\small\item\em Sets the properties of the citizen. \end{DoxyCompactList}\item 
+virtual std\+::string \mbox{\hyperlink{class_citizen_ad0542e5fc1dd7b3343471d222921ac72}{get\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Gets the type of the citizen. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{class_citizen_a9cebf4b8521be8f6ed434af163bd51be}{get\+Residence}} ()
+\begin{DoxyCompactList}\small\item\em Gets the residence of the citizen. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{class_citizen_a037943487bd269fb8a5d390b5314d035}{get\+Workplace}} ()
+\begin{DoxyCompactList}\small\item\em Gets the workplace of the citizen. \end{DoxyCompactList}\item 
+virtual float \mbox{\hyperlink{class_citizen_a0a875195b487daf901eceaf3e7dc6914}{get\+Satisfaction}} ()
+\begin{DoxyCompactList}\small\item\em Gets the satisfaction level of the citizen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_citizen_a662ec8e43c4c55c3e4a5e92c07e144e2}{change\+Satisfaction}} (float amt)
+\begin{DoxyCompactList}\small\item\em Changes the satisfaction level of the citizen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class representing a government worker, a type of citizen. 
+
+The \doxylink{class_government_worker}{Government\+Worker} class inherits from \doxylink{class_citizen}{Citizen} and represents a worker in the government sector. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_government_worker_a50e2c75aa5e9b2e18c17d9655a44d044}\index{GovernmentWorker@{GovernmentWorker}!GovernmentWorker@{GovernmentWorker}}
+\index{GovernmentWorker@{GovernmentWorker}!GovernmentWorker@{GovernmentWorker}}
+\doxysubsubsection{\texorpdfstring{GovernmentWorker()}{GovernmentWorker()}}
+{\footnotesize\ttfamily \label{class_government_worker_a50e2c75aa5e9b2e18c17d9655a44d044} 
+Government\+Worker\+::\+Government\+Worker (\begin{DoxyParamCaption}\item[{string}]{workplace}{}\end{DoxyParamCaption})}
+
+
+
+Constructor for \doxylink{class_government_worker}{Government\+Worker} with specified workplace. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em workplace} & The workplace of the government worker. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_government_worker_a2a35f8a011f6f5e134e638f5162950bc}\index{GovernmentWorker@{GovernmentWorker}!displayInfo@{displayInfo}}
+\index{displayInfo@{displayInfo}!GovernmentWorker@{GovernmentWorker}}
+\doxysubsubsection{\texorpdfstring{displayInfo()}{displayInfo()}}
+{\footnotesize\ttfamily \label{class_government_worker_a2a35f8a011f6f5e134e638f5162950bc} 
+void Government\+Worker\+::display\+Info (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Displays information about the government worker. 
+
+
+
+Implements \mbox{\hyperlink{class_citizen_a69f234b80bb89dbe0407103b6cd17add}{Citizen}}.
+

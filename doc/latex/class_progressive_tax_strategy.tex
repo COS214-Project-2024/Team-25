@@ -1,0 +1,76 @@
+\doxysection{Progressive\+Tax\+Strategy Class Reference}
+\hypertarget{class_progressive_tax_strategy}{}\label{class_progressive_tax_strategy}\index{ProgressiveTaxStrategy@{ProgressiveTaxStrategy}}
+
+
+\doxylink{class_concrete}{Concrete} implementation of a progressive tax strategy.  
+
+
+
+
+{\ttfamily \#include $<$Tax\+System.\+h$>$}
+
+Inheritance diagram for Progressive\+Tax\+Strategy\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_progressive_tax_strategy}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual float \mbox{\hyperlink{class_progressive_tax_strategy_a47f84ccaaba6580debcb3ae749ff1c6c}{calculate\+Tax}} (\mbox{\hyperlink{class_city_growth}{City\+Growth}} \texorpdfstring{$\ast$}{*}growth)
+\begin{DoxyCompactList}\small\item\em Calculates the tax based on the progressive tax rate. \end{DoxyCompactList}\item 
+virtual std\+::string \mbox{\hyperlink{class_progressive_tax_strategy_ac754a184642399db49f88a95d81c08c1}{get\+Strategy}} ()
+\begin{DoxyCompactList}\small\item\em Gets the name of the progressive tax strategy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_tax_strategy}{Tax\+Strategy}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Tax\+Strategy} ()=default
+\begin{DoxyCompactList}\small\item\em Destroys the \doxylink{class_tax_strategy}{Tax\+Strategy} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_concrete}{Concrete} implementation of a progressive tax strategy. 
+
+This class calculates taxes based on a progressive rate structure, where higher incomes are taxed at higher rates. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_progressive_tax_strategy_a47f84ccaaba6580debcb3ae749ff1c6c}\index{ProgressiveTaxStrategy@{ProgressiveTaxStrategy}!calculateTax@{calculateTax}}
+\index{calculateTax@{calculateTax}!ProgressiveTaxStrategy@{ProgressiveTaxStrategy}}
+\doxysubsubsection{\texorpdfstring{calculateTax()}{calculateTax()}}
+{\footnotesize\ttfamily \label{class_progressive_tax_strategy_a47f84ccaaba6580debcb3ae749ff1c6c} 
+float Progressive\+Tax\+Strategy\+::calculate\+Tax (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_city_growth}{City\+Growth}} \texorpdfstring{$\ast$}{*}}]{growth}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Calculates the tax based on the progressive tax rate. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em growth} & Pointer to a \doxylink{class_city_growth}{City\+Growth} object used to gather relevant data for tax calculation. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The calculated tax amount using the progressive tax strategy. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_tax_strategy_a01d34463fde4bd9a67de3aa9b3be6f8a}{Tax\+Strategy}}.
+
+\Hypertarget{class_progressive_tax_strategy_ac754a184642399db49f88a95d81c08c1}\index{ProgressiveTaxStrategy@{ProgressiveTaxStrategy}!getStrategy@{getStrategy}}
+\index{getStrategy@{getStrategy}!ProgressiveTaxStrategy@{ProgressiveTaxStrategy}}
+\doxysubsubsection{\texorpdfstring{getStrategy()}{getStrategy()}}
+{\footnotesize\ttfamily \label{class_progressive_tax_strategy_ac754a184642399db49f88a95d81c08c1} 
+std\+::string Progressive\+Tax\+Strategy\+::get\+Strategy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Gets the name of the progressive tax strategy. 
+
+\begin{DoxyReturn}{Returns}
+A string representing the name of the progressive tax strategy. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_tax_strategy_a9cd96fe9f48da569cfce16baafa7cb92}{Tax\+Strategy}}.
+

@@ -1,0 +1,89 @@
+\doxysection{Water Class Reference}
+\hypertarget{class_water}{}\label{class_water}\index{Water@{Water}}
+
+
+Singleton class representing water resources in the city.  
+
+
+
+
+{\ttfamily \#include $<$Resources.\+h$>$}
+
+Inheritance diagram for Water\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_water}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_water_a1de33b7a8f910205ee844a292654915f}\label{class_water_a1de33b7a8f910205ee844a292654915f} 
+{\bfseries Water} (const \mbox{\hyperlink{class_water}{Water}} \&)=delete
+\item 
+\Hypertarget{class_water_add660fcf4bb6810672b2239654e3d453}\label{class_water_add660fcf4bb6810672b2239654e3d453} 
+void {\bfseries operator=} (const \mbox{\hyperlink{class_water}{Water}} \&)=delete
+\item 
+int \mbox{\hyperlink{class_water_a0dfb045d3ee771cbb63ca180abddedbb}{get\+Liters}} () const
+\begin{DoxyCompactList}\small\item\em Gets the total amount of water available. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_water_ad1ce6ccc07eada6c2355b7690317db87}{setliters}} (int value)
+\begin{DoxyCompactList}\small\item\em Sets the total amount of water available. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_resources}{Resources}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Resources} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_resources}{Resources}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_water}{Water}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_water_a24b9af8d9255660ff52795c963f796e9}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Gets the singleton instance of the \doxylink{class_water}{Water} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Singleton class representing water resources in the city. 
+
+The \doxylink{class_water}{Water} class manages the water supply in the city, tracking the total amount of water available in liters. It follows the Singleton design pattern to ensure that only one instance of this class exists throughout the application. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_water_a24b9af8d9255660ff52795c963f796e9}\index{Water@{Water}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!Water@{Water}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \label{class_water_a24b9af8d9255660ff52795c963f796e9} 
+\mbox{\hyperlink{class_water}{Water}} \texorpdfstring{$\ast$}{*} Water\+::get\+Instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Gets the singleton instance of the \doxylink{class_water}{Water} class. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the singleton \doxylink{class_water}{Water} instance.
+\end{DoxyReturn}
+This method checks if an instance of the \doxylink{class_water}{Water} class already exists; if not, it creates one and returns it. This guarantees that there is only one instance of \doxylink{class_water}{Water} throughout the application. \Hypertarget{class_water_a0dfb045d3ee771cbb63ca180abddedbb}\index{Water@{Water}!getLiters@{getLiters}}
+\index{getLiters@{getLiters}!Water@{Water}}
+\doxysubsubsection{\texorpdfstring{getLiters()}{getLiters()}}
+{\footnotesize\ttfamily \label{class_water_a0dfb045d3ee771cbb63ca180abddedbb} 
+int Water\+::get\+Liters (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the total amount of water available. 
+
+\begin{DoxyReturn}{Returns}
+The total amount of water (in liters). 
+\end{DoxyReturn}
+\Hypertarget{class_water_ad1ce6ccc07eada6c2355b7690317db87}\index{Water@{Water}!setliters@{setliters}}
+\index{setliters@{setliters}!Water@{Water}}
+\doxysubsubsection{\texorpdfstring{setliters()}{setliters()}}
+{\footnotesize\ttfamily \label{class_water_ad1ce6ccc07eada6c2355b7690317db87} 
+void Water\+::setliters (\begin{DoxyParamCaption}\item[{int}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the total amount of water available. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The amount of water to set (in liters). \\
+\hline
+\end{DoxyParams}

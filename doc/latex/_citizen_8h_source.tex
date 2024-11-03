@@ -1,0 +1,114 @@
+\doxysection{Citizen.\+h}
+\hypertarget{_citizen_8h_source}{}\label{_citizen_8h_source}\index{h files/Citizen.h@{h files/Citizen.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CITIZEN\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CITIZEN\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_citizen}{Citizen}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{string}\ residence;\ \ \ \ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{string}\ workplace;\ \ \ \ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{string}\ type;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{float}\ satisfaction;\ \ }
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{class_citizen_a3951355c9f2d7260debedd29b163dbe6}{Citizen}}();}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_citizen_a86f8b74f3eae4ee63c9d4a08abba83de}{\string~Citizen}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_citizen_ae43ab15fddd41bbeaf7af8b525e8acfd}{setCitizen}}(\textcolor{keywordtype}{string}\ type,\ \textcolor{keywordtype}{string}\ residence,\ \textcolor{keywordtype}{string}\ workplace);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{virtual}\ std::string\ \mbox{\hyperlink{class_citizen_ad0542e5fc1dd7b3343471d222921ac72}{getType}}();}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_citizen_a9cebf4b8521be8f6ed434af163bd51be}{getResidence}}();}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_citizen_a037943487bd269fb8a5d390b5314d035}{getWorkplace}}();}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_citizen_a0a875195b487daf901eceaf3e7dc6914}{getSatisfaction}}();}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_citizen_a69f234b80bb89dbe0407103b6cd17add}{displayInfo}}()\ =\ 0;}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_citizen_a662ec8e43c4c55c3e4a5e92c07e144e2}{changeSatisfaction}}(\textcolor{keywordtype}{float}\ amt);}
+\DoxyCodeLine{00075\ \};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00085\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_commercial_worker}{CommercialWorker}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_citizen}{Citizen}}\ \{}
+\DoxyCodeLine{00086\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00090\ \ \ \ \ \mbox{\hyperlink{class_commercial_worker_a90dfe84ff6c29bc98c1c212ed2bb26a3}{CommercialWorker}}();}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00096\ \ \ \ \ \mbox{\hyperlink{class_commercial_worker_aaf60609632202fb856e426a5633f9b61}{CommercialWorker}}(\textcolor{keywordtype}{string}\ workplace);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_commercial_worker_a4f9ecb67927ebeb490ad6fc2376924e7}{displayInfo}}();}
+\DoxyCodeLine{00102\ \};}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00112\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_government_worker}{GovernmentWorker}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_citizen}{Citizen}}\ \{}
+\DoxyCodeLine{00113\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00117\ \ \ \ \ \mbox{\hyperlink{class_government_worker_a85e4218b048efadeadf36536bf778da3}{GovernmentWorker}}();}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00123\ \ \ \ \ \mbox{\hyperlink{class_government_worker_a50e2c75aa5e9b2e18c17d9655a44d044}{GovernmentWorker}}(\textcolor{keywordtype}{string}\ workplace);}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_government_worker_a2a35f8a011f6f5e134e638f5162950bc}{displayInfo}}();}
+\DoxyCodeLine{00129\ \};}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00139\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_industrial_worker}{IndustrialWorker}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_citizen}{Citizen}}\ \{}
+\DoxyCodeLine{00140\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00144\ \ \ \ \ \mbox{\hyperlink{class_industrial_worker_aec1e3e9a11386049f6cba77c3cb40881}{IndustrialWorker}}();}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00150\ \ \ \ \ \mbox{\hyperlink{class_industrial_worker_a3cfc074e4779c13a5c4fbd17a9c1ddab}{IndustrialWorker}}(\textcolor{keywordtype}{string}\ workplace);}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_industrial_worker_a5610bd63553569b90641e0fd342c7acc}{displayInfo}}();}
+\DoxyCodeLine{00156\ \};}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00166\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_citizen_factory}{CitizenFactory}}\ \{}
+\DoxyCodeLine{00167\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00168\ \ \ \ \ \mbox{\hyperlink{class_citizen}{Citizen}}*\ citizen;\ \ }
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00174\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_citizen_factory_a226e0e920a155e62a2e6310aba663b19}{\string~CitizenFactory}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00180\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_citizen}{Citizen}}*\ \mbox{\hyperlink{class_citizen_factory_a0701f02f1352129c89ef06f9a83f14d6}{createCitizen}}()\ =\ 0;}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00187\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_citizen}{Citizen}}*\ \mbox{\hyperlink{class_citizen_factory_af5164500f64acd44f4967a72f1cd16bb}{createCitizen}}(\textcolor{keywordtype}{string}\ workplace)\ =\ 0;}
+\DoxyCodeLine{00188\ \};}
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00199\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_com_worker_factory}{ComWorkerFactory}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_citizen_factory}{CitizenFactory}}\ \{}
+\DoxyCodeLine{00200\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00205\ \ \ \ \ \mbox{\hyperlink{class_citizen}{Citizen}}*\ \mbox{\hyperlink{class_com_worker_factory_a650df94c5962f7ca05c22194ce3cd823}{createCitizen}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00212\ \ \ \ \ \mbox{\hyperlink{class_citizen}{Citizen}}*\ \mbox{\hyperlink{class_com_worker_factory_a6f6e79c4d67012420ed452825bebe4e1}{createCitizen}}(\textcolor{keywordtype}{string}\ workplace);}
+\DoxyCodeLine{00213\ \};}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00224\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_government_worker_factory}{GovernmentWorkerFactory}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_citizen_factory}{CitizenFactory}}\ \{}
+\DoxyCodeLine{00225\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00230\ \ \ \ \ \mbox{\hyperlink{class_citizen}{Citizen}}*\ \mbox{\hyperlink{class_government_worker_factory_a7cefbb2919c177c8af255dd422f85734}{createCitizen}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00231\ }
+\DoxyCodeLine{00237\ \ \ \ \ \mbox{\hyperlink{class_citizen}{Citizen}}*\ \mbox{\hyperlink{class_government_worker_factory_ac87a9b95fa5222970048d72b8e9da291}{createCitizen}}(\textcolor{keywordtype}{string}\ workplace);}
+\DoxyCodeLine{00238\ \};}
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00240\ }
+\DoxyCodeLine{00241\ }
+\DoxyCodeLine{00249\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ind_worker_factory}{IndWorkerFactory}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_citizen_factory}{CitizenFactory}}\ \{}
+\DoxyCodeLine{00250\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00255\ \ \ \ \ \mbox{\hyperlink{class_citizen}{Citizen}}*\ \mbox{\hyperlink{class_ind_worker_factory_a211b1e9f654ff96a12eac09399665aaf}{createCitizen}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00256\ }
+\DoxyCodeLine{00262\ \ \ \ \ \mbox{\hyperlink{class_citizen}{Citizen}}*\ \mbox{\hyperlink{class_ind_worker_factory_a4b75e3e0e3d47938e4c13a90944994fe}{createCitizen}}(\textcolor{keywordtype}{string}\ workplace);}
+\DoxyCodeLine{00263\ \};}
+\DoxyCodeLine{00264\ }
+\DoxyCodeLine{00265\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,81 @@
+\doxysection{Public\+Transport Class Reference}
+\hypertarget{class_public_transport}{}\label{class_public_transport}\index{PublicTransport@{PublicTransport}}
+
+
+Represents a public transport system, such as buses or trains.  
+
+
+
+
+{\ttfamily \#include $<$Transportation.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_public_transport_a278c9b5ed288ad2d9b6e5944b99ca4c4}{Public\+Transport}} (int capacity, string type, string Transport\+Type)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_public_transport}{Public\+Transport} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_public_transport_a3a6221dc67490e7505ecd3a8b3549f56}{add}} (int amount)
+\begin{DoxyCompactList}\small\item\em Adds a specified number of vehicles to the transport system. \end{DoxyCompactList}\item 
+\Hypertarget{class_public_transport_ab9cb929e04d0732b175e07e06009eac2}\label{class_public_transport_ab9cb929e04d0732b175e07e06009eac2} 
+void {\bfseries upgrade} ()
+\begin{DoxyCompactList}\small\item\em Upgrades the transport system. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_public_transport_a7ddde914e66557da1174920d01af9e5e}{get\+Amount}} ()
+\begin{DoxyCompactList}\small\item\em Gets the current number of vehicles in operation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a public transport system, such as buses or trains. 
+
+This class manages the type of transport, its capacity, and the current amount of vehicles. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_public_transport_a278c9b5ed288ad2d9b6e5944b99ca4c4}\index{PublicTransport@{PublicTransport}!PublicTransport@{PublicTransport}}
+\index{PublicTransport@{PublicTransport}!PublicTransport@{PublicTransport}}
+\doxysubsubsection{\texorpdfstring{PublicTransport()}{PublicTransport()}}
+{\footnotesize\ttfamily \label{class_public_transport_a278c9b5ed288ad2d9b6e5944b99ca4c4} 
+Public\+Transport\+::\+Public\+Transport (\begin{DoxyParamCaption}\item[{int}]{capacity}{, }\item[{string}]{type}{, }\item[{string}]{Transport\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_public_transport}{Public\+Transport} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em capacity} & The maximum capacity of the transport system. \\
+\hline
+{\em type} & The type of public transport. \\
+\hline
+{\em Transport\+Type} & The specific transport classification. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_public_transport_a3a6221dc67490e7505ecd3a8b3549f56}\index{PublicTransport@{PublicTransport}!add@{add}}
+\index{add@{add}!PublicTransport@{PublicTransport}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily \label{class_public_transport_a3a6221dc67490e7505ecd3a8b3549f56} 
+void Public\+Transport\+::add (\begin{DoxyParamCaption}\item[{int}]{amount}{}\end{DoxyParamCaption})}
+
+
+
+Adds a specified number of vehicles to the transport system. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount} & The number of vehicles to add. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_public_transport_a7ddde914e66557da1174920d01af9e5e}\index{PublicTransport@{PublicTransport}!getAmount@{getAmount}}
+\index{getAmount@{getAmount}!PublicTransport@{PublicTransport}}
+\doxysubsubsection{\texorpdfstring{getAmount()}{getAmount()}}
+{\footnotesize\ttfamily \label{class_public_transport_a7ddde914e66557da1174920d01af9e5e} 
+int Public\+Transport\+::get\+Amount (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Gets the current number of vehicles in operation. 
+
+\begin{DoxyReturn}{Returns}
+The current amount of vehicles. 
+\end{DoxyReturn}

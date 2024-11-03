@@ -1,0 +1,187 @@
+\doxysection{Transportation.\+h}
+\hypertarget{_transportation_8h_source}{}\label{_transportation_8h_source}\index{h files/Transportation.h@{h files/Transportation.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ TRANSPORTATION\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ TRANSPORTATION\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00006\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_public_transport}{PublicTransport}}}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{comment}{//Commercial\ busses\ transport\ CommercialWorkers\ to/from\ Residence:\ House\ to/from\ Workplace:\ shop/mall/office}}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//Government\ busses\ transport\ GovernmentWorkers\ to/from\ Residence:\ Mansion\ to/from\ Workplace:\ school/hospital/government\ }}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{comment}{//Industrial\ busses\ transport\ IndustrialWorker\ to/from\ Residence:\ Apartment\ to/from\ Workplace:\ warehouse/plant/factory\ }}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ type;\ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ TransportType;\ }
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ currentAmount;\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ capacity;\ }
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_public_transport_a278c9b5ed288ad2d9b6e5944b99ca4c4}{PublicTransport}}(\textcolor{keywordtype}{int}\ capacity,\ \textcolor{keywordtype}{string}\ type,\ \textcolor{keywordtype}{string}\ TransportType);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_public_transport_a3a6221dc67490e7505ecd3a8b3549f56}{add}}(\textcolor{keywordtype}{int}\ amount);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_public_transport_ab9cb929e04d0732b175e07e06009eac2}{upgrade}}();}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_public_transport_a7ddde914e66557da1174920d01af9e5e}{getAmount}}();}
+\DoxyCodeLine{00050\ \};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00060\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_road}{Road}}}
+\DoxyCodeLine{00061\ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{comment}{//Commercial\ busses\ transport\ CommercialWorkers\ to/from\ Residence:\ House\ to/from\ Workplace:\ shop/mall/office\ on\ a\ Commercial\ road}}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{//Government\ busses\ transport\ GovernmentWorkers\ to/from\ Residence:\ Mansion\ to/from\ Workplace:\ school/hospital/government\ on\ a\ Government\ road}}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{comment}{//Industrial\ busses\ transport\ IndustrialWorker\ to/from\ Residence:\ Apartment\ to/from\ Workplace:\ warehouse/plant/factory\ on\ a\ Industrial\ road}}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ numOfBusses;\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ type;\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ maxNumOfBusses;\ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ vector<PublicTransport>\ busses;\ }
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_road_a4a1c762df76bdef00f209bf68ad1508d}{Road}}(\textcolor{keywordtype}{int}\ maxBusses,\ \textcolor{keywordtype}{string}\ type);}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_road_abcbdce35160c75ae139b130e2d8d1bc2}{addBus}}(\mbox{\hyperlink{class_public_transport}{PublicTransport}}\ bus);}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_road_ac7421222cb4924d83d91a6e1b662e233}{getType}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_road_ad8e54a7268191bc64c71fb0ce8fbd5c5}{getNumBusses}}();}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_road_a66602c2a67ab090b673dc2ae97881ccc}{getMaxNumOfBusses}}();}
+\DoxyCodeLine{00102\ \};}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00112\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_road_system}{RoadSystem}}}
+\DoxyCodeLine{00113\ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ numRoads;\ }
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ vector<Road>\ roads;\ }
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_road_system_a3232d6294e30f06449dc7a32b3c96023}{addRoad}}(\mbox{\hyperlink{class_road}{Road}}\ road);}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_road_system_a5db909d8c6aefe989ff98e195572ab8a}{upgrade}}();}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_road_system_a7f4ac2ecc54f8727935fde7326f66837}{getUtilization}}();}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ vector<Road>\&\ \mbox{\hyperlink{class_road_system_a1da377e0c0f84bb8d9ad0946a03be955}{getRoads}}();}
+\DoxyCodeLine{00141\ \};}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00151\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_railway}{Railway}}}
+\DoxyCodeLine{00152\ \{}
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ numOfTrains;\ }
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ vector<PublicTransport>\ trains;\ }
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_railway_a5322266e3433c2f51fc682d24e874f7a}{Railway}}();}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_railway_a17f41156b3b2456c603652045a67bfdc}{addTrain}}(\mbox{\hyperlink{class_public_transport}{PublicTransport}}\ train);}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_railway_a92f97a14d6cec024e6ce9ff27774e106}{getNumTrains}}();}
+\DoxyCodeLine{00174\ \};}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00184\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_rail_system}{RailSystem}}}
+\DoxyCodeLine{00185\ \{}
+\DoxyCodeLine{00186\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ numRailways;\ }
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ vector<Railway>\ railways;\ }
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00190\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_rail_system_a693d9bd063830434b0bb89c55da6a835}{addRailway}}(\mbox{\hyperlink{class_railway}{Railway}}\ railway);}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_rail_system_ab044ba66e029e1aa62cdd5a9e991e824}{upgrade}}();}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_rail_system_afd06e56d644472feaa7f92a871a06432}{getUtilization}}();}
+\DoxyCodeLine{00207\ \};}
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00217\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_unified_transport_system}{UnifiedTransportSystem}}\ }
+\DoxyCodeLine{00218\ \{}
+\DoxyCodeLine{00219\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00220\ }
+\DoxyCodeLine{00221\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_unified_transport_system_afe753d7f792d5d908df3b6ad5b9d3546}{getUtilization}}()\ =\ 0;}
+\DoxyCodeLine{00227\ }
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_unified_transport_system_a84d23952d167e2e6e670cea76181447f}{performMaintenance}}()\ =\ 0;}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_unified_transport_system_a857c037b2dc6770c40adc209027f900a}{\string~UnifiedTransportSystem}}()\ \{\}}
+\DoxyCodeLine{00237\ \};}
+\DoxyCodeLine{00238\ }
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00240\ \textcolor{comment}{//\ So\ in\ the\ addRoute,\ getUtilization\ and\ performMaintenace\ function}}
+\DoxyCodeLine{00241\ \textcolor{comment}{//\ of\ the\ Adapter\ classes,\ the\ respective\ method\ will\ be\ called\ from\ the\ }}
+\DoxyCodeLine{00242\ \textcolor{comment}{//\ original\ Adaptee\ class\ via\ the\ object\ kept\ in\ each\ Adapter\ class.}}
+\DoxyCodeLine{00243\ \textcolor{comment}{//\ The\ interface\ (UnifiedTransportSystem)\ provides\ the\ generic\ methods\ each\ transport\ system\ should\ have.}}
+\DoxyCodeLine{00244\ }
+\DoxyCodeLine{00245\ }
+\DoxyCodeLine{00246\ }
+\DoxyCodeLine{00253\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_public_transit_adapter}{PublicTransitAdapter}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_unified_transport_system}{UnifiedTransportSystem}}\ }
+\DoxyCodeLine{00254\ \{}
+\DoxyCodeLine{00255\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_public_transport}{PublicTransport}}*\ transitSystem;\ }
+\DoxyCodeLine{00257\ }
+\DoxyCodeLine{00258\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_public_transit_adapter_aaa0625af76980902fbcdea5b920531d3}{PublicTransitAdapter}}(\mbox{\hyperlink{class_public_transport}{PublicTransport}}*\ pts);}
+\DoxyCodeLine{00264\ }
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_public_transit_adapter_abf9881a3375e37b3d61424ba05ef8079}{addRoute}}(\textcolor{keywordtype}{int}\ amount);}
+\DoxyCodeLine{00270\ }
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_public_transit_adapter_ac1de9842033377acba424d97963a121e}{getUtilization}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00276\ }
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_public_transit_adapter_acd073de65c9dc4ad2c305e6b586fb3fc}{performMaintenance}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00281\ \};}
+\DoxyCodeLine{00282\ }
+\DoxyCodeLine{00283\ }
+\DoxyCodeLine{00284\ }
+\DoxyCodeLine{00291\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_road_system_adapter}{RoadSystemAdapter}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_unified_transport_system}{UnifiedTransportSystem}}\ }
+\DoxyCodeLine{00292\ \{}
+\DoxyCodeLine{00293\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_road_system}{RoadSystem}}*\ roadSystem;\ }
+\DoxyCodeLine{00295\ }
+\DoxyCodeLine{00296\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_road_system_adapter_a8d60d4b9a2407508246376b6f0a11c67}{RoadSystemAdapter}}(\mbox{\hyperlink{class_road_system}{RoadSystem}}*\ rs);}
+\DoxyCodeLine{00302\ }
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_road_system_adapter_a314411ce3d0655f180e0352c989e77aa}{\string~RoadSystemAdapter}}();}
+\DoxyCodeLine{00307\ }
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_road_system_adapter_a94bb557e886df8514475d58b6dcaf204}{addRoute}}(\mbox{\hyperlink{class_road}{Road}}\ road);}
+\DoxyCodeLine{00313\ }
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ vector<Road>\&\ \mbox{\hyperlink{class_road_system_adapter_aee3e981d990a79965189dbb40bcffecd}{getRoads}}();}
+\DoxyCodeLine{00319\ }
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_road_system_adapter_ae9fe200c1219531c79a33de383ce72f1}{getUtilization}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00325\ }
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_road_system_adapter_a8832971e5154367be1dcef2130ddc2c4}{performMaintenance}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00330\ \};}
+\DoxyCodeLine{00331\ }
+\DoxyCodeLine{00332\ }
+\DoxyCodeLine{00333\ }
+\DoxyCodeLine{00340\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_rail_system_adapter}{RailSystemAdapter}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_unified_transport_system}{UnifiedTransportSystem}}\ }
+\DoxyCodeLine{00341\ \{}
+\DoxyCodeLine{00342\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_rail_system}{RailSystem}}*\ railSystem;\ }
+\DoxyCodeLine{00344\ }
+\DoxyCodeLine{00345\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_rail_system_adapter_afc2205f26069b8d26519090d31cbb589}{RailSystemAdapter}}(\mbox{\hyperlink{class_rail_system}{RailSystem}}*\ rs);}
+\DoxyCodeLine{00351\ }
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_rail_system_adapter_a3aa4a1116769dc4e47777b18ee524f78}{addRoute}}(\mbox{\hyperlink{class_railway}{Railway}}\ railway);}
+\DoxyCodeLine{00357\ }
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_rail_system_adapter_a2acc8fecdcc11d2e85cb7b3fb1c40e12}{getUtilization}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00363\ }
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_rail_system_adapter_a91adbbe722c6230d958d36f434846ed8}{performMaintenance}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00368\ \};}
+\DoxyCodeLine{00369\ }
+\DoxyCodeLine{00370\ }
+\DoxyCodeLine{00371\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ Transportation.h}}
+\DoxyCodeLine{00372\ }
+
+\end{DoxyCode}
