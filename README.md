@@ -116,7 +116,7 @@ This is an example of how to list things you need to use the software and how to
 
 Begin by choosing a difficulty.
 
-Continuously choose actions to perform until you win or loose 
+Continuously choose actions to perform until you win or lose 
 
 _For more examples, please refer to the [Documentation](https://cos214-project-2024.github.io/sudo-apt-get-marks/html/index.html)_
 
