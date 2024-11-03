@@ -168,6 +168,14 @@ public:
      */
     void printUtilitiesDetails();
 
+    std::string getSec();
+
+    std::string getSatisfactionDetails();
+
+    std::string getUtilitiesDetails();
+
+
+
     /**
      * @brief Gets the current budget available to the government.
      * @return The amount of cash in the budget.

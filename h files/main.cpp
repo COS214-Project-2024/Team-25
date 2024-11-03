@@ -1,9 +1,8 @@
 #include <iostream>
-#include <cstdlib>
-#include <fstream>
-#include <iomanip>
-#include <sstream>
+#include <unistd.h>
+
 #include "Government.h"
+#include "NewTerminal.h"
 
 enum class Color
 {
@@ -82,64 +81,13 @@ int safeIntInput(int lowerBound, int upperBound)
     }
 }
 
-void openNewTerminal() {
-    // Use this command to open a cmd terminal
-    // const char* command = "cmd.exe /c start cmd.exe /k \"terminal_script.bat\"";
-
-    // Use this command to open a wsl bash terminal
-    const char* command = "cmd.exe /c start wsl.exe bash -c \"bash terminal_script.sh; exec bash\"";
-
-    system(command);
-}
-
-void sendMessageToTerminal(const std::string& message) {
-    std::string command = "echo " + message + " > COM1"; // Use COM ports to redirect output
-    system(command.c_str());
-}
-
-void writeMessageToFile(const std::string& message) {
-    // std::ofstream file("temp_messages.txt", std::ios::app); // Open in append mode
-    std::ofstream file("temp_messages.txt", std::ios::trunc); // Open in truncation mode
-    if (file.is_open()) {
-        file << message << std::endl; // Write message to file
-        file.close();
-    } else {
-        std::cerr << "Unable to open file." << std::endl;
-    }
-}
-
-void openNewTerminal() {
-    // Use this command to open a cmd terminal
-    // const char* command = "cmd.exe /c start cmd.exe /k \"terminal_script.bat\"";
-
-    // Use this command to open a wsl bash terminal
-    const char* command = "cmd.exe /c start wsl.exe bash -c \"bash terminal_script.sh; exec bash\"";
-
-    system(command);
-}
-
-void sendMessageToTerminal(const std::string& message) {
-    std::string command = "echo " + message + " > COM1"; // Use COM ports to redirect output
-    system(command.c_str());
-}
-
-void writeMessageToFile(const std::string& message) {
-    // std::ofstream file("temp_messages.txt", std::ios::app); // Open in append mode
-    std::ofstream file("temp_messages.txt", std::ios::trunc); // Open in truncation mode
-    if (file.is_open()) {
-        file << message << std::endl; // Write message to file
-        file.close();
-    } else {
-        std::cerr << "Unable to open file." << std::endl;
-    }
-}
-
 void gameLoop()
 {
     Government *government = new Government();
     bool game = true;
     int actionCount = 0;
     std::ostringstream message;
+
     printC("Select which difficulty to play on:", Color::CYAN);
     printC("    1. Easy", Color::GREEN);
     printC("    2. Medium", Color::YELLOW);
@@ -281,6 +229,25 @@ void gameLoop()
 
         if (action != 9)
         {
+            actionCount++;
+
+            writeMessageToFile(" ");
+            sleep(1.1);
+
+            message.str("");
+            message.clear();
+
+            message << "---------------------------\n";
+            message << "Tax collection progress " << to_string(actionCount) << "/8\n";
+            message << "---------------------------\n";
+
+            // message << "\n\n (imagine City stats being here)\n";
+            message << government->getSatisfactionDetails();
+            message << "\n";
+            message << government->getSec();
+            message << government->getUtilitiesDetails();
+            writeMessageToFile(message.str());
+            // sendMessageToTerminal(message.str());
 
             printC("See a more detailed report:", Color::CYAN);
             printC("    1. Print Utilities", Color::WHITE);
@@ -326,17 +293,22 @@ void gameLoop()
                 break;
             }
 
-            actionCount++;
+            // actionCount++;
 
-        message.str("");
-        message.clear();
-        message << "---------\n";
-        message << "| Day " + to_string(actionCount) << " |\n";
-        message << "---------\n";
+        // message.str("");
+        // message.clear();
 
-        message << "\n\n (imagine City stats being here)";
-        writeMessageToFile(message.str());
-        // sendMessageToTerminal(message.str());
+        // message << "---------------------------\n";
+        // message << "Tax collection progress " << to_string(actionCount) << "/8\n";
+        // message << "---------------------------\n";
+
+        // // message << "\n\n (imagine City stats being here)\n";
+        // message << government->getSatisfactionDetails();
+        // message << "\n";
+        // message << government->getSec();
+        // writeMessageToFile(message.str());
+        // // sendMessageToTerminal(message.str());
+
             if (actionCount >= 8)
             {
                 printC("Collecting annual taxes...", Color::YELLOW);
@@ -362,9 +334,14 @@ int main(int argc, char const *argv[])
     openNewTerminal();
     writeMessageToFile(" ");  // Write message to temp file
 
-    message << "---------\n";
-    message << "| Day 0" << " |\n";
-    message << "---------\n";
+    message << "---Welcome message can be displayed---\n\n";
+    message << "---Game rules and goals can be listed---\n\n";
+
+
+    // message << "---------\n";
+    // message << "| Day 0" << " |\n";
+    // message << "---------\n";
+    // message << "\033[32m this is green\033[0m";
 
     writeMessageToFile(message.str());  // Write message to temp file
     // sendMessageToTerminal(message.str());
