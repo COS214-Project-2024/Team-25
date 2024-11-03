@@ -5,6 +5,7 @@
 // Adaptees
 // PublicTransport
 PublicTransport::PublicTransport(int c, string t, string tt){
+    currentAmount = 0;
     capacity = c;
     type = t;
     TransportType = tt;
@@ -38,11 +39,13 @@ int PublicTransport::getAmount() {
 
 //Road
 Road::Road(int mB, string t){
+    numOfBusses=0;
     maxNumOfBusses = mB;
     type = t;
 }
 
 void Road::addBus(PublicTransport bus){
+    numOfBusses++;
     busses.push_back(bus);
 }
 
@@ -130,9 +133,11 @@ vector<Road> &RoadSystem::getRoads()
 
 //class Railway
 Railway::Railway(){
+    numOfTrains=0;
 }
 
 void Railway::addTrain(PublicTransport train){
+    numOfTrains++;
     trains.push_back(train);
 }
 
@@ -192,7 +197,7 @@ void PublicTransitAdapter::addRoute(int amount) {
 }
 
 int PublicTransitAdapter::getUtilization() {
-    transitSystem->getAmount();
+    return transitSystem->getAmount();
 }
 
 void PublicTransitAdapter::performMaintenance() {
@@ -213,7 +218,7 @@ vector<Road>& RoadSystemAdapter::getRoads()
 }
 
 int RoadSystemAdapter::getUtilization() {
-    roadSystem->getUtilization();
+    return roadSystem->getUtilization();
 }
 
 void RoadSystemAdapter::performMaintenance() {
