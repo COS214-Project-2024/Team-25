@@ -7,6 +7,8 @@
 #include "TaxSystem.h"
 #include "Buildings.h"
 #include "doctest.h"
+#include "Transportation.h"
+#include "Routines.h"
 
 TEST_CASE("Testing TaxStrategies")
 {
@@ -112,6 +114,63 @@ TEST_CASE("Testing Buildings"){
       delete myWarehouse;
       delete newSector1;
       delete newSector2;
+    }
+}
+
+TEST_CASE("Testing Routines class") 
+{
+    std::cout << "\n------------------------" << std::endl;
+    std::cout << "Testing Routines class" << std::endl;
+    std::cout << "------------------------" << std::endl;
+    SUBCASE("Verify Road constructor") 
+    {
+        std::cout << "\n############## Testing Road constructor ##############" << std::endl;
+        Road road1(5, "Industrial");
+        std::cout << "Road1 Max Busses: " << road1.getMaxNumOfBusses() << std::endl;
+        std::cout << "Road1 Type: " << road1.getType() << std::endl;
+        std::cout << "Road1 Num Busses: " << road1.getNumBusses() << std::endl;
+        CHECK(road1.getMaxNumOfBusses() == 5);
+        CHECK(road1.getType() == "Industrial");
+        CHECK(road1.getNumBusses() == 0);
+
+        SUBCASE("Test RoadSystem constructor")
+        {
+            std::cout << "\n############## Testing RoadSystem constructor ##############" << std::endl;
+            RoadSystem *roadSystem = new RoadSystem();
+            std::cout << "Road System Created" << std::endl;
+
+            SUBCASE("Testing RoadSystemAdapter")
+            {
+                std::cout << "\n############## Testing RoadSystemAdapter ##############" << std::endl;
+                RoadSystemAdapter *roadSystemAdapter = new RoadSystemAdapter(roadSystem);
+                std::cout << "Road System Adapter Created" << std::endl;
+                roadSystemAdapter->addRoute(road1);
+                std::cout << "Route Added to Road System Adapter" << std::endl;
+                CHECK(roadSystemAdapter->getRoads().size() == 1);
+                CHECK(roadSystemAdapter->getRoads()[0].getType() == "Industrial");
+                CHECK(roadSystemAdapter->getRoads()[0].getMaxNumOfBusses() == 5);
+
+                SUBCASE("Creating a Command")
+                {
+                    std::cout << "\n############## Testing Creating a Command ##############" << std::endl;
+                    std::vector<RoadSystemAdapter*> roads = {roadSystemAdapter};
+                    GovernmentCommands* upgradeAllRoad = new UpgradeAllRoad(roads);
+                    std::cout << "UpgradeAllRoad Command Created" << std::endl;
+                    CHECK(upgradeAllRoad != nullptr);
+
+                    SUBCASE("Calling the command")
+                    {
+                        std::cout << "\n############## Testing Calling the command ##############" << std::endl;
+                        upgradeAllRoad->execute();
+                        std::cout << "Command Executed" << std::endl;
+                        CHECK(roadSystemAdapter->getUtilization() == 0);
+                        CHECK(roadSystemAdapter->getRoads().size() == 1);
+                        CHECK(roadSystemAdapter->getRoads()[0].getMaxNumOfBusses() == 5);
+                        CHECK(roadSystemAdapter->getUtilization() == 0);
+                    }
+                }
+            }
+        }
     }
 }
 
