@@ -1,19 +1,18 @@
 ---------------------------
-Tax collection progress 8/8
+Tax collection progress 0/8
 ---------------------------
 [33m---------------------------------[0m
-[33m|     Satisfaction: 37.58       |[0m
+[33m|     Satisfaction: 50.58       |[0m
 [33m---------------------------------[0m
-[33m|     Budget:       185000.00   |[0m
+[33m|     Budget:       312000.00   |[0m
 [33m---------------------------------[0m
 [33m|     Debt:         0.00        |[0m
 [33m---------------------------------[0m
-
 ---------------------------------
 |	 CityGrowth Stats	|
 |	 ---------------	|
 | Total Sectors: 5              |
-| Total buildings: 51           |
+| Total buildings: 50           |
 | Population: 	125/160         |
 |	 ---------------	|
 | Apartment          : 10       |
@@ -23,20 +22,35 @@ Tax collection progress 8/8
 | Mall               :  5       |
 | Mansion            :  5       |
 | Plant              :  5       |
-| Shop               :  6       |
+| Shop               :  5       |
 |	 ---------------	|
 | Commercial Roads    : 10      |
 | Industrial Roads    : 10      |
 | Instatutional Roads :  5      |
-| Shop Roads          :  1      |
 |	 ---------------	|
 | Sector[0]: 10 buildings       |
-| Sector[1]: 11 buildings       |
+| Sector[1]: 10 buildings       |
 | Sector[2]: 10 buildings       |
 | Sector[3]: 10 buildings       |
 | Sector[4]: 10 buildings       |
 ---------------------------------
 
+[36m
+Current Resources and Utilities:[0m
+[36m-------------------------------[0m
+[32mMaterials:[0m
+  Wood: 29000 kg
+  Concrete: 29200 kg
+  Steel: 29000 kg
+
+[32mUtilities:[0m
+  Power Plants: 4
+  Water Supply Systems: 4
+  Waste Management Facilities: 4
+
+[32mBudget:[0m
+  Cash: $312000
+[36m-------------------------------[0m
 [36m================================[0m
 [36mDetailed Utilities Information:[0m
 [36m================================[0m
@@ -52,21 +66,21 @@ Tax collection progress 8/8
 [37m  Raw Generation Capacity: 1000 watts[0m
 
 [33mPower Plant #2:[0m
-[37m  Type: 2[0m
-[32m  Status: Functional[0m
-[35m  Efficiency: 100%[0m
-[34m  Power Generation: 1000 watts[0m
-[37m  Raw Generation Capacity: 1000 watts[0m
-
-[33mPower Plant #3:[0m
 [37m  Type: 3[0m
 [32m  Status: Functional[0m
 [35m  Efficiency: 100%[0m
 [34m  Power Generation: 1000 watts[0m
 [37m  Raw Generation Capacity: 1000 watts[0m
 
-[33mPower Plant #4:[0m
+[33mPower Plant #3:[0m
 [37m  Type: 0[0m
+[32m  Status: Functional[0m
+[35m  Efficiency: 100%[0m
+[34m  Power Generation: 1000 watts[0m
+[37m  Raw Generation Capacity: 1000 watts[0m
+
+[33mPower Plant #4:[0m
+[37m  Type: 2[0m
 [32m  Status: Functional[0m
 [35m  Efficiency: 100%[0m
 [34m  Power Generation: 1000 watts[0m

@@ -25,5 +25,5 @@ if not "!currSize!"=="!prevSize!" (
     set "prevSize=!currSize!"
 )
 
-timeout /t 0 > nul
+timeout /t 1 > nul
 goto loop

@@ -168,6 +168,8 @@ public:
      */
     void printUtilitiesDetails();
 
+    std::string getResourcesReport();
+
     std::string getSec();
 
     std::string getSatisfactionDetails();

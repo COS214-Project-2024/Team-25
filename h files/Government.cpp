@@ -1360,12 +1360,43 @@ void Government::printUtilitiesDetails()
     printC("\n================================\n", Color::CYAN);
 }
 
+std::string Government::getResourcesReport()
+{
+    std::ostringstream report;
+
+    // Header
+    report << "\033[36m\nCurrent Resources and Utilities:\033[0m\n";
+    report << "\033[36m-------------------------------\033[0m\n";
+
+    // Materials
+    report << "\033[32mMaterials:\033[0m\n";
+    report << "  Wood: " << wood->getKilo() << " kg\n";
+    report << "  Concrete: " << concrete->getKilo() << " kg\n";
+    report << "  Steel: " << steel->getKilo() << " kg\n";
+
+    // Utilities
+    report << "\n\033[32mUtilities:\033[0m\n";
+    report << "  Power Plants: " << powerPlant.size() << "\n";
+    report << "  Water Supply Systems: " << waterSupply.size() << "\n";
+    report << "  Waste Management Facilities: " << wasteManagement.size() << "\n";
+
+    // Budget
+    report << "\n\033[32mBudget:\033[0m\n";
+    report << "  Cash: $" << budget->getCash() << "\n";
+
+    // Footer
+    report << "\033[36m-------------------------------\033[0m\n";
+
+    return report.str();
+}
+
 std::string Government::getSec()
 {
     return cityGrowth->printSectors();
 }
 
-std::string Government::getSatisfactionDetails() {
+std::string Government::getSatisfactionDetails() 
+{
     std::stringstream result;
 
     result << "\033[33m" << std::string(33, '-') << "\033[0m\n"; // Yellow
@@ -1379,7 +1410,8 @@ std::string Government::getSatisfactionDetails() {
     return result.str();
 }
 
-std::string Government::getUtilitiesDetails() {
+std::string Government::getUtilitiesDetails() 
+{
     std::stringstream result;
 
     result << "\033[36m================================\033[0m\n"; // Cyan
