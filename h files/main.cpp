@@ -106,6 +106,7 @@ void gameLoop()
             government->printresources();
             government->printSec();
             government->printSatisfaction();
+            printC("YOU HAVE WON BASED ON SATISFACTION", Color::GREEN);
             break;
         }
 
@@ -116,6 +117,7 @@ void gameLoop()
             government->printresources();
             government->printSec();
             government->printSatisfaction();
+            printC("YOU HAVE LOST BASED ON SATISFACTION", Color::RED);
             break;
         }
 
@@ -126,16 +128,18 @@ void gameLoop()
             government->printresources();
             government->printSec();
             government->printSatisfaction();
+            printC("YOU HAVE WON BASED ON CASH", Color::GREEN);
             break;
         }
 
-        if (government->getDebt() <= -50000)
+        if (government->getDebt() <= -50000 || government->getBudget() <= -50000)
         {
             printC("YOU HAVE LOST BASED ON DEBT", Color::RED);
             government->printUtilitiesDetails();
             government->printresources();
             government->printSec();
             government->printSatisfaction();
+            printC("YOU HAVE LOST BASED ON DEBT", Color::RED);
             break;
         }
 
