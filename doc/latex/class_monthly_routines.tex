@@ -1,0 +1,134 @@
+\doxysection{Monthly\+Routines Class Reference}
+\hypertarget{class_monthly_routines}{}\label{class_monthly_routines}\index{MonthlyRoutines@{MonthlyRoutines}}
+
+
+\doxylink{class_concrete}{Concrete} invoker class that manages monthly government routines.  
+
+
+
+
+{\ttfamily \#include $<$Routines.\+h$>$}
+
+Inheritance diagram for Monthly\+Routines\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_monthly_routines}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_monthly_routines_a206204ced97b1bb801fcd4eff1bdf909}{Monthly\+Routines}} (\mbox{\hyperlink{class_city_growth}{City\+Growth}} \texorpdfstring{$\ast$}{*}cg)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_monthly_routines}{Monthly\+Routines} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_monthly_routines_a8466d42deab1a561dda199e1e4ceed46}{addtransport\+Routines}} (\mbox{\hyperlink{class_government_commands}{Government\+Commands}} \texorpdfstring{$\ast$}{*}command)
+\begin{DoxyCompactList}\small\item\em Adds a transport routine command to the list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_monthly_routines_aaad1c1b46b91d3bd26e534bd8f896bea}{addbuilding\+Routines}} (\mbox{\hyperlink{class_government_commands}{Government\+Commands}} \texorpdfstring{$\ast$}{*}command)
+\begin{DoxyCompactList}\small\item\em Adds a building routine command to the list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_monthly_routines_ab0854dd9008db0f39267b1d7b3833fba}{executue\+Transport}} ()
+\begin{DoxyCompactList}\small\item\em Executes all transport routines. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_monthly_routines_a766730f2c6ad4992c06c58fd9e602cd3}{executue\+Building}} ()
+\begin{DoxyCompactList}\small\item\em Executes all building routines. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_monthly_routines_a928cc7cbdb169d7d5396cf02e72007b5}{execute}} ()
+\begin{DoxyCompactList}\small\item\em Executes the monthly routines. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_government_commands}{Government\+Commands}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Government\+Commands} ()
+\begin{DoxyCompactList}\small\item\em Virtual destructor for proper cleanup of derived classes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_monthly_routines_a6219b7f2b5c531d50fbac3585fdc24f8}\label{class_monthly_routines_a6219b7f2b5c531d50fbac3585fdc24f8} 
+\mbox{\hyperlink{class_city_growth}{City\+Growth}} \texorpdfstring{$\ast$}{*} {\bfseries citygrowth}
+\begin{DoxyCompactList}\small\item\em Pointer to the \doxylink{class_city_growth}{City\+Growth} object for city management. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_concrete}{Concrete} invoker class that manages monthly government routines. 
+
+This class manages the execution of various transport and building routines for the city. It holds a reference to the \doxylink{class_city_growth}{City\+Growth} object and maintains lists of commands to be executed. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_monthly_routines_a206204ced97b1bb801fcd4eff1bdf909}\index{MonthlyRoutines@{MonthlyRoutines}!MonthlyRoutines@{MonthlyRoutines}}
+\index{MonthlyRoutines@{MonthlyRoutines}!MonthlyRoutines@{MonthlyRoutines}}
+\doxysubsubsection{\texorpdfstring{MonthlyRoutines()}{MonthlyRoutines()}}
+{\footnotesize\ttfamily \label{class_monthly_routines_a206204ced97b1bb801fcd4eff1bdf909} 
+Monthly\+Routines\+::\+Monthly\+Routines (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_city_growth}{City\+Growth}} \texorpdfstring{$\ast$}{*}}]{cg}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_monthly_routines}{Monthly\+Routines} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cg} & Pointer to the \doxylink{class_city_growth}{City\+Growth} object. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_monthly_routines_aaad1c1b46b91d3bd26e534bd8f896bea}\index{MonthlyRoutines@{MonthlyRoutines}!addbuildingRoutines@{addbuildingRoutines}}
+\index{addbuildingRoutines@{addbuildingRoutines}!MonthlyRoutines@{MonthlyRoutines}}
+\doxysubsubsection{\texorpdfstring{addbuildingRoutines()}{addbuildingRoutines()}}
+{\footnotesize\ttfamily \label{class_monthly_routines_aaad1c1b46b91d3bd26e534bd8f896bea} 
+void Monthly\+Routines\+::addbuilding\+Routines (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_government_commands}{Government\+Commands}} \texorpdfstring{$\ast$}{*}}]{command}{}\end{DoxyParamCaption})}
+
+
+
+Adds a building routine command to the list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em command} & Pointer to a \doxylink{class_government_commands}{Government\+Commands} object representing the building command. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_monthly_routines_a8466d42deab1a561dda199e1e4ceed46}\index{MonthlyRoutines@{MonthlyRoutines}!addtransportRoutines@{addtransportRoutines}}
+\index{addtransportRoutines@{addtransportRoutines}!MonthlyRoutines@{MonthlyRoutines}}
+\doxysubsubsection{\texorpdfstring{addtransportRoutines()}{addtransportRoutines()}}
+{\footnotesize\ttfamily \label{class_monthly_routines_a8466d42deab1a561dda199e1e4ceed46} 
+void Monthly\+Routines\+::addtransport\+Routines (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_government_commands}{Government\+Commands}} \texorpdfstring{$\ast$}{*}}]{command}{}\end{DoxyParamCaption})}
+
+
+
+Adds a transport routine command to the list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em command} & Pointer to a \doxylink{class_government_commands}{Government\+Commands} object representing the transport command. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_monthly_routines_a928cc7cbdb169d7d5396cf02e72007b5}\index{MonthlyRoutines@{MonthlyRoutines}!execute@{execute}}
+\index{execute@{execute}!MonthlyRoutines@{MonthlyRoutines}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \label{class_monthly_routines_a928cc7cbdb169d7d5396cf02e72007b5} 
+void Monthly\+Routines\+::execute (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Executes the monthly routines. 
+
+This function executes both transport and building routines as part of the monthly routines. 
+
+Implements \mbox{\hyperlink{class_government_commands_ad68264081c8fe0c9b28a12afe43986ed}{Government\+Commands}}.
+
+\Hypertarget{class_monthly_routines_a766730f2c6ad4992c06c58fd9e602cd3}\index{MonthlyRoutines@{MonthlyRoutines}!executueBuilding@{executueBuilding}}
+\index{executueBuilding@{executueBuilding}!MonthlyRoutines@{MonthlyRoutines}}
+\doxysubsubsection{\texorpdfstring{executueBuilding()}{executueBuilding()}}
+{\footnotesize\ttfamily \label{class_monthly_routines_a766730f2c6ad4992c06c58fd9e602cd3} 
+void Monthly\+Routines\+::executue\+Building (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Executes all building routines. 
+
+This function iterates over the building routines and executes each command. \Hypertarget{class_monthly_routines_ab0854dd9008db0f39267b1d7b3833fba}\index{MonthlyRoutines@{MonthlyRoutines}!executueTransport@{executueTransport}}
+\index{executueTransport@{executueTransport}!MonthlyRoutines@{MonthlyRoutines}}
+\doxysubsubsection{\texorpdfstring{executueTransport()}{executueTransport()}}
+{\footnotesize\ttfamily \label{class_monthly_routines_ab0854dd9008db0f39267b1d7b3833fba} 
+void Monthly\+Routines\+::executue\+Transport (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Executes all transport routines. 
+
+This function iterates over the transport routines and executes each command. 

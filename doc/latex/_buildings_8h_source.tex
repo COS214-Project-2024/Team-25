@@ -1,0 +1,353 @@
+\doxysection{Buildings.\+h}
+\hypertarget{_buildings_8h_source}{}\label{_buildings_8h_source}\index{h files/Buildings.h@{h files/Buildings.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ BUILDING\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ BUILDING\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Citizen.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}Resources.h"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_building}{Building}}\ \{}
+\DoxyCodeLine{00019\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00020\ \ \ \ \ std::string\ \mbox{\hyperlink{class_building_a6e62ddc243a1f5b900c34c797bff3569}{name}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00021\ \ \ \ \ std::string\ \mbox{\hyperlink{class_building_a2984e4d0f7890dd8d1a5ed73f1b87ea5}{type}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_ac67eae238324a4ad8f435232caa15f12}{numRooms}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_a2f7028f06f0973c27abe924495bf4294}{m\_squared}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_building_a21eb2373e2ef24b51f85a1f6cf8c734f}{value}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_building_acd9d1471b30ac9d58da5b8f989fb3c71}{built}}\ =\ \textcolor{keyword}{false};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{class_budget}{Budget}}*\ \mbox{\hyperlink{class_building_aedefb923db86a72931896736e119a52e}{budget}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{class_concrete}{Concrete}}*\ \mbox{\hyperlink{class_building_ac5fb399decb1e7ab6b6e75e59f24ef8e}{concrete}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{class_steel}{Steel}}*\ \mbox{\hyperlink{class_building_a1dc14838ff2b7e3e74f21743d5985db5}{steel}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_wood}{Wood}}*\ \mbox{\hyperlink{class_building_ac4b2b3d9ddcd4b42f367365fbe3197fc}{wood}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ std::vector<Citizen*>\ \mbox{\hyperlink{class_building_ab2b11eea8ed297623aec3af1ba7d928c}{citizens}};\ }
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{class_building_aa339d5eed58b9de44f90eb0182afd704}{Building}}(std::string\ \mbox{\hyperlink{class_building_a6e62ddc243a1f5b900c34c797bff3569}{name}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_ac67eae238324a4ad8f435232caa15f12}{numRooms}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_a2f7028f06f0973c27abe924495bf4294}{m\_squared}},\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_building_a21eb2373e2ef24b51f85a1f6cf8c734f}{value}},\ std::string\ \mbox{\hyperlink{class_building_a2984e4d0f7890dd8d1a5ed73f1b87ea5}{type}});}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_building_ab675c6a382e110b84031956cda708439}{\string~Building}}();}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00052\ \ \ \ \ std::vector<Citizen*>\ \mbox{\hyperlink{class_building_ab2bbacb4f1520d7ae73a6771610529be}{getCitizens}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_building_ab2b11eea8ed297623aec3af1ba7d928c}{citizens}};\ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_building_a053e6599f9abb8c3ea7644ad24db7332}{build}}()\ =\ 0;}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_building}{Building}}*\ \mbox{\hyperlink{class_building_a5525f0851f4f51618f8c51ad9ac8d7af}{clone}}()\ =\ 0;}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_building_ab267e802b679ebc5ea6567078a60cf52}{displayCitizens}}();}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_building_ac8bf0fedb482b7c1a1c2878c715ee617}{addCitizen}}(\mbox{\hyperlink{class_citizen}{Citizen}}*\ human)\ =\ 0;}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_a276539beba18338592801dbe02dd9b14}{getLeftOverCapacity}}()\ =\ 0;}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keyword}{virtual}\ std::string\ \mbox{\hyperlink{class_building_a20db85f737c1d014f54f1548c3bb2143}{getType}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00100\ \ \ \ \ std::string\ \mbox{\hyperlink{class_building_a114ab2f15d5d734175110c64bfe94002}{getName}}();}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00106\ \ \ \ \ std::string\ \mbox{\hyperlink{class_building_a0b8afd153bcf210bc29081e3bed66559}{getBuildingType}}();}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_building_a44d6b21513c8573c81f075f8eebecc0c}{getBuilt}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_building_acd9d1471b30ac9d58da5b8f989fb3c71}{built}};\ \}}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_building_ac9c4ce3446623eab4ad8a548144365ac}{renovate}}();}
+\DoxyCodeLine{00120\ \};}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \textcolor{comment}{/*******\ RESIDENTIAL\ *******/}}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00138\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_residential}{Residential}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_building}{Building}}\ \{}
+\DoxyCodeLine{00139\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_residential_a04cef0755fc4b805eec800fc5d1003e1}{numBedrooms}};\ \ \ \ }
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_residential_a200d0cff9392f83507c649107f389810}{numBathrooms}};\ \ \ }
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_residential_acc807d75623eb9d2cac217603a5be18a}{capacity}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00156\ \ \ \ \ \mbox{\hyperlink{class_residential_aba87aed9c77b1a670b83a258230f1adb}{Residential}}(std::string\ \mbox{\hyperlink{class_building_a6e62ddc243a1f5b900c34c797bff3569}{name}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_ac67eae238324a4ad8f435232caa15f12}{numRooms}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_a2f7028f06f0973c27abe924495bf4294}{m\_squared}},\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_building_a21eb2373e2ef24b51f85a1f6cf8c734f}{value}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_residential_a04cef0755fc4b805eec800fc5d1003e1}{numBedrooms}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_residential_a200d0cff9392f83507c649107f389810}{numBathrooms}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_residential_acc807d75623eb9d2cac217603a5be18a}{capacity}},\ std::string\ \mbox{\hyperlink{class_building_a2984e4d0f7890dd8d1a5ed73f1b87ea5}{type}});}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_residential_a9421db844bef44f2e4c667d4bf97ceb6}{build}}()\ =\ 0;}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_residential}{Residential}}*\ \mbox{\hyperlink{class_residential_a4b719db3577e2dc0430545b353ab0fb3}{clone}}()\ =\ 0;}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_residential_ac21cd7fb69ff77d19f98c4d68711cadb}{addCitizen}}(\mbox{\hyperlink{class_citizen}{Citizen}}*\ human)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_residential_ab614ba9ebd8b9055653b852a53a083ee}{displayCitizens}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_residential_ae55779805b638796741fd79ad6c06efc}{getLeftOverCapacity}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00190\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_residential_a9ff6d97b43ef6df3976a9c242772bc75}{getCapacity}}();}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00196\ \ \ \ \ std::vector<Citizen*>\ \mbox{\hyperlink{class_residential_abec91b03b5fb4e6c3fd6123db0f133a6}{getCitizens}}();}
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00202\ \ \ \ \ \textcolor{keyword}{virtual}\ std::string\ \mbox{\hyperlink{class_residential_a6670f095e7dc25f977510ef497e96be7}{getType}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00203\ \};}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00213\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_house}{House}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_residential}{Residential}}\ \{}
+\DoxyCodeLine{00214\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00215\ \ \ \ \ \textcolor{keywordtype}{int}\ kitchenSize;\ \ \ \ }
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00217\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00229\ \ \ \ \ \mbox{\hyperlink{class_house_ad38cf764b7c8479fe0c712e00a5907f5}{House}}(std::string\ \mbox{\hyperlink{class_building_a6e62ddc243a1f5b900c34c797bff3569}{name}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_ac67eae238324a4ad8f435232caa15f12}{numRooms}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_a2f7028f06f0973c27abe924495bf4294}{m\_squared}},\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_building_a21eb2373e2ef24b51f85a1f6cf8c734f}{value}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_residential_a04cef0755fc4b805eec800fc5d1003e1}{numBedrooms}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_residential_a200d0cff9392f83507c649107f389810}{numBathrooms}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_residential_acc807d75623eb9d2cac217603a5be18a}{capacity}},\ \textcolor{keywordtype}{int}\ kitchenSize);}
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00234\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_house_a99c2ef05495328481ec14d2937703f8a}{build}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00240\ \ \ \ \ \mbox{\hyperlink{class_house}{House}}*\ \mbox{\hyperlink{class_house_a8f85ef99e1acf606a08e2a2a5a41a1d8}{clone}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00241\ }
+\DoxyCodeLine{00246\ \ \ \ \ std::string\ \mbox{\hyperlink{class_house_aa36f1de346b219a9be7272242fde2a8a}{getType}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_building_a2984e4d0f7890dd8d1a5ed73f1b87ea5}{type}};\ \}}
+\DoxyCodeLine{00247\ \};}
+\DoxyCodeLine{00248\ }
+\DoxyCodeLine{00249\ }
+\DoxyCodeLine{00250\ }
+\DoxyCodeLine{00257\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_apartment}{Apartment}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_residential}{Residential}}\ \{}
+\DoxyCodeLine{00258\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00259\ \ \ \ \ \textcolor{keywordtype}{int}\ numFloors;\ \ \ \ \ \ }
+\DoxyCodeLine{00260\ }
+\DoxyCodeLine{00261\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00273\ \ \ \ \ \mbox{\hyperlink{class_apartment_ad436a9fe36f11508fcaab833f83600a6}{Apartment}}(std::string\ \mbox{\hyperlink{class_building_a6e62ddc243a1f5b900c34c797bff3569}{name}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_ac67eae238324a4ad8f435232caa15f12}{numRooms}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_a2f7028f06f0973c27abe924495bf4294}{m\_squared}},\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_building_a21eb2373e2ef24b51f85a1f6cf8c734f}{value}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_residential_a04cef0755fc4b805eec800fc5d1003e1}{numBedrooms}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_residential_a200d0cff9392f83507c649107f389810}{numBathrooms}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_residential_acc807d75623eb9d2cac217603a5be18a}{capacity}},\ \textcolor{keywordtype}{int}\ numFloors);}
+\DoxyCodeLine{00274\ }
+\DoxyCodeLine{00278\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_apartment_a65b19fa7ae0ed6149f088a718ee996b0}{build}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00279\ }
+\DoxyCodeLine{00284\ \ \ \ \ \mbox{\hyperlink{class_apartment}{Apartment}}*\ \mbox{\hyperlink{class_apartment_a7cf7af6bbd461e04cbf546a455cd6b06}{clone}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00285\ }
+\DoxyCodeLine{00290\ \ \ \ \ std::string\ \mbox{\hyperlink{class_apartment_ac3f35fe206e11af2366bd8488525b7cb}{getType}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_building_a2984e4d0f7890dd8d1a5ed73f1b87ea5}{type}};\ \}}
+\DoxyCodeLine{00291\ \};}
+\DoxyCodeLine{00292\ }
+\DoxyCodeLine{00293\ }
+\DoxyCodeLine{00294\ }
+\DoxyCodeLine{00301\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_mansion}{Mansion}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_residential}{Residential}}\ \{}
+\DoxyCodeLine{00302\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00303\ \ \ \ \ \textcolor{keywordtype}{bool}\ waterFeature;\ \ }
+\DoxyCodeLine{00304\ }
+\DoxyCodeLine{00305\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00317\ \ \ \ \ \mbox{\hyperlink{class_mansion_a934592c27f30a1fd1126fa633fdd98a1}{Mansion}}(std::string\ \mbox{\hyperlink{class_building_a6e62ddc243a1f5b900c34c797bff3569}{name}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_ac67eae238324a4ad8f435232caa15f12}{numRooms}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_a2f7028f06f0973c27abe924495bf4294}{m\_squared}},\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_building_a21eb2373e2ef24b51f85a1f6cf8c734f}{value}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_residential_a04cef0755fc4b805eec800fc5d1003e1}{numBedrooms}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_residential_a200d0cff9392f83507c649107f389810}{numBathrooms}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_residential_acc807d75623eb9d2cac217603a5be18a}{capacity}},\ \textcolor{keywordtype}{bool}\ waterFeature);}
+\DoxyCodeLine{00318\ }
+\DoxyCodeLine{00322\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mansion_a004677fd3c33576826095bc466dab1c5}{build}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00323\ }
+\DoxyCodeLine{00328\ \ \ \ \ \mbox{\hyperlink{class_mansion}{Mansion}}*\ \mbox{\hyperlink{class_mansion_a702a98c18846ffe2bb3dc8a5df37504d}{clone}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00329\ }
+\DoxyCodeLine{00334\ \ \ \ \ std::string\ \mbox{\hyperlink{class_mansion_a7f0b7ccef4c30375363263588928ef56}{getType}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_building_a2984e4d0f7890dd8d1a5ed73f1b87ea5}{type}};\ \}}
+\DoxyCodeLine{00335\ \};}
+\DoxyCodeLine{00336\ }
+\DoxyCodeLine{00337\ }
+\DoxyCodeLine{00338\ }
+\DoxyCodeLine{00339\ }
+\DoxyCodeLine{00340\ }
+\DoxyCodeLine{00341\ }
+\DoxyCodeLine{00342\ }
+\DoxyCodeLine{00343\ }
+\DoxyCodeLine{00344\ \textcolor{comment}{/*******\ COMMERCIAL\ *******/}}
+\DoxyCodeLine{00345\ }
+\DoxyCodeLine{00354\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_commercial}{Commercial}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_building}{Building}}\ \{}
+\DoxyCodeLine{00355\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00356\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_commercial_a3484107fdd213c7590ccd38cd48303df}{capacity}};\ \ \ \ }
+\DoxyCodeLine{00357\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_commercial_a05e156cc8babe4a7604e6189c7472c5b}{numFloors}};\ \ \ }
+\DoxyCodeLine{00358\ }
+\DoxyCodeLine{00359\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00370\ \ \ \ \ \mbox{\hyperlink{class_commercial_a055ac2eb47e4acfb66cf50c414da4347}{Commercial}}(std::string\ \mbox{\hyperlink{class_building_a6e62ddc243a1f5b900c34c797bff3569}{name}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_ac67eae238324a4ad8f435232caa15f12}{numRooms}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_a2f7028f06f0973c27abe924495bf4294}{m\_squared}},\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_building_a21eb2373e2ef24b51f85a1f6cf8c734f}{value}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_commercial_a3484107fdd213c7590ccd38cd48303df}{capacity}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_commercial_a05e156cc8babe4a7604e6189c7472c5b}{numFloors}},\ std::string\ \mbox{\hyperlink{class_building_a2984e4d0f7890dd8d1a5ed73f1b87ea5}{type}});}
+\DoxyCodeLine{00371\ }
+\DoxyCodeLine{00375\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_commercial_a3f68e2312427016b8a751f24ad14446e}{build}}()\ =\ 0;}
+\DoxyCodeLine{00376\ }
+\DoxyCodeLine{00381\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_commercial}{Commercial}}*\ \mbox{\hyperlink{class_commercial_a66c312f1d0b0cb368849267b6965ced0}{clone}}()\ =\ 0;}
+\DoxyCodeLine{00382\ }
+\DoxyCodeLine{00387\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_commercial_a2bd2a5b19d731052a34a40042f02dd9d}{addCitizen}}(\mbox{\hyperlink{class_citizen}{Citizen}}*\ human)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00388\ }
+\DoxyCodeLine{00392\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_commercial_aaacb9d63bdff5626f0c72635d92fd21e}{displayCitizens}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00393\ }
+\DoxyCodeLine{00398\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_commercial_a48fd12ca6ddffa3d3ac95f187cf60096}{getLeftOverCapacity}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00399\ }
+\DoxyCodeLine{00404\ \ \ \ \ \textcolor{keyword}{virtual}\ std::string\ \mbox{\hyperlink{class_commercial_ac1fe45e223c9d0f08ec7f815da3b1ceb}{getType}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00405\ \};}
+\DoxyCodeLine{00406\ }
+\DoxyCodeLine{00407\ }
+\DoxyCodeLine{00408\ }
+\DoxyCodeLine{00415\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_shop}{Shop}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_commercial}{Commercial}}\ \{}
+\DoxyCodeLine{00416\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00417\ \ \ \ \ \textcolor{keywordtype}{int}\ storageRooms;\ \ \ \ }
+\DoxyCodeLine{00418\ }
+\DoxyCodeLine{00419\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00430\ \ \ \ \ \mbox{\hyperlink{class_shop_a255563f57e49314d0657223bf16428d1}{Shop}}(std::string\ \mbox{\hyperlink{class_building_a6e62ddc243a1f5b900c34c797bff3569}{name}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_ac67eae238324a4ad8f435232caa15f12}{numRooms}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_a2f7028f06f0973c27abe924495bf4294}{m\_squared}},\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_building_a21eb2373e2ef24b51f85a1f6cf8c734f}{value}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_commercial_a3484107fdd213c7590ccd38cd48303df}{capacity}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_commercial_a05e156cc8babe4a7604e6189c7472c5b}{numFloors}},\ \textcolor{keywordtype}{int}\ storageRooms);}
+\DoxyCodeLine{00431\ }
+\DoxyCodeLine{00435\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_shop_a1aa1c6d1fab101f197d2bd2f264a750e}{build}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00436\ }
+\DoxyCodeLine{00441\ \ \ \ \ \mbox{\hyperlink{class_shop}{Shop}}*\ \mbox{\hyperlink{class_shop_abf8566915414b3d5acf437ae8dc5c2fe}{clone}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00442\ }
+\DoxyCodeLine{00447\ \ \ \ \ std::string\ \mbox{\hyperlink{class_shop_a62d147568c96c3fc6ae9300c61c2bde7}{getType}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_building_a2984e4d0f7890dd8d1a5ed73f1b87ea5}{type}};\ \}}
+\DoxyCodeLine{00448\ \};}
+\DoxyCodeLine{00449\ }
+\DoxyCodeLine{00450\ }
+\DoxyCodeLine{00451\ }
+\DoxyCodeLine{00452\ }
+\DoxyCodeLine{00459\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_office}{Office}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_commercial}{Commercial}}\ \{}
+\DoxyCodeLine{00460\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00461\ \ \ \ \ \textcolor{keywordtype}{int}\ offices;\ \ \ \ }
+\DoxyCodeLine{00462\ }
+\DoxyCodeLine{00463\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00474\ \ \ \ \ \mbox{\hyperlink{class_office_a41fc95e7f616b8d6029e8b8a02913a2c}{Office}}(std::string\ \mbox{\hyperlink{class_building_a6e62ddc243a1f5b900c34c797bff3569}{name}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_ac67eae238324a4ad8f435232caa15f12}{numRooms}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_a2f7028f06f0973c27abe924495bf4294}{m\_squared}},\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_building_a21eb2373e2ef24b51f85a1f6cf8c734f}{value}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_commercial_a3484107fdd213c7590ccd38cd48303df}{capacity}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_commercial_a05e156cc8babe4a7604e6189c7472c5b}{numFloors}},\ \textcolor{keywordtype}{int}\ offices);}
+\DoxyCodeLine{00475\ }
+\DoxyCodeLine{00479\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_office_a78a69f914e6e2664e73f140894191c33}{build}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00480\ }
+\DoxyCodeLine{00485\ \ \ \ \ \mbox{\hyperlink{class_office}{Office}}*\ \mbox{\hyperlink{class_office_adb769b3c6ee59fb8895374a5d3c46280}{clone}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00486\ }
+\DoxyCodeLine{00491\ \ \ \ \ std::string\ \mbox{\hyperlink{class_office_a3b96e079a593b1f83c2ef826ef097794}{getType}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_building_a2984e4d0f7890dd8d1a5ed73f1b87ea5}{type}};\ \}}
+\DoxyCodeLine{00492\ \};}
+\DoxyCodeLine{00493\ }
+\DoxyCodeLine{00494\ }
+\DoxyCodeLine{00495\ }
+\DoxyCodeLine{00502\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_mall}{Mall}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_commercial}{Commercial}}\ \{}
+\DoxyCodeLine{00503\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00504\ \ \ \ \ \textcolor{keywordtype}{int}\ shops;\ \ \ \ }
+\DoxyCodeLine{00505\ }
+\DoxyCodeLine{00506\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00517\ \ \ \ \ \mbox{\hyperlink{class_mall_a4cd6836431268eab926b2f66ed018eb6}{Mall}}(std::string\ \mbox{\hyperlink{class_building_a6e62ddc243a1f5b900c34c797bff3569}{name}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_ac67eae238324a4ad8f435232caa15f12}{numRooms}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_a2f7028f06f0973c27abe924495bf4294}{m\_squared}},\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_building_a21eb2373e2ef24b51f85a1f6cf8c734f}{value}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_commercial_a3484107fdd213c7590ccd38cd48303df}{capacity}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_commercial_a05e156cc8babe4a7604e6189c7472c5b}{numFloors}},\ \textcolor{keywordtype}{int}\ shops);}
+\DoxyCodeLine{00518\ }
+\DoxyCodeLine{00522\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_mall_a24260f9734c72f3d6b95b515b1b07294}{build}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00523\ }
+\DoxyCodeLine{00528\ \ \ \ \ \mbox{\hyperlink{class_mall}{Mall}}*\ \mbox{\hyperlink{class_mall_a5c2031e2d9ce5c127ab7717d8388e0df}{clone}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00529\ }
+\DoxyCodeLine{00534\ \ \ \ \ std::string\ \mbox{\hyperlink{class_mall_a0175e9b6e06abb7377ed3b6075a597ca}{getType}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_building_a2984e4d0f7890dd8d1a5ed73f1b87ea5}{type}};\ \}}
+\DoxyCodeLine{00535\ \};}
+\DoxyCodeLine{00536\ }
+\DoxyCodeLine{00537\ }
+\DoxyCodeLine{00538\ }
+\DoxyCodeLine{00539\ }
+\DoxyCodeLine{00540\ }
+\DoxyCodeLine{00541\ }
+\DoxyCodeLine{00542\ }
+\DoxyCodeLine{00543\ }
+\DoxyCodeLine{00544\ \textcolor{comment}{/*******\ INDUSTRIAL\ *******/}}
+\DoxyCodeLine{00545\ }
+\DoxyCodeLine{00554\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_industrial}{Industrial}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_building}{Building}}\ \{}
+\DoxyCodeLine{00555\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00556\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_industrial_aa2aa929b5390c055c9b6c051793385c6}{carbonFootprint}};\ \ }
+\DoxyCodeLine{00557\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_industrial_a59afa0548cf8b76674bab63a4f736aee}{capacity}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00558\ }
+\DoxyCodeLine{00559\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00570\ \ \ \ \ \mbox{\hyperlink{class_industrial_acb0b766ee1ecd6d1effad361e4f55c5a}{Industrial}}(std::string\ \mbox{\hyperlink{class_building_a6e62ddc243a1f5b900c34c797bff3569}{name}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_ac67eae238324a4ad8f435232caa15f12}{numRooms}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_a2f7028f06f0973c27abe924495bf4294}{m\_squared}},\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_building_a21eb2373e2ef24b51f85a1f6cf8c734f}{value}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_industrial_aa2aa929b5390c055c9b6c051793385c6}{carbonFootprint}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_industrial_a59afa0548cf8b76674bab63a4f736aee}{capacity}},\ std::string\ \mbox{\hyperlink{class_building_a2984e4d0f7890dd8d1a5ed73f1b87ea5}{type}});}
+\DoxyCodeLine{00571\ }
+\DoxyCodeLine{00575\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_industrial_a3c8c740263808d3ea5249d832c7f6de1}{build}}()\ =\ 0;}
+\DoxyCodeLine{00576\ }
+\DoxyCodeLine{00581\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_industrial}{Industrial}}*\ \mbox{\hyperlink{class_industrial_ac4bf09bd6fbe67524d612d2867b32d5a}{clone}}()\ =\ 0;}
+\DoxyCodeLine{00582\ }
+\DoxyCodeLine{00587\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_industrial_a90be2144aa7ad3464168ca0519a0622d}{addCitizen}}(\mbox{\hyperlink{class_citizen}{Citizen}}*\ human)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00588\ }
+\DoxyCodeLine{00592\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_industrial_a06a170c449e8bc182c1f98099c47f98f}{displayCitizens}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00593\ }
+\DoxyCodeLine{00598\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_industrial_a7981eba372ae7d6087c0f9ec62c46ade}{getLeftOverCapacity}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00599\ }
+\DoxyCodeLine{00604\ \ \ \ \ \textcolor{keyword}{virtual}\ std::string\ \mbox{\hyperlink{class_industrial_ace058707f730b573f7f4e209c428f815}{getType}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00605\ \};}
+\DoxyCodeLine{00606\ }
+\DoxyCodeLine{00613\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_factory}{Factory}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_industrial}{Industrial}}\ \{}
+\DoxyCodeLine{00614\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00624\ \ \ \ \ \mbox{\hyperlink{class_factory_a01ea19b4da04c684fbcd630f4468f3b1}{Factory}}(std::string\ \mbox{\hyperlink{class_building_a6e62ddc243a1f5b900c34c797bff3569}{name}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_ac67eae238324a4ad8f435232caa15f12}{numRooms}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_a2f7028f06f0973c27abe924495bf4294}{m\_squared}},\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_building_a21eb2373e2ef24b51f85a1f6cf8c734f}{value}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_industrial_aa2aa929b5390c055c9b6c051793385c6}{carbonFootprint}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_industrial_a59afa0548cf8b76674bab63a4f736aee}{capacity}});}
+\DoxyCodeLine{00625\ }
+\DoxyCodeLine{00629\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_factory_a654596085e3cf7ea3860982823f7649f}{build}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00630\ }
+\DoxyCodeLine{00635\ \ \ \ \ \mbox{\hyperlink{class_factory}{Factory}}*\ \mbox{\hyperlink{class_factory_a2eb681cbebcf790f5e203c47733f9b01}{clone}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00636\ }
+\DoxyCodeLine{00641\ \ \ \ \ std::string\ \mbox{\hyperlink{class_factory_ab5ae49eb0b23909f926845fd09569b96}{getType}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_building_a2984e4d0f7890dd8d1a5ed73f1b87ea5}{type}};\ \}}
+\DoxyCodeLine{00642\ \};}
+\DoxyCodeLine{00643\ }
+\DoxyCodeLine{00650\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_warehouse}{Warehouse}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_industrial}{Industrial}}\ \{}
+\DoxyCodeLine{00651\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00661\ \ \ \ \ \mbox{\hyperlink{class_warehouse_a687d64b80896e936d9be306a4733e7af}{Warehouse}}(std::string\ \mbox{\hyperlink{class_building_a6e62ddc243a1f5b900c34c797bff3569}{name}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_ac67eae238324a4ad8f435232caa15f12}{numRooms}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_a2f7028f06f0973c27abe924495bf4294}{m\_squared}},\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_building_a21eb2373e2ef24b51f85a1f6cf8c734f}{value}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_industrial_aa2aa929b5390c055c9b6c051793385c6}{carbonFootprint}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_industrial_a59afa0548cf8b76674bab63a4f736aee}{capacity}});}
+\DoxyCodeLine{00662\ }
+\DoxyCodeLine{00666\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_warehouse_a58f232ec9e32d71b9a5d9d812487064c}{build}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00667\ }
+\DoxyCodeLine{00672\ \ \ \ \ \mbox{\hyperlink{class_warehouse}{Warehouse}}*\ \mbox{\hyperlink{class_warehouse_a68f38ab44116d934cac23c293a291fcf}{clone}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00673\ }
+\DoxyCodeLine{00678\ \ \ \ \ std::string\ \mbox{\hyperlink{class_warehouse_aa0f3170b25f0fcad4a1f516aa2ce92e7}{getType}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_building_a2984e4d0f7890dd8d1a5ed73f1b87ea5}{type}};\ \}}
+\DoxyCodeLine{00679\ \};}
+\DoxyCodeLine{00680\ }
+\DoxyCodeLine{00687\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_plant}{Plant}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_industrial}{Industrial}}\ \{}
+\DoxyCodeLine{00688\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00698\ \ \ \ \ \mbox{\hyperlink{class_plant_a9daadc7a18d6037ba6811e6210f5d8a3}{Plant}}(std::string\ \mbox{\hyperlink{class_building_a6e62ddc243a1f5b900c34c797bff3569}{name}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_ac67eae238324a4ad8f435232caa15f12}{numRooms}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_a2f7028f06f0973c27abe924495bf4294}{m\_squared}},\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_building_a21eb2373e2ef24b51f85a1f6cf8c734f}{value}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_industrial_aa2aa929b5390c055c9b6c051793385c6}{carbonFootprint}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_industrial_a59afa0548cf8b76674bab63a4f736aee}{capacity}});}
+\DoxyCodeLine{00699\ }
+\DoxyCodeLine{00703\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_plant_a3221c981256d578160c1e2deed2820aa}{build}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00704\ }
+\DoxyCodeLine{00709\ \ \ \ \ \mbox{\hyperlink{class_plant}{Plant}}*\ \mbox{\hyperlink{class_plant_a8f0290ed106dfad850bcb05b24d89f96}{clone}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00710\ }
+\DoxyCodeLine{00715\ \ \ \ \ std::string\ \mbox{\hyperlink{class_plant_a3136e418237c592e074619522116345a}{getType}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_building_a2984e4d0f7890dd8d1a5ed73f1b87ea5}{type}};\ \}}
+\DoxyCodeLine{00716\ \};}
+\DoxyCodeLine{00717\ }
+\DoxyCodeLine{00718\ }
+\DoxyCodeLine{00719\ }
+\DoxyCodeLine{00720\ }
+\DoxyCodeLine{00721\ }
+\DoxyCodeLine{00722\ }
+\DoxyCodeLine{00723\ }
+\DoxyCodeLine{00724\ \textcolor{comment}{/*******\ INSTITUTIONAL\ *******/}}
+\DoxyCodeLine{00725\ }
+\DoxyCodeLine{00733\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_instatutional}{Instatutional}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_building}{Building}}\ \{}
+\DoxyCodeLine{00734\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00735\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_instatutional_a5ed515e013e9dbad0e8da38708aa97ff}{capacity}};\ \ }
+\DoxyCodeLine{00736\ }
+\DoxyCodeLine{00737\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00747\ \ \ \ \ \mbox{\hyperlink{class_instatutional_a222e380fa0fa75588955e2bd7b60c4d6}{Instatutional}}(std::string\ \mbox{\hyperlink{class_building_a6e62ddc243a1f5b900c34c797bff3569}{name}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_ac67eae238324a4ad8f435232caa15f12}{numRooms}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_a2f7028f06f0973c27abe924495bf4294}{m\_squared}},\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_building_a21eb2373e2ef24b51f85a1f6cf8c734f}{value}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_instatutional_a5ed515e013e9dbad0e8da38708aa97ff}{capacity}},\ std::string\ \mbox{\hyperlink{class_building_a2984e4d0f7890dd8d1a5ed73f1b87ea5}{type}});}
+\DoxyCodeLine{00748\ }
+\DoxyCodeLine{00752\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_instatutional_a534fef074f15b7451c42da05f286fd3c}{build}}()\ =\ 0;}
+\DoxyCodeLine{00753\ }
+\DoxyCodeLine{00758\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_instatutional}{Instatutional}}*\ \mbox{\hyperlink{class_instatutional_aeb7e09e825c93a1405fa72636e824fd9}{clone}}()\ =\ 0;}
+\DoxyCodeLine{00759\ }
+\DoxyCodeLine{00764\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_instatutional_aae9a428e02c993dd7834260773eec623}{addCitizen}}(\mbox{\hyperlink{class_citizen}{Citizen}}*\ human)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00765\ }
+\DoxyCodeLine{00769\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_instatutional_ad776f6ca8f338d03c8bb05efb10e6903}{displayCitizens}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00770\ }
+\DoxyCodeLine{00775\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_instatutional_a0b4a137ef3591d412c7f39db3ae6eba1}{getLeftOverCapacity}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00776\ }
+\DoxyCodeLine{00781\ \ \ \ \ \textcolor{keyword}{virtual}\ std::string\ \mbox{\hyperlink{class_instatutional_a519e027165ed5fb9ed20378e725544f6}{getType}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00782\ \};}
+\DoxyCodeLine{00783\ }
+\DoxyCodeLine{00790\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_school}{School}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_instatutional}{Instatutional}}\ \{}
+\DoxyCodeLine{00791\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00792\ \ \ \ \ \textcolor{keywordtype}{int}\ numfloors;\ \ }
+\DoxyCodeLine{00793\ }
+\DoxyCodeLine{00794\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00804\ \ \ \ \ \mbox{\hyperlink{class_school_a9cf02aeed4715171b299fc7f93be4c07}{School}}(std::string\ \mbox{\hyperlink{class_building_a6e62ddc243a1f5b900c34c797bff3569}{name}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_ac67eae238324a4ad8f435232caa15f12}{numRooms}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_a2f7028f06f0973c27abe924495bf4294}{m\_squared}},\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_building_a21eb2373e2ef24b51f85a1f6cf8c734f}{value}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_instatutional_a5ed515e013e9dbad0e8da38708aa97ff}{capacity}},\ \textcolor{keywordtype}{int}\ numfloors);}
+\DoxyCodeLine{00805\ }
+\DoxyCodeLine{00809\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_school_aebeedae25bb511a9a9b53d39fdfccb46}{build}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00810\ }
+\DoxyCodeLine{00815\ \ \ \ \ \mbox{\hyperlink{class_school}{School}}*\ \mbox{\hyperlink{class_school_a120b15c935920ad242cd6bd866a8e62f}{clone}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00816\ }
+\DoxyCodeLine{00821\ \ \ \ \ std::string\ \mbox{\hyperlink{class_school_a91294245c7e45056f567392e062822c2}{getType}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_building_a2984e4d0f7890dd8d1a5ed73f1b87ea5}{type}};\ \}}
+\DoxyCodeLine{00822\ \};}
+\DoxyCodeLine{00823\ }
+\DoxyCodeLine{00830\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_hospital}{Hospital}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_instatutional}{Instatutional}}\ \{}
+\DoxyCodeLine{00831\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00832\ \ \ \ \ \textcolor{keywordtype}{int}\ numfloors;\ \ }
+\DoxyCodeLine{00833\ }
+\DoxyCodeLine{00834\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00844\ \ \ \ \ \mbox{\hyperlink{class_hospital_a75d69e3e80ec09d77b3118c35a9bd617}{Hospital}}(std::string\ \mbox{\hyperlink{class_building_a6e62ddc243a1f5b900c34c797bff3569}{name}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_ac67eae238324a4ad8f435232caa15f12}{numRooms}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_a2f7028f06f0973c27abe924495bf4294}{m\_squared}},\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_building_a21eb2373e2ef24b51f85a1f6cf8c734f}{value}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_instatutional_a5ed515e013e9dbad0e8da38708aa97ff}{capacity}},\ \textcolor{keywordtype}{int}\ numfloors);}
+\DoxyCodeLine{00845\ }
+\DoxyCodeLine{00849\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_hospital_a1ed653296ad4bdc8d4453b02be89867b}{build}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00850\ }
+\DoxyCodeLine{00855\ \ \ \ \ \mbox{\hyperlink{class_hospital}{Hospital}}*\ \mbox{\hyperlink{class_hospital_a5963a97ccac502330eb90fe25c751699}{clone}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00856\ }
+\DoxyCodeLine{00861\ \ \ \ \ std::string\ \mbox{\hyperlink{class_hospital_a789210af053314dfcbab8a45194a3e57}{getType}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_building_a2984e4d0f7890dd8d1a5ed73f1b87ea5}{type}};\ \}}
+\DoxyCodeLine{00862\ \};}
+\DoxyCodeLine{00863\ }
+\DoxyCodeLine{00870\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_government_building}{GovernmentBuilding}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_instatutional}{Instatutional}}\ \{}
+\DoxyCodeLine{00871\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00872\ \ \ \ \ \textcolor{keywordtype}{int}\ numfloors;\ \ }
+\DoxyCodeLine{00873\ }
+\DoxyCodeLine{00874\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00884\ \ \ \ \ \mbox{\hyperlink{class_government_building_a674fb8e239030ec27cb71c0acf79af9f}{GovernmentBuilding}}(std::string\ \mbox{\hyperlink{class_building_a6e62ddc243a1f5b900c34c797bff3569}{name}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_ac67eae238324a4ad8f435232caa15f12}{numRooms}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_building_a2f7028f06f0973c27abe924495bf4294}{m\_squared}},\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_building_a21eb2373e2ef24b51f85a1f6cf8c734f}{value}},\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_instatutional_a5ed515e013e9dbad0e8da38708aa97ff}{capacity}},\ \textcolor{keywordtype}{int}\ numfloors);}
+\DoxyCodeLine{00885\ }
+\DoxyCodeLine{00889\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_government_building_aa8cac51d3f39b9a8e303c59d0157eaf7}{build}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00890\ }
+\DoxyCodeLine{00895\ \ \ \ \ \mbox{\hyperlink{class_government_building}{GovernmentBuilding}}*\ \mbox{\hyperlink{class_government_building_a5da10942ba847b419496497df6378351}{clone}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00896\ }
+\DoxyCodeLine{00901\ \ \ \ \ std::string\ \mbox{\hyperlink{class_government_building_afa863fa0d6ac8241703a56c4d3195c78}{getType}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_building_a2984e4d0f7890dd8d1a5ed73f1b87ea5}{type}};\ \}}
+\DoxyCodeLine{00902\ \};}
+\DoxyCodeLine{00903\ }
+\DoxyCodeLine{00904\ }
+\DoxyCodeLine{00905\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ BUILDING\_H}}
+
+\end{DoxyCode}

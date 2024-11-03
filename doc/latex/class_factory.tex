@@ -1,0 +1,173 @@
+\doxysection{Factory Class Reference}
+\hypertarget{class_factory}{}\label{class_factory}\index{Factory@{Factory}}
+
+
+Class representing a factory, a specific type of industrial building.  
+
+
+
+
+{\ttfamily \#include $<$Buildings.\+h$>$}
+
+Inheritance diagram for Factory\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_factory}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_factory_a01ea19b4da04c684fbcd630f4468f3b1}{Factory}} (std\+::string \mbox{\hyperlink{class_building_a6e62ddc243a1f5b900c34c797bff3569}{name}}, int \mbox{\hyperlink{class_building_ac67eae238324a4ad8f435232caa15f12}{num\+Rooms}}, int \mbox{\hyperlink{class_building_a2f7028f06f0973c27abe924495bf4294}{m\+\_\+squared}}, float \mbox{\hyperlink{class_building_a21eb2373e2ef24b51f85a1f6cf8c734f}{value}}, int \mbox{\hyperlink{class_industrial_aa2aa929b5390c055c9b6c051793385c6}{carbon\+Footprint}}, int \mbox{\hyperlink{class_industrial_a59afa0548cf8b76674bab63a4f736aee}{capacity}})
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{class_factory}{Factory} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_factory_a654596085e3cf7ea3860982823f7649f}{build}} () override
+\begin{DoxyCompactList}\small\item\em Builds the factory. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_factory}{Factory}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_factory_a2eb681cbebcf790f5e203c47733f9b01}{clone}} () override
+\begin{DoxyCompactList}\small\item\em Clones the \doxylink{class_factory}{Factory} object. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_factory_ab5ae49eb0b23909f926845fd09569b96}{get\+Type}} () const override
+\begin{DoxyCompactList}\small\item\em Gets the type of the building (\doxylink{class_factory}{Factory}). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_industrial}{Industrial}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_industrial_acb0b766ee1ecd6d1effad361e4f55c5a}{Industrial}} (std\+::string \mbox{\hyperlink{class_building_a6e62ddc243a1f5b900c34c797bff3569}{name}}, int \mbox{\hyperlink{class_building_ac67eae238324a4ad8f435232caa15f12}{num\+Rooms}}, int \mbox{\hyperlink{class_building_a2f7028f06f0973c27abe924495bf4294}{m\+\_\+squared}}, float \mbox{\hyperlink{class_building_a21eb2373e2ef24b51f85a1f6cf8c734f}{value}}, int \mbox{\hyperlink{class_industrial_aa2aa929b5390c055c9b6c051793385c6}{carbon\+Footprint}}, int \mbox{\hyperlink{class_industrial_a59afa0548cf8b76674bab63a4f736aee}{capacity}}, std\+::string \mbox{\hyperlink{class_building_a2984e4d0f7890dd8d1a5ed73f1b87ea5}{type}})
+\begin{DoxyCompactList}\small\item\em Constructor for an \doxylink{class_industrial}{Industrial} building. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_industrial_a90be2144aa7ad3464168ca0519a0622d}{add\+Citizen}} (\mbox{\hyperlink{class_citizen}{Citizen}} \texorpdfstring{$\ast$}{*}human) override
+\begin{DoxyCompactList}\small\item\em Adds a citizen to the industrial building. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_industrial_a06a170c449e8bc182c1f98099c47f98f}{display\+Citizens}} () override
+\begin{DoxyCompactList}\small\item\em Displays the list of citizens in the industrial building. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_industrial_a7981eba372ae7d6087c0f9ec62c46ade}{get\+Left\+Over\+Capacity}} () override
+\begin{DoxyCompactList}\small\item\em Gets the remaining capacity of the industrial building. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_building}{Building}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_building_aa339d5eed58b9de44f90eb0182afd704}{Building}} (std\+::string \mbox{\hyperlink{class_building_a6e62ddc243a1f5b900c34c797bff3569}{name}}, int \mbox{\hyperlink{class_building_ac67eae238324a4ad8f435232caa15f12}{num\+Rooms}}, int \mbox{\hyperlink{class_building_a2f7028f06f0973c27abe924495bf4294}{m\+\_\+squared}}, float \mbox{\hyperlink{class_building_a21eb2373e2ef24b51f85a1f6cf8c734f}{value}}, std\+::string \mbox{\hyperlink{class_building_a2984e4d0f7890dd8d1a5ed73f1b87ea5}{type}})
+\begin{DoxyCompactList}\small\item\em Constructor to initialize a \doxylink{class_building}{Building} object. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Building} ()
+\begin{DoxyCompactList}\small\item\em Virtual destructor for the \doxylink{class_building}{Building} class. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_citizen}{Citizen}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_building_ab2bbacb4f1520d7ae73a6771610529be}{get\+Citizens}} () const
+\begin{DoxyCompactList}\small\item\em Gets the list of citizens in the building. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_building_a114ab2f15d5d734175110c64bfe94002}{get\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Gets the name of the building. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_building_a0b8afd153bcf210bc29081e3bed66559}{get\+Building\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Gets the building\textquotesingle{}s type description. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_building_a44d6b21513c8573c81f075f8eebecc0c}{get\+Built}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the building is built. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_building_ac9c4ce3446623eab4ad8a548144365ac}{renovate}} ()
+\begin{DoxyCompactList}\small\item\em Renovates the building, updating any necessary properties. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_industrial}{Industrial}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries carbon\+Footprint}
+\begin{DoxyCompactList}\small\item\em The carbon footprint of the industrial building. \end{DoxyCompactList}\item 
+int {\bfseries capacity}
+\begin{DoxyCompactList}\small\item\em Maximum occupancy capacity of the industrial building. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_building}{Building}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string {\bfseries name}
+\begin{DoxyCompactList}\small\item\em Name of the building. \end{DoxyCompactList}\item 
+std\+::string {\bfseries type}
+\begin{DoxyCompactList}\small\item\em Type of the building (e.\+g., \doxylink{class_residential}{Residential}, \doxylink{class_commercial}{Commercial}) \end{DoxyCompactList}\item 
+int {\bfseries num\+Rooms}
+\begin{DoxyCompactList}\small\item\em Number of rooms in the building. \end{DoxyCompactList}\item 
+int {\bfseries m\+\_\+squared}
+\begin{DoxyCompactList}\small\item\em Area of the building in square meters. \end{DoxyCompactList}\item 
+float {\bfseries value}
+\begin{DoxyCompactList}\small\item\em Value of the building. \end{DoxyCompactList}\item 
+bool {\bfseries built} = false
+\begin{DoxyCompactList}\small\item\em Flag indicating if the building is built. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_budget}{Budget}} \texorpdfstring{$\ast$}{*} {\bfseries budget}
+\begin{DoxyCompactList}\small\item\em Pointer to a \doxylink{class_budget}{Budget} object for managing building finances. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_concrete}{Concrete}} \texorpdfstring{$\ast$}{*} {\bfseries concrete}
+\begin{DoxyCompactList}\small\item\em Pointer to a \doxylink{class_concrete}{Concrete} object for building materials. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_steel}{Steel}} \texorpdfstring{$\ast$}{*} {\bfseries steel}
+\begin{DoxyCompactList}\small\item\em Pointer to a \doxylink{class_steel}{Steel} object for building materials. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_wood}{Wood}} \texorpdfstring{$\ast$}{*} {\bfseries wood}
+\begin{DoxyCompactList}\small\item\em Pointer to a \doxylink{class_wood}{Wood} object for building materials. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_citizen}{Citizen}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries citizens}
+\begin{DoxyCompactList}\small\item\em List of citizens associated with the building. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class representing a factory, a specific type of industrial building. 
+
+The \doxylink{class_factory}{Factory} class inherits from \doxylink{class_industrial}{Industrial} and represents a building used for manufacturing. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_factory_a01ea19b4da04c684fbcd630f4468f3b1}\index{Factory@{Factory}!Factory@{Factory}}
+\index{Factory@{Factory}!Factory@{Factory}}
+\doxysubsubsection{\texorpdfstring{Factory()}{Factory()}}
+{\footnotesize\ttfamily \label{class_factory_a01ea19b4da04c684fbcd630f4468f3b1} 
+Factory\+::\+Factory (\begin{DoxyParamCaption}\item[{std\+::string}]{name}{, }\item[{int}]{num\+Rooms}{, }\item[{int}]{m\+\_\+squared}{, }\item[{float}]{value}{, }\item[{int}]{carbon\+Footprint}{, }\item[{int}]{capacity}{}\end{DoxyParamCaption})}
+
+
+
+Constructor for the \doxylink{class_factory}{Factory} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the factory. \\
+\hline
+{\em num\+Rooms} & Number of rooms in the factory. \\
+\hline
+{\em m\+\_\+squared} & Area of the factory in square meters. \\
+\hline
+{\em value} & Value of the factory. \\
+\hline
+{\em carbon\+Footprint} & The carbon footprint of the factory. \\
+\hline
+{\em capacity} & Maximum capacity of the factory. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_factory_a654596085e3cf7ea3860982823f7649f}\index{Factory@{Factory}!build@{build}}
+\index{build@{build}!Factory@{Factory}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily \label{class_factory_a654596085e3cf7ea3860982823f7649f} 
+void Factory\+::build (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Builds the factory. 
+
+
+
+Implements \mbox{\hyperlink{class_industrial_a3c8c740263808d3ea5249d832c7f6de1}{Industrial}}.
+
+\Hypertarget{class_factory_a2eb681cbebcf790f5e203c47733f9b01}\index{Factory@{Factory}!clone@{clone}}
+\index{clone@{clone}!Factory@{Factory}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \label{class_factory_a2eb681cbebcf790f5e203c47733f9b01} 
+\mbox{\hyperlink{class_factory}{Factory}} \texorpdfstring{$\ast$}{*} Factory\+::clone (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clones the \doxylink{class_factory}{Factory} object. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to a new \doxylink{class_factory}{Factory} object that is a clone of the current instance. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_industrial_ac4bf09bd6fbe67524d612d2867b32d5a}{Industrial}}.
+
+\Hypertarget{class_factory_ab5ae49eb0b23909f926845fd09569b96}\index{Factory@{Factory}!getType@{getType}}
+\index{getType@{getType}!Factory@{Factory}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \label{class_factory_ab5ae49eb0b23909f926845fd09569b96} 
+std\+::string Factory\+::get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Gets the type of the building (\doxylink{class_factory}{Factory}). 
+
+\begin{DoxyReturn}{Returns}
+A string indicating the type of the building. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_industrial_ace058707f730b573f7f4e209c428f815}{Industrial}}.
+

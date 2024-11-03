@@ -1,0 +1,27 @@
+var class_building =
+[
+    [ "Building", "class_building.html#aa339d5eed58b9de44f90eb0182afd704", null ],
+    [ "~Building", "class_building.html#ab675c6a382e110b84031956cda708439", null ],
+    [ "addCitizen", "class_building.html#ac8bf0fedb482b7c1a1c2878c715ee617", null ],
+    [ "build", "class_building.html#a053e6599f9abb8c3ea7644ad24db7332", null ],
+    [ "clone", "class_building.html#a5525f0851f4f51618f8c51ad9ac8d7af", null ],
+    [ "displayCitizens", "class_building.html#ab267e802b679ebc5ea6567078a60cf52", null ],
+    [ "getBuildingType", "class_building.html#a0b8afd153bcf210bc29081e3bed66559", null ],
+    [ "getBuilt", "class_building.html#a44d6b21513c8573c81f075f8eebecc0c", null ],
+    [ "getCitizens", "class_building.html#ab2bbacb4f1520d7ae73a6771610529be", null ],
+    [ "getLeftOverCapacity", "class_building.html#a276539beba18338592801dbe02dd9b14", null ],
+    [ "getName", "class_building.html#a114ab2f15d5d734175110c64bfe94002", null ],
+    [ "getType", "class_building.html#a20db85f737c1d014f54f1548c3bb2143", null ],
+    [ "renovate", "class_building.html#ac9c4ce3446623eab4ad8a548144365ac", null ],
+    [ "budget", "class_building.html#aedefb923db86a72931896736e119a52e", null ],
+    [ "built", "class_building.html#acd9d1471b30ac9d58da5b8f989fb3c71", null ],
+    [ "citizens", "class_building.html#ab2b11eea8ed297623aec3af1ba7d928c", null ],
+    [ "concrete", "class_building.html#ac5fb399decb1e7ab6b6e75e59f24ef8e", null ],
+    [ "m_squared", "class_building.html#a2f7028f06f0973c27abe924495bf4294", null ],
+    [ "name", "class_building.html#a6e62ddc243a1f5b900c34c797bff3569", null ],
+    [ "numRooms", "class_building.html#ac67eae238324a4ad8f435232caa15f12", null ],
+    [ "steel", "class_building.html#a1dc14838ff2b7e3e74f21743d5985db5", null ],
+    [ "type", "class_building.html#a2984e4d0f7890dd8d1a5ed73f1b87ea5", null ],
+    [ "value", "class_building.html#a21eb2373e2ef24b51f85a1f6cf8c734f", null ],
+    [ "wood", "class_building.html#ac4b2b3d9ddcd4b42f367365fbe3197fc", null ]
+];

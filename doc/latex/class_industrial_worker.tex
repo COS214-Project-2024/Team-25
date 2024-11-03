@@ -1,0 +1,86 @@
+\doxysection{Industrial\+Worker Class Reference}
+\hypertarget{class_industrial_worker}{}\label{class_industrial_worker}\index{IndustrialWorker@{IndustrialWorker}}
+
+
+Class representing an industrial worker, a type of citizen.  
+
+
+
+
+{\ttfamily \#include $<$Citizen.\+h$>$}
+
+Inheritance diagram for Industrial\+Worker\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_industrial_worker}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_industrial_worker_aec1e3e9a11386049f6cba77c3cb40881}\label{class_industrial_worker_aec1e3e9a11386049f6cba77c3cb40881} 
+{\bfseries Industrial\+Worker} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_industrial_worker}{Industrial\+Worker}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_industrial_worker_a3cfc074e4779c13a5c4fbd17a9c1ddab}{Industrial\+Worker}} (string workplace)
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{class_industrial_worker}{Industrial\+Worker} with specified workplace. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_industrial_worker_a5610bd63553569b90641e0fd342c7acc}{display\+Info}} ()
+\begin{DoxyCompactList}\small\item\em Displays information about the industrial worker. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_citizen}{Citizen}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Citizen} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_citizen}{Citizen}. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Citizen} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor for \doxylink{class_citizen}{Citizen}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_citizen_ae43ab15fddd41bbeaf7af8b525e8acfd}{set\+Citizen}} (string type, string residence, string workplace)
+\begin{DoxyCompactList}\small\item\em Sets the properties of the citizen. \end{DoxyCompactList}\item 
+virtual std\+::string \mbox{\hyperlink{class_citizen_ad0542e5fc1dd7b3343471d222921ac72}{get\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Gets the type of the citizen. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{class_citizen_a9cebf4b8521be8f6ed434af163bd51be}{get\+Residence}} ()
+\begin{DoxyCompactList}\small\item\em Gets the residence of the citizen. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{class_citizen_a037943487bd269fb8a5d390b5314d035}{get\+Workplace}} ()
+\begin{DoxyCompactList}\small\item\em Gets the workplace of the citizen. \end{DoxyCompactList}\item 
+virtual float \mbox{\hyperlink{class_citizen_a0a875195b487daf901eceaf3e7dc6914}{get\+Satisfaction}} ()
+\begin{DoxyCompactList}\small\item\em Gets the satisfaction level of the citizen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_citizen_a662ec8e43c4c55c3e4a5e92c07e144e2}{change\+Satisfaction}} (float amt)
+\begin{DoxyCompactList}\small\item\em Changes the satisfaction level of the citizen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class representing an industrial worker, a type of citizen. 
+
+The \doxylink{class_industrial_worker}{Industrial\+Worker} class inherits from \doxylink{class_citizen}{Citizen} and represents a worker in the industrial sector. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_industrial_worker_a3cfc074e4779c13a5c4fbd17a9c1ddab}\index{IndustrialWorker@{IndustrialWorker}!IndustrialWorker@{IndustrialWorker}}
+\index{IndustrialWorker@{IndustrialWorker}!IndustrialWorker@{IndustrialWorker}}
+\doxysubsubsection{\texorpdfstring{IndustrialWorker()}{IndustrialWorker()}}
+{\footnotesize\ttfamily \label{class_industrial_worker_a3cfc074e4779c13a5c4fbd17a9c1ddab} 
+Industrial\+Worker\+::\+Industrial\+Worker (\begin{DoxyParamCaption}\item[{string}]{workplace}{}\end{DoxyParamCaption})}
+
+
+
+Constructor for \doxylink{class_industrial_worker}{Industrial\+Worker} with specified workplace. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em workplace} & The workplace of the industrial worker. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_industrial_worker_a5610bd63553569b90641e0fd342c7acc}\index{IndustrialWorker@{IndustrialWorker}!displayInfo@{displayInfo}}
+\index{displayInfo@{displayInfo}!IndustrialWorker@{IndustrialWorker}}
+\doxysubsubsection{\texorpdfstring{displayInfo()}{displayInfo()}}
+{\footnotesize\ttfamily \label{class_industrial_worker_a5610bd63553569b90641e0fd342c7acc} 
+void Industrial\+Worker\+::display\+Info (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Displays information about the industrial worker. 
+
+
+
+Implements \mbox{\hyperlink{class_citizen_a69f234b80bb89dbe0407103b6cd17add}{Citizen}}.
+

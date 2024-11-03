@@ -1,0 +1,93 @@
+\doxysection{City\+Sector Class Reference}
+\hypertarget{class_city_sector}{}\label{class_city_sector}\index{CitySector@{CitySector}}
+
+
+Represents a sector within the city containing buildings.  
+
+
+
+
+{\ttfamily \#include $<$City\+Growth.\+h$>$}
+
+Inheritance diagram for City\+Sector\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_city_sector}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_city_sector_ad0118d3e5985b087a7c393b024e7138d}\label{class_city_sector_ad0118d3e5985b087a7c393b024e7138d} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+City\+Sector} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_city_sector}{City\+Sector}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_city_sector_ab089992c71466fb4f8b1f990277146d6}{add\+Building}} (\mbox{\hyperlink{class_building}{Building}} \texorpdfstring{$\ast$}{*}building)
+\begin{DoxyCompactList}\small\item\em Adds a building to the city sector. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_city_sector_a77664b897b8d531622267e18e9871dbe}{get\+Building\+Count}} ()
+\begin{DoxyCompactList}\small\item\em Gets the count of buildings in the sector. \end{DoxyCompactList}\item 
+const std\+::vector$<$ \mbox{\hyperlink{class_building}{Building}} \texorpdfstring{$\ast$}{*} $>$ \& \mbox{\hyperlink{class_city_sector_a18503b14a7a35ef9f4807d17346fa90b}{get\+Buildings}} () const
+\begin{DoxyCompactList}\small\item\em Gets a constant reference to the vector of buildings in the sector. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_building}{Building}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_city_sector_a6f75753046a9fd13df742b4f013843e6}{get\+Block}} ()
+\begin{DoxyCompactList}\small\item\em Gets a vector representing the block of buildings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a sector within the city containing buildings. 
+
+The \doxylink{class_city_sector}{City\+Sector} class manages a collection of buildings in a specific area of the city. It provides methods to add buildings, retrieve the number of buildings, and access the list of buildings in the sector. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_city_sector_ab089992c71466fb4f8b1f990277146d6}\index{CitySector@{CitySector}!addBuilding@{addBuilding}}
+\index{addBuilding@{addBuilding}!CitySector@{CitySector}}
+\doxysubsubsection{\texorpdfstring{addBuilding()}{addBuilding()}}
+{\footnotesize\ttfamily \label{class_city_sector_ab089992c71466fb4f8b1f990277146d6} 
+void City\+Sector\+::add\+Building (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_building}{Building}} \texorpdfstring{$\ast$}{*}}]{building}{}\end{DoxyParamCaption})}
+
+
+
+Adds a building to the city sector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em building} & A pointer to the \doxylink{class_building}{Building} object to be added. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_city_sector_a6f75753046a9fd13df742b4f013843e6}\index{CitySector@{CitySector}!getBlock@{getBlock}}
+\index{getBlock@{getBlock}!CitySector@{CitySector}}
+\doxysubsubsection{\texorpdfstring{getBlock()}{getBlock()}}
+{\footnotesize\ttfamily \label{class_city_sector_a6f75753046a9fd13df742b4f013843e6} 
+std\+::vector$<$ \mbox{\hyperlink{class_building}{Building}} \texorpdfstring{$\ast$}{*} $>$ City\+Sector\+::get\+Block (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Gets a vector representing the block of buildings. 
+
+\begin{DoxyReturn}{Returns}
+A vector containing pointers to \doxylink{class_building}{Building} objects in the block. 
+\end{DoxyReturn}
+\Hypertarget{class_city_sector_a77664b897b8d531622267e18e9871dbe}\index{CitySector@{CitySector}!getBuildingCount@{getBuildingCount}}
+\index{getBuildingCount@{getBuildingCount}!CitySector@{CitySector}}
+\doxysubsubsection{\texorpdfstring{getBuildingCount()}{getBuildingCount()}}
+{\footnotesize\ttfamily \label{class_city_sector_a77664b897b8d531622267e18e9871dbe} 
+int City\+Sector\+::get\+Building\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Gets the count of buildings in the sector. 
+
+\begin{DoxyReturn}{Returns}
+The number of buildings in the sector. 
+\end{DoxyReturn}
+\Hypertarget{class_city_sector_a18503b14a7a35ef9f4807d17346fa90b}\index{CitySector@{CitySector}!getBuildings@{getBuildings}}
+\index{getBuildings@{getBuildings}!CitySector@{CitySector}}
+\doxysubsubsection{\texorpdfstring{getBuildings()}{getBuildings()}}
+{\footnotesize\ttfamily \label{class_city_sector_a18503b14a7a35ef9f4807d17346fa90b} 
+const std\+::vector$<$ \mbox{\hyperlink{class_building}{Building}} \texorpdfstring{$\ast$}{*} $>$ \& City\+Sector\+::get\+Buildings (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Gets a constant reference to the vector of buildings in the sector. 
+
+\begin{DoxyReturn}{Returns}
+A constant reference to a vector containing pointers to \doxylink{class_building}{Building} objects. 
+\end{DoxyReturn}

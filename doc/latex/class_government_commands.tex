@@ -1,0 +1,47 @@
+\doxysection{Government\+Commands Class Reference}
+\hypertarget{class_government_commands}{}\label{class_government_commands}\index{GovernmentCommands@{GovernmentCommands}}
+
+
+Abstract base class for government command actions.  
+
+
+
+
+{\ttfamily \#include $<$Routines.\+h$>$}
+
+Inheritance diagram for Government\+Commands\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.503356cm]{class_government_commands}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_government_commands_ad68264081c8fe0c9b28a12afe43986ed}{execute}} ()=0
+\begin{DoxyCompactList}\small\item\em Executes the command. \end{DoxyCompactList}\item 
+\Hypertarget{class_government_commands_a3b90225fc2dff52f1f1b00662c2c0d64}\label{class_government_commands_a3b90225fc2dff52f1f1b00662c2c0d64} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Government\+Commands} ()
+\begin{DoxyCompactList}\small\item\em Virtual destructor for proper cleanup of derived classes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract base class for government command actions. 
+
+This class defines the interface for all government commands that can be executed. It provides a pure virtual function {\ttfamily \doxylink{class_government_commands_ad68264081c8fe0c9b28a12afe43986ed}{execute()}} that must be implemented by derived classes. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_government_commands_ad68264081c8fe0c9b28a12afe43986ed}\index{GovernmentCommands@{GovernmentCommands}!execute@{execute}}
+\index{execute@{execute}!GovernmentCommands@{GovernmentCommands}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \label{class_government_commands_ad68264081c8fe0c9b28a12afe43986ed} 
+virtual void Government\+Commands\+::execute (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Executes the command. 
+
+This function should contain the logic for the specific command being executed. 
+
+Implemented in \mbox{\hyperlink{class_monthly_routines_a928cc7cbdb169d7d5396cf02e72007b5}{Monthly\+Routines}}, \mbox{\hyperlink{class_renovate_all_buildings_a1ae95aec8dd5c7f9b190bc7d711c435f}{Renovate\+All\+Buildings}}, \mbox{\hyperlink{class_upgrade_all_pub_a63b12ed82a177a47b244266bad0bd8dc}{Upgrade\+All\+Pub}}, \mbox{\hyperlink{class_upgrade_all_rail_a98aa729d62069cc9dafcc9f68f65ec87}{Upgrade\+All\+Rail}}, and \mbox{\hyperlink{class_upgrade_all_road_abd238e015698e321c64f9816f5a409e2}{Upgrade\+All\+Road}}.
+

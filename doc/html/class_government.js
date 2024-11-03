@@ -1,0 +1,26 @@
+var class_government =
+[
+    [ "Government", "class_government.html#ad06c951e706c3a9e43e18b11c75d8888", null ],
+    [ "~Government", "class_government.html#ad4b00db6938ff1ed64b22e3326e0b19c", null ],
+    [ "avgSatisfaction", "class_government.html#a33b08734caa5d7d309a54ac972196a15", null ],
+    [ "changeTaxStartegy", "class_government.html#a5c93217977791d28f589d3d100f1ecc9", null ],
+    [ "cleanCity", "class_government.html#aab62eea19cc542b2b69a765f31fb6eff", null ],
+    [ "createBuilding", "class_government.html#aac2e8e90ced5a1821c23bf0c9eaf1abe", null ],
+    [ "createCitizen", "class_government.html#af3ed33a64ebab0ea28aba32f3b93aa4e", null ],
+    [ "createUtility", "class_government.html#a698da9da49b9e10adf1e4772a405e782", null ],
+    [ "getBudget", "class_government.html#a5e6df582adfb939fe8c4c2071040ac2a", null ],
+    [ "getDebt", "class_government.html#a599b4caf9b5ca896178b105994bfb364", null ],
+    [ "increaseMaterials", "class_government.html#a2e25843da0650dcf30622f7b7cbe1574", null ],
+    [ "insuffcientTransporrt", "class_government.html#a16160ec6a35bc9b59ffb0d73650659b3", null ],
+    [ "naturalDisaster", "class_government.html#a9f908b48e1ac2a151aab41ac5e0740d3", null ],
+    [ "printresources", "class_government.html#a157ee2b4dea01a8ba0d7c0e15fe75b55", null ],
+    [ "printSatisfaction", "class_government.html#acb9d5b1b523041f546178e69bc838b87", null ],
+    [ "printSec", "class_government.html#ad3b96acab3dcc0f19b95bba883bb51bb", null ],
+    [ "printUtilitiesDetails", "class_government.html#a944bc53ae15cca8028467e6a1de6fe1b", null ],
+    [ "repairUtilities", "class_government.html#a26e86ed9e0d779d7519292f91219056f", null ],
+    [ "setDifficulty", "class_government.html#a621dea53a8f4eaefbea64e82806dd294", null ],
+    [ "taxCitizens", "class_government.html#af9c2beb2389d24f3c2fafb773a3ce182", null ],
+    [ "updateBudget", "class_government.html#a8b8ed90beb234f699418923dfce42458", null ],
+    [ "updateSatisfaction", "class_government.html#a015c5ffd85937d33c13c5e542c9f00e0", null ],
+    [ "upgradeTransport", "class_government.html#a4d99734b1334f2b62fe9078b3e632240", null ]
+];

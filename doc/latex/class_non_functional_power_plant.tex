@@ -1,0 +1,154 @@
+\doxysection{Non\+Functional\+Power\+Plant Class Reference}
+\hypertarget{class_non_functional_power_plant}{}\label{class_non_functional_power_plant}\index{NonFunctionalPowerPlant@{NonFunctionalPowerPlant}}
+
+
+Class representing a non-\/functional power plant.  
+
+
+
+
+{\ttfamily \#include $<$Utilities.\+h$>$}
+
+Inheritance diagram for Non\+Functional\+Power\+Plant\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_non_functional_power_plant}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_non_functional_power_plant_a2eddd16477172b7a193d486106fb5146}{Non\+Functional\+Power\+Plant}} (power\+Plants \mbox{\hyperlink{class_power_plant_a5401ffbede8724fed49577cf86a7e39e}{type}}, bool built, int power\+Gen=0)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_non_functional_power_plant}{Non\+Functional\+Power\+Plant} object. \end{DoxyCompactList}\item 
+\Hypertarget{class_non_functional_power_plant_a16076907bce7ae01c62a10a8e92d90fb}\label{class_non_functional_power_plant_a16076907bce7ae01c62a10a8e92d90fb} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Non\+Functional\+Power\+Plant} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_non_functional_power_plant}{Non\+Functional\+Power\+Plant}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_power_plant}{Power\+Plant}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_non_functional_power_plant_a48765b6ac52c62a7c7cf63fc92db6423}{repair}} () override
+\begin{DoxyCompactList}\small\item\em Repairs the non-\/functional power plant. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_power_plant}{Power\+Plant}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_non_functional_power_plant_a443d69d1509a89db831c8b6d051aedfc}{mulfunction}} () override
+\begin{DoxyCompactList}\small\item\em Indicates a malfunction in the non-\/functional power plant. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_power_plant}{Power\+Plant}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_power_plant_a7d5c9ab7ae8ede22397c494bba99db1c}{Power\+Plant}} (power\+Plants \mbox{\hyperlink{class_power_plant_a5401ffbede8724fed49577cf86a7e39e}{type}}, bool isbuilt, int power\+Gen=0)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_power_plant}{Power\+Plant} object. \end{DoxyCompactList}\item 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Power\+Plant} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_power_plant}{Power\+Plant}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_power_plant_afd70ef22b49466f3a28e572f52f95e3b}{get\+Power\+Generation}} ()
+\begin{DoxyCompactList}\small\item\em Gets the effective power generation. \end{DoxyCompactList}\item 
+power\+Plants \mbox{\hyperlink{class_power_plant_a1111c13f94d038b0f430ec5ce1bbd0af}{get\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Gets the type of power plant. \end{DoxyCompactList}\item 
+void {\bfseries generate} ()
+\begin{DoxyCompactList}\small\item\em Generates power. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_power_plant_a04849bcfcc210c0d0e00551108ae5677}{get\+Power\+Generation\+Raw}} () const
+\begin{DoxyCompactList}\small\item\em Gets the raw power generation value. \end{DoxyCompactList}\item 
+power\+Plants \mbox{\hyperlink{class_power_plant_a4cfa7b7951233e4bdf018b6bf5c85fdc}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Gets the type of power plant. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_power_plant_a155c0c71b0c61fc8a7b133736a57cd17}{set\+Power\+Generation}} (int value)
+\begin{DoxyCompactList}\small\item\em Sets the power generation capacity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_power_plant_a4b856f486faab7c88e32759e399d9895}{set\+Type}} (power\+Plants value)
+\begin{DoxyCompactList}\small\item\em Sets the type of power plant. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_utility}{Utility}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Utility} ()
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{class_utility}{Utility}. \end{DoxyCompactList}\item 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Utility} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_utility}{Utility}. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_utility_a89046d446bc3a82d6c87584a7fc2c475}{get\+Efficiency}} () const
+\begin{DoxyCompactList}\small\item\em Gets the efficiency of the utility. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_utility_a083cdffc01fa5c79c8e0181aae23bca5}{set\+Efficiency}} (float value)
+\begin{DoxyCompactList}\small\item\em Sets the efficiency of the utility. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_utility_afad84455f47394f460a62dfc87565d35}{get\+Functional}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the utility is functional. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_utility_a1a2cd48cb41ad234af32696838bc9dc1}{set\+Functional}} (bool value)
+\begin{DoxyCompactList}\small\item\em Sets the functional status of the utility. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_power_plant}{Power\+Plant}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries power\+Generation}
+\begin{DoxyCompactList}\small\item\em Power generation capacity in watts. \end{DoxyCompactList}\item 
+power\+Plants {\bfseries type}
+\begin{DoxyCompactList}\small\item\em Type of power plant. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_energy}{Energy}} \texorpdfstring{$\ast$}{*} {\bfseries energy}
+\begin{DoxyCompactList}\small\item\em Pointer to energy resources. \end{DoxyCompactList}\item 
+bool {\bfseries is\+Initial\+Build} = false
+\begin{DoxyCompactList}\small\item\em Indicates if it is an initial build. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_utility}{Utility}}}
+\begin{DoxyCompactItemize}
+\item 
+float {\bfseries efficiency}
+\begin{DoxyCompactList}\small\item\em Efficiency of the utility service (percentage). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_budget}{Budget}} \texorpdfstring{$\ast$}{*} {\bfseries budget}
+\begin{DoxyCompactList}\small\item\em Pointer to the budget for the utility. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_concrete}{Concrete}} \texorpdfstring{$\ast$}{*} {\bfseries concrete}
+\begin{DoxyCompactList}\small\item\em Pointer to concrete resources. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_steel}{Steel}} \texorpdfstring{$\ast$}{*} {\bfseries steel}
+\begin{DoxyCompactList}\small\item\em Pointer to steel resources. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_wood}{Wood}} \texorpdfstring{$\ast$}{*} {\bfseries wood}
+\begin{DoxyCompactList}\small\item\em Pointer to wood resources. \end{DoxyCompactList}\item 
+bool {\bfseries is\+Functional}
+\begin{DoxyCompactList}\small\item\em Indicates whether the utility is functional. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class representing a non-\/functional power plant. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_non_functional_power_plant_a2eddd16477172b7a193d486106fb5146}\index{NonFunctionalPowerPlant@{NonFunctionalPowerPlant}!NonFunctionalPowerPlant@{NonFunctionalPowerPlant}}
+\index{NonFunctionalPowerPlant@{NonFunctionalPowerPlant}!NonFunctionalPowerPlant@{NonFunctionalPowerPlant}}
+\doxysubsubsection{\texorpdfstring{NonFunctionalPowerPlant()}{NonFunctionalPowerPlant()}}
+{\footnotesize\ttfamily \label{class_non_functional_power_plant_a2eddd16477172b7a193d486106fb5146} 
+Non\+Functional\+Power\+Plant\+::\+Non\+Functional\+Power\+Plant (\begin{DoxyParamCaption}\item[{power\+Plants}]{type}{, }\item[{bool}]{built}{, }\item[{int}]{power\+Gen}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_non_functional_power_plant}{Non\+Functional\+Power\+Plant} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The type of power plant. \\
+\hline
+{\em built} & Indicates if the power plant is built. \\
+\hline
+{\em power\+Gen} & Initial power generation capacity. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_non_functional_power_plant_a443d69d1509a89db831c8b6d051aedfc}\index{NonFunctionalPowerPlant@{NonFunctionalPowerPlant}!mulfunction@{mulfunction}}
+\index{mulfunction@{mulfunction}!NonFunctionalPowerPlant@{NonFunctionalPowerPlant}}
+\doxysubsubsection{\texorpdfstring{mulfunction()}{mulfunction()}}
+{\footnotesize\ttfamily \label{class_non_functional_power_plant_a443d69d1509a89db831c8b6d051aedfc} 
+\mbox{\hyperlink{class_power_plant}{Power\+Plant}} \texorpdfstring{$\ast$}{*} Non\+Functional\+Power\+Plant\+::mulfunction (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Indicates a malfunction in the non-\/functional power plant. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the malfunctioning \doxylink{class_power_plant}{Power\+Plant}. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_power_plant_a60d1102a46c43c86bb4733b0e9beaa47}{Power\+Plant}}.
+
+\Hypertarget{class_non_functional_power_plant_a48765b6ac52c62a7c7cf63fc92db6423}\index{NonFunctionalPowerPlant@{NonFunctionalPowerPlant}!repair@{repair}}
+\index{repair@{repair}!NonFunctionalPowerPlant@{NonFunctionalPowerPlant}}
+\doxysubsubsection{\texorpdfstring{repair()}{repair()}}
+{\footnotesize\ttfamily \label{class_non_functional_power_plant_a48765b6ac52c62a7c7cf63fc92db6423} 
+\mbox{\hyperlink{class_power_plant}{Power\+Plant}} \texorpdfstring{$\ast$}{*} Non\+Functional\+Power\+Plant\+::repair (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Repairs the non-\/functional power plant. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the repaired \doxylink{class_power_plant}{Power\+Plant}. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_power_plant_ac8491e995beeb41f6c62e2f266b14148}{Power\+Plant}}.
+

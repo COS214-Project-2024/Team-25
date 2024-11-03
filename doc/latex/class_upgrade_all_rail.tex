@@ -1,0 +1,69 @@
+\doxysection{Upgrade\+All\+Rail Class Reference}
+\hypertarget{class_upgrade_all_rail}{}\label{class_upgrade_all_rail}\index{UpgradeAllRail@{UpgradeAllRail}}
+
+
+\doxylink{class_concrete}{Concrete} command class that upgrades all rail systems.  
+
+
+
+
+{\ttfamily \#include $<$Routines.\+h$>$}
+
+Inheritance diagram for Upgrade\+All\+Rail\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_upgrade_all_rail}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_upgrade_all_rail_a6e3cd0f179a764038ccf5e0e9fb0968d}{Upgrade\+All\+Rail}} (const std\+::vector$<$ \mbox{\hyperlink{class_rail_system_adapter}{Rail\+System\+Adapter}} \texorpdfstring{$\ast$}{*} $>$ \&rails)
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_upgrade_all_rail}{Upgrade\+All\+Rail} command. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_upgrade_all_rail_a98aa729d62069cc9dafcc9f68f65ec87}{execute}} () override
+\begin{DoxyCompactList}\small\item\em Executes the upgrade of all rail systems. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_government_commands}{Government\+Commands}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Government\+Commands} ()
+\begin{DoxyCompactList}\small\item\em Virtual destructor for proper cleanup of derived classes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_concrete}{Concrete} command class that upgrades all rail systems. 
+
+This command class encapsulates the action of upgrading all rail systems in the city. It holds a vector of \doxylink{class_rail_system_adapter}{Rail\+System\+Adapter} pointers representing the rail systems to be upgraded. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_upgrade_all_rail_a6e3cd0f179a764038ccf5e0e9fb0968d}\index{UpgradeAllRail@{UpgradeAllRail}!UpgradeAllRail@{UpgradeAllRail}}
+\index{UpgradeAllRail@{UpgradeAllRail}!UpgradeAllRail@{UpgradeAllRail}}
+\doxysubsubsection{\texorpdfstring{UpgradeAllRail()}{UpgradeAllRail()}}
+{\footnotesize\ttfamily \label{class_upgrade_all_rail_a6e3cd0f179a764038ccf5e0e9fb0968d} 
+Upgrade\+All\+Rail\+::\+Upgrade\+All\+Rail (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{class_rail_system_adapter}{Rail\+System\+Adapter}} \texorpdfstring{$\ast$}{*} $>$ \&}]{rails}{}\end{DoxyParamCaption})}
+
+
+
+Constructs an \doxylink{class_upgrade_all_rail}{Upgrade\+All\+Rail} command. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rails} & Vector of pointers to the rail systems to be upgraded. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_upgrade_all_rail_a98aa729d62069cc9dafcc9f68f65ec87}\index{UpgradeAllRail@{UpgradeAllRail}!execute@{execute}}
+\index{execute@{execute}!UpgradeAllRail@{UpgradeAllRail}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \label{class_upgrade_all_rail_a98aa729d62069cc9dafcc9f68f65ec87} 
+void Upgrade\+All\+Rail\+::execute (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Executes the upgrade of all rail systems. 
+
+This function implements the logic for upgrading each rail system in the list. 
+
+Implements \mbox{\hyperlink{class_government_commands_ad68264081c8fe0c9b28a12afe43986ed}{Government\+Commands}}.
+

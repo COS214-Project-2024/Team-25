@@ -1,0 +1,144 @@
+\doxysection{Functional\+Water\+Supply Class Reference}
+\hypertarget{class_functional_water_supply}{}\label{class_functional_water_supply}\index{FunctionalWaterSupply@{FunctionalWaterSupply}}
+
+
+Class representing a functional water supply system.  
+
+
+
+
+{\ttfamily \#include $<$Utilities.\+h$>$}
+
+Inheritance diagram for Functional\+Water\+Supply\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_functional_water_supply}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_functional_water_supply_afd23635d52b60a66c4c351a412fac54a}{Functional\+Water\+Supply}} (bool built, int power\+Gen=0)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_functional_water_supply}{Functional\+Water\+Supply} object. \end{DoxyCompactList}\item 
+\Hypertarget{class_functional_water_supply_a3a08edfae446928e7992646a97aeeae9}\label{class_functional_water_supply_a3a08edfae446928e7992646a97aeeae9} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Functional\+Water\+Supply} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_functional_water_supply}{Functional\+Water\+Supply}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_water_supply}{Water\+Supply}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_functional_water_supply_a567ab4b1e90b0648b9d67acf34a1c107}{repair}} () override
+\begin{DoxyCompactList}\small\item\em Repairs the functional water supply system. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_water_supply}{Water\+Supply}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_functional_water_supply_a99bbfb135a57258c4893031994b5db9e}{mulfunction}} () override
+\begin{DoxyCompactList}\small\item\em Indicates a malfunction in the functional water supply system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_water_supply}{Water\+Supply}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_water_supply_a3f79b01ea546304b4e1bca3e0d697c12}{Water\+Supply}} (bool built, int power\+Gen=0)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_water_supply}{Water\+Supply} object. \end{DoxyCompactList}\item 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Water\+Supply} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_water_supply}{Water\+Supply}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_water_supply_a331060351e2c122daac2745c0f49c4fd}{get\+Water\+Generation}} ()
+\begin{DoxyCompactList}\small\item\em Gets the water generation capacity. \end{DoxyCompactList}\item 
+void {\bfseries distribute} ()
+\begin{DoxyCompactList}\small\item\em Distributes water from the supply. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_water_supply_aa3f65897d360cdcea69c93535d4bb661}{get\+Water\+Generation\+Raw}} () const
+\begin{DoxyCompactList}\small\item\em Gets the raw water generation value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_water_supply_a52d24c7eeb20d531271cba3b8e278d1a}{set\+Water\+Generation}} (int value)
+\begin{DoxyCompactList}\small\item\em Sets the water generation capacity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_utility}{Utility}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Utility} ()
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{class_utility}{Utility}. \end{DoxyCompactList}\item 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Utility} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_utility}{Utility}. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_utility_a89046d446bc3a82d6c87584a7fc2c475}{get\+Efficiency}} () const
+\begin{DoxyCompactList}\small\item\em Gets the efficiency of the utility. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_utility_a083cdffc01fa5c79c8e0181aae23bca5}{set\+Efficiency}} (float value)
+\begin{DoxyCompactList}\small\item\em Sets the efficiency of the utility. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_utility_afad84455f47394f460a62dfc87565d35}{get\+Functional}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the utility is functional. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_utility_a1a2cd48cb41ad234af32696838bc9dc1}{set\+Functional}} (bool value)
+\begin{DoxyCompactList}\small\item\em Sets the functional status of the utility. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_water_supply}{Water\+Supply}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries water\+Generation}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_water}{Water} generation capacity in liters. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_water}{Water}} \texorpdfstring{$\ast$}{*} {\bfseries water}
+\begin{DoxyCompactList}\small\item\em Pointer to water resources. \end{DoxyCompactList}\item 
+bool {\bfseries is\+Initial\+Build} = false
+\begin{DoxyCompactList}\small\item\em Indicates if it is an initial build. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_utility}{Utility}}}
+\begin{DoxyCompactItemize}
+\item 
+float {\bfseries efficiency}
+\begin{DoxyCompactList}\small\item\em Efficiency of the utility service (percentage). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_budget}{Budget}} \texorpdfstring{$\ast$}{*} {\bfseries budget}
+\begin{DoxyCompactList}\small\item\em Pointer to the budget for the utility. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_concrete}{Concrete}} \texorpdfstring{$\ast$}{*} {\bfseries concrete}
+\begin{DoxyCompactList}\small\item\em Pointer to concrete resources. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_steel}{Steel}} \texorpdfstring{$\ast$}{*} {\bfseries steel}
+\begin{DoxyCompactList}\small\item\em Pointer to steel resources. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_wood}{Wood}} \texorpdfstring{$\ast$}{*} {\bfseries wood}
+\begin{DoxyCompactList}\small\item\em Pointer to wood resources. \end{DoxyCompactList}\item 
+bool {\bfseries is\+Functional}
+\begin{DoxyCompactList}\small\item\em Indicates whether the utility is functional. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class representing a functional water supply system. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_functional_water_supply_afd23635d52b60a66c4c351a412fac54a}\index{FunctionalWaterSupply@{FunctionalWaterSupply}!FunctionalWaterSupply@{FunctionalWaterSupply}}
+\index{FunctionalWaterSupply@{FunctionalWaterSupply}!FunctionalWaterSupply@{FunctionalWaterSupply}}
+\doxysubsubsection{\texorpdfstring{FunctionalWaterSupply()}{FunctionalWaterSupply()}}
+{\footnotesize\ttfamily \label{class_functional_water_supply_afd23635d52b60a66c4c351a412fac54a} 
+Functional\+Water\+Supply\+::\+Functional\+Water\+Supply (\begin{DoxyParamCaption}\item[{bool}]{built}{, }\item[{int}]{power\+Gen}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_functional_water_supply}{Functional\+Water\+Supply} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em built} & Indicates if the water supply system is built. \\
+\hline
+{\em power\+Gen} & Initial water generation capacity. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_functional_water_supply_a99bbfb135a57258c4893031994b5db9e}\index{FunctionalWaterSupply@{FunctionalWaterSupply}!mulfunction@{mulfunction}}
+\index{mulfunction@{mulfunction}!FunctionalWaterSupply@{FunctionalWaterSupply}}
+\doxysubsubsection{\texorpdfstring{mulfunction()}{mulfunction()}}
+{\footnotesize\ttfamily \label{class_functional_water_supply_a99bbfb135a57258c4893031994b5db9e} 
+\mbox{\hyperlink{class_water_supply}{Water\+Supply}} \texorpdfstring{$\ast$}{*} Functional\+Water\+Supply\+::mulfunction (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Indicates a malfunction in the functional water supply system. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the malfunctioning \doxylink{class_water_supply}{Water\+Supply}. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_water_supply_aaa1505b1722ead941ef830eac69477ba}{Water\+Supply}}.
+
+\Hypertarget{class_functional_water_supply_a567ab4b1e90b0648b9d67acf34a1c107}\index{FunctionalWaterSupply@{FunctionalWaterSupply}!repair@{repair}}
+\index{repair@{repair}!FunctionalWaterSupply@{FunctionalWaterSupply}}
+\doxysubsubsection{\texorpdfstring{repair()}{repair()}}
+{\footnotesize\ttfamily \label{class_functional_water_supply_a567ab4b1e90b0648b9d67acf34a1c107} 
+\mbox{\hyperlink{class_water_supply}{Water\+Supply}} \texorpdfstring{$\ast$}{*} Functional\+Water\+Supply\+::repair (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Repairs the functional water supply system. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the repaired \doxylink{class_water_supply}{Water\+Supply}. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_water_supply_ac56098949d12b2731fe8037bd1a31170}{Water\+Supply}}.
+

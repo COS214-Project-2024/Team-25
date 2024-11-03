@@ -1,0 +1,57 @@
+\doxysection{Rail\+System Class Reference}
+\hypertarget{class_rail_system}{}\label{class_rail_system}\index{RailSystem@{RailSystem}}
+
+
+Manages multiple railways and their respective public transport systems.  
+
+
+
+
+{\ttfamily \#include $<$Transportation.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_rail_system_a693d9bd063830434b0bb89c55da6a835}{add\+Railway}} (\mbox{\hyperlink{class_railway}{Railway}} railway)
+\begin{DoxyCompactList}\small\item\em Adds a railway to the rail system. \end{DoxyCompactList}\item 
+\Hypertarget{class_rail_system_ab044ba66e029e1aa62cdd5a9e991e824}\label{class_rail_system_ab044ba66e029e1aa62cdd5a9e991e824} 
+void {\bfseries upgrade} ()
+\begin{DoxyCompactList}\small\item\em Upgrades the rail system. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_rail_system_afd06e56d644472feaa7f92a871a06432}{get\+Utilization}} ()
+\begin{DoxyCompactList}\small\item\em Gets the overall utilization of the rail system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages multiple railways and their respective public transport systems. 
+
+This class tracks the number of railways and their utilization. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_rail_system_a693d9bd063830434b0bb89c55da6a835}\index{RailSystem@{RailSystem}!addRailway@{addRailway}}
+\index{addRailway@{addRailway}!RailSystem@{RailSystem}}
+\doxysubsubsection{\texorpdfstring{addRailway()}{addRailway()}}
+{\footnotesize\ttfamily \label{class_rail_system_a693d9bd063830434b0bb89c55da6a835} 
+void Rail\+System\+::add\+Railway (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_railway}{Railway}}}]{railway}{}\end{DoxyParamCaption})}
+
+
+
+Adds a railway to the rail system. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em railway} & The \doxylink{class_railway}{Railway} object to add. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_rail_system_afd06e56d644472feaa7f92a871a06432}\index{RailSystem@{RailSystem}!getUtilization@{getUtilization}}
+\index{getUtilization@{getUtilization}!RailSystem@{RailSystem}}
+\doxysubsubsection{\texorpdfstring{getUtilization()}{getUtilization()}}
+{\footnotesize\ttfamily \label{class_rail_system_afd06e56d644472feaa7f92a871a06432} 
+int Rail\+System\+::get\+Utilization (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Gets the overall utilization of the rail system. 
+
+\begin{DoxyReturn}{Returns}
+The utilization percentage. 
+\end{DoxyReturn}

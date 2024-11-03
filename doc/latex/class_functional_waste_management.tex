@@ -1,0 +1,144 @@
+\doxysection{Functional\+Waste\+Management Class Reference}
+\hypertarget{class_functional_waste_management}{}\label{class_functional_waste_management}\index{FunctionalWasteManagement@{FunctionalWasteManagement}}
+
+
+Class representing a functional waste management system.  
+
+
+
+
+{\ttfamily \#include $<$Utilities.\+h$>$}
+
+Inheritance diagram for Functional\+Waste\+Management\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_functional_waste_management}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_functional_waste_management_acace043484d72444b58bc6416e9fffb6}{Functional\+Waste\+Management}} (bool built, int power\+Gen=0)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_functional_waste_management}{Functional\+Waste\+Management} object. \end{DoxyCompactList}\item 
+\Hypertarget{class_functional_waste_management_afcdcc07b7d0f76afc28b1d5cd1d94366}\label{class_functional_waste_management_afcdcc07b7d0f76afc28b1d5cd1d94366} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Functional\+Waste\+Management} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_functional_waste_management}{Functional\+Waste\+Management}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_waste_management}{Waste\+Management}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_functional_waste_management_a536b2c1f7ec13d895d294e485c445c77}{repair}} () override
+\begin{DoxyCompactList}\small\item\em Repairs the functional waste management system. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_waste_management}{Waste\+Management}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_functional_waste_management_accac94d7fa4d012f85c777df899dbceb}{mulfunction}} () override
+\begin{DoxyCompactList}\small\item\em Indicates a malfunction in the functional waste management system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_waste_management}{Waste\+Management}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_waste_management_a2803290e406340369e18870ed5b7da69}{Waste\+Management}} (bool built, int power\+Gen=0)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_waste_management}{Waste\+Management} object. \end{DoxyCompactList}\item 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Waste\+Management} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_waste_management}{Waste\+Management}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_waste_management_ade94a3f90a668b684cb010825bb017d8}{get\+Waste\+Collection}} ()
+\begin{DoxyCompactList}\small\item\em Gets the waste collection capacity. \end{DoxyCompactList}\item 
+void {\bfseries recycle} ()
+\begin{DoxyCompactList}\small\item\em Recycles the collected waste. \end{DoxyCompactList}\item 
+void {\bfseries collect} ()
+\begin{DoxyCompactList}\small\item\em Collects waste for management. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_waste_management_a2d702917584d04834dba0a717ea5a22c}{get\+Waste\+Collection\+Raw}} () const
+\begin{DoxyCompactList}\small\item\em Gets the raw waste collection value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_waste_management_af6674fb16c1ed4ca518ee5305bfdf516}{set\+Waste\+Collection}} (int value)
+\begin{DoxyCompactList}\small\item\em Sets the waste collection capacity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_utility}{Utility}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Utility} ()
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{class_utility}{Utility}. \end{DoxyCompactList}\item 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Utility} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_utility}{Utility}. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_utility_a89046d446bc3a82d6c87584a7fc2c475}{get\+Efficiency}} () const
+\begin{DoxyCompactList}\small\item\em Gets the efficiency of the utility. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_utility_a083cdffc01fa5c79c8e0181aae23bca5}{set\+Efficiency}} (float value)
+\begin{DoxyCompactList}\small\item\em Sets the efficiency of the utility. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_utility_afad84455f47394f460a62dfc87565d35}{get\+Functional}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the utility is functional. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_utility_a1a2cd48cb41ad234af32696838bc9dc1}{set\+Functional}} (bool value)
+\begin{DoxyCompactList}\small\item\em Sets the functional status of the utility. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_waste_management}{Waste\+Management}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries waste\+Collection}
+\begin{DoxyCompactList}\small\item\em Waste collection capacity in kilograms. \end{DoxyCompactList}\item 
+bool {\bfseries is\+Initial\+Build} = false
+\begin{DoxyCompactList}\small\item\em Indicates if it is an initial build. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_utility}{Utility}}}
+\begin{DoxyCompactItemize}
+\item 
+float {\bfseries efficiency}
+\begin{DoxyCompactList}\small\item\em Efficiency of the utility service (percentage). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_budget}{Budget}} \texorpdfstring{$\ast$}{*} {\bfseries budget}
+\begin{DoxyCompactList}\small\item\em Pointer to the budget for the utility. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_concrete}{Concrete}} \texorpdfstring{$\ast$}{*} {\bfseries concrete}
+\begin{DoxyCompactList}\small\item\em Pointer to concrete resources. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_steel}{Steel}} \texorpdfstring{$\ast$}{*} {\bfseries steel}
+\begin{DoxyCompactList}\small\item\em Pointer to steel resources. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_wood}{Wood}} \texorpdfstring{$\ast$}{*} {\bfseries wood}
+\begin{DoxyCompactList}\small\item\em Pointer to wood resources. \end{DoxyCompactList}\item 
+bool {\bfseries is\+Functional}
+\begin{DoxyCompactList}\small\item\em Indicates whether the utility is functional. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class representing a functional waste management system. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_functional_waste_management_acace043484d72444b58bc6416e9fffb6}\index{FunctionalWasteManagement@{FunctionalWasteManagement}!FunctionalWasteManagement@{FunctionalWasteManagement}}
+\index{FunctionalWasteManagement@{FunctionalWasteManagement}!FunctionalWasteManagement@{FunctionalWasteManagement}}
+\doxysubsubsection{\texorpdfstring{FunctionalWasteManagement()}{FunctionalWasteManagement()}}
+{\footnotesize\ttfamily \label{class_functional_waste_management_acace043484d72444b58bc6416e9fffb6} 
+Functional\+Waste\+Management\+::\+Functional\+Waste\+Management (\begin{DoxyParamCaption}\item[{bool}]{built}{, }\item[{int}]{power\+Gen}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_functional_waste_management}{Functional\+Waste\+Management} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em built} & Indicates if the waste management system is built. \\
+\hline
+{\em power\+Gen} & Initial waste collection capacity. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_functional_waste_management_accac94d7fa4d012f85c777df899dbceb}\index{FunctionalWasteManagement@{FunctionalWasteManagement}!mulfunction@{mulfunction}}
+\index{mulfunction@{mulfunction}!FunctionalWasteManagement@{FunctionalWasteManagement}}
+\doxysubsubsection{\texorpdfstring{mulfunction()}{mulfunction()}}
+{\footnotesize\ttfamily \label{class_functional_waste_management_accac94d7fa4d012f85c777df899dbceb} 
+\mbox{\hyperlink{class_waste_management}{Waste\+Management}} \texorpdfstring{$\ast$}{*} Functional\+Waste\+Management\+::mulfunction (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Indicates a malfunction in the functional waste management system. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the malfunctioning \doxylink{class_waste_management}{Waste\+Management}. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_waste_management_a53656d61a39a515ae45ff47a5d29f252}{Waste\+Management}}.
+
+\Hypertarget{class_functional_waste_management_a536b2c1f7ec13d895d294e485c445c77}\index{FunctionalWasteManagement@{FunctionalWasteManagement}!repair@{repair}}
+\index{repair@{repair}!FunctionalWasteManagement@{FunctionalWasteManagement}}
+\doxysubsubsection{\texorpdfstring{repair()}{repair()}}
+{\footnotesize\ttfamily \label{class_functional_waste_management_a536b2c1f7ec13d895d294e485c445c77} 
+\mbox{\hyperlink{class_waste_management}{Waste\+Management}} \texorpdfstring{$\ast$}{*} Functional\+Waste\+Management\+::repair (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Repairs the functional waste management system. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the repaired \doxylink{class_waste_management}{Waste\+Management}. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_waste_management_ad0ea3a807f0a53b8e3386d72f68056bf}{Waste\+Management}}.
+

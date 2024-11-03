@@ -1,0 +1,206 @@
+\doxysection{Utilities.\+h}
+\hypertarget{_utilities_8h_source}{}\label{_utilities_8h_source}\index{h files/Utilities.h@{h files/Utilities.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ UTILITIES\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ UTILITIES\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <cstdlib>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <ctime>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}Resources.h"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{enum}\ powerPlants\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ HYDRO,\ }
+\DoxyCodeLine{00017\ \ \ \ \ COAL,\ \ }
+\DoxyCodeLine{00018\ \ \ \ \ WIND,\ \ }
+\DoxyCodeLine{00019\ \ \ \ \ SOLAR\ \ }
+\DoxyCodeLine{00020\ \};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_utility}{Utility}}\ \{}
+\DoxyCodeLine{00030\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_utility_a622637e0284fd852e523b1cfc8b3c70c}{efficiency}};\ }
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{class_budget}{Budget}}*\ \mbox{\hyperlink{class_utility_a8309c9906d23278351ebd3285182a890}{budget}};\ }
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{class_concrete}{Concrete}}*\ \mbox{\hyperlink{class_utility_a39466c6a7af5178931e53d55ebfe284f}{concrete}};\ }
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{class_steel}{Steel}}*\ \mbox{\hyperlink{class_utility_ade443b29928bed016708408e85952e17}{steel}};\ }
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{class_wood}{Wood}}*\ \mbox{\hyperlink{class_utility_a0e435aa986e51068b7ae479a5f262a3b}{wood}};\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_utility_af2931c1f6cb51461ef9fadc647bf72fb}{isFunctional}};\ }
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{class_utility_ac7af3e1642ac8d53ef180180a08fbd00}{Utility}}();\ }
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{class_utility_aecfe4b31e39b00555158a2d8288b874a}{\string~Utility}}();\ }
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_utility_a89046d446bc3a82d6c87584a7fc2c475}{getEfficiency}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_utility_a622637e0284fd852e523b1cfc8b3c70c}{efficiency}};\ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utility_a083cdffc01fa5c79c8e0181aae23bca5}{setEfficiency}}(\textcolor{keywordtype}{float}\ value)\ \{\ \mbox{\hyperlink{class_utility_a622637e0284fd852e523b1cfc8b3c70c}{efficiency}}\ =\ value;\ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_utility_afad84455f47394f460a62dfc87565d35}{getFunctional}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_utility_af2931c1f6cb51461ef9fadc647bf72fb}{isFunctional}};\ \}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_utility_a1a2cd48cb41ad234af32696838bc9dc1}{setFunctional}}(\textcolor{keywordtype}{bool}\ value)\ \{\ \mbox{\hyperlink{class_utility_af2931c1f6cb51461ef9fadc647bf72fb}{isFunctional}}\ =\ value;\ \}}
+\DoxyCodeLine{00065\ \};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00076\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_power_plant}{PowerPlant}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_utility}{Utility}}\ \{}
+\DoxyCodeLine{00077\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_power_plant_a55b70bc41a4b80fb72c6d5cf28152a77}{powerGeneration}};\ }
+\DoxyCodeLine{00079\ \ \ \ \ powerPlants\ \mbox{\hyperlink{class_power_plant_a5401ffbede8724fed49577cf86a7e39e}{type}};\ }
+\DoxyCodeLine{00080\ \ \ \ \ \mbox{\hyperlink{class_energy}{Energy}}*\ \mbox{\hyperlink{class_power_plant_a9891a5163ecf7331aa7c264d12167f9e}{energy}};\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_power_plant_a599a163dc9fc57da1c4b3b8a86fbfd50}{isInitialBuild}}\ =\ \textcolor{keyword}{false};\ }
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00090\ \ \ \ \ \mbox{\hyperlink{class_power_plant_a7d5c9ab7ae8ede22397c494bba99db1c}{PowerPlant}}(powerPlants\ \mbox{\hyperlink{class_power_plant_a5401ffbede8724fed49577cf86a7e39e}{type}},\ \textcolor{keywordtype}{bool}\ isbuilt,\ \textcolor{keywordtype}{int}\ powerGen\ =\ 0);}
+\DoxyCodeLine{00091\ \ \ \ \ }
+\DoxyCodeLine{00092\ \ \ \ \ \mbox{\hyperlink{class_power_plant_a39f79fce64dfbeffaebedc10bb289257}{\string~PowerPlant}}();\ }
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_power_plant}{PowerPlant}}*\ \mbox{\hyperlink{class_power_plant_ac8491e995beeb41f6c62e2f266b14148}{repair}}()\ =\ 0;\ \ \ \textcolor{comment}{//\ Changed\ to\ PowerPlant*}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_power_plant}{PowerPlant}}*\ \mbox{\hyperlink{class_power_plant_a60d1102a46c43c86bb4733b0e9beaa47}{mulfunction}}()\ =\ 0;\ \ \textcolor{comment}{//\ Changed\ to\ PowerPlant*}}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_power_plant_afd70ef22b49466f3a28e572f52f95e3b}{getPowerGeneration}}();\ \ \textcolor{comment}{//\ power\ gen\ *\ efficiency}}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00116\ \ \ \ \ powerPlants\ \mbox{\hyperlink{class_power_plant_a1111c13f94d038b0f430ec5ce1bbd0af}{getType}}();}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_power_plant_adaccb5d1c9f05fcbc01bd7beceaf0c57}{generate}}();}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_power_plant_a04849bcfcc210c0d0e00551108ae5677}{getPowerGenerationRaw}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_power_plant_a55b70bc41a4b80fb72c6d5cf28152a77}{powerGeneration}};\ \}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00133\ \ \ \ \ powerPlants\ \mbox{\hyperlink{class_power_plant_a4cfa7b7951233e4bdf018b6bf5c85fdc}{getType}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_power_plant_a5401ffbede8724fed49577cf86a7e39e}{type}};\ \}}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_power_plant_a155c0c71b0c61fc8a7b133736a57cd17}{setPowerGeneration}}(\textcolor{keywordtype}{int}\ value)\ \{\ \mbox{\hyperlink{class_power_plant_a55b70bc41a4b80fb72c6d5cf28152a77}{powerGeneration}}\ =\ value;\ \}}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_power_plant_a4b856f486faab7c88e32759e399d9895}{setType}}(powerPlants\ value)\ \{\ \mbox{\hyperlink{class_power_plant_a5401ffbede8724fed49577cf86a7e39e}{type}}\ =\ value;\ \}}
+\DoxyCodeLine{00146\ \};}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00152\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_functional_power_plant}{FunctionalPowerPlant}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_power_plant}{PowerPlant}}\ }
+\DoxyCodeLine{00153\ \{}
+\DoxyCodeLine{00154\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00161\ \ \ \ \ \mbox{\hyperlink{class_functional_power_plant_abe37d5dca9f3dae3b144f231cb38a0a4}{FunctionalPowerPlant}}(powerPlants\ \mbox{\hyperlink{class_power_plant_a5401ffbede8724fed49577cf86a7e39e}{type}},\ \textcolor{keywordtype}{bool}\ built,\ \textcolor{keywordtype}{int}\ powerGen\ =\ 0);}
+\DoxyCodeLine{00162\ \ \ \ \ }
+\DoxyCodeLine{00163\ \ \ \ \ \mbox{\hyperlink{class_functional_power_plant_a8714368e582c4305f4a90b42833d9991}{\string~FunctionalPowerPlant}}();\ }
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00169\ \ \ \ \ \mbox{\hyperlink{class_power_plant}{PowerPlant}}*\ \mbox{\hyperlink{class_functional_power_plant_a7061261290bb9938a738c45a76663f23}{repair}}()\ \textcolor{keyword}{override};\ \ \textcolor{comment}{//\ Changed\ to\ PowerPlant*}}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00175\ \ \ \ \ \mbox{\hyperlink{class_power_plant}{PowerPlant}}*\ \mbox{\hyperlink{class_functional_power_plant_ad33b4e1217c6923f399f57a8336d3815}{mulfunction}}()\ \textcolor{keyword}{override};\ \ \ \ \ \textcolor{comment}{//\ Changed\ to\ PowerPlant*}}
+\DoxyCodeLine{00176\ \};}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00182\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_non_functional_power_plant}{NonFunctionalPowerPlant}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_power_plant}{PowerPlant}}\ \{}
+\DoxyCodeLine{00183\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00190\ \ \ \ \ \mbox{\hyperlink{class_non_functional_power_plant_a2eddd16477172b7a193d486106fb5146}{NonFunctionalPowerPlant}}(powerPlants\ \mbox{\hyperlink{class_power_plant_a5401ffbede8724fed49577cf86a7e39e}{type}},\ \textcolor{keywordtype}{bool}\ built,\ \textcolor{keywordtype}{int}\ powerGen\ =\ 0);}
+\DoxyCodeLine{00191\ \ \ \ \ }
+\DoxyCodeLine{00192\ \ \ \ \ \mbox{\hyperlink{class_non_functional_power_plant_a16076907bce7ae01c62a10a8e92d90fb}{\string~NonFunctionalPowerPlant}}();\ }
+\DoxyCodeLine{00193\ }
+\DoxyCodeLine{00198\ \ \ \ \ \mbox{\hyperlink{class_power_plant}{PowerPlant}}*\ \mbox{\hyperlink{class_non_functional_power_plant_a48765b6ac52c62a7c7cf63fc92db6423}{repair}}()\ \textcolor{keyword}{override};\ \ \textcolor{comment}{//\ Changed\ to\ PowerPlant*}}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00204\ \ \ \ \ \mbox{\hyperlink{class_power_plant}{PowerPlant}}*\ \mbox{\hyperlink{class_non_functional_power_plant_a443d69d1509a89db831c8b6d051aedfc}{mulfunction}}()\ \textcolor{keyword}{override};\ \ \ \ \ \textcolor{comment}{//\ Changed\ to\ PowerPlant*}}
+\DoxyCodeLine{00205\ \};}
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00213\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_water_supply}{WaterSupply}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_utility}{Utility}}\ \{}
+\DoxyCodeLine{00214\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00215\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_water_supply_a597b7c385b3f30e33210976809d37365}{waterGeneration}};\ }
+\DoxyCodeLine{00216\ \ \ \ \ \mbox{\hyperlink{class_water}{Water}}*\ \mbox{\hyperlink{class_water_supply_aa8e62ec11f9df0cd194894b793b274cc}{water}};\ }
+\DoxyCodeLine{00217\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_water_supply_a52833d670e549111393642baa3b3017b}{isInitialBuild}}\ =\ \textcolor{keyword}{false};\ }
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00225\ \ \ \ \ \mbox{\hyperlink{class_water_supply_a3f79b01ea546304b4e1bca3e0d697c12}{WaterSupply}}(\textcolor{keywordtype}{bool}\ built,\ \textcolor{keywordtype}{int}\ powerGen\ =\ 0);}
+\DoxyCodeLine{00226\ \ \ \ \ }
+\DoxyCodeLine{00227\ \ \ \ \ \mbox{\hyperlink{class_water_supply_a248d7aa796e3f45c018acb73a577191c}{\string~WaterSupply}}();\ }
+\DoxyCodeLine{00228\ }
+\DoxyCodeLine{00233\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_water_supply}{WaterSupply}}*\ \mbox{\hyperlink{class_water_supply_ac56098949d12b2731fe8037bd1a31170}{repair}}()\ =\ 0;\ \ \textcolor{comment}{//\ Changed\ to\ WaterSupply*}}
+\DoxyCodeLine{00234\ }
+\DoxyCodeLine{00239\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_water_supply}{WaterSupply}}*\ \mbox{\hyperlink{class_water_supply_aaa1505b1722ead941ef830eac69477ba}{mulfunction}}()\ =\ 0;\ \ \ \ \ \textcolor{comment}{//\ Changed\ to\ WaterSupply*}}
+\DoxyCodeLine{00240\ }
+\DoxyCodeLine{00245\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_water_supply_a331060351e2c122daac2745c0f49c4fd}{getWaterGeneration}}();}
+\DoxyCodeLine{00246\ }
+\DoxyCodeLine{00250\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_water_supply_ac304f60e07bc7615aa098642abadd6c5}{distribute}}();}
+\DoxyCodeLine{00251\ }
+\DoxyCodeLine{00256\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_water_supply_aa3f65897d360cdcea69c93535d4bb661}{getWaterGenerationRaw}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_water_supply_a597b7c385b3f30e33210976809d37365}{waterGeneration}};\ \}}
+\DoxyCodeLine{00257\ }
+\DoxyCodeLine{00262\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_water_supply_a52d24c7eeb20d531271cba3b8e278d1a}{setWaterGeneration}}(\textcolor{keywordtype}{int}\ value)\ \{\ \mbox{\hyperlink{class_water_supply_a597b7c385b3f30e33210976809d37365}{waterGeneration}}\ =\ value;\ \}}
+\DoxyCodeLine{00263\ \};}
+\DoxyCodeLine{00264\ }
+\DoxyCodeLine{00265\ }
+\DoxyCodeLine{00266\ }
+\DoxyCodeLine{00271\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_functional_water_supply}{FunctionalWaterSupply}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_water_supply}{WaterSupply}}\ \{}
+\DoxyCodeLine{00272\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00278\ \ \ \ \ \mbox{\hyperlink{class_functional_water_supply_afd23635d52b60a66c4c351a412fac54a}{FunctionalWaterSupply}}(\textcolor{keywordtype}{bool}\ built,\ \textcolor{keywordtype}{int}\ powerGen\ =\ 0);}
+\DoxyCodeLine{00279\ \ \ \ \ }
+\DoxyCodeLine{00280\ \ \ \ \ \mbox{\hyperlink{class_functional_water_supply_a3a08edfae446928e7992646a97aeeae9}{\string~FunctionalWaterSupply}}();\ }
+\DoxyCodeLine{00281\ }
+\DoxyCodeLine{00286\ \ \ \ \ \mbox{\hyperlink{class_water_supply}{WaterSupply}}*\ \mbox{\hyperlink{class_functional_water_supply_a567ab4b1e90b0648b9d67acf34a1c107}{repair}}()\ \textcolor{keyword}{override};\ \ \ \ \ \textcolor{comment}{//\ Changed\ to\ WaterSupply*}}
+\DoxyCodeLine{00287\ }
+\DoxyCodeLine{00292\ \ \ \ \ \mbox{\hyperlink{class_water_supply}{WaterSupply}}*\ \mbox{\hyperlink{class_functional_water_supply_a99bbfb135a57258c4893031994b5db9e}{mulfunction}}()\ \textcolor{keyword}{override};\ \ \ \ \textcolor{comment}{//\ Changed\ to\ WaterSupply*}}
+\DoxyCodeLine{00293\ \};}
+\DoxyCodeLine{00294\ }
+\DoxyCodeLine{00295\ }
+\DoxyCodeLine{00296\ }
+\DoxyCodeLine{00301\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_non_functional_water_supply}{NonFunctionalWaterSupply}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_water_supply}{WaterSupply}}\ \{}
+\DoxyCodeLine{00302\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00308\ \ \ \ \ \mbox{\hyperlink{class_non_functional_water_supply_a578be012a9f16541bdc0955ac5eb0bb7}{NonFunctionalWaterSupply}}(\textcolor{keywordtype}{bool}\ built,\ \textcolor{keywordtype}{int}\ powerGen\ =\ 0);}
+\DoxyCodeLine{00309\ \ \ \ \ }
+\DoxyCodeLine{00310\ \ \ \ \ \mbox{\hyperlink{class_non_functional_water_supply_a421d94456da79332339f379d3dc7082a}{\string~NonFunctionalWaterSupply}}();\ }
+\DoxyCodeLine{00311\ }
+\DoxyCodeLine{00316\ \ \ \ \ \mbox{\hyperlink{class_water_supply}{WaterSupply}}*\ \mbox{\hyperlink{class_non_functional_water_supply_ad46589858f5b3a8518e99dcde38d6428}{repair}}()\ \textcolor{keyword}{override};\ \ \ \ \ \textcolor{comment}{//\ Changed\ to\ WaterSupply*}}
+\DoxyCodeLine{00317\ }
+\DoxyCodeLine{00322\ \ \ \ \ \mbox{\hyperlink{class_water_supply}{WaterSupply}}*\ \mbox{\hyperlink{class_non_functional_water_supply_a9253d25a44879b4a9fef5f2ee92ca20e}{mulfunction}}()\ \textcolor{keyword}{override};\ \ \ \ \textcolor{comment}{//\ Changed\ to\ WaterSupply*}}
+\DoxyCodeLine{00323\ \};}
+\DoxyCodeLine{00324\ }
+\DoxyCodeLine{00325\ }
+\DoxyCodeLine{00326\ }
+\DoxyCodeLine{00333\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_waste_management}{WasteManagement}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_utility}{Utility}}\ \{}
+\DoxyCodeLine{00334\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00335\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_waste_management_a6e2426da866646ffb3c5b45d6f7bd20a}{wasteCollection}};\ }
+\DoxyCodeLine{00336\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_waste_management_aae3267adf97b95dba7da024a2172039b}{isInitialBuild}}\ =\ \textcolor{keyword}{false};\ }
+\DoxyCodeLine{00337\ }
+\DoxyCodeLine{00338\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00344\ \ \ \ \ \mbox{\hyperlink{class_waste_management_a2803290e406340369e18870ed5b7da69}{WasteManagement}}(\textcolor{keywordtype}{bool}\ built,\ \textcolor{keywordtype}{int}\ powerGen\ =\ 0);}
+\DoxyCodeLine{00345\ \ \ \ \ }
+\DoxyCodeLine{00346\ \ \ \ \ \mbox{\hyperlink{class_waste_management_a42315c19956443149881665f3e769dc8}{\string~WasteManagement}}();\ }
+\DoxyCodeLine{00347\ }
+\DoxyCodeLine{00352\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_waste_management}{WasteManagement}}*\ \mbox{\hyperlink{class_waste_management_ad0ea3a807f0a53b8e3386d72f68056bf}{repair}}()\ =\ 0;\ \ \textcolor{comment}{//\ Changed\ to\ WasteManagement*}}
+\DoxyCodeLine{00353\ }
+\DoxyCodeLine{00358\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_waste_management}{WasteManagement}}*\ \mbox{\hyperlink{class_waste_management_a53656d61a39a515ae45ff47a5d29f252}{mulfunction}}()\ =\ 0;\ \ \ \ \ \textcolor{comment}{//\ Changed\ to\ WasteManagement*}}
+\DoxyCodeLine{00359\ }
+\DoxyCodeLine{00364\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_waste_management_ade94a3f90a668b684cb010825bb017d8}{getWasteCollection}}();}
+\DoxyCodeLine{00365\ }
+\DoxyCodeLine{00369\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_waste_management_a25907989e3943fac3a0ba56582334ef1}{recycle}}();}
+\DoxyCodeLine{00370\ }
+\DoxyCodeLine{00374\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_waste_management_abf4464e32cf1afeba428f72026d04b1a}{collect}}();}
+\DoxyCodeLine{00375\ }
+\DoxyCodeLine{00380\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_waste_management_a2d702917584d04834dba0a717ea5a22c}{getWasteCollectionRaw}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_waste_management_a6e2426da866646ffb3c5b45d6f7bd20a}{wasteCollection}};\ \}}
+\DoxyCodeLine{00381\ }
+\DoxyCodeLine{00386\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_waste_management_af6674fb16c1ed4ca518ee5305bfdf516}{setWasteCollection}}(\textcolor{keywordtype}{int}\ value)\ \{\ \mbox{\hyperlink{class_waste_management_a6e2426da866646ffb3c5b45d6f7bd20a}{wasteCollection}}\ =\ value;\ \}}
+\DoxyCodeLine{00387\ \};}
+\DoxyCodeLine{00388\ }
+\DoxyCodeLine{00389\ }
+\DoxyCodeLine{00390\ }
+\DoxyCodeLine{00395\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_functional_waste_management}{FunctionalWasteManagement}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_waste_management}{WasteManagement}}\ \{}
+\DoxyCodeLine{00396\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00402\ \ \ \ \ \mbox{\hyperlink{class_functional_waste_management_acace043484d72444b58bc6416e9fffb6}{FunctionalWasteManagement}}(\textcolor{keywordtype}{bool}\ built,\ \textcolor{keywordtype}{int}\ powerGen\ =\ 0);}
+\DoxyCodeLine{00403\ \ \ \ \ }
+\DoxyCodeLine{00404\ \ \ \ \ \mbox{\hyperlink{class_functional_waste_management_afcdcc07b7d0f76afc28b1d5cd1d94366}{\string~FunctionalWasteManagement}}();\ }
+\DoxyCodeLine{00405\ }
+\DoxyCodeLine{00410\ \ \ \ \ \mbox{\hyperlink{class_waste_management}{WasteManagement}}*\ \mbox{\hyperlink{class_functional_waste_management_a536b2c1f7ec13d895d294e485c445c77}{repair}}()\ \textcolor{keyword}{override};\ \ \ \ \ \textcolor{comment}{//\ Changed\ to\ WasteManagement*}}
+\DoxyCodeLine{00411\ }
+\DoxyCodeLine{00416\ \ \ \ \ \mbox{\hyperlink{class_waste_management}{WasteManagement}}*\ \mbox{\hyperlink{class_functional_waste_management_accac94d7fa4d012f85c777df899dbceb}{mulfunction}}()\ \textcolor{keyword}{override};\ \ \ \ \textcolor{comment}{//\ Changed\ to\ WasteManagement*}}
+\DoxyCodeLine{00417\ \};}
+\DoxyCodeLine{00418\ }
+\DoxyCodeLine{00419\ }
+\DoxyCodeLine{00420\ }
+\DoxyCodeLine{00425\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_non_functional_waste_management}{NonFunctionalWasteManagement}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_waste_management}{WasteManagement}}\ \{}
+\DoxyCodeLine{00426\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00432\ \ \ \ \ \mbox{\hyperlink{class_non_functional_waste_management_a2c8d2c92ecbc5009b1549e7bc26a9f62}{NonFunctionalWasteManagement}}(\textcolor{keywordtype}{bool}\ built,\ \textcolor{keywordtype}{int}\ powerGen\ =\ 0);}
+\DoxyCodeLine{00433\ \ \ \ \ }
+\DoxyCodeLine{00434\ \ \ \ \ \mbox{\hyperlink{class_non_functional_waste_management_a25862903d59af91a013008743883e1f6}{\string~NonFunctionalWasteManagement}}();\ }
+\DoxyCodeLine{00435\ }
+\DoxyCodeLine{00440\ \ \ \ \ \mbox{\hyperlink{class_waste_management}{WasteManagement}}*\ \mbox{\hyperlink{class_non_functional_waste_management_afc98c8771c4bf599eaa21ed82b2ac6fd}{repair}}()\ \textcolor{keyword}{override};\ \ \ \ \ \textcolor{comment}{//\ Changed\ to\ WasteManagement*}}
+\DoxyCodeLine{00441\ }
+\DoxyCodeLine{00446\ \ \ \ \ \mbox{\hyperlink{class_waste_management}{WasteManagement}}*\ \mbox{\hyperlink{class_non_functional_waste_management_a1a4584acaf031160de0fc3ce4fce4940}{mulfunction}}()\ \textcolor{keyword}{override};\ \ \ \ \textcolor{comment}{//\ Changed\ to\ WasteManagement*}}
+\DoxyCodeLine{00447\ \};}
+\DoxyCodeLine{00448\ }
+\DoxyCodeLine{00449\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
