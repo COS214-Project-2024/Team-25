@@ -106,17 +106,17 @@ float ProgressiveTaxStrategy::calculateTax(CityGrowth *growth)
     int industrialCitizens = 0;
     int commercialCitizens = 0;
 
-    const float govTaxRateTier1 = 5000.0f;
-    const float indTaxRateTier1 = 10000.0f;
-    const float comTaxRateTier1 = 15000.0f;
+    const float govTaxRateTier1 = 500.0f;
+    const float indTaxRateTier1 = 1000.0f;
+    const float comTaxRateTier1 = 1500.0f;
 
-    const float govTaxRateTier2 = 7000.0f;
-    const float indTaxRateTier2 = 15000.0f;
-    const float comTaxRateTier2 = 20000.0f;
+    const float govTaxRateTier2 = 700.0f;
+    const float indTaxRateTier2 = 1500.0f;
+    const float comTaxRateTier2 = 2000.0f;
 
-    const float govTaxRateTier3 = 10000.0f;
-    const float indTaxRateTier3 = 20000.0f;
-    const float comTaxRateTier3 = 30000.0f;
+    const float govTaxRateTier3 = 1000.0f;
+    const float indTaxRateTier3 = 2000.0f;
+    const float comTaxRateTier3 = 3000.0f;
 
     for (const auto &SectorOP : growth->getSectors())
     {
@@ -235,9 +235,9 @@ float FlatTaxStrategy::calculateTax(CityGrowth *growth)
     int industrialCitizens = 0;
     int commercialCitizens = 0;
 
-    const float govTaxRate = 5000.0f;
-    const float indTaxRate = 10000.0f;
-    const float comTaxRate = 15000.0f;
+    const float govTaxRate = 500.0f;
+    const float indTaxRate = 1000.0f;
+    const float comTaxRate = 1500.0f;
 
     for (const auto &SectorOP : growth->getSectors())
     {
