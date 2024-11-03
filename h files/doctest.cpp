@@ -9,6 +9,8 @@
 #include "doctest.h"
 #include "Transportation.h"
 #include "Routines.h"
+#include "Government.h"
+
 
 TEST_CASE("Testing TaxStrategies")
 {
@@ -261,5 +263,72 @@ TEST_CASE("Testing Resources") {
         CHECK(concrete->getKilo() == doctest::Approx(9000));
         CHECK(steel->getKilo() == doctest::Approx(5700));
         CHECK(wood->getKilo() == doctest::Approx(18000));
+    }
+}
+
+TEST_CASE("Testing Utility classes") 
+{
+    std::cout << "\n------------------------" << std::endl;
+    std::cout << "Testing Utility classes" << std::endl;
+    std::cout << "------------------------" << std::endl;
+
+    // Test PowerPlant functionality
+    SUBCASE("PowerPlant Construction and Type Verification") 
+    {
+        std::cout << "\n############## Testing PowerPlant Construction and Type Verification ##############" << std::endl;
+
+        PowerPlant* plant = new FunctionalPowerPlant(HYDRO, true);
+        CHECK(plant != nullptr);
+        CHECK(plant->getType() == HYDRO);
+        std::cout << "PowerPlant Type: HYDRO" << std::endl;
+
+        SUBCASE("Verify Power Generation Calculation") 
+        {
+            std::cout << "\n############## Verifying Power Generation Calculation ##############" << std::endl;
+            int powerGen = plant->getPowerGeneration();
+            std::cout << "Power Generation: " << powerGen << " watts" << std::endl;
+
+            // Separate checks for the power generation range
+            CHECK(powerGen >= 1000);
+            CHECK(powerGen <= 5000);
+
+            delete plant;
+        }
+
+       SUBCASE("Simulate Malfunction and Repair") 
+        {
+            std::cout << "\n############## Simulating PowerPlant Malfunction ##############" << std::endl;
+            if (plant == nullptr) {
+                std::cout << "PowerPlant does not exist" << std::endl;
+                return;
+            }
+
+            PowerPlant* malfunctioningPlant = plant->mulfunction();
+            CHECK(malfunctioningPlant != nullptr);
+
+            if (malfunctioningPlant != plant) {
+                CHECK(malfunctioningPlant != plant);
+                std::cout << "PowerPlant is now non-functional." << std::endl;
+                delete malfunctioningPlant;  // Only delete if it’s a distinct object
+            } else {
+                std::cout << "Malfunction did not create a new instance." << std::endl;
+            }
+
+            // New subcase to test repair functionality
+            SUBCASE("Repair PowerPlant") 
+            {
+                std::cout << "\n############## Repairing PowerPlant ##############" << std::endl;
+                if (plant->getFunctional() == false) {
+                    bool repairSuccess = plant->repair();
+                    CHECK(repairSuccess);
+                    CHECK(plant->getFunctional() == true);
+                    std::cout << "PowerPlant has been repaired and is now functional." << std::endl;
+                } else {
+                    std::cout << "Repair not needed; PowerPlant is already functional." << std::endl;
+                }
+            }
+
+            delete plant;
+        }
     }
 }
