@@ -5,7 +5,7 @@
 <br />
 <div align="center">
   <a href="">
-    <img src="img/logo.png" alt="Logo" width="130" height="100">
+    <img src="img/our_logo.png" alt="Logo" width="450" height="70">
   </a>
 
   <h3 align="center">Sudo apt-get marks</h3>
@@ -47,7 +47,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<div align="center"> 
+<a href="" ><img src="img/houses.jpg" alt="houses" width="300" height="300"> </a>
+</div>
 
 ### This C++ project allows you to play as the Government in a city simulation. Satisfy your citizens before you run out of money OR become rich before your citizens revolt!
 
@@ -140,9 +142,3 @@ Use this space to list resources you find helpful and would like to give credit 
 * [Doxygen](https://www.doxygen.nl/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[product-screenshot]: images/screenshot.png
