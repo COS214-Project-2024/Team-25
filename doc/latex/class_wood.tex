@@ -1,0 +1,106 @@
+\doxysection{Wood Class Reference}
+\hypertarget{class_wood}{}\label{class_wood}\index{Wood@{Wood}}
+
+
+Singleton class representing wood as a material resource.  
+
+
+
+
+{\ttfamily \#include $<$Resources.\+h$>$}
+
+Inheritance diagram for Wood\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_wood}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_wood_a2f1bb1b020a884dcaae90a58ed61f9a1}\label{class_wood_a2f1bb1b020a884dcaae90a58ed61f9a1} 
+{\bfseries Wood} (const \mbox{\hyperlink{class_wood}{Wood}} \&)=delete
+\item 
+\Hypertarget{class_wood_ac84ddf2341c0c0fe283e023572ff1b83}\label{class_wood_ac84ddf2341c0c0fe283e023572ff1b83} 
+void {\bfseries operator=} (const \mbox{\hyperlink{class_wood}{Wood}} \&)=delete
+\item 
+void \mbox{\hyperlink{class_wood_aeb2e3856c54a961c3581a5ca81e6be16}{obtain}} () override
+\begin{DoxyCompactList}\small\item\em Obtains wood material. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_wood_a342e7c8eb256a5d00855674031ae4bfc}{refine}} () override
+\begin{DoxyCompactList}\small\item\em Refines wood material. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_materials}{Materials}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_materials_a2dfa37c118bd29053598f9ae6b53f810}{Materials}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for the \doxylink{class_materials}{Materials} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_materials_a004c8a7c4506862a9ce3fcdcf859bd09}{increase}} ()
+\begin{DoxyCompactList}\small\item\em Increases the quantity of materials. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_materials_a5abd1537f213ff1f5477f85f7585c944}{get\+Kilo}} () const
+\begin{DoxyCompactList}\small\item\em Gets the quantity of materials in kilograms. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_materials_a89e15ea05fe3aea9edac53489ace75b5}{set\+Kilo}} (int k)
+\begin{DoxyCompactList}\small\item\em Sets the quantity of materials in kilograms. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_resources}{Resources}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Resources} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_resources}{Resources}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_wood}{Wood}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_wood_a6dd43388c4216890dc6803b2e9bbe696}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Gets the instance of the \doxylink{class_wood}{Wood} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_materials}{Materials}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries kilograms}
+\begin{DoxyCompactList}\small\item\em The quantity of materials in kilograms. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Singleton class representing wood as a material resource. 
+
+The \doxylink{class_wood}{Wood} class inherits from the \doxylink{class_materials}{Materials} class and implements the singleton design pattern to ensure that only one instance of wood exists within the resource management system. It provides methods to obtain and refine wood. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_wood_a6dd43388c4216890dc6803b2e9bbe696}\index{Wood@{Wood}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!Wood@{Wood}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \label{class_wood_a6dd43388c4216890dc6803b2e9bbe696} 
+\mbox{\hyperlink{class_wood}{Wood}} \texorpdfstring{$\ast$}{*} Wood\+::get\+Instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Gets the instance of the \doxylink{class_wood}{Wood} class. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the singleton instance of \doxylink{class_wood}{Wood}. 
+\end{DoxyReturn}
+\Hypertarget{class_wood_aeb2e3856c54a961c3581a5ca81e6be16}\index{Wood@{Wood}!obtain@{obtain}}
+\index{obtain@{obtain}!Wood@{Wood}}
+\doxysubsubsection{\texorpdfstring{obtain()}{obtain()}}
+{\footnotesize\ttfamily \label{class_wood_aeb2e3856c54a961c3581a5ca81e6be16} 
+void Wood\+::obtain (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Obtains wood material. 
+
+This method implements the logic for obtaining wood. 
+
+Implements \mbox{\hyperlink{class_materials_a1403907d0f139b25337a61ebebaa49d5}{Materials}}.
+
+\Hypertarget{class_wood_a342e7c8eb256a5d00855674031ae4bfc}\index{Wood@{Wood}!refine@{refine}}
+\index{refine@{refine}!Wood@{Wood}}
+\doxysubsubsection{\texorpdfstring{refine()}{refine()}}
+{\footnotesize\ttfamily \label{class_wood_a342e7c8eb256a5d00855674031ae4bfc} 
+void Wood\+::refine (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Refines wood material. 
+
+This method implements the logic for refining wood. 
+
+Implements \mbox{\hyperlink{class_materials_ab53b9bfb6f30a3888b463cb8363b84f0}{Materials}}.
+

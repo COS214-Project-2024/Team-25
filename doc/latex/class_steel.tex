@@ -1,0 +1,106 @@
+\doxysection{Steel Class Reference}
+\hypertarget{class_steel}{}\label{class_steel}\index{Steel@{Steel}}
+
+
+Singleton class representing steel as a material resource.  
+
+
+
+
+{\ttfamily \#include $<$Resources.\+h$>$}
+
+Inheritance diagram for Steel\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_steel}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_steel_a58369e63e6e32eda67654a79819ac853}\label{class_steel_a58369e63e6e32eda67654a79819ac853} 
+{\bfseries Steel} (const \mbox{\hyperlink{class_steel}{Steel}} \&)=delete
+\item 
+\Hypertarget{class_steel_a197decfba78a265897d0705d533df13d}\label{class_steel_a197decfba78a265897d0705d533df13d} 
+void {\bfseries operator=} (const \mbox{\hyperlink{class_steel}{Steel}} \&)=delete
+\item 
+void \mbox{\hyperlink{class_steel_ad459ddf341b7e555fa184f25958adf5d}{obtain}} () override
+\begin{DoxyCompactList}\small\item\em Obtains steel material. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_steel_aaad627e1b2c4152bb90f792be16a01ab}{refine}} () override
+\begin{DoxyCompactList}\small\item\em Refines steel material. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_materials}{Materials}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_materials_a2dfa37c118bd29053598f9ae6b53f810}{Materials}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for the \doxylink{class_materials}{Materials} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_materials_a004c8a7c4506862a9ce3fcdcf859bd09}{increase}} ()
+\begin{DoxyCompactList}\small\item\em Increases the quantity of materials. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_materials_a5abd1537f213ff1f5477f85f7585c944}{get\+Kilo}} () const
+\begin{DoxyCompactList}\small\item\em Gets the quantity of materials in kilograms. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_materials_a89e15ea05fe3aea9edac53489ace75b5}{set\+Kilo}} (int k)
+\begin{DoxyCompactList}\small\item\em Sets the quantity of materials in kilograms. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_resources}{Resources}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Resources} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_resources}{Resources}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_steel}{Steel}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_steel_a754a343e9f29ce238e3c459e06c6757a}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Gets the instance of the \doxylink{class_steel}{Steel} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_materials}{Materials}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries kilograms}
+\begin{DoxyCompactList}\small\item\em The quantity of materials in kilograms. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Singleton class representing steel as a material resource. 
+
+The \doxylink{class_steel}{Steel} class inherits from the \doxylink{class_materials}{Materials} class and implements the singleton design pattern to ensure that only one instance of steel exists within the resource management system. It provides methods to obtain and refine steel. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_steel_a754a343e9f29ce238e3c459e06c6757a}\index{Steel@{Steel}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!Steel@{Steel}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \label{class_steel_a754a343e9f29ce238e3c459e06c6757a} 
+\mbox{\hyperlink{class_steel}{Steel}} \texorpdfstring{$\ast$}{*} Steel\+::get\+Instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Gets the instance of the \doxylink{class_steel}{Steel} class. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the singleton instance of \doxylink{class_steel}{Steel}. 
+\end{DoxyReturn}
+\Hypertarget{class_steel_ad459ddf341b7e555fa184f25958adf5d}\index{Steel@{Steel}!obtain@{obtain}}
+\index{obtain@{obtain}!Steel@{Steel}}
+\doxysubsubsection{\texorpdfstring{obtain()}{obtain()}}
+{\footnotesize\ttfamily \label{class_steel_ad459ddf341b7e555fa184f25958adf5d} 
+void Steel\+::obtain (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Obtains steel material. 
+
+This method implements the logic for obtaining steel. 
+
+Implements \mbox{\hyperlink{class_materials_a1403907d0f139b25337a61ebebaa49d5}{Materials}}.
+
+\Hypertarget{class_steel_aaad627e1b2c4152bb90f792be16a01ab}\index{Steel@{Steel}!refine@{refine}}
+\index{refine@{refine}!Steel@{Steel}}
+\doxysubsubsection{\texorpdfstring{refine()}{refine()}}
+{\footnotesize\ttfamily \label{class_steel_aaad627e1b2c4152bb90f792be16a01ab} 
+void Steel\+::refine (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Refines steel material. 
+
+This method implements the logic for refining steel. 
+
+Implements \mbox{\hyperlink{class_materials_ab53b9bfb6f30a3888b463cb8363b84f0}{Materials}}.
+

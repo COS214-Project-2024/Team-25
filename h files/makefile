@@ -48,7 +48,7 @@ clean:
 	rm -f *.o *.gcda *.gcno *.gcov *.gcov.json *.gcov.json.gz
 	rm -f debug $(main) $(test) coverage.info COM1
 	rm -rf coverage_report
-	clear
+	# clear
 
 # Creates a debug build
 debug:

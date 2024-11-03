@@ -1,0 +1,95 @@
+\doxysection{Tax\+System Class Reference}
+\hypertarget{class_tax_system}{}\label{class_tax_system}\index{TaxSystem@{TaxSystem}}
+
+
+Manages the tax collection system for the city.  
+
+
+
+
+{\ttfamily \#include $<$Tax\+System.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_tax_system_a07ce191e661ad8c4c310c3cc510a548d}\label{class_tax_system_a07ce191e661ad8c4c310c3cc510a548d} 
+{\bfseries Tax\+System} ()
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_tax_system}{Tax\+System} object. \end{DoxyCompactList}\item 
+\Hypertarget{class_tax_system_a09f2fdac6243c5b82f922c55a6eab39a}\label{class_tax_system_a09f2fdac6243c5b82f922c55a6eab39a} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Tax\+System} ()
+\begin{DoxyCompactList}\small\item\em Destroys the \doxylink{class_tax_system}{Tax\+System} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tax_system_a6b5ef5bbdcdc0df435689f4783d84461}{set\+Tax\+Strategy}} (\mbox{\hyperlink{class_tax_strategy}{Tax\+Strategy}} \texorpdfstring{$\ast$}{*}strategy)
+\begin{DoxyCompactList}\small\item\em Sets the current tax strategy. \end{DoxyCompactList}\item 
+\Hypertarget{class_tax_system_a6a485db8d1ea2c24b5f7d569e04e8b21}\label{class_tax_system_a6a485db8d1ea2c24b5f7d569e04e8b21} 
+void {\bfseries toggle\+Strategy} ()
+\begin{DoxyCompactList}\small\item\em Toggles the current tax strategy between available strategies. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_tax_system_a8c25c580149bffacef31d503cd03459d}{collect\+Tax}} (\mbox{\hyperlink{class_city_growth}{City\+Growth}} \texorpdfstring{$\ast$}{*}growth)
+\begin{DoxyCompactList}\small\item\em Collects taxes based on the current tax strategy. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_tax_system_a719680defa6f3374641ac1fc3f5861a2}{get\+Collected\+Taxes}} ()
+\begin{DoxyCompactList}\small\item\em Gets the total taxes collected. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_tax_system_ab8ea98d2a0ddfa4e6ae9481bdae4bce1}{current\+Strategy}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the name of the current tax strategy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages the tax collection system for the city. 
+
+The \doxylink{class_tax_system}{Tax\+System} class is responsible for setting the tax strategy, collecting taxes, and keeping track of the total taxes collected. It allows for toggling between different tax strategies. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_tax_system_a8c25c580149bffacef31d503cd03459d}\index{TaxSystem@{TaxSystem}!collectTax@{collectTax}}
+\index{collectTax@{collectTax}!TaxSystem@{TaxSystem}}
+\doxysubsubsection{\texorpdfstring{collectTax()}{collectTax()}}
+{\footnotesize\ttfamily \label{class_tax_system_a8c25c580149bffacef31d503cd03459d} 
+void Tax\+System\+::collect\+Tax (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_city_growth}{City\+Growth}} \texorpdfstring{$\ast$}{*}}]{growth}{}\end{DoxyParamCaption})}
+
+
+
+Collects taxes based on the current tax strategy. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em growth} & Pointer to a \doxylink{class_city_growth}{City\+Growth} object used to gather relevant data for tax calculation. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_tax_system_ab8ea98d2a0ddfa4e6ae9481bdae4bce1}\index{TaxSystem@{TaxSystem}!currentStrategy@{currentStrategy}}
+\index{currentStrategy@{currentStrategy}!TaxSystem@{TaxSystem}}
+\doxysubsubsection{\texorpdfstring{currentStrategy()}{currentStrategy()}}
+{\footnotesize\ttfamily \label{class_tax_system_ab8ea98d2a0ddfa4e6ae9481bdae4bce1} 
+std\+::string Tax\+System\+::current\+Strategy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves the name of the current tax strategy. 
+
+\begin{DoxyReturn}{Returns}
+A string representing the current tax strategy. 
+\end{DoxyReturn}
+\Hypertarget{class_tax_system_a719680defa6f3374641ac1fc3f5861a2}\index{TaxSystem@{TaxSystem}!getCollectedTaxes@{getCollectedTaxes}}
+\index{getCollectedTaxes@{getCollectedTaxes}!TaxSystem@{TaxSystem}}
+\doxysubsubsection{\texorpdfstring{getCollectedTaxes()}{getCollectedTaxes()}}
+{\footnotesize\ttfamily \label{class_tax_system_a719680defa6f3374641ac1fc3f5861a2} 
+float Tax\+System\+::get\+Collected\+Taxes (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Gets the total taxes collected. 
+
+\begin{DoxyReturn}{Returns}
+The total amount of taxes collected. 
+\end{DoxyReturn}
+\Hypertarget{class_tax_system_a6b5ef5bbdcdc0df435689f4783d84461}\index{TaxSystem@{TaxSystem}!setTaxStrategy@{setTaxStrategy}}
+\index{setTaxStrategy@{setTaxStrategy}!TaxSystem@{TaxSystem}}
+\doxysubsubsection{\texorpdfstring{setTaxStrategy()}{setTaxStrategy()}}
+{\footnotesize\ttfamily \label{class_tax_system_a6b5ef5bbdcdc0df435689f4783d84461} 
+void Tax\+System\+::set\+Tax\+Strategy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_tax_strategy}{Tax\+Strategy}} \texorpdfstring{$\ast$}{*}}]{strategy}{}\end{DoxyParamCaption})}
+
+
+
+Sets the current tax strategy. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em strategy} & Pointer to a \doxylink{class_tax_strategy}{Tax\+Strategy} object to be set as the current strategy. \\
+\hline
+\end{DoxyParams}

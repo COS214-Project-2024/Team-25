@@ -1,0 +1,183 @@
+\doxysection{City\+Growth Class Reference}
+\hypertarget{class_city_growth}{}\label{class_city_growth}\index{CityGrowth@{CityGrowth}}
+
+
+Represents the overall growth and management of the city.  
+
+
+
+
+{\ttfamily \#include $<$City\+Growth.\+h$>$}
+
+Inheritance diagram for City\+Growth\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_city_growth}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_city_growth_a4d3f2766c399a21345fa66ff53f96ee7}\label{class_city_growth_a4d3f2766c399a21345fa66ff53f96ee7} 
+{\bfseries City\+Growth} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_city_growth}{City\+Growth}. \end{DoxyCompactList}\item 
+\Hypertarget{class_city_growth_a4cdc1df2e9be31a3cde15facf2848ddd}\label{class_city_growth_a4cdc1df2e9be31a3cde15facf2848ddd} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+City\+Growth} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_city_growth}{City\+Growth}. \end{DoxyCompactList}\item 
+\Hypertarget{class_city_growth_a45211bb1021b2dbb98560d0e87b0e1cb}\label{class_city_growth_a45211bb1021b2dbb98560d0e87b0e1cb} 
+void {\bfseries add\+Sector} ()
+\begin{DoxyCompactList}\small\item\em Adds a new sector to the city growth management. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_city_growth_a99b14895d511c22771c620fe6cbaf741}{add\+Sector}} (\mbox{\hyperlink{class_city_sector}{City\+Sector}} \texorpdfstring{$\ast$}{*}sector)
+\begin{DoxyCompactList}\small\item\em Adds an existing sector to the city growth management. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_city_growth_a802944ed405b1f5d3676008caa88cb3d}{add\+Building}} (\mbox{\hyperlink{class_building}{Building}} \texorpdfstring{$\ast$}{*}building, int sector\+Id)
+\begin{DoxyCompactList}\small\item\em Adds a building to a specified sector. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_city_growth_af2726f91499e202de6b061262823767a}{get\+Total\+Building\+Count}} ()
+\begin{DoxyCompactList}\small\item\em Gets the total count of buildings across all sectors. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_city_growth_a8a2bf74caf1404e1de83dc57810def59}{get\+Total\+Sector\+Count}} ()
+\begin{DoxyCompactList}\small\item\em Gets the total count of sectors in the city. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_city_sector}{City\+Sector}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_city_growth_ae23c004663e707d80ecd4eb0fce2a8fb}{get\+Sectors}} ()
+\begin{DoxyCompactList}\small\item\em Gets a vector of pointers to the sectors in the city. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_city_growth_a56daa021a1f666cea2d6bc47f8325b55}{print\+Sectors}} ()
+\begin{DoxyCompactList}\small\item\em Prints information about all sectors in the city. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_city_growth_a5aefa4772a681afa4a3a3ba379fbd855}{print\+Sectors\+Citizens}} (int sector\+ID)
+\begin{DoxyCompactList}\small\item\em Prints the citizens in a specified sector. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_city_growth_ad0f4848b4fb9887ffe28b0c8b385795d}{set\+Roads}} (\mbox{\hyperlink{class_road_system_adapter}{Road\+System\+Adapter}} \texorpdfstring{$\ast$}{*}rs)
+\begin{DoxyCompactList}\small\item\em Sets the road system for the city. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_city_sector}{City\+Sector}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+City\+Sector} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_city_sector}{City\+Sector}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_city_sector_ab089992c71466fb4f8b1f990277146d6}{add\+Building}} (\mbox{\hyperlink{class_building}{Building}} \texorpdfstring{$\ast$}{*}building)
+\begin{DoxyCompactList}\small\item\em Adds a building to the city sector. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_city_sector_a77664b897b8d531622267e18e9871dbe}{get\+Building\+Count}} ()
+\begin{DoxyCompactList}\small\item\em Gets the count of buildings in the sector. \end{DoxyCompactList}\item 
+const std\+::vector$<$ \mbox{\hyperlink{class_building}{Building}} \texorpdfstring{$\ast$}{*} $>$ \& \mbox{\hyperlink{class_city_sector_a18503b14a7a35ef9f4807d17346fa90b}{get\+Buildings}} () const
+\begin{DoxyCompactList}\small\item\em Gets a constant reference to the vector of buildings in the sector. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_building}{Building}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_city_sector_a6f75753046a9fd13df742b4f013843e6}{get\+Block}} ()
+\begin{DoxyCompactList}\small\item\em Gets a vector representing the block of buildings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents the overall growth and management of the city. 
+
+The \doxylink{class_city_growth}{City\+Growth} class inherits from \doxylink{class_city_sector}{City\+Sector} and manages multiple city sectors. It handles the addition of sectors and buildings, tracks total building and sector counts, and manages city infrastructure such as roads. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_city_growth_a802944ed405b1f5d3676008caa88cb3d}\index{CityGrowth@{CityGrowth}!addBuilding@{addBuilding}}
+\index{addBuilding@{addBuilding}!CityGrowth@{CityGrowth}}
+\doxysubsubsection{\texorpdfstring{addBuilding()}{addBuilding()}}
+{\footnotesize\ttfamily \label{class_city_growth_a802944ed405b1f5d3676008caa88cb3d} 
+bool City\+Growth\+::add\+Building (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_building}{Building}} \texorpdfstring{$\ast$}{*}}]{building}{, }\item[{int}]{sector\+Id}{}\end{DoxyParamCaption})}
+
+
+
+Adds a building to a specified sector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em building} & A pointer to the \doxylink{class_building}{Building} object to be added. \\
+\hline
+{\em sector\+Id} & The identifier of the sector where the building should be added. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the building was successfully added, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_city_growth_a99b14895d511c22771c620fe6cbaf741}\index{CityGrowth@{CityGrowth}!addSector@{addSector}}
+\index{addSector@{addSector}!CityGrowth@{CityGrowth}}
+\doxysubsubsection{\texorpdfstring{addSector()}{addSector()}}
+{\footnotesize\ttfamily \label{class_city_growth_a99b14895d511c22771c620fe6cbaf741} 
+void City\+Growth\+::add\+Sector (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_city_sector}{City\+Sector}} \texorpdfstring{$\ast$}{*}}]{sector}{}\end{DoxyParamCaption})}
+
+
+
+Adds an existing sector to the city growth management. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sector} & A pointer to the \doxylink{class_city_sector}{City\+Sector} object to be added. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_city_growth_ae23c004663e707d80ecd4eb0fce2a8fb}\index{CityGrowth@{CityGrowth}!getSectors@{getSectors}}
+\index{getSectors@{getSectors}!CityGrowth@{CityGrowth}}
+\doxysubsubsection{\texorpdfstring{getSectors()}{getSectors()}}
+{\footnotesize\ttfamily \label{class_city_growth_ae23c004663e707d80ecd4eb0fce2a8fb} 
+std\+::vector$<$ \mbox{\hyperlink{class_city_sector}{City\+Sector}} \texorpdfstring{$\ast$}{*} $>$ City\+Growth\+::get\+Sectors (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Gets a vector of pointers to the sectors in the city. 
+
+\begin{DoxyReturn}{Returns}
+A vector containing pointers to \doxylink{class_city_sector}{City\+Sector} objects. 
+\end{DoxyReturn}
+\Hypertarget{class_city_growth_af2726f91499e202de6b061262823767a}\index{CityGrowth@{CityGrowth}!getTotalBuildingCount@{getTotalBuildingCount}}
+\index{getTotalBuildingCount@{getTotalBuildingCount}!CityGrowth@{CityGrowth}}
+\doxysubsubsection{\texorpdfstring{getTotalBuildingCount()}{getTotalBuildingCount()}}
+{\footnotesize\ttfamily \label{class_city_growth_af2726f91499e202de6b061262823767a} 
+int City\+Growth\+::get\+Total\+Building\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Gets the total count of buildings across all sectors. 
+
+\begin{DoxyReturn}{Returns}
+The total number of buildings in the city. 
+\end{DoxyReturn}
+\Hypertarget{class_city_growth_a8a2bf74caf1404e1de83dc57810def59}\index{CityGrowth@{CityGrowth}!getTotalSectorCount@{getTotalSectorCount}}
+\index{getTotalSectorCount@{getTotalSectorCount}!CityGrowth@{CityGrowth}}
+\doxysubsubsection{\texorpdfstring{getTotalSectorCount()}{getTotalSectorCount()}}
+{\footnotesize\ttfamily \label{class_city_growth_a8a2bf74caf1404e1de83dc57810def59} 
+int City\+Growth\+::get\+Total\+Sector\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Gets the total count of sectors in the city. 
+
+\begin{DoxyReturn}{Returns}
+The total number of sectors. 
+\end{DoxyReturn}
+\Hypertarget{class_city_growth_a56daa021a1f666cea2d6bc47f8325b55}\index{CityGrowth@{CityGrowth}!printSectors@{printSectors}}
+\index{printSectors@{printSectors}!CityGrowth@{CityGrowth}}
+\doxysubsubsection{\texorpdfstring{printSectors()}{printSectors()}}
+{\footnotesize\ttfamily \label{class_city_growth_a56daa021a1f666cea2d6bc47f8325b55} 
+std\+::string City\+Growth\+::print\+Sectors (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Prints information about all sectors in the city. 
+
+\begin{DoxyReturn}{Returns}
+A string containing information about the sectors. 
+\end{DoxyReturn}
+\Hypertarget{class_city_growth_a5aefa4772a681afa4a3a3ba379fbd855}\index{CityGrowth@{CityGrowth}!printSectorsCitizens@{printSectorsCitizens}}
+\index{printSectorsCitizens@{printSectorsCitizens}!CityGrowth@{CityGrowth}}
+\doxysubsubsection{\texorpdfstring{printSectorsCitizens()}{printSectorsCitizens()}}
+{\footnotesize\ttfamily \label{class_city_growth_a5aefa4772a681afa4a3a3ba379fbd855} 
+void City\+Growth\+::print\+Sectors\+Citizens (\begin{DoxyParamCaption}\item[{int}]{sector\+ID}{}\end{DoxyParamCaption})}
+
+
+
+Prints the citizens in a specified sector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sector\+ID} & The identifier of the sector whose citizens will be printed. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_city_growth_ad0f4848b4fb9887ffe28b0c8b385795d}\index{CityGrowth@{CityGrowth}!setRoads@{setRoads}}
+\index{setRoads@{setRoads}!CityGrowth@{CityGrowth}}
+\doxysubsubsection{\texorpdfstring{setRoads()}{setRoads()}}
+{\footnotesize\ttfamily \label{class_city_growth_ad0f4848b4fb9887ffe28b0c8b385795d} 
+void City\+Growth\+::set\+Roads (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_road_system_adapter}{Road\+System\+Adapter}} \texorpdfstring{$\ast$}{*}}]{rs}{}\end{DoxyParamCaption})}
+
+
+
+Sets the road system for the city. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rs} & A pointer to a \doxylink{class_road_system_adapter}{Road\+System\+Adapter} object representing the road system. \\
+\hline
+\end{DoxyParams}

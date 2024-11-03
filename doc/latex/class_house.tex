@@ -1,0 +1,183 @@
+\doxysection{House Class Reference}
+\hypertarget{class_house}{}\label{class_house}\index{House@{House}}
+
+
+Class representing a house, a specific type of residential building.  
+
+
+
+
+{\ttfamily \#include $<$Buildings.\+h$>$}
+
+Inheritance diagram for House\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_house}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_house_ad38cf764b7c8479fe0c712e00a5907f5}{House}} (std\+::string \mbox{\hyperlink{class_building_a6e62ddc243a1f5b900c34c797bff3569}{name}}, int \mbox{\hyperlink{class_building_ac67eae238324a4ad8f435232caa15f12}{num\+Rooms}}, int \mbox{\hyperlink{class_building_a2f7028f06f0973c27abe924495bf4294}{m\+\_\+squared}}, float \mbox{\hyperlink{class_building_a21eb2373e2ef24b51f85a1f6cf8c734f}{value}}, int \mbox{\hyperlink{class_residential_a04cef0755fc4b805eec800fc5d1003e1}{num\+Bedrooms}}, int \mbox{\hyperlink{class_residential_a200d0cff9392f83507c649107f389810}{num\+Bathrooms}}, int \mbox{\hyperlink{class_residential_acc807d75623eb9d2cac217603a5be18a}{capacity}}, int kitchen\+Size)
+\begin{DoxyCompactList}\small\item\em Constructor for the \doxylink{class_house}{House} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_house_a99c2ef05495328481ec14d2937703f8a}{build}} () override
+\begin{DoxyCompactList}\small\item\em Builds the house. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_house}{House}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_house_a8f85ef99e1acf606a08e2a2a5a41a1d8}{clone}} () override
+\begin{DoxyCompactList}\small\item\em Clones the \doxylink{class_house}{House} object. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_house_aa36f1de346b219a9be7272242fde2a8a}{get\+Type}} () const override
+\begin{DoxyCompactList}\small\item\em Gets the type of the building (\doxylink{class_house}{House}). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_residential}{Residential}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_residential_aba87aed9c77b1a670b83a258230f1adb}{Residential}} (std\+::string \mbox{\hyperlink{class_building_a6e62ddc243a1f5b900c34c797bff3569}{name}}, int \mbox{\hyperlink{class_building_ac67eae238324a4ad8f435232caa15f12}{num\+Rooms}}, int \mbox{\hyperlink{class_building_a2f7028f06f0973c27abe924495bf4294}{m\+\_\+squared}}, float \mbox{\hyperlink{class_building_a21eb2373e2ef24b51f85a1f6cf8c734f}{value}}, int \mbox{\hyperlink{class_residential_a04cef0755fc4b805eec800fc5d1003e1}{num\+Bedrooms}}, int \mbox{\hyperlink{class_residential_a200d0cff9392f83507c649107f389810}{num\+Bathrooms}}, int \mbox{\hyperlink{class_residential_acc807d75623eb9d2cac217603a5be18a}{capacity}}, std\+::string \mbox{\hyperlink{class_building_a2984e4d0f7890dd8d1a5ed73f1b87ea5}{type}})
+\begin{DoxyCompactList}\small\item\em Constructor for a \doxylink{class_residential}{Residential} building. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_residential_ac21cd7fb69ff77d19f98c4d68711cadb}{add\+Citizen}} (\mbox{\hyperlink{class_citizen}{Citizen}} \texorpdfstring{$\ast$}{*}human) override
+\begin{DoxyCompactList}\small\item\em Adds a citizen to the residential building. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_residential_ab614ba9ebd8b9055653b852a53a083ee}{display\+Citizens}} () override
+\begin{DoxyCompactList}\small\item\em Displays the list of citizens in the residential building. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_residential_ae55779805b638796741fd79ad6c06efc}{get\+Left\+Over\+Capacity}} () override
+\begin{DoxyCompactList}\small\item\em Gets the remaining capacity of the residential building. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_residential_a9ff6d97b43ef6df3976a9c242772bc75}{get\+Capacity}} ()
+\begin{DoxyCompactList}\small\item\em Gets the maximum capacity of the residential building. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_citizen}{Citizen}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_residential_abec91b03b5fb4e6c3fd6123db0f133a6}{get\+Citizens}} ()
+\begin{DoxyCompactList}\small\item\em Gets the list of citizens in the residential building. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_building}{Building}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_building_aa339d5eed58b9de44f90eb0182afd704}{Building}} (std\+::string \mbox{\hyperlink{class_building_a6e62ddc243a1f5b900c34c797bff3569}{name}}, int \mbox{\hyperlink{class_building_ac67eae238324a4ad8f435232caa15f12}{num\+Rooms}}, int \mbox{\hyperlink{class_building_a2f7028f06f0973c27abe924495bf4294}{m\+\_\+squared}}, float \mbox{\hyperlink{class_building_a21eb2373e2ef24b51f85a1f6cf8c734f}{value}}, std\+::string \mbox{\hyperlink{class_building_a2984e4d0f7890dd8d1a5ed73f1b87ea5}{type}})
+\begin{DoxyCompactList}\small\item\em Constructor to initialize a \doxylink{class_building}{Building} object. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Building} ()
+\begin{DoxyCompactList}\small\item\em Virtual destructor for the \doxylink{class_building}{Building} class. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_citizen}{Citizen}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_building_ab2bbacb4f1520d7ae73a6771610529be}{get\+Citizens}} () const
+\begin{DoxyCompactList}\small\item\em Gets the list of citizens in the building. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_building_a114ab2f15d5d734175110c64bfe94002}{get\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Gets the name of the building. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_building_a0b8afd153bcf210bc29081e3bed66559}{get\+Building\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Gets the building\textquotesingle{}s type description. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_building_a44d6b21513c8573c81f075f8eebecc0c}{get\+Built}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the building is built. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_building_ac9c4ce3446623eab4ad8a548144365ac}{renovate}} ()
+\begin{DoxyCompactList}\small\item\em Renovates the building, updating any necessary properties. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_residential}{Residential}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries num\+Bedrooms}
+\begin{DoxyCompactList}\small\item\em Number of bedrooms in the residential building. \end{DoxyCompactList}\item 
+int {\bfseries num\+Bathrooms}
+\begin{DoxyCompactList}\small\item\em Number of bathrooms in the residential building. \end{DoxyCompactList}\item 
+int {\bfseries capacity}
+\begin{DoxyCompactList}\small\item\em Maximum occupancy capacity of the building. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_building}{Building}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string {\bfseries name}
+\begin{DoxyCompactList}\small\item\em Name of the building. \end{DoxyCompactList}\item 
+std\+::string {\bfseries type}
+\begin{DoxyCompactList}\small\item\em Type of the building (e.\+g., \doxylink{class_residential}{Residential}, \doxylink{class_commercial}{Commercial}) \end{DoxyCompactList}\item 
+int {\bfseries num\+Rooms}
+\begin{DoxyCompactList}\small\item\em Number of rooms in the building. \end{DoxyCompactList}\item 
+int {\bfseries m\+\_\+squared}
+\begin{DoxyCompactList}\small\item\em Area of the building in square meters. \end{DoxyCompactList}\item 
+float {\bfseries value}
+\begin{DoxyCompactList}\small\item\em Value of the building. \end{DoxyCompactList}\item 
+bool {\bfseries built} = false
+\begin{DoxyCompactList}\small\item\em Flag indicating if the building is built. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_budget}{Budget}} \texorpdfstring{$\ast$}{*} {\bfseries budget}
+\begin{DoxyCompactList}\small\item\em Pointer to a \doxylink{class_budget}{Budget} object for managing building finances. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_concrete}{Concrete}} \texorpdfstring{$\ast$}{*} {\bfseries concrete}
+\begin{DoxyCompactList}\small\item\em Pointer to a \doxylink{class_concrete}{Concrete} object for building materials. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_steel}{Steel}} \texorpdfstring{$\ast$}{*} {\bfseries steel}
+\begin{DoxyCompactList}\small\item\em Pointer to a \doxylink{class_steel}{Steel} object for building materials. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_wood}{Wood}} \texorpdfstring{$\ast$}{*} {\bfseries wood}
+\begin{DoxyCompactList}\small\item\em Pointer to a \doxylink{class_wood}{Wood} object for building materials. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_citizen}{Citizen}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries citizens}
+\begin{DoxyCompactList}\small\item\em List of citizens associated with the building. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class representing a house, a specific type of residential building. 
+
+The \doxylink{class_house}{House} class inherits from \doxylink{class_residential}{Residential} and includes attributes specific to houses, such as kitchen size. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_house_ad38cf764b7c8479fe0c712e00a5907f5}\index{House@{House}!House@{House}}
+\index{House@{House}!House@{House}}
+\doxysubsubsection{\texorpdfstring{House()}{House()}}
+{\footnotesize\ttfamily \label{class_house_ad38cf764b7c8479fe0c712e00a5907f5} 
+House\+::\+House (\begin{DoxyParamCaption}\item[{std\+::string}]{name}{, }\item[{int}]{num\+Rooms}{, }\item[{int}]{m\+\_\+squared}{, }\item[{float}]{value}{, }\item[{int}]{num\+Bedrooms}{, }\item[{int}]{num\+Bathrooms}{, }\item[{int}]{capacity}{, }\item[{int}]{kitchen\+Size}{}\end{DoxyParamCaption})}
+
+
+
+Constructor for the \doxylink{class_house}{House} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the house. \\
+\hline
+{\em num\+Rooms} & Number of rooms in the house. \\
+\hline
+{\em m\+\_\+squared} & Area of the house in square meters. \\
+\hline
+{\em value} & Value of the house. \\
+\hline
+{\em num\+Bedrooms} & Number of bedrooms in the house. \\
+\hline
+{\em num\+Bathrooms} & Number of bathrooms in the house. \\
+\hline
+{\em capacity} & Maximum capacity of the house. \\
+\hline
+{\em kitchen\+Size} & Size of the kitchen in the house. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_house_a99c2ef05495328481ec14d2937703f8a}\index{House@{House}!build@{build}}
+\index{build@{build}!House@{House}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily \label{class_house_a99c2ef05495328481ec14d2937703f8a} 
+void House\+::build (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Builds the house. 
+
+
+
+Implements \mbox{\hyperlink{class_residential_a9421db844bef44f2e4c667d4bf97ceb6}{Residential}}.
+
+\Hypertarget{class_house_a8f85ef99e1acf606a08e2a2a5a41a1d8}\index{House@{House}!clone@{clone}}
+\index{clone@{clone}!House@{House}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \label{class_house_a8f85ef99e1acf606a08e2a2a5a41a1d8} 
+\mbox{\hyperlink{class_house}{House}} \texorpdfstring{$\ast$}{*} House\+::clone (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clones the \doxylink{class_house}{House} object. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to a new \doxylink{class_house}{House} object that is a clone of the current instance. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_residential_a4b719db3577e2dc0430545b353ab0fb3}{Residential}}.
+
+\Hypertarget{class_house_aa36f1de346b219a9be7272242fde2a8a}\index{House@{House}!getType@{getType}}
+\index{getType@{getType}!House@{House}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \label{class_house_aa36f1de346b219a9be7272242fde2a8a} 
+std\+::string House\+::get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Gets the type of the building (\doxylink{class_house}{House}). 
+
+\begin{DoxyReturn}{Returns}
+A string indicating the type of the building. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_residential_a6670f095e7dc25f977510ef497e96be7}{Residential}}.
+

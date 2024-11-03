@@ -1,0 +1,106 @@
+\doxysection{Road Class Reference}
+\hypertarget{class_road}{}\label{class_road}\index{Road@{Road}}
+
+
+Represents a road for public transport vehicles.  
+
+
+
+
+{\ttfamily \#include $<$Transportation.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_road_a4a1c762df76bdef00f209bf68ad1508d}{Road}} (int max\+Busses, string type)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_road}{Road} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_road_abcbdce35160c75ae139b130e2d8d1bc2}{add\+Bus}} (\mbox{\hyperlink{class_public_transport}{Public\+Transport}} bus)
+\begin{DoxyCompactList}\small\item\em Adds a bus to the road. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_road_ac7421222cb4924d83d91a6e1b662e233}{get\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Gets the type of the road. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_road_ad8e54a7268191bc64c71fb0ce8fbd5c5}{get\+Num\+Busses}} ()
+\begin{DoxyCompactList}\small\item\em Gets the current number of buses on the road. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_road_a66602c2a67ab090b673dc2ae97881ccc}{get\+Max\+Num\+Of\+Busses}} ()
+\begin{DoxyCompactList}\small\item\em Gets the maximum number of buses allowed on the road. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a road for public transport vehicles. 
+
+This class maintains a list of public transport vehicles and manages their operations. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_road_a4a1c762df76bdef00f209bf68ad1508d}\index{Road@{Road}!Road@{Road}}
+\index{Road@{Road}!Road@{Road}}
+\doxysubsubsection{\texorpdfstring{Road()}{Road()}}
+{\footnotesize\ttfamily \label{class_road_a4a1c762df76bdef00f209bf68ad1508d} 
+Road\+::\+Road (\begin{DoxyParamCaption}\item[{int}]{max\+Busses}{, }\item[{string}]{type}{}\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_road}{Road} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+Busses} & The maximum number of buses that can operate on this road. \\
+\hline
+{\em type} & The type of the road. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_road_abcbdce35160c75ae139b130e2d8d1bc2}\index{Road@{Road}!addBus@{addBus}}
+\index{addBus@{addBus}!Road@{Road}}
+\doxysubsubsection{\texorpdfstring{addBus()}{addBus()}}
+{\footnotesize\ttfamily \label{class_road_abcbdce35160c75ae139b130e2d8d1bc2} 
+void Road\+::add\+Bus (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_public_transport}{Public\+Transport}}}]{bus}{}\end{DoxyParamCaption})}
+
+
+
+Adds a bus to the road. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bus} & The \doxylink{class_public_transport}{Public\+Transport} object representing the bus to add. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_road_a66602c2a67ab090b673dc2ae97881ccc}\index{Road@{Road}!getMaxNumOfBusses@{getMaxNumOfBusses}}
+\index{getMaxNumOfBusses@{getMaxNumOfBusses}!Road@{Road}}
+\doxysubsubsection{\texorpdfstring{getMaxNumOfBusses()}{getMaxNumOfBusses()}}
+{\footnotesize\ttfamily \label{class_road_a66602c2a67ab090b673dc2ae97881ccc} 
+int Road\+::get\+Max\+Num\+Of\+Busses (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Gets the maximum number of buses allowed on the road. 
+
+\begin{DoxyReturn}{Returns}
+The maximum number of buses. 
+\end{DoxyReturn}
+\Hypertarget{class_road_ad8e54a7268191bc64c71fb0ce8fbd5c5}\index{Road@{Road}!getNumBusses@{getNumBusses}}
+\index{getNumBusses@{getNumBusses}!Road@{Road}}
+\doxysubsubsection{\texorpdfstring{getNumBusses()}{getNumBusses()}}
+{\footnotesize\ttfamily \label{class_road_ad8e54a7268191bc64c71fb0ce8fbd5c5} 
+int Road\+::get\+Num\+Busses (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Gets the current number of buses on the road. 
+
+\begin{DoxyReturn}{Returns}
+The current number of buses. 
+\end{DoxyReturn}
+\Hypertarget{class_road_ac7421222cb4924d83d91a6e1b662e233}\index{Road@{Road}!getType@{getType}}
+\index{getType@{getType}!Road@{Road}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \label{class_road_ac7421222cb4924d83d91a6e1b662e233} 
+string Road\+::get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Gets the type of the road. 
+
+\begin{DoxyReturn}{Returns}
+The type of the road. 
+\end{DoxyReturn}

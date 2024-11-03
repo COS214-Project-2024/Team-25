@@ -1,0 +1,76 @@
+\doxysection{Government\+Worker\+Factory Class Reference}
+\hypertarget{class_government_worker_factory}{}\label{class_government_worker_factory}\index{GovernmentWorkerFactory@{GovernmentWorkerFactory}}
+
+
+\doxylink{class_factory}{Factory} class for creating \doxylink{class_government_worker}{Government\+Worker} objects.  
+
+
+
+
+{\ttfamily \#include $<$Citizen.\+h$>$}
+
+Inheritance diagram for Government\+Worker\+Factory\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_government_worker_factory}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_citizen}{Citizen}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_government_worker_factory_a7cefbb2919c177c8af255dd422f85734}{create\+Citizen}} () override
+\begin{DoxyCompactList}\small\item\em Creates a new \doxylink{class_government_worker}{Government\+Worker} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_citizen}{Citizen}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_government_worker_factory_ac87a9b95fa5222970048d72b8e9da291}{create\+Citizen}} (string workplace)
+\begin{DoxyCompactList}\small\item\em Creates a new \doxylink{class_government_worker}{Government\+Worker} object with specified workplace. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_citizen_factory}{Citizen\+Factory}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Citizen\+Factory} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor for \doxylink{class_citizen_factory}{Citizen\+Factory}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_factory}{Factory} class for creating \doxylink{class_government_worker}{Government\+Worker} objects. 
+
+The \doxylink{class_government_worker_factory}{Government\+Worker\+Factory} class inherits from \doxylink{class_citizen_factory}{Citizen\+Factory} and implements the methods to create \doxylink{class_government_worker}{Government\+Worker} instances. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_government_worker_factory_a7cefbb2919c177c8af255dd422f85734}\index{GovernmentWorkerFactory@{GovernmentWorkerFactory}!createCitizen@{createCitizen}}
+\index{createCitizen@{createCitizen}!GovernmentWorkerFactory@{GovernmentWorkerFactory}}
+\doxysubsubsection{\texorpdfstring{createCitizen()}{createCitizen()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_government_worker_factory_a7cefbb2919c177c8af255dd422f85734} 
+\mbox{\hyperlink{class_citizen}{Citizen}} \texorpdfstring{$\ast$}{*} Government\+Worker\+Factory\+::create\+Citizen (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Creates a new \doxylink{class_government_worker}{Government\+Worker} object. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the newly created \doxylink{class_government_worker}{Government\+Worker} object. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_citizen_factory_a0701f02f1352129c89ef06f9a83f14d6}{Citizen\+Factory}}.
+
+\Hypertarget{class_government_worker_factory_ac87a9b95fa5222970048d72b8e9da291}\index{GovernmentWorkerFactory@{GovernmentWorkerFactory}!createCitizen@{createCitizen}}
+\index{createCitizen@{createCitizen}!GovernmentWorkerFactory@{GovernmentWorkerFactory}}
+\doxysubsubsection{\texorpdfstring{createCitizen()}{createCitizen()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_government_worker_factory_ac87a9b95fa5222970048d72b8e9da291} 
+\mbox{\hyperlink{class_citizen}{Citizen}} \texorpdfstring{$\ast$}{*} Government\+Worker\+Factory\+::create\+Citizen (\begin{DoxyParamCaption}\item[{string}]{workplace}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Creates a new \doxylink{class_government_worker}{Government\+Worker} object with specified workplace. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em workplace} & The workplace for the new \doxylink{class_government_worker}{Government\+Worker}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the newly created \doxylink{class_government_worker}{Government\+Worker} object. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_citizen_factory_af5164500f64acd44f4967a72f1cd16bb}{Citizen\+Factory}}.
+

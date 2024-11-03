@@ -1,0 +1,72 @@
+\doxysection{Road\+System Class Reference}
+\hypertarget{class_road_system}{}\label{class_road_system}\index{RoadSystem@{RoadSystem}}
+
+
+Manages multiple roads and their respective public transport systems.  
+
+
+
+
+{\ttfamily \#include $<$Transportation.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_road_system_a3232d6294e30f06449dc7a32b3c96023}{add\+Road}} (\mbox{\hyperlink{class_road}{Road}} road)
+\begin{DoxyCompactList}\small\item\em Adds a road to the road system. \end{DoxyCompactList}\item 
+\Hypertarget{class_road_system_a5db909d8c6aefe989ff98e195572ab8a}\label{class_road_system_a5db909d8c6aefe989ff98e195572ab8a} 
+void {\bfseries upgrade} ()
+\begin{DoxyCompactList}\small\item\em Upgrades the road system. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_road_system_a7f4ac2ecc54f8727935fde7326f66837}{get\+Utilization}} ()
+\begin{DoxyCompactList}\small\item\em Gets the overall utilization of the road system. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{class_road}{Road}} $>$ \& \mbox{\hyperlink{class_road_system_a1da377e0c0f84bb8d9ad0946a03be955}{get\+Roads}} ()
+\begin{DoxyCompactList}\small\item\em Gets the list of roads in the system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages multiple roads and their respective public transport systems. 
+
+This class tracks the number of roads and their utilization. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_road_system_a3232d6294e30f06449dc7a32b3c96023}\index{RoadSystem@{RoadSystem}!addRoad@{addRoad}}
+\index{addRoad@{addRoad}!RoadSystem@{RoadSystem}}
+\doxysubsubsection{\texorpdfstring{addRoad()}{addRoad()}}
+{\footnotesize\ttfamily \label{class_road_system_a3232d6294e30f06449dc7a32b3c96023} 
+void Road\+System\+::add\+Road (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_road}{Road}}}]{road}{}\end{DoxyParamCaption})}
+
+
+
+Adds a road to the road system. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em road} & The \doxylink{class_road}{Road} object to add. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_road_system_a1da377e0c0f84bb8d9ad0946a03be955}\index{RoadSystem@{RoadSystem}!getRoads@{getRoads}}
+\index{getRoads@{getRoads}!RoadSystem@{RoadSystem}}
+\doxysubsubsection{\texorpdfstring{getRoads()}{getRoads()}}
+{\footnotesize\ttfamily \label{class_road_system_a1da377e0c0f84bb8d9ad0946a03be955} 
+vector$<$ \mbox{\hyperlink{class_road}{Road}} $>$ \& Road\+System\+::get\+Roads (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Gets the list of roads in the system. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the vector of roads. 
+\end{DoxyReturn}
+\Hypertarget{class_road_system_a7f4ac2ecc54f8727935fde7326f66837}\index{RoadSystem@{RoadSystem}!getUtilization@{getUtilization}}
+\index{getUtilization@{getUtilization}!RoadSystem@{RoadSystem}}
+\doxysubsubsection{\texorpdfstring{getUtilization()}{getUtilization()}}
+{\footnotesize\ttfamily \label{class_road_system_a7f4ac2ecc54f8727935fde7326f66837} 
+int Road\+System\+::get\+Utilization (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Gets the overall utilization of the road system. 
+
+\begin{DoxyReturn}{Returns}
+The utilization percentage. 
+\end{DoxyReturn}

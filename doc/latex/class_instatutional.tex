@@ -1,0 +1,228 @@
+\doxysection{Instatutional Class Reference}
+\hypertarget{class_instatutional}{}\label{class_instatutional}\index{Instatutional@{Instatutional}}
+
+
+Abstract class representing an institutional building.  
+
+
+
+
+{\ttfamily \#include $<$Buildings.\+h$>$}
+
+Inheritance diagram for Instatutional\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_instatutional}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_instatutional_a222e380fa0fa75588955e2bd7b60c4d6}{Instatutional}} (std\+::string \mbox{\hyperlink{class_building_a6e62ddc243a1f5b900c34c797bff3569}{name}}, int \mbox{\hyperlink{class_building_ac67eae238324a4ad8f435232caa15f12}{num\+Rooms}}, int \mbox{\hyperlink{class_building_a2f7028f06f0973c27abe924495bf4294}{m\+\_\+squared}}, float \mbox{\hyperlink{class_building_a21eb2373e2ef24b51f85a1f6cf8c734f}{value}}, int \mbox{\hyperlink{class_instatutional_a5ed515e013e9dbad0e8da38708aa97ff}{capacity}}, std\+::string \mbox{\hyperlink{class_building_a2984e4d0f7890dd8d1a5ed73f1b87ea5}{type}})
+\begin{DoxyCompactList}\small\item\em Constructor for an \doxylink{class_instatutional}{Instatutional} building. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_instatutional_a534fef074f15b7451c42da05f286fd3c}{build}} ()=0
+\begin{DoxyCompactList}\small\item\em Pure virtual function to build the institutional building. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_instatutional}{Instatutional}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_instatutional_aeb7e09e825c93a1405fa72636e824fd9}{clone}} ()=0
+\begin{DoxyCompactList}\small\item\em Pure virtual function to clone the institutional building. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_instatutional_aae9a428e02c993dd7834260773eec623}{add\+Citizen}} (\mbox{\hyperlink{class_citizen}{Citizen}} \texorpdfstring{$\ast$}{*}human) override
+\begin{DoxyCompactList}\small\item\em Adds a citizen to the institutional building. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_instatutional_ad776f6ca8f338d03c8bb05efb10e6903}{display\+Citizens}} () override
+\begin{DoxyCompactList}\small\item\em Displays the list of citizens in the institutional building. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_instatutional_a0b4a137ef3591d412c7f39db3ae6eba1}{get\+Left\+Over\+Capacity}} () override
+\begin{DoxyCompactList}\small\item\em Gets the remaining capacity of the institutional building. \end{DoxyCompactList}\item 
+virtual std\+::string \mbox{\hyperlink{class_instatutional_a519e027165ed5fb9ed20378e725544f6}{get\+Type}} () const =0
+\begin{DoxyCompactList}\small\item\em Pure virtual function to get the type of the institutional building. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_building}{Building}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_building_aa339d5eed58b9de44f90eb0182afd704}{Building}} (std\+::string \mbox{\hyperlink{class_building_a6e62ddc243a1f5b900c34c797bff3569}{name}}, int \mbox{\hyperlink{class_building_ac67eae238324a4ad8f435232caa15f12}{num\+Rooms}}, int \mbox{\hyperlink{class_building_a2f7028f06f0973c27abe924495bf4294}{m\+\_\+squared}}, float \mbox{\hyperlink{class_building_a21eb2373e2ef24b51f85a1f6cf8c734f}{value}}, std\+::string \mbox{\hyperlink{class_building_a2984e4d0f7890dd8d1a5ed73f1b87ea5}{type}})
+\begin{DoxyCompactList}\small\item\em Constructor to initialize a \doxylink{class_building}{Building} object. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Building} ()
+\begin{DoxyCompactList}\small\item\em Virtual destructor for the \doxylink{class_building}{Building} class. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_citizen}{Citizen}} \texorpdfstring{$\ast$}{*} $>$ \mbox{\hyperlink{class_building_ab2bbacb4f1520d7ae73a6771610529be}{get\+Citizens}} () const
+\begin{DoxyCompactList}\small\item\em Gets the list of citizens in the building. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_building_a114ab2f15d5d734175110c64bfe94002}{get\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Gets the name of the building. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_building_a0b8afd153bcf210bc29081e3bed66559}{get\+Building\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Gets the building\textquotesingle{}s type description. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_building_a44d6b21513c8573c81f075f8eebecc0c}{get\+Built}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the building is built. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_building_ac9c4ce3446623eab4ad8a548144365ac}{renovate}} ()
+\begin{DoxyCompactList}\small\item\em Renovates the building, updating any necessary properties. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_instatutional_a5ed515e013e9dbad0e8da38708aa97ff}\label{class_instatutional_a5ed515e013e9dbad0e8da38708aa97ff} 
+int {\bfseries capacity}
+\begin{DoxyCompactList}\small\item\em Maximum occupancy capacity of the institutional building. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_building}{Building}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string {\bfseries name}
+\begin{DoxyCompactList}\small\item\em Name of the building. \end{DoxyCompactList}\item 
+std\+::string {\bfseries type}
+\begin{DoxyCompactList}\small\item\em Type of the building (e.\+g., \doxylink{class_residential}{Residential}, \doxylink{class_commercial}{Commercial}) \end{DoxyCompactList}\item 
+int {\bfseries num\+Rooms}
+\begin{DoxyCompactList}\small\item\em Number of rooms in the building. \end{DoxyCompactList}\item 
+int {\bfseries m\+\_\+squared}
+\begin{DoxyCompactList}\small\item\em Area of the building in square meters. \end{DoxyCompactList}\item 
+float {\bfseries value}
+\begin{DoxyCompactList}\small\item\em Value of the building. \end{DoxyCompactList}\item 
+bool {\bfseries built} = false
+\begin{DoxyCompactList}\small\item\em Flag indicating if the building is built. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_budget}{Budget}} \texorpdfstring{$\ast$}{*} {\bfseries budget}
+\begin{DoxyCompactList}\small\item\em Pointer to a \doxylink{class_budget}{Budget} object for managing building finances. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_concrete}{Concrete}} \texorpdfstring{$\ast$}{*} {\bfseries concrete}
+\begin{DoxyCompactList}\small\item\em Pointer to a \doxylink{class_concrete}{Concrete} object for building materials. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_steel}{Steel}} \texorpdfstring{$\ast$}{*} {\bfseries steel}
+\begin{DoxyCompactList}\small\item\em Pointer to a \doxylink{class_steel}{Steel} object for building materials. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_wood}{Wood}} \texorpdfstring{$\ast$}{*} {\bfseries wood}
+\begin{DoxyCompactList}\small\item\em Pointer to a \doxylink{class_wood}{Wood} object for building materials. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{class_citizen}{Citizen}} \texorpdfstring{$\ast$}{*} $>$ {\bfseries citizens}
+\begin{DoxyCompactList}\small\item\em List of citizens associated with the building. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract class representing an institutional building. 
+
+The \doxylink{class_instatutional}{Instatutional} class is derived from the \doxylink{class_building}{Building} class and serves as a base class for various types of institutional buildings. It includes attributes specific to institutions, such as capacity. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_instatutional_a222e380fa0fa75588955e2bd7b60c4d6}\index{Instatutional@{Instatutional}!Instatutional@{Instatutional}}
+\index{Instatutional@{Instatutional}!Instatutional@{Instatutional}}
+\doxysubsubsection{\texorpdfstring{Instatutional()}{Instatutional()}}
+{\footnotesize\ttfamily \label{class_instatutional_a222e380fa0fa75588955e2bd7b60c4d6} 
+Instatutional\+::\+Instatutional (\begin{DoxyParamCaption}\item[{std\+::string}]{name}{, }\item[{int}]{num\+Rooms}{, }\item[{int}]{m\+\_\+squared}{, }\item[{float}]{value}{, }\item[{int}]{capacity}{, }\item[{std\+::string}]{type}{}\end{DoxyParamCaption})}
+
+
+
+Constructor for an \doxylink{class_instatutional}{Instatutional} building. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the building. \\
+\hline
+{\em num\+Rooms} & Number of rooms in the building. \\
+\hline
+{\em m\+\_\+squared} & Area of the building in square meters. \\
+\hline
+{\em value} & Value of the building. \\
+\hline
+{\em capacity} & Maximum capacity of the building. \\
+\hline
+{\em type} & Type of the building. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_instatutional_aae9a428e02c993dd7834260773eec623}\index{Instatutional@{Instatutional}!addCitizen@{addCitizen}}
+\index{addCitizen@{addCitizen}!Instatutional@{Instatutional}}
+\doxysubsubsection{\texorpdfstring{addCitizen()}{addCitizen()}}
+{\footnotesize\ttfamily \label{class_instatutional_aae9a428e02c993dd7834260773eec623} 
+void Instatutional\+::add\+Citizen (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_citizen}{Citizen}} \texorpdfstring{$\ast$}{*}}]{human}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Adds a citizen to the institutional building. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em human} & Pointer to the \doxylink{class_citizen}{Citizen} to be added. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_building_ac8bf0fedb482b7c1a1c2878c715ee617}{Building}}.
+
+\Hypertarget{class_instatutional_a534fef074f15b7451c42da05f286fd3c}\index{Instatutional@{Instatutional}!build@{build}}
+\index{build@{build}!Instatutional@{Instatutional}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily \label{class_instatutional_a534fef074f15b7451c42da05f286fd3c} 
+virtual void Instatutional\+::build (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Pure virtual function to build the institutional building. 
+
+
+
+Implements \mbox{\hyperlink{class_building_a053e6599f9abb8c3ea7644ad24db7332}{Building}}.
+
+
+
+Implemented in \mbox{\hyperlink{class_government_building_aa8cac51d3f39b9a8e303c59d0157eaf7}{Government\+Building}}, \mbox{\hyperlink{class_hospital_a1ed653296ad4bdc8d4453b02be89867b}{Hospital}}, and \mbox{\hyperlink{class_school_aebeedae25bb511a9a9b53d39fdfccb46}{School}}.
+
+\Hypertarget{class_instatutional_aeb7e09e825c93a1405fa72636e824fd9}\index{Instatutional@{Instatutional}!clone@{clone}}
+\index{clone@{clone}!Instatutional@{Instatutional}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \label{class_instatutional_aeb7e09e825c93a1405fa72636e824fd9} 
+virtual \mbox{\hyperlink{class_instatutional}{Instatutional}} \texorpdfstring{$\ast$}{*} Instatutional\+::clone (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Pure virtual function to clone the institutional building. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to a new \doxylink{class_instatutional}{Instatutional} object that is a clone of the current instance. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_building_a5525f0851f4f51618f8c51ad9ac8d7af}{Building}}.
+
+
+
+Implemented in \mbox{\hyperlink{class_government_building_a5da10942ba847b419496497df6378351}{Government\+Building}}, \mbox{\hyperlink{class_hospital_a5963a97ccac502330eb90fe25c751699}{Hospital}}, and \mbox{\hyperlink{class_school_a120b15c935920ad242cd6bd866a8e62f}{School}}.
+
+\Hypertarget{class_instatutional_ad776f6ca8f338d03c8bb05efb10e6903}\index{Instatutional@{Instatutional}!displayCitizens@{displayCitizens}}
+\index{displayCitizens@{displayCitizens}!Instatutional@{Instatutional}}
+\doxysubsubsection{\texorpdfstring{displayCitizens()}{displayCitizens()}}
+{\footnotesize\ttfamily \label{class_instatutional_ad776f6ca8f338d03c8bb05efb10e6903} 
+void Instatutional\+::display\+Citizens (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Displays the list of citizens in the institutional building. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_building_ab267e802b679ebc5ea6567078a60cf52}{Building}}.
+
+\Hypertarget{class_instatutional_a0b4a137ef3591d412c7f39db3ae6eba1}\index{Instatutional@{Instatutional}!getLeftOverCapacity@{getLeftOverCapacity}}
+\index{getLeftOverCapacity@{getLeftOverCapacity}!Instatutional@{Instatutional}}
+\doxysubsubsection{\texorpdfstring{getLeftOverCapacity()}{getLeftOverCapacity()}}
+{\footnotesize\ttfamily \label{class_instatutional_a0b4a137ef3591d412c7f39db3ae6eba1} 
+int Instatutional\+::get\+Left\+Over\+Capacity (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Gets the remaining capacity of the institutional building. 
+
+\begin{DoxyReturn}{Returns}
+The number of additional citizens the building can accommodate. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_building_a276539beba18338592801dbe02dd9b14}{Building}}.
+
+\Hypertarget{class_instatutional_a519e027165ed5fb9ed20378e725544f6}\index{Instatutional@{Instatutional}!getType@{getType}}
+\index{getType@{getType}!Instatutional@{Instatutional}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \label{class_instatutional_a519e027165ed5fb9ed20378e725544f6} 
+virtual std\+::string Instatutional\+::get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Pure virtual function to get the type of the institutional building. 
+
+\begin{DoxyReturn}{Returns}
+The type of the building as a string. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_building_a20db85f737c1d014f54f1548c3bb2143}{Building}}.
+
+
+
+Implemented in \mbox{\hyperlink{class_government_building_afa863fa0d6ac8241703a56c4d3195c78}{Government\+Building}}, \mbox{\hyperlink{class_hospital_a789210af053314dfcbab8a45194a3e57}{Hospital}}, and \mbox{\hyperlink{class_school_a91294245c7e45056f567392e062822c2}{School}}.
+

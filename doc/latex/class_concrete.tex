@@ -1,0 +1,106 @@
+\doxysection{Concrete Class Reference}
+\hypertarget{class_concrete}{}\label{class_concrete}\index{Concrete@{Concrete}}
+
+
+Singleton class representing concrete as a material resource.  
+
+
+
+
+{\ttfamily \#include $<$Resources.\+h$>$}
+
+Inheritance diagram for Concrete\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_concrete}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_concrete_aab43c305cbfd83a94a6184cf6e98376d}\label{class_concrete_aab43c305cbfd83a94a6184cf6e98376d} 
+{\bfseries Concrete} (const \mbox{\hyperlink{class_concrete}{Concrete}} \&)=delete
+\item 
+\Hypertarget{class_concrete_a3ca30a8a0e29d3f56d712aaef207dcb9}\label{class_concrete_a3ca30a8a0e29d3f56d712aaef207dcb9} 
+void {\bfseries operator=} (const \mbox{\hyperlink{class_concrete}{Concrete}} \&)=delete
+\item 
+void \mbox{\hyperlink{class_concrete_a20cb40702ad1956e762826fa10138042}{obtain}} () override
+\begin{DoxyCompactList}\small\item\em Obtains concrete material. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_concrete_a1acf4624dafbeb4904215983026fced5}{refine}} () override
+\begin{DoxyCompactList}\small\item\em Refines concrete material. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_materials}{Materials}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_materials_a2dfa37c118bd29053598f9ae6b53f810}{Materials}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for the \doxylink{class_materials}{Materials} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_materials_a004c8a7c4506862a9ce3fcdcf859bd09}{increase}} ()
+\begin{DoxyCompactList}\small\item\em Increases the quantity of materials. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_materials_a5abd1537f213ff1f5477f85f7585c944}{get\+Kilo}} () const
+\begin{DoxyCompactList}\small\item\em Gets the quantity of materials in kilograms. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_materials_a89e15ea05fe3aea9edac53489ace75b5}{set\+Kilo}} (int k)
+\begin{DoxyCompactList}\small\item\em Sets the quantity of materials in kilograms. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_resources}{Resources}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Resources} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_resources}{Resources}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_concrete}{Concrete}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_concrete_a2dc90af990997172f2b37e2d02388888}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Gets the instance of the \doxylink{class_concrete}{Concrete} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_materials}{Materials}}}
+\begin{DoxyCompactItemize}
+\item 
+int {\bfseries kilograms}
+\begin{DoxyCompactList}\small\item\em The quantity of materials in kilograms. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Singleton class representing concrete as a material resource. 
+
+The \doxylink{class_concrete}{Concrete} class inherits from the \doxylink{class_materials}{Materials} class and implements the singleton design pattern to ensure that only one instance of concrete exists within the resource management system. It provides methods to obtain and refine concrete. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_concrete_a2dc90af990997172f2b37e2d02388888}\index{Concrete@{Concrete}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!Concrete@{Concrete}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily \label{class_concrete_a2dc90af990997172f2b37e2d02388888} 
+\mbox{\hyperlink{class_concrete}{Concrete}} \texorpdfstring{$\ast$}{*} Concrete\+::get\+Instance (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Gets the instance of the \doxylink{class_concrete}{Concrete} class. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the singleton instance of \doxylink{class_concrete}{Concrete}. 
+\end{DoxyReturn}
+\Hypertarget{class_concrete_a20cb40702ad1956e762826fa10138042}\index{Concrete@{Concrete}!obtain@{obtain}}
+\index{obtain@{obtain}!Concrete@{Concrete}}
+\doxysubsubsection{\texorpdfstring{obtain()}{obtain()}}
+{\footnotesize\ttfamily \label{class_concrete_a20cb40702ad1956e762826fa10138042} 
+void Concrete\+::obtain (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Obtains concrete material. 
+
+This method implements the logic for obtaining concrete. 
+
+Implements \mbox{\hyperlink{class_materials_a1403907d0f139b25337a61ebebaa49d5}{Materials}}.
+
+\Hypertarget{class_concrete_a1acf4624dafbeb4904215983026fced5}\index{Concrete@{Concrete}!refine@{refine}}
+\index{refine@{refine}!Concrete@{Concrete}}
+\doxysubsubsection{\texorpdfstring{refine()}{refine()}}
+{\footnotesize\ttfamily \label{class_concrete_a1acf4624dafbeb4904215983026fced5} 
+void Concrete\+::refine (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Refines concrete material. 
+
+This method implements the logic for refining concrete. 
+
+Implements \mbox{\hyperlink{class_materials_ab53b9bfb6f30a3888b463cb8363b84f0}{Materials}}.
+

@@ -1,0 +1,69 @@
+\doxysection{Upgrade\+All\+Pub Class Reference}
+\hypertarget{class_upgrade_all_pub}{}\label{class_upgrade_all_pub}\index{UpgradeAllPub@{UpgradeAllPub}}
+
+
+\doxylink{class_concrete}{Concrete} command class that upgrades all public transit systems.  
+
+
+
+
+{\ttfamily \#include $<$Routines.\+h$>$}
+
+Inheritance diagram for Upgrade\+All\+Pub\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_upgrade_all_pub}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_upgrade_all_pub_aaccb5d5decc4d7f979cbab7464dc823c}{Upgrade\+All\+Pub}} (const std\+::vector$<$ \mbox{\hyperlink{class_public_transit_adapter}{Public\+Transit\+Adapter}} \texorpdfstring{$\ast$}{*} $>$ \&pub)
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_upgrade_all_pub}{Upgrade\+All\+Pub} command. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_upgrade_all_pub_a63b12ed82a177a47b244266bad0bd8dc}{execute}} () override
+\begin{DoxyCompactList}\small\item\em Executes the upgrade of all public transit systems. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_government_commands}{Government\+Commands}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Government\+Commands} ()
+\begin{DoxyCompactList}\small\item\em Virtual destructor for proper cleanup of derived classes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_concrete}{Concrete} command class that upgrades all public transit systems. 
+
+This command class encapsulates the action of upgrading all public transit systems in the city. It holds a vector of \doxylink{class_public_transit_adapter}{Public\+Transit\+Adapter} pointers representing the public transit systems to be upgraded. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_upgrade_all_pub_aaccb5d5decc4d7f979cbab7464dc823c}\index{UpgradeAllPub@{UpgradeAllPub}!UpgradeAllPub@{UpgradeAllPub}}
+\index{UpgradeAllPub@{UpgradeAllPub}!UpgradeAllPub@{UpgradeAllPub}}
+\doxysubsubsection{\texorpdfstring{UpgradeAllPub()}{UpgradeAllPub()}}
+{\footnotesize\ttfamily \label{class_upgrade_all_pub_aaccb5d5decc4d7f979cbab7464dc823c} 
+Upgrade\+All\+Pub\+::\+Upgrade\+All\+Pub (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{class_public_transit_adapter}{Public\+Transit\+Adapter}} \texorpdfstring{$\ast$}{*} $>$ \&}]{pub}{}\end{DoxyParamCaption})}
+
+
+
+Constructs an \doxylink{class_upgrade_all_pub}{Upgrade\+All\+Pub} command. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pub} & Vector of pointers to the public transit systems to be upgraded. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_upgrade_all_pub_a63b12ed82a177a47b244266bad0bd8dc}\index{UpgradeAllPub@{UpgradeAllPub}!execute@{execute}}
+\index{execute@{execute}!UpgradeAllPub@{UpgradeAllPub}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily \label{class_upgrade_all_pub_a63b12ed82a177a47b244266bad0bd8dc} 
+void Upgrade\+All\+Pub\+::execute (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Executes the upgrade of all public transit systems. 
+
+This function implements the logic for upgrading each public transit system in the list. 
+
+Implements \mbox{\hyperlink{class_government_commands_ad68264081c8fe0c9b28a12afe43986ed}{Government\+Commands}}.
+

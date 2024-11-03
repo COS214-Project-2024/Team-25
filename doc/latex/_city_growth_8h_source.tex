@@ -1,0 +1,70 @@
+\doxysection{City\+Growth.\+h}
+\hypertarget{_city_growth_8h_source}{}\label{_city_growth_8h_source}\index{h files/CityGrowth.h@{h files/CityGrowth.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CityGrowth\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CityGrowth\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}Buildings.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}Citizen.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}Transportation.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_city_sector}{CitySector}}\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{class_city_sector_ad0118d3e5985b087a7c393b024e7138d}{\string~CitySector}}();}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_city_sector_ab089992c71466fb4f8b1f990277146d6}{addBuilding}}(\mbox{\hyperlink{class_building}{Building}}*\ building);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_city_sector_a77664b897b8d531622267e18e9871dbe}{getBuildingCount}}();}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<Building*>\&\ \mbox{\hyperlink{class_city_sector_a18503b14a7a35ef9f4807d17346fa90b}{getBuildings}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00048\ \ \ \ \ std::vector<Building*>\ \mbox{\hyperlink{class_city_sector_a6f75753046a9fd13df742b4f013843e6}{getBlock}}();}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00051\ \ \ \ \ std::vector<Building*>\ block;\ \ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{comment}{//\ std::vector<Citizen*>\ population;\ \ //\ Future\ implementation\ could\ include\ a\ population\ vector.}}
+\DoxyCodeLine{00053\ \};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00066\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_city_growth}{CityGrowth}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_city_sector}{CitySector}}\ \{}
+\DoxyCodeLine{00067\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00071\ \ \ \ \ \mbox{\hyperlink{class_city_growth_a4d3f2766c399a21345fa66ff53f96ee7}{CityGrowth}}();}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00076\ \ \ \ \ \mbox{\hyperlink{class_city_growth_a4cdc1df2e9be31a3cde15facf2848ddd}{\string~CityGrowth}}();}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{comment}{//\ Future\ implementations\ could\ include\ methods\ for\ managing\ population\ growth,\ housing\ needs,\ }}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{comment}{//\ economic\ development,\ and\ infrastructure\ expansion.}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_city_growth_a45211bb1021b2dbb98560d0e87b0e1cb}{addSector}}();}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_city_growth_a45211bb1021b2dbb98560d0e87b0e1cb}{addSector}}(\mbox{\hyperlink{class_city_sector}{CitySector}}*\ sector);}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_city_growth_a802944ed405b1f5d3676008caa88cb3d}{addBuilding}}(\mbox{\hyperlink{class_building}{Building}}*\ building,\ \textcolor{keywordtype}{int}\ sectorId);}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_city_growth_af2726f91499e202de6b061262823767a}{getTotalBuildingCount}}();}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_city_growth_a8a2bf74caf1404e1de83dc57810def59}{getTotalSectorCount}}();}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00116\ \ \ \ \ std::vector<CitySector*>\ \mbox{\hyperlink{class_city_growth_ae23c004663e707d80ecd4eb0fce2a8fb}{getSectors}}();}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00122\ \ \ \ \ std::string\ \mbox{\hyperlink{class_city_growth_a56daa021a1f666cea2d6bc47f8325b55}{printSectors}}();}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_city_growth_a5aefa4772a681afa4a3a3ba379fbd855}{printSectorsCitizens}}(\textcolor{keywordtype}{int}\ sectorID);}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_city_growth_ad0f4848b4fb9887ffe28b0c8b385795d}{setRoads}}(\mbox{\hyperlink{class_road_system_adapter}{RoadSystemAdapter}}*\ rs);\ }
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00137\ \ \ \ \ std::vector<CitySector*>\ sectors;\ }
+\DoxyCodeLine{00138\ \ \ \ \ \mbox{\hyperlink{class_road_system_adapter}{RoadSystemAdapter}}*\ roadsAdapted;\ \ \ }
+\DoxyCodeLine{00139\ \};}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ CityGrowth\_H}}
+
+\end{DoxyCode}

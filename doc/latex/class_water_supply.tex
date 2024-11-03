@@ -1,0 +1,183 @@
+\doxysection{Water\+Supply Class Reference}
+\hypertarget{class_water_supply}{}\label{class_water_supply}\index{WaterSupply@{WaterSupply}}
+
+
+Abstract class representing a water supply system.  
+
+
+
+
+{\ttfamily \#include $<$Utilities.\+h$>$}
+
+Inheritance diagram for Water\+Supply\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_water_supply}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_water_supply_a3f79b01ea546304b4e1bca3e0d697c12}{Water\+Supply}} (bool built, int power\+Gen=0)
+\begin{DoxyCompactList}\small\item\em Constructs a \doxylink{class_water_supply}{Water\+Supply} object. \end{DoxyCompactList}\item 
+\Hypertarget{class_water_supply_a248d7aa796e3f45c018acb73a577191c}\label{class_water_supply_a248d7aa796e3f45c018acb73a577191c} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Water\+Supply} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_water_supply}{Water\+Supply}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_water_supply}{Water\+Supply}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_water_supply_ac56098949d12b2731fe8037bd1a31170}{repair}} ()=0
+\begin{DoxyCompactList}\small\item\em Repairs the water supply system. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_water_supply}{Water\+Supply}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_water_supply_aaa1505b1722ead941ef830eac69477ba}{mulfunction}} ()=0
+\begin{DoxyCompactList}\small\item\em Indicates a malfunction in the water supply system. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_water_supply_a331060351e2c122daac2745c0f49c4fd}{get\+Water\+Generation}} ()
+\begin{DoxyCompactList}\small\item\em Gets the water generation capacity. \end{DoxyCompactList}\item 
+\Hypertarget{class_water_supply_ac304f60e07bc7615aa098642abadd6c5}\label{class_water_supply_ac304f60e07bc7615aa098642abadd6c5} 
+void {\bfseries distribute} ()
+\begin{DoxyCompactList}\small\item\em Distributes water from the supply. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_water_supply_aa3f65897d360cdcea69c93535d4bb661}{get\+Water\+Generation\+Raw}} () const
+\begin{DoxyCompactList}\small\item\em Gets the raw water generation value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_water_supply_a52d24c7eeb20d531271cba3b8e278d1a}{set\+Water\+Generation}} (int value)
+\begin{DoxyCompactList}\small\item\em Sets the water generation capacity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_utility}{Utility}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Utility} ()
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{class_utility}{Utility}. \end{DoxyCompactList}\item 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Utility} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_utility}{Utility}. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_utility_a89046d446bc3a82d6c87584a7fc2c475}{get\+Efficiency}} () const
+\begin{DoxyCompactList}\small\item\em Gets the efficiency of the utility. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_utility_a083cdffc01fa5c79c8e0181aae23bca5}{set\+Efficiency}} (float value)
+\begin{DoxyCompactList}\small\item\em Sets the efficiency of the utility. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_utility_afad84455f47394f460a62dfc87565d35}{get\+Functional}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the utility is functional. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_utility_a1a2cd48cb41ad234af32696838bc9dc1}{set\+Functional}} (bool value)
+\begin{DoxyCompactList}\small\item\em Sets the functional status of the utility. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_water_supply_a597b7c385b3f30e33210976809d37365}\label{class_water_supply_a597b7c385b3f30e33210976809d37365} 
+int {\bfseries water\+Generation}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_water}{Water} generation capacity in liters. \end{DoxyCompactList}\item 
+\Hypertarget{class_water_supply_aa8e62ec11f9df0cd194894b793b274cc}\label{class_water_supply_aa8e62ec11f9df0cd194894b793b274cc} 
+\mbox{\hyperlink{class_water}{Water}} \texorpdfstring{$\ast$}{*} {\bfseries water}
+\begin{DoxyCompactList}\small\item\em Pointer to water resources. \end{DoxyCompactList}\item 
+\Hypertarget{class_water_supply_a52833d670e549111393642baa3b3017b}\label{class_water_supply_a52833d670e549111393642baa3b3017b} 
+bool {\bfseries is\+Initial\+Build} = false
+\begin{DoxyCompactList}\small\item\em Indicates if it is an initial build. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_utility}{Utility}}}
+\begin{DoxyCompactItemize}
+\item 
+float {\bfseries efficiency}
+\begin{DoxyCompactList}\small\item\em Efficiency of the utility service (percentage). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_budget}{Budget}} \texorpdfstring{$\ast$}{*} {\bfseries budget}
+\begin{DoxyCompactList}\small\item\em Pointer to the budget for the utility. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_concrete}{Concrete}} \texorpdfstring{$\ast$}{*} {\bfseries concrete}
+\begin{DoxyCompactList}\small\item\em Pointer to concrete resources. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_steel}{Steel}} \texorpdfstring{$\ast$}{*} {\bfseries steel}
+\begin{DoxyCompactList}\small\item\em Pointer to steel resources. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_wood}{Wood}} \texorpdfstring{$\ast$}{*} {\bfseries wood}
+\begin{DoxyCompactList}\small\item\em Pointer to wood resources. \end{DoxyCompactList}\item 
+bool {\bfseries is\+Functional}
+\begin{DoxyCompactList}\small\item\em Indicates whether the utility is functional. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract class representing a water supply system. 
+
+This class manages attributes related to water generation. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_water_supply_a3f79b01ea546304b4e1bca3e0d697c12}\index{WaterSupply@{WaterSupply}!WaterSupply@{WaterSupply}}
+\index{WaterSupply@{WaterSupply}!WaterSupply@{WaterSupply}}
+\doxysubsubsection{\texorpdfstring{WaterSupply()}{WaterSupply()}}
+{\footnotesize\ttfamily \label{class_water_supply_a3f79b01ea546304b4e1bca3e0d697c12} 
+Water\+Supply\+::\+Water\+Supply (\begin{DoxyParamCaption}\item[{bool}]{built}{, }\item[{int}]{power\+Gen}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Constructs a \doxylink{class_water_supply}{Water\+Supply} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em built} & Indicates if the water supply system is built. \\
+\hline
+{\em power\+Gen} & Initial water generation capacity. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_water_supply_a331060351e2c122daac2745c0f49c4fd}\index{WaterSupply@{WaterSupply}!getWaterGeneration@{getWaterGeneration}}
+\index{getWaterGeneration@{getWaterGeneration}!WaterSupply@{WaterSupply}}
+\doxysubsubsection{\texorpdfstring{getWaterGeneration()}{getWaterGeneration()}}
+{\footnotesize\ttfamily \label{class_water_supply_a331060351e2c122daac2745c0f49c4fd} 
+int Water\+Supply\+::get\+Water\+Generation (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Gets the water generation capacity. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{class_water}{Water} generation in liters. 
+\end{DoxyReturn}
+\Hypertarget{class_water_supply_aa3f65897d360cdcea69c93535d4bb661}\index{WaterSupply@{WaterSupply}!getWaterGenerationRaw@{getWaterGenerationRaw}}
+\index{getWaterGenerationRaw@{getWaterGenerationRaw}!WaterSupply@{WaterSupply}}
+\doxysubsubsection{\texorpdfstring{getWaterGenerationRaw()}{getWaterGenerationRaw()}}
+{\footnotesize\ttfamily \label{class_water_supply_aa3f65897d360cdcea69c93535d4bb661} 
+int Water\+Supply\+::get\+Water\+Generation\+Raw (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the raw water generation value. 
+
+\begin{DoxyReturn}{Returns}
+The raw water generation capacity. 
+\end{DoxyReturn}
+\Hypertarget{class_water_supply_aaa1505b1722ead941ef830eac69477ba}\index{WaterSupply@{WaterSupply}!mulfunction@{mulfunction}}
+\index{mulfunction@{mulfunction}!WaterSupply@{WaterSupply}}
+\doxysubsubsection{\texorpdfstring{mulfunction()}{mulfunction()}}
+{\footnotesize\ttfamily \label{class_water_supply_aaa1505b1722ead941ef830eac69477ba} 
+virtual \mbox{\hyperlink{class_water_supply}{Water\+Supply}} \texorpdfstring{$\ast$}{*} Water\+Supply\+::mulfunction (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Indicates a malfunction in the water supply system. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the malfunctioning \doxylink{class_water_supply}{Water\+Supply}. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_functional_water_supply_a99bbfb135a57258c4893031994b5db9e}{Functional\+Water\+Supply}}, and \mbox{\hyperlink{class_non_functional_water_supply_a9253d25a44879b4a9fef5f2ee92ca20e}{Non\+Functional\+Water\+Supply}}.
+
+\Hypertarget{class_water_supply_ac56098949d12b2731fe8037bd1a31170}\index{WaterSupply@{WaterSupply}!repair@{repair}}
+\index{repair@{repair}!WaterSupply@{WaterSupply}}
+\doxysubsubsection{\texorpdfstring{repair()}{repair()}}
+{\footnotesize\ttfamily \label{class_water_supply_ac56098949d12b2731fe8037bd1a31170} 
+virtual \mbox{\hyperlink{class_water_supply}{Water\+Supply}} \texorpdfstring{$\ast$}{*} Water\+Supply\+::repair (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Repairs the water supply system. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the repaired \doxylink{class_water_supply}{Water\+Supply}. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_functional_water_supply_a567ab4b1e90b0648b9d67acf34a1c107}{Functional\+Water\+Supply}}, and \mbox{\hyperlink{class_non_functional_water_supply_ad46589858f5b3a8518e99dcde38d6428}{Non\+Functional\+Water\+Supply}}.
+
+\Hypertarget{class_water_supply_a52d24c7eeb20d531271cba3b8e278d1a}\index{WaterSupply@{WaterSupply}!setWaterGeneration@{setWaterGeneration}}
+\index{setWaterGeneration@{setWaterGeneration}!WaterSupply@{WaterSupply}}
+\doxysubsubsection{\texorpdfstring{setWaterGeneration()}{setWaterGeneration()}}
+{\footnotesize\ttfamily \label{class_water_supply_a52d24c7eeb20d531271cba3b8e278d1a} 
+void Water\+Supply\+::set\+Water\+Generation (\begin{DoxyParamCaption}\item[{int}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the water generation capacity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & \doxylink{class_water}{Water} generation value to set. \\
+\hline
+\end{DoxyParams}

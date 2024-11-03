@@ -1,0 +1,119 @@
+\doxysection{Utility Class Reference}
+\hypertarget{class_utility}{}\label{class_utility}\index{Utility@{Utility}}
+
+
+Base class for all utility services.  
+
+
+
+
+{\ttfamily \#include $<$Utilities.\+h$>$}
+
+Inheritance diagram for Utility\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.346154cm]{class_utility}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_utility_ac7af3e1642ac8d53ef180180a08fbd00}\label{class_utility_ac7af3e1642ac8d53ef180180a08fbd00} 
+{\bfseries Utility} ()
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{class_utility}{Utility}. \end{DoxyCompactList}\item 
+\Hypertarget{class_utility_aecfe4b31e39b00555158a2d8288b874a}\label{class_utility_aecfe4b31e39b00555158a2d8288b874a} 
+{\bfseries \texorpdfstring{$\sim$}{\string~}\+Utility} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \doxylink{class_utility}{Utility}. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_utility_a89046d446bc3a82d6c87584a7fc2c475}{get\+Efficiency}} () const
+\begin{DoxyCompactList}\small\item\em Gets the efficiency of the utility. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_utility_a083cdffc01fa5c79c8e0181aae23bca5}{set\+Efficiency}} (float value)
+\begin{DoxyCompactList}\small\item\em Sets the efficiency of the utility. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_utility_afad84455f47394f460a62dfc87565d35}{get\+Functional}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the utility is functional. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_utility_a1a2cd48cb41ad234af32696838bc9dc1}{set\+Functional}} (bool value)
+\begin{DoxyCompactList}\small\item\em Sets the functional status of the utility. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_utility_a622637e0284fd852e523b1cfc8b3c70c}\label{class_utility_a622637e0284fd852e523b1cfc8b3c70c} 
+float {\bfseries efficiency}
+\begin{DoxyCompactList}\small\item\em Efficiency of the utility service (percentage). \end{DoxyCompactList}\item 
+\Hypertarget{class_utility_a8309c9906d23278351ebd3285182a890}\label{class_utility_a8309c9906d23278351ebd3285182a890} 
+\mbox{\hyperlink{class_budget}{Budget}} \texorpdfstring{$\ast$}{*} {\bfseries budget}
+\begin{DoxyCompactList}\small\item\em Pointer to the budget for the utility. \end{DoxyCompactList}\item 
+\Hypertarget{class_utility_a39466c6a7af5178931e53d55ebfe284f}\label{class_utility_a39466c6a7af5178931e53d55ebfe284f} 
+\mbox{\hyperlink{class_concrete}{Concrete}} \texorpdfstring{$\ast$}{*} {\bfseries concrete}
+\begin{DoxyCompactList}\small\item\em Pointer to concrete resources. \end{DoxyCompactList}\item 
+\Hypertarget{class_utility_ade443b29928bed016708408e85952e17}\label{class_utility_ade443b29928bed016708408e85952e17} 
+\mbox{\hyperlink{class_steel}{Steel}} \texorpdfstring{$\ast$}{*} {\bfseries steel}
+\begin{DoxyCompactList}\small\item\em Pointer to steel resources. \end{DoxyCompactList}\item 
+\Hypertarget{class_utility_a0e435aa986e51068b7ae479a5f262a3b}\label{class_utility_a0e435aa986e51068b7ae479a5f262a3b} 
+\mbox{\hyperlink{class_wood}{Wood}} \texorpdfstring{$\ast$}{*} {\bfseries wood}
+\begin{DoxyCompactList}\small\item\em Pointer to wood resources. \end{DoxyCompactList}\item 
+\Hypertarget{class_utility_af2931c1f6cb51461ef9fadc647bf72fb}\label{class_utility_af2931c1f6cb51461ef9fadc647bf72fb} 
+bool {\bfseries is\+Functional}
+\begin{DoxyCompactList}\small\item\em Indicates whether the utility is functional. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base class for all utility services. 
+
+This class represents a utility service with attributes for efficiency, budget, and functional status. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_utility_a89046d446bc3a82d6c87584a7fc2c475}\index{Utility@{Utility}!getEfficiency@{getEfficiency}}
+\index{getEfficiency@{getEfficiency}!Utility@{Utility}}
+\doxysubsubsection{\texorpdfstring{getEfficiency()}{getEfficiency()}}
+{\footnotesize\ttfamily \label{class_utility_a89046d446bc3a82d6c87584a7fc2c475} 
+float Utility\+::get\+Efficiency (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the efficiency of the utility. 
+
+\begin{DoxyReturn}{Returns}
+Efficiency as a float. 
+\end{DoxyReturn}
+\Hypertarget{class_utility_afad84455f47394f460a62dfc87565d35}\index{Utility@{Utility}!getFunctional@{getFunctional}}
+\index{getFunctional@{getFunctional}!Utility@{Utility}}
+\doxysubsubsection{\texorpdfstring{getFunctional()}{getFunctional()}}
+{\footnotesize\ttfamily \label{class_utility_afad84455f47394f460a62dfc87565d35} 
+bool Utility\+::get\+Functional (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Checks if the utility is functional. 
+
+\begin{DoxyReturn}{Returns}
+True if functional, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_utility_a083cdffc01fa5c79c8e0181aae23bca5}\index{Utility@{Utility}!setEfficiency@{setEfficiency}}
+\index{setEfficiency@{setEfficiency}!Utility@{Utility}}
+\doxysubsubsection{\texorpdfstring{setEfficiency()}{setEfficiency()}}
+{\footnotesize\ttfamily \label{class_utility_a083cdffc01fa5c79c8e0181aae23bca5} 
+void Utility\+::set\+Efficiency (\begin{DoxyParamCaption}\item[{float}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the efficiency of the utility. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & Efficiency value to set. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_utility_a1a2cd48cb41ad234af32696838bc9dc1}\index{Utility@{Utility}!setFunctional@{setFunctional}}
+\index{setFunctional@{setFunctional}!Utility@{Utility}}
+\doxysubsubsection{\texorpdfstring{setFunctional()}{setFunctional()}}
+{\footnotesize\ttfamily \label{class_utility_a1a2cd48cb41ad234af32696838bc9dc1} 
+void Utility\+::set\+Functional (\begin{DoxyParamCaption}\item[{bool}]{value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the functional status of the utility. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & Functional status to set. \\
+\hline
+\end{DoxyParams}

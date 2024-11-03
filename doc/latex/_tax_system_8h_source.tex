@@ -1,0 +1,77 @@
+\doxysection{Tax\+System.\+h}
+\hypertarget{_tax_system_8h_source}{}\label{_tax_system_8h_source}\index{h files/TaxSystem.h@{h files/TaxSystem.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ TaxSystem\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ TaxSystem\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ \#include\ "{}Citizen.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}CityGrowth.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_tax_strategy}{TaxStrategy}};}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_tax_system}{TaxSystem}}\ \{}
+\DoxyCodeLine{00019\ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{class_tax_system_a07ce191e661ad8c4c310c3cc510a548d}{TaxSystem}}();}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{class_tax_system_a09f2fdac6243c5b82f922c55a6eab39a}{\string~TaxSystem}}();}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tax_system_a6b5ef5bbdcdc0df435689f4783d84461}{setTaxStrategy}}(\mbox{\hyperlink{class_tax_strategy}{TaxStrategy}}*\ strategy);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tax_system_a6a485db8d1ea2c24b5f7d569e04e8b21}{toggleStrategy}}();}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_tax_system_a8c25c580149bffacef31d503cd03459d}{collectTax}}(\mbox{\hyperlink{class_city_growth}{CityGrowth}}*\ growth);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_tax_system_a719680defa6f3374641ac1fc3f5861a2}{getCollectedTaxes}}();}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00057\ \ \ \ \ std::string\ \mbox{\hyperlink{class_tax_system_ab8ea98d2a0ddfa4e6ae9481bdae4bce1}{currentStrategy}}();}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{comment}{//\ void\ addObserver();}}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//\ void\ notifyObservers();}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00062\ \ \ \ \ \mbox{\hyperlink{class_tax_strategy}{TaxStrategy}}*\ strategy;\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{float}\ collectedTaxes;\ \ \ }
+\DoxyCodeLine{00064\ \ \ \ \ \mbox{\hyperlink{class_budget}{Budget}}*\ budget;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{comment}{//\ std::vector<Citizen*>\ observers;}}
+\DoxyCodeLine{00066\ \};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00077\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_tax_strategy}{TaxStrategy}}\ \{}
+\DoxyCodeLine{00078\ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00079\ \ \ \ \textcolor{comment}{//\ TaxStrategy();}}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_tax_strategy_a1e02adeb64a6697779b564a8f261673a}{\string~TaxStrategy}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_tax_strategy_a01d34463fde4bd9a67de3aa9b3be6f8a}{calculateTax}}(\mbox{\hyperlink{class_city_growth}{CityGrowth}}*\ growth)\ =\ 0;}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{virtual}\ std::string\ \mbox{\hyperlink{class_tax_strategy_a9cd96fe9f48da569cfce16baafa7cb92}{getStrategy}}()\ =\ 0;}
+\DoxyCodeLine{00097\ \};}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00107\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_progressive_tax_strategy}{ProgressiveTaxStrategy}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_tax_strategy}{TaxStrategy}}\ \{}
+\DoxyCodeLine{00108\ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00109\ \ \ \ \textcolor{comment}{//\ ProgressiveTaxStrategy();}}
+\DoxyCodeLine{00110\ \ \ \ \textcolor{comment}{//\ \string~ProgressiveTaxStrategy();}}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_progressive_tax_strategy_a47f84ccaaba6580debcb3ae749ff1c6c}{calculateTax}}(\mbox{\hyperlink{class_city_growth}{CityGrowth}}*\ growth);}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keyword}{virtual}\ std::string\ \mbox{\hyperlink{class_progressive_tax_strategy_ac754a184642399db49f88a95d81c08c1}{getStrategy}}();}
+\DoxyCodeLine{00123\ \};}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00133\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_flat_tax_strategy}{FlatTaxStrategy}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_tax_strategy}{TaxStrategy}}\ \{}
+\DoxyCodeLine{00134\ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00135\ \ \ \ \textcolor{comment}{//\ FlatTaxStrategy();}}
+\DoxyCodeLine{00136\ \ \ \ \textcolor{comment}{//\ \string~FlatTaxStrategy();}}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_flat_tax_strategy_a208fd9dd4d936c70f1f475c025fa66a5}{calculateTax}}(\mbox{\hyperlink{class_city_growth}{CityGrowth}}*\ growth);}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keyword}{virtual}\ std::string\ \mbox{\hyperlink{class_flat_tax_strategy_ae82a000d2fcc5a1c044a1c3d88c5cf7c}{getStrategy}}();}
+\DoxyCodeLine{00150\ \};}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ TaxSystem\_H}}
+
+\end{DoxyCode}

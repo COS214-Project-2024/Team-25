@@ -1,0 +1,98 @@
+\doxysection{Routines.\+h}
+\hypertarget{_routines_8h_source}{}\label{_routines_8h_source}\index{h files/Routines.h@{h files/Routines.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ ROUTINES\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ ROUTINES\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Buildings.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}Transportation.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}CityGrowth.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_government_commands}{GovernmentCommands}}}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_government_commands_ad68264081c8fe0c9b28a12afe43986ed}{execute}}()\ =\ 0;}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_government_commands_a3b90225fc2dff52f1f1b00662c2c0d64}{\string~GovernmentCommands}}();\ }
+\DoxyCodeLine{00027\ \};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_monthly_routines}{MonthlyRoutines}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_government_commands}{GovernmentCommands}}}
+\DoxyCodeLine{00037\ \{}
+\DoxyCodeLine{00038\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{class_city_growth}{CityGrowth}}\ *\mbox{\hyperlink{class_monthly_routines_a6219b7f2b5c531d50fbac3585fdc24f8}{citygrowth}};\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00041\ \ \ \ \ std::vector<GovernmentCommands*>\ transportRoutines;\ }
+\DoxyCodeLine{00042\ \ \ \ \ std::vector<GovernmentCommands*>\ buildingRoutines;\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{class_monthly_routines_a206204ced97b1bb801fcd4eff1bdf909}{MonthlyRoutines}}(\mbox{\hyperlink{class_city_growth}{CityGrowth}}*\ cg);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_monthly_routines_a8466d42deab1a561dda199e1e4ceed46}{addtransportRoutines}}(\mbox{\hyperlink{class_government_commands}{GovernmentCommands}}*\ command);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_monthly_routines_aaad1c1b46b91d3bd26e534bd8f896bea}{addbuildingRoutines}}(\mbox{\hyperlink{class_government_commands}{GovernmentCommands}}*\ command);}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_monthly_routines_ab0854dd9008db0f39267b1d7b3833fba}{executueTransport}}();}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_monthly_routines_a766730f2c6ad4992c06c58fd9e602cd3}{executueBuilding}}();}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_monthly_routines_a928cc7cbdb169d7d5396cf02e72007b5}{execute}}();}
+\DoxyCodeLine{00082\ \};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00091\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_renovate_all_buildings}{RenovateAllBuildings}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_government_commands}{GovernmentCommands}}}
+\DoxyCodeLine{00092\ \{}
+\DoxyCodeLine{00093\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00094\ \ \ \ \ std::vector<Building*>\ buildings;\ }
+\DoxyCodeLine{00095\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00100\ \ \ \ \ \mbox{\hyperlink{class_renovate_all_buildings_a13e44bd6762b20acdcc26b36473eeadf}{RenovateAllBuildings}}(\textcolor{keyword}{const}\ std::vector<Building*>\&\ buildings);}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_renovate_all_buildings_a1ae95aec8dd5c7f9b190bc7d711c435f}{execute}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00108\ \};}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \textcolor{comment}{//\ Any\ other\ Commands\ will\ be\ added\ here}}
+\DoxyCodeLine{00112\ \textcolor{comment}{//\ Example\ of\ EvaluateAllIndustrial,\ RestoreAllLandmarks\ }}
+\DoxyCodeLine{00113\ \textcolor{comment}{//\ They\ will\ Inherit\ from\ GovernmentCommands\ and\ have\ a\ vector\ to}}
+\DoxyCodeLine{00114\ \textcolor{comment}{//\ store\ all\ of\ the\ relevent\ objects}}
+\DoxyCodeLine{00115\ \textcolor{comment}{//\ The\ government.h\ file\ will\ have\ and\ object\ of\ type\ MonthlyRoutines}}
+\DoxyCodeLine{00116\ \textcolor{comment}{//\ which\ will\ be\ used\ to\ execute\ all\ of\ the\ commands.}}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00125\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_upgrade_all_rail}{UpgradeAllRail}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_government_commands}{GovernmentCommands}}}
+\DoxyCodeLine{00126\ \{}
+\DoxyCodeLine{00127\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00128\ \ \ \ \ std::vector<RailSystemAdapter*>\ rails;\ }
+\DoxyCodeLine{00129\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00134\ \ \ \ \ \mbox{\hyperlink{class_upgrade_all_rail_a6e3cd0f179a764038ccf5e0e9fb0968d}{UpgradeAllRail}}(\textcolor{keyword}{const}\ std::vector<RailSystemAdapter*>\&\ rails);}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_upgrade_all_rail_a98aa729d62069cc9dafcc9f68f65ec87}{execute}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00142\ \};}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00153\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_upgrade_all_road}{UpgradeAllRoad}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_government_commands}{GovernmentCommands}}}
+\DoxyCodeLine{00154\ \{}
+\DoxyCodeLine{00155\ \textcolor{keyword}{private}:\ }
+\DoxyCodeLine{00156\ \ \ \ \ std::vector<RoadSystemAdapter*>\ roads;\ }
+\DoxyCodeLine{00157\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00162\ \ \ \ \ \mbox{\hyperlink{class_upgrade_all_road_af45cdff7dc20e14f9c5644b709996713}{UpgradeAllRoad}}(\textcolor{keyword}{const}\ std::vector<RoadSystemAdapter*>\&\ roads);}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00169\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_upgrade_all_road_abd238e015698e321c64f9816f5a409e2}{execute}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00170\ \};}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00181\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_upgrade_all_pub}{UpgradeAllPub}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_government_commands}{GovernmentCommands}}}
+\DoxyCodeLine{00182\ \{}
+\DoxyCodeLine{00183\ \textcolor{keyword}{private}:\ }
+\DoxyCodeLine{00184\ \ \ \ \ std::vector<PublicTransitAdapter*>\ pub;\ }
+\DoxyCodeLine{00185\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00190\ \ \ \ \ \mbox{\hyperlink{class_upgrade_all_pub_aaccb5d5decc4d7f979cbab7464dc823c}{UpgradeAllPub}}(\textcolor{keyword}{const}\ std::vector<PublicTransitAdapter*>\&\ pub);}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00197\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_upgrade_all_pub_a63b12ed82a177a47b244266bad0bd8dc}{execute}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00198\ \};}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00201\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ Routines.h}}
+\DoxyCodeLine{00202\ }
+
+\end{DoxyCode}

@@ -1,0 +1,86 @@
+\doxysection{Commercial\+Worker Class Reference}
+\hypertarget{class_commercial_worker}{}\label{class_commercial_worker}\index{CommercialWorker@{CommercialWorker}}
+
+
+Class representing a commercial worker, a type of citizen.  
+
+
+
+
+{\ttfamily \#include $<$Citizen.\+h$>$}
+
+Inheritance diagram for Commercial\+Worker\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_commercial_worker}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_commercial_worker_a90dfe84ff6c29bc98c1c212ed2bb26a3}\label{class_commercial_worker_a90dfe84ff6c29bc98c1c212ed2bb26a3} 
+{\bfseries Commercial\+Worker} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_commercial_worker}{Commercial\+Worker}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_commercial_worker_aaf60609632202fb856e426a5633f9b61}{Commercial\+Worker}} (string workplace)
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{class_commercial_worker}{Commercial\+Worker} with specified workplace. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_commercial_worker_a4f9ecb67927ebeb490ad6fc2376924e7}{display\+Info}} ()
+\begin{DoxyCompactList}\small\item\em Displays information about the commercial worker. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_citizen}{Citizen}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Citizen} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for \doxylink{class_citizen}{Citizen}. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Citizen} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor for \doxylink{class_citizen}{Citizen}. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_citizen_ae43ab15fddd41bbeaf7af8b525e8acfd}{set\+Citizen}} (string type, string residence, string workplace)
+\begin{DoxyCompactList}\small\item\em Sets the properties of the citizen. \end{DoxyCompactList}\item 
+virtual std\+::string \mbox{\hyperlink{class_citizen_ad0542e5fc1dd7b3343471d222921ac72}{get\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Gets the type of the citizen. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{class_citizen_a9cebf4b8521be8f6ed434af163bd51be}{get\+Residence}} ()
+\begin{DoxyCompactList}\small\item\em Gets the residence of the citizen. \end{DoxyCompactList}\item 
+virtual string \mbox{\hyperlink{class_citizen_a037943487bd269fb8a5d390b5314d035}{get\+Workplace}} ()
+\begin{DoxyCompactList}\small\item\em Gets the workplace of the citizen. \end{DoxyCompactList}\item 
+virtual float \mbox{\hyperlink{class_citizen_a0a875195b487daf901eceaf3e7dc6914}{get\+Satisfaction}} ()
+\begin{DoxyCompactList}\small\item\em Gets the satisfaction level of the citizen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_citizen_a662ec8e43c4c55c3e4a5e92c07e144e2}{change\+Satisfaction}} (float amt)
+\begin{DoxyCompactList}\small\item\em Changes the satisfaction level of the citizen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class representing a commercial worker, a type of citizen. 
+
+The \doxylink{class_commercial_worker}{Commercial\+Worker} class inherits from \doxylink{class_citizen}{Citizen} and represents a worker in the commercial sector. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_commercial_worker_aaf60609632202fb856e426a5633f9b61}\index{CommercialWorker@{CommercialWorker}!CommercialWorker@{CommercialWorker}}
+\index{CommercialWorker@{CommercialWorker}!CommercialWorker@{CommercialWorker}}
+\doxysubsubsection{\texorpdfstring{CommercialWorker()}{CommercialWorker()}}
+{\footnotesize\ttfamily \label{class_commercial_worker_aaf60609632202fb856e426a5633f9b61} 
+Commercial\+Worker\+::\+Commercial\+Worker (\begin{DoxyParamCaption}\item[{string}]{workplace}{}\end{DoxyParamCaption})}
+
+
+
+Constructor for \doxylink{class_commercial_worker}{Commercial\+Worker} with specified workplace. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em workplace} & The workplace of the commercial worker. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_commercial_worker_a4f9ecb67927ebeb490ad6fc2376924e7}\index{CommercialWorker@{CommercialWorker}!displayInfo@{displayInfo}}
+\index{displayInfo@{displayInfo}!CommercialWorker@{CommercialWorker}}
+\doxysubsubsection{\texorpdfstring{displayInfo()}{displayInfo()}}
+{\footnotesize\ttfamily \label{class_commercial_worker_a4f9ecb67927ebeb490ad6fc2376924e7} 
+void Commercial\+Worker\+::display\+Info (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Displays information about the commercial worker. 
+
+
+
+Implements \mbox{\hyperlink{class_citizen_a69f234b80bb89dbe0407103b6cd17add}{Citizen}}.
+
