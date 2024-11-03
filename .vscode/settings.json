@@ -1,5 +1,6 @@
 {
   "files.associations": {
+    "*.embeddedhtml": "html",
     "array": "cpp",
     "atomic": "cpp",
     "*.tcc": "cpp",
@@ -52,7 +53,8 @@
     "ratio": "cpp",
     "set": "cpp",
     "mutex": "cpp",
-    "thread": "cpp"
+    "thread": "cpp",
+    "xstring": "cpp"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",

@@ -4,8 +4,9 @@
 
 GovernmentCommands::~GovernmentCommands() {}
 
-MonthlyRoutines::MonthlyRoutines(CityGrowth *cg){
-    citygrowth = cg; 
+MonthlyRoutines::MonthlyRoutines(CityGrowth *cg)
+{
+    citygrowth = cg;
 }
 
 void MonthlyRoutines::addtransportRoutines(GovernmentCommands *command)
@@ -27,18 +28,17 @@ void MonthlyRoutines::executueTransport()
             tRoutine->execute();
         }
     }
-    
 }
 
 void MonthlyRoutines::executueBuilding()
 {
-   if (!buildingRoutines.empty())
-   {
-       for (auto buildings : buildingRoutines)
-       {
+    if (!buildingRoutines.empty())
+    {
+        for (auto buildings : buildingRoutines)
+        {
             buildings->execute();
-       }
-   }  
+        }
+    }
 }
 
 void MonthlyRoutines::execute()
@@ -50,23 +50,23 @@ void MonthlyRoutines::execute()
 
 void UpgradeAllRail::execute()
 {
-    for (auto rail : rails) 
-    {        
+    for (auto rail : rails)
+    {
         rail->performMaintenance();
-    } 
+    }
 }
 
-UpgradeAllRail::UpgradeAllRail(const std::vector<RailSystemAdapter*> &rails)
+UpgradeAllRail::UpgradeAllRail(const std::vector<RailSystemAdapter *> &rails)
 {
     this->rails = rails;
 }
 
 void UpgradeAllRoad::execute()
 {
-    for (auto road : roads) 
-    {        
+    for (auto road : roads)
+    {
         road->performMaintenance();
-    } 
+    }
 }
 
 UpgradeAllRoad::UpgradeAllRoad(const std::vector<RoadSystemAdapter *> &roads)
@@ -76,8 +76,8 @@ UpgradeAllRoad::UpgradeAllRoad(const std::vector<RoadSystemAdapter *> &roads)
 
 void UpgradeAllPub::execute()
 {
-    for (auto pt : pub) 
-    {        
+    for (auto pt : pub)
+    {
         pt->performMaintenance();
     }
 }
@@ -99,4 +99,3 @@ void RenovateAllBuildings::execute()
 // {
 //     this->buildings = citygrowth->getBuildings();
 // }
-
