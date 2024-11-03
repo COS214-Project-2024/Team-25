@@ -174,3 +174,92 @@ TEST_CASE("Testing Routines class")
     }
 }
 
+TEST_CASE("Testing Resources") {
+    SUBCASE("Energy Singleton") {
+        Energy* energy1 = Energy::getInstance();
+        Energy* energy2 = Energy::getInstance();
+        
+        CHECK(energy1 == energy2);
+        CHECK(energy1->getWattsCoal() == 0);
+        CHECK(energy1->getWattsHydro() == 0);
+        CHECK(energy1->getWattsWind() == 0);
+        CHECK(energy1->getWattsSolar() == 0);
+        CHECK(energy1->getTotalWatts() == 0);
+    }
+
+    SUBCASE("Water Singleton") {
+        Water* water1 = Water::getInstance();
+        Water* water2 = Water::getInstance();
+        
+        CHECK(water1 == water2);
+        CHECK(water1->getLiters() == 0);
+    }
+
+    SUBCASE("Budget Singleton") {
+        Budget* budget1 = Budget::getInstance();
+        Budget* budget2 = Budget::getInstance();
+        
+        CHECK(budget1 == budget2);
+        CHECK(budget1->getCash() == doctest::Approx(0.0));
+        CHECK(budget1->getDebt() == doctest::Approx(0.0));
+    }
+
+    SUBCASE("Concrete Material Processing") {
+        Concrete* concrete1 = Concrete::getInstance();
+        Concrete* concrete2 = Concrete::getInstance();
+        
+        CHECK(concrete1 == concrete2);
+        CHECK(concrete1->getKilo() == 0);
+
+        concrete1->increase();
+        // After obtaining 10000kg and refining with 10% loss
+        CHECK(concrete1->getKilo() == doctest::Approx(9000));
+    }
+
+    SUBCASE("Steel Material Processing") {
+        Steel* steel1 = Steel::getInstance();
+        Steel* steel2 = Steel::getInstance();
+        
+        CHECK(steel1 == steel2);
+        CHECK(steel1->getKilo() == 0);
+
+        steel1->increase();
+        // After obtaining 6000kg and refining with 5% loss
+        CHECK(steel1->getKilo() == doctest::Approx(5700));
+    }
+
+    SUBCASE("Wood Material Processing") {
+        Wood* wood1 = Wood::getInstance();
+        Wood* wood2 = Wood::getInstance();
+        
+        CHECK(wood1 == wood2);
+        CHECK(wood1->getKilo() == 0);
+
+        wood1->increase();
+        // After obtaining 20000kg and refining with 10% loss
+        CHECK(wood1->getKilo() == doctest::Approx(18000));
+    }
+
+    SUBCASE("Multiple Material Processing") {
+        Concrete* concrete = Concrete::getInstance();
+        Steel* steel = Steel::getInstance();
+        Wood* wood = Wood::getInstance();
+
+        // Reset all materials to 0 (assuming there are setter methods)
+        // If there aren't setters, you might need to modify the class or
+        // handle this differently
+        concrete->setKilo(0);
+        steel->setKilo(0);
+        wood->setKilo(0);
+
+        // Process all materials
+        concrete->increase();
+        steel->increase();
+        wood->increase();
+
+        // Check final amounts after processing
+        CHECK(concrete->getKilo() == doctest::Approx(9000));
+        CHECK(steel->getKilo() == doctest::Approx(5700));
+        CHECK(wood->getKilo() == doctest::Approx(18000));
+    }
+}
