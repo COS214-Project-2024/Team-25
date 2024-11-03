@@ -110,17 +110,17 @@ void gameLoop()
 
         if (government->avgSatisfaction() >= 100)
         {
-            printC("YOU HAVE WON BASED ON SATISFACTION",Color::GREEN);
+            printC("YOU HAVE WON BASED ON SATISFACTION", Color::GREEN);
             government->printUtilitiesDetails();
             government->printresources();
             government->printSec();
             government->printSatisfaction();
             break;
         }
-        
+
         if (government->avgSatisfaction() <= 0)
         {
-            printC("YOU HAVE LOST BASED ON SATISFACTION",Color::RED);
+            printC("YOU HAVE LOST BASED ON SATISFACTION", Color::RED);
             government->printUtilitiesDetails();
             government->printresources();
             government->printSec();
@@ -130,17 +130,17 @@ void gameLoop()
 
         if (government->getBudget() >= 300000)
         {
-            printC("YOU HAVE WON BASED ON CASH",Color::GREEN);
+            printC("YOU HAVE WON BASED ON CASH", Color::GREEN);
             government->printUtilitiesDetails();
             government->printresources();
             government->printSec();
             government->printSatisfaction();
             break;
         }
-        
+
         if (government->getDebt() <= -50000)
         {
-            printC("YOU HAVE LOST BASED ON DEBT",Color::RED);
+            printC("YOU HAVE LOST BASED ON DEBT", Color::RED);
             government->printUtilitiesDetails();
             government->printresources();
             government->printSec();
@@ -155,7 +155,6 @@ void gameLoop()
             government->naturalDisaster();
             government->printSatisfaction();
         }
-
 
         // Display available actions
         printC("Choose an action to perform:", Color::CYAN);
@@ -172,7 +171,7 @@ void gameLoop()
         // Validate action input
         int action = safeIntInput(1, 9);
 
-        if (actionCount != 0 && (rand() % 4) == 0 && action != 3)
+        if (actionCount != 0 && (rand() % 4) == 0 && action != 3 && action != 9)
         {
             government->insuffcientTransporrt();
         }
@@ -229,54 +228,62 @@ void gameLoop()
             break;
         }
 
-        printC("See a more detailed report:", Color::CYAN);
-        printC("    1. Print Utilities", Color::WHITE);
-        printC("    2. Print Resources", Color::WHITE);
-        printC("    3. Print Sector", Color::WHITE);
-        printC("    4. Print Satisfaction", Color::WHITE);
-        printC("    5. Print All", Color::WHITE);
-        printC("    6. Skip", Color::WHITE);
-
-        int choice = safeIntInput(1,6);
-        std::string s = "";
-        switch (choice)
+        if (action != 9)
         {
-        case 1: government->printUtilitiesDetails();
+
+            printC("See a more detailed report:", Color::CYAN);
+            printC("    1. Print Utilities", Color::WHITE);
+            printC("    2. Print Resources", Color::WHITE);
+            printC("    3. Print Sector", Color::WHITE);
+            printC("    4. Print Satisfaction", Color::WHITE);
+            printC("    5. Print All", Color::WHITE);
+            printC("    6. Skip", Color::WHITE);
+
+            int choice = safeIntInput(1, 6);
+            std::string s = "";
+            switch (choice)
+            {
+            case 1:
+                government->printUtilitiesDetails();
                 std::cout << "Press any button to continue." << std::endl;
                 cin >> s;
-            break;
-        case 2: government->printresources();
+                break;
+            case 2:
+                government->printresources();
                 std::cout << "Press any button to continue." << std::endl;
                 cin >> s;
-            break;
-        case 3: government->printSec();
+                break;
+            case 3:
+                government->printSec();
                 std::cout << "Press any button to continue." << std::endl;
                 cin >> s;
-            break;
-        case 4: government->printSatisfaction();    
+                break;
+            case 4:
+                government->printSatisfaction();
                 std::cout << "Press any button to continue." << std::endl;
                 cin >> s;
-            break;
-        case 5: government->printUtilitiesDetails();
+                break;
+            case 5:
+                government->printUtilitiesDetails();
                 government->printresources();
                 government->printSec();
                 government->printSatisfaction();
                 std::cout << "Press any button to continue." << std::endl;
                 cin >> s;
-            break;
-        case 6: break;    
-        }
+                break;
+            case 6:
+                break;
+            }
 
-        actionCount++;
-        if (actionCount >= 8)
-        {
-            printC("Collecting annual taxes...", Color::YELLOW);
-            government->taxCitizens();
-            actionCount = 0;
-            printC("A year has passed!", Color::CYAN);
-            
+            actionCount++;
+            if (actionCount >= 8)
+            {
+                printC("Collecting annual taxes...", Color::YELLOW);
+                government->taxCitizens();
+                actionCount = 0;
+                printC("A year has passed!", Color::CYAN);
+            }
         }
-
     }
 
     delete government;

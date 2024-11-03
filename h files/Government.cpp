@@ -709,7 +709,7 @@ void Government::createCitizen(int numCitizens)
                     if (b->getType() == "Apartment" && b->getLeftOverCapacity() > 0)
                     {
                         b->addCitizen(c);
-                        printC("Citizen added to " + buildingType, Color::GREEN);
+                        printC("Citizen added to Apartment", Color::GREEN);
                         housingAssigned = true;
                         break;
                     }
@@ -725,7 +725,7 @@ void Government::createCitizen(int numCitizens)
                         {
                             updateSatisfaction(5);
                             b->addCitizen(c);
-                            printC("Citizen added to " + buildingType, Color::GREEN);
+                            printC("Citizen added to Apartment", Color::GREEN);
                             housingAssigned = true;
                             break;
                         }
@@ -806,7 +806,7 @@ void Government::createCitizen(int numCitizens)
                     if (b->getType() == "House" && b->getLeftOverCapacity() > 0)
                     {
                         b->addCitizen(c);
-                        printC("Citizen added to " + buildingType, Color::GREEN);
+                        printC("Citizen added to House", Color::GREEN);
                         housingAssigned = true;
                         break;
                     }
@@ -822,7 +822,7 @@ void Government::createCitizen(int numCitizens)
                         {
                             updateSatisfaction(5);
                             b->addCitizen(c);
-                            printC("Citizen added to " + buildingType, Color::GREEN);
+                            printC("Citizen added to House", Color::GREEN);
                             housingAssigned = true;
                             break;
                         }
@@ -904,7 +904,7 @@ void Government::createCitizen(int numCitizens)
                     if (b->getType() == "Mansion" && b->getLeftOverCapacity() > 0)
                     {
                         b->addCitizen(c);
-                        printC("Citizen added to " + buildingType, Color::GREEN);
+                        printC("Citizen added to Mansion", Color::GREEN);
                         housingAssigned = true;
                         break;
                     }
@@ -920,7 +920,7 @@ void Government::createCitizen(int numCitizens)
                         {
                             updateSatisfaction(5);
                             b->addCitizen(c);
-                            printC("Citizen added to " + buildingType, Color::GREEN);
+                            printC("Citizen added to Mansion", Color::GREEN);
                             housingAssigned = true;
                             break;
                         }
@@ -1240,13 +1240,31 @@ void Government::printSec()
 
 void Government::printSatisfaction()
 {
+    // printC("---------------------------------", Color::YELLOW);
+    // printC("|     Satisfaction: " + std::to_string(std::round(avgSatisfaction())) + "   |", Color::YELLOW);
+    // printC("---------------------------------", Color::YELLOW);
+    // printC("|     Budget:       " + std::to_string(std::round(getBudget())) + "   |", Color::YELLOW);
+    // printC("---------------------------------", Color::YELLOW);
+    // printC("|     Debt:         " + std::to_string(std::round(getDebt())) + "   |", Color::YELLOW);
+    // printC("---------------------------------", Color::YELLOW);
+
+    std::stringstream satisfactionStream;
+    satisfactionStream << std::fixed << std::setprecision(2) << avgSatisfaction();
+
+    std::stringstream budgetStream;
+    budgetStream << std::fixed << std::setprecision(2) << getBudget();
+
+    std::stringstream debtStream;
+    debtStream << std::fixed << std::setprecision(2) << getDebt();
+
     printC("---------------------------------", Color::YELLOW);
-    printC("|     Satisfaction: " + std::to_string(std::round(avgSatisfaction())) + "   |", Color::YELLOW);
+    printC("|     Satisfaction: " + satisfactionStream.str() + "       |", Color::YELLOW);
     printC("---------------------------------", Color::YELLOW);
-    printC("|     Budget:       " + std::to_string(std::round(getBudget())) + "   |", Color::YELLOW);
+    printC("|     Budget:       " + budgetStream.str() + "   |", Color::YELLOW);
     printC("---------------------------------", Color::YELLOW);
-    printC("|     Debt:         " + std::to_string(std::round(getDebt())) + "   |", Color::YELLOW);
+    printC("|     Debt:         " + debtStream.str() + "        |", Color::YELLOW);
     printC("---------------------------------", Color::YELLOW);
+
 }
 
 void Government::printUtilitiesDetails()
@@ -1493,7 +1511,7 @@ void Government::promptForNewWarehouse(int sector)
         printC("Enter capacity: ", Color::CYAN);
         int capacity = safeIntInput(1, 50);
 
-        Building *w = new Warehouse(name, capacity * 3, capacity * 5, capacity * 3000, capacity, 2);
+        Building *w = new Warehouse(name, capacity * 3, capacity * 5, capacity * 3000, capacity, capacity);
         w->build();
         if (w->getBuilt())
         {
