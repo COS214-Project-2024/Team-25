@@ -6,6 +6,7 @@
 // PublicTransport
 PublicTransport::PublicTransport(int c, string t, string tt)
 {
+    currentAmount = 0;
     capacity = c;
     type = t;
     TransportType = tt;
@@ -47,12 +48,14 @@ int PublicTransport::getAmount()
 // Road
 Road::Road(int mB, string t)
 {
+    numOfBusses=0;
     maxNumOfBusses = mB;
     type = t;
 }
 
 void Road::addBus(PublicTransport bus)
 {
+    numOfBusses++;
     busses.push_back(bus);
 }
 
@@ -147,10 +150,12 @@ vector<Road> &RoadSystem::getRoads()
 
 // class Railway
 Railway::Railway(){
+    numOfTrains=0;
 }
 
 void Railway::addTrain(PublicTransport train)
 {
+    numOfTrains++;
     trains.push_back(train);
 }
 
