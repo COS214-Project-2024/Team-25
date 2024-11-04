@@ -10,6 +10,7 @@
 #include "Transportation.h"
 #include "Routines.h"
 #include "Government.h"
+#include "Citizen.h"
 
 
 TEST_CASE("Testing TaxStrategies")
@@ -66,10 +67,10 @@ TEST_CASE("Testing TaxStrategies")
         CHECK(taxSystem->currentStrategy() == "FlatTaxStrategy");
     }
 }
-
+//std::cout << "\n\n";
+ 
 TEST_CASE("Testing CityGrowth") {
         /* --------------------------- Testing CityGrowth --------------------------- */
-    std::cout << "\n\n";
 
     CityGrowth* citygrowth = new CityGrowth();
 
@@ -398,6 +399,9 @@ TEST_CASE("Testing Transportation")
 }
 
 TEST_CASE("Testing Buildings"){
+    std::cout << "\n------------------------" << std::endl;
+    std::cout << "Testing Buildings" << std::endl;
+    std::cout << "------------------------" << std::endl;
     SUBCASE("Testing connecting buildings and citizens"){
         House* myHouse = new House("Dream House", 5, 120, 250000.0f, 3, 2, 5, 9);
 
@@ -679,3 +683,153 @@ TEST_CASE("Testing Utility classes")
         delete plant;  
     }
 }
+
+TEST_CASE("Testing Citizen Class") {
+    std::cout << "\n------------------------" << std::endl;
+    std::cout << "Testing Citizen" << std::endl;
+    std::cout << "------------------------" << std::endl;
+    SUBCASE("Default Constructor") {
+        CommercialWorker citizen;
+        CHECK(citizen.getResidence() == "House");
+        CHECK(citizen.getType() == "Commercial worker");
+
+        // Break down the workplace check into multiple lines
+        bool workplaceIsValid = (citizen.getWorkplace() == "Shop") ||
+                                (citizen.getWorkplace() == "Office") ||
+                                (citizen.getWorkplace() == "Mall");
+        CHECK(workplaceIsValid);
+
+        CHECK(citizen.getSatisfaction() >= 20); // Satisfaction should be between 20 and 80
+        CHECK(citizen.getSatisfaction() <= 80);
+        citizen.displayInfo();
+    }
+
+    SUBCASE("SetCitizen Method") {
+        CommercialWorker citizen;
+        citizen.setCitizen("Test Type", "Test Building", "Test Workplace");
+        CHECK(citizen.getType() == "Test Type");
+        CHECK(citizen.getResidence() == "Test Building");
+        CHECK(citizen.getWorkplace() == "Test Workplace");
+        citizen.displayInfo();
+    }
+
+    SUBCASE("ChangeSatisfaction Method") {
+        CommercialWorker citizen;
+        citizen.changeSatisfaction(10.0f);
+        CHECK(citizen.getSatisfaction() <= 100); // Ensure satisfaction is capped at 100
+        citizen.changeSatisfaction(-200.0f);
+        CHECK(citizen.getSatisfaction() == 0);    // Ensure satisfaction is floored at 0
+        citizen.displayInfo();
+    }
+}
+
+TEST_CASE("Testing CommercialWorker Class") {
+    std::cout << "\n------------------------" << std::endl;
+    std::cout << "Testing CommercialWorker" << std::endl;
+    std::cout << "------------------------" << std::endl;
+    SUBCASE("Default Constructor") {
+        CommercialWorker worker;
+        CHECK(worker.getType() == "Commercial worker");
+        CHECK(worker.getResidence() == "House");
+
+        // Check for valid workplaces without using complex expressions
+        bool workplaceIsValid = (worker.getWorkplace() == "Shop") ||
+                                (worker.getWorkplace() == "Office") ||
+                                (worker.getWorkplace() == "Mall");
+        CHECK(workplaceIsValid);
+        worker.displayInfo();
+    }
+
+    SUBCASE("Parameterized Constructor") {
+        CommercialWorker worker("Office");
+        CHECK(worker.getType() == "Commercial worker");
+        CHECK(worker.getResidence() == "House");
+        CHECK(worker.getWorkplace() == "Office");
+        worker.displayInfo();
+    }
+}
+
+TEST_CASE("Testing GovernmentWorker Class") {
+    std::cout << "\n------------------------" << std::endl;
+    std::cout << "Testing GovernmentWorker" << std::endl;
+    std::cout << "------------------------" << std::endl;
+    SUBCASE("Default Constructor") {
+        GovernmentWorker worker;
+        CHECK(worker.getType() == "Government worker");
+        CHECK(worker.getResidence() == "Mansion");
+
+        // Check for valid workplaces without using complex expressions
+        bool workplaceIsValid = (worker.getWorkplace() == "School") ||
+                                (worker.getWorkplace() == "Hospital") ||
+                                (worker.getWorkplace() == "Government");
+        CHECK(workplaceIsValid);
+        worker.displayInfo();
+    }
+
+    SUBCASE("Parameterized Constructor") {
+        GovernmentWorker worker("Hospital");
+        CHECK(worker.getType() == "Government worker");
+        CHECK(worker.getResidence() == "Mansion");
+        CHECK(worker.getWorkplace() == "Hospital");
+        worker.displayInfo();
+    }
+}
+
+TEST_CASE("Testing IndustrialWorker Class") {
+    std::cout << "\n------------------------" << std::endl;
+    std::cout << "Testing IndustrialWorker" << std::endl;
+    std::cout << "------------------------" << std::endl;
+    SUBCASE("Default Constructor") {
+        IndustrialWorker worker;
+        CHECK(worker.getType() == "Industrial worker");
+        CHECK(worker.getResidence() == "Apartment");
+
+        // Check for valid workplaces without using complex expressions
+        bool workplaceIsValid = (worker.getWorkplace() == "Warehouse") ||
+                                (worker.getWorkplace() == "Plant") ||
+                                (worker.getWorkplace() == "Factory");
+        CHECK(workplaceIsValid);
+        worker.displayInfo();
+    }
+
+    SUBCASE("Parameterized Constructor") {
+        IndustrialWorker worker("Factory");
+        CHECK(worker.getType() == "Industrial worker");
+        CHECK(worker.getResidence() == "Apartment");
+        CHECK(worker.getWorkplace() == "Factory");
+        worker.displayInfo();
+    }
+}
+
+TEST_CASE("Testing WorkerFactory Classes") {
+    std::cout << "\n------------------------" << std::endl;
+    std::cout << "Testing WorkerFactory" << std::endl;
+    std::cout << "------------------------" << std::endl;
+    SUBCASE("CommercialWorkerFactory") {
+        ComWorkerFactory factory;
+        Citizen* worker = factory.createCitizen("Mall");
+        CHECK(worker->getType() == "Commercial worker");
+        CHECK(worker->getWorkplace() == "Mall");
+        worker->displayInfo();
+        delete worker;  // Clean up
+    }
+
+    SUBCASE("GovernmentWorkerFactory") {
+        GovernmentWorkerFactory factory;
+        Citizen* worker = factory.createCitizen("Government");
+        CHECK(worker->getType() == "Government worker");
+        CHECK(worker->getWorkplace() == "Government");
+        worker->displayInfo();
+        delete worker;  // Clean up
+    }
+
+    SUBCASE("IndustrialWorkerFactory") {
+        IndWorkerFactory factory;
+        Citizen* worker = factory.createCitizen("Plant");
+        CHECK(worker->getType() == "Industrial worker");
+        CHECK(worker->getWorkplace() == "Plant");
+        worker->displayInfo();
+        delete worker;  // Clean up
+    }
+}
+
