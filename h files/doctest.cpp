@@ -197,204 +197,205 @@ TEST_CASE("Testing CityGrowth") {
     std::cout << "Total collected taxes: " << taxSystem->getCollectedTaxes() << "\n";
 }
 
-// TEST_CASE("Testing Transportation")
-// {
-//     SUBCASE("Adding passengers within capacity")
-//     {
-//         PublicTransport bus(30, "Commercial", "bus");
-//         bus.add(25);
-//         CHECK(bus.getAmount() == 25);
-//     }
+TEST_CASE("Testing Transportation")
+{
+    SUBCASE("Adding passengers within capacity")
+    {
+        PublicTransport bus(30, "Commercial", "bus");
+        bus.add(25);
+        CHECK(bus.getAmount() == 25);
+    }
 
-//     SUBCASE("Adding passengers exceeding capacity")
-//     {
-//         PublicTransport bus(20, "Government", "bus");
-//         bus.add(15);
-//         bus.add(10);  // Exceeds capacity, so must update capacity 
-//         CHECK(bus.getAmount() == 25);  // Should not exceed max capacity
-//     }
+    SUBCASE("Adding passengers exceeding capacity")
+    {
+        PublicTransport bus(20, "Government", "bus");
+        bus.add(15);
+        bus.add(10);  // Exceeds capacity, so must update capacity 
+        CHECK(bus.getAmount() == 25);  // Should not exceed max capacity
+    }
 
-//     SUBCASE("Handling different transport types")
-//     {
-//         PublicTransport bus(100, "Industrial", "bus");
-//         bus.add(80);
-//         CHECK(bus.getAmount() == 80);
+    SUBCASE("Handling different transport types")
+    {
+        PublicTransport bus(100, "Industrial", "bus");
+        bus.add(80);
+        CHECK(bus.getAmount() == 80);
 
-//     }
+    }
 
-//     SUBCASE("Initialize Road and check properties")
-//     {
-//         Road commercialRoad(10, "Commercial");
-//         CHECK(commercialRoad.getType() == "Commercial");
-//         CHECK(commercialRoad.getMaxNumOfBusses() == 10);
-//         CHECK(commercialRoad.getNumBusses() == 0);  // Initially, no buses should be on the road
-//     }
+    SUBCASE("Initialize Road and check properties")
+    {
+        Road commercialRoad(10, "Commercial");
+        CHECK(commercialRoad.getType() == "Commercial");
+        CHECK(commercialRoad.getMaxNumOfBusses() == 10);
+        CHECK(commercialRoad.getNumBusses() == 0);  // Initially, no buses should be on the road
+    }
 
-//     SUBCASE("Add buses to Road within capacity")
-//     {
-//         Road governmentRoad(5, "Government");
-//         PublicTransport bus1(30, "GovBus1", "bus");
-//         PublicTransport bus2(30, "GovBus2", "bus");
+    SUBCASE("Add buses to Road within capacity")
+    {
+        Road governmentRoad(5, "Government");
+        PublicTransport bus1(30, "GovBus1", "bus");
+        PublicTransport bus2(30, "GovBus2", "bus");
 
-//         governmentRoad.addBus(bus1);
-//         governmentRoad.addBus(bus2);
+        governmentRoad.addBus(bus1);
+        governmentRoad.addBus(bus2);
 
-//         CHECK(governmentRoad.getNumBusses() == 2);
-//         CHECK(governmentRoad.getNumBusses() <= governmentRoad.getMaxNumOfBusses());
-//     }
+        CHECK(governmentRoad.getNumBusses() == 2);
+        CHECK(governmentRoad.getNumBusses() <= governmentRoad.getMaxNumOfBusses());
+    }
 
-//     SUBCASE("Add buses to Road exceeding capacity")
-//     {
-//         Road industrialRoad(2, "Industrial");
-//         PublicTransport bus1(40, "IndBus1", "bus");
-//         PublicTransport bus2(40, "IndBus2", "bus");
-//         PublicTransport bus3(40, "IndBus3", "bus");
+    SUBCASE("Add buses to Road exceeding capacity")
+    {
+        Road industrialRoad(2, "Industrial");
+        PublicTransport bus1(40, "IndBus1", "bus");
+        PublicTransport bus2(40, "IndBus2", "bus");
+        PublicTransport bus3(40, "IndBus3", "bus");
 
-//         industrialRoad.addBus(bus1);
-//         industrialRoad.addBus(bus2);
-//         industrialRoad.addBus(bus3);  
+        industrialRoad.addBus(bus1);
+        industrialRoad.addBus(bus2);
+        industrialRoad.addBus(bus3);  
 
-//         CHECK(industrialRoad.getNumBusses() == 3);  // Should not exceed max capacity
-//     }
+        CHECK(industrialRoad.getNumBusses() == 3);  // Should not exceed max capacity
+    }
 
-//     SUBCASE("Initialize RoadSystem and add roads")
-//     {
-//         RoadSystem roadSystem;
-//         Road commercialRoad(5, "Commercial");
-//         Road governmentRoad(3, "Government");
+    SUBCASE("Initialize RoadSystem and add roads")
+    {
+        RoadSystem roadSystem;
+        Road commercialRoad(5, "Commercial");
+        Road governmentRoad(3, "Government");
 
-//         roadSystem.addRoad(commercialRoad);
-//         roadSystem.addRoad(governmentRoad);
+        roadSystem.addRoad(commercialRoad);
+        roadSystem.addRoad(governmentRoad);
 
-//         CHECK(roadSystem.getRoads().size() == 2);
-//     }
+        CHECK(roadSystem.getRoads().size() == 2);
+    }
 
-//     SUBCASE("Check RoadSystem utilization")
-//     {
-//         RoadSystem roadSystem;
-//         Road commercialRoad(10, "Commercial");
-//         PublicTransport bus1(30, "CommBus1", "bus");
-//         PublicTransport bus2(30, "CommBus2", "bus");
+    SUBCASE("Check RoadSystem utilization")
+    {
+        RoadSystem roadSystem;
+        Road commercialRoad(10, "Commercial");
+        PublicTransport bus1(30, "CommBus1", "bus");
+        PublicTransport bus2(30, "CommBus2", "bus");
 
-//         commercialRoad.addBus(bus1);
-//         commercialRoad.addBus(bus2);
-//         roadSystem.addRoad(commercialRoad);
+        commercialRoad.addBus(bus1);
+        commercialRoad.addBus(bus2);
+        roadSystem.addRoad(commercialRoad);
 
-//         int utilization = roadSystem.getUtilization();
-//         CHECK(utilization >= 0);  // Utilization should reflect active buses
-//     }
+        int utilization = roadSystem.getUtilization();
+        CHECK(utilization >= 0);  // Utilization should reflect active buses
+    }
 
-//     SUBCASE("Upgrade RoadSystem")
-//     {
-//         RoadSystem roadSystem;
-//         Road industrialRoad(5, "Industrial");
-//         roadSystem.addRoad(industrialRoad);
+    SUBCASE("Upgrade RoadSystem")
+    {
+        RoadSystem roadSystem;
+        Road industrialRoad(5, "Industrial");
+        roadSystem.addRoad(industrialRoad);
 
-//         roadSystem.upgrade(); 
+        roadSystem.upgrade(); 
 
-//         CHECK(roadSystem.getRoads().size() == 1); 
-//     }
+        CHECK(roadSystem.getRoads().size() == 1); 
+    }
 
-//     SUBCASE("Initialize Railway and check properties")
-//     {
-//         Railway railway;
-//         CHECK(railway.getNumTrains() == 0);  // Initially, no trains should be in the railway
-//     }
+    SUBCASE("Initialize Railway and check properties")
+    {
+        Railway railway;
+        CHECK(railway.getNumTrains() == 0);  // Initially, no trains should be in the railway
+    }
 
-//     SUBCASE("Add trains to Railway")
-//     {
-//         Railway railway;
-//         PublicTransport train1(100, "Train1", "train");
-//         PublicTransport train2(150, "Train2", "train");
+    SUBCASE("Add trains to Railway")
+    {
+        Railway railway;
+        PublicTransport train1(100, "Train1", "train");
+        PublicTransport train2(150, "Train2", "train");
 
-//         railway.addTrain(train1);
-//         railway.addTrain(train2);
+        railway.addTrain(train1);
+        railway.addTrain(train2);
 
-//         CHECK(railway.getNumTrains() == 2);
-//     }
+        CHECK(railway.getNumTrains() == 2);
+    }
 
-//     SUBCASE("Initialize RailSystem and add railways")
-//     {
-//         RailSystem railSystem;
-//         Railway railway1;
-//         Railway railway2;
+    SUBCASE("Initialize RailSystem and add railways")
+    {
+        RailSystem railSystem;
+        Railway railway1;
+        Railway railway2;
 
-//         railSystem.addRailway(railway1);
-//         railSystem.addRailway(railway2);
+        railSystem.addRailway(railway1);
+        railSystem.addRailway(railway2);
 
-//         CHECK(railSystem.getUtilization() == 0);  // Assuming no trains have been added yet
-//         CHECK(railSystem.getUtilization() >= 0);  // Utilization should be non-negative
-//     }
+        CHECK(railSystem.getUtilization() == 0);  // Assuming no trains have been added yet
+        CHECK(railSystem.getUtilization() >= 0);  // Utilization should be non-negative
+    }
 
-//     SUBCASE("Check RailSystem utilization")
-//     {
-//         RailSystem railSystem;
-//         Railway railway;
-//         PublicTransport train1(120, "Express", "train");
-//         PublicTransport train2(80, "Local", "train");
+    SUBCASE("Check RailSystem utilization")
+    {
+        RailSystem railSystem;
+        Railway railway;
+        PublicTransport train1(120, "Express", "train");
+        PublicTransport train2(80, "Local", "train");
 
-//         railway.addTrain(train1);
-//         railway.addTrain(train2);
-//         railSystem.addRailway(railway);
+        railway.addTrain(train1);
+        railway.addTrain(train2);
+        railSystem.addRailway(railway);
 
-//         int utilization = railSystem.getUtilization();
-//         CHECK(utilization >= 0); 
-//     }
+        int utilization = railSystem.getUtilization();
+        CHECK(utilization >= 0); 
+    }
 
-//     SUBCASE("Upgrade RailSystem")
-//     {
-//         RailSystem railSystem;
-//         Railway railway;
-//         railSystem.addRailway(railway);
+    SUBCASE("Upgrade RailSystem")
+    {
+        RailSystem railSystem;
+        Railway railway;
+        railSystem.addRailway(railway);
 
-//         railSystem.upgrade();  
+        railSystem.upgrade();  
 
-//         CHECK(railSystem.getUtilization() >= 0); 
-//         CHECK(railSystem.getUtilization() >= 0); 
-//     }
+        CHECK(railSystem.getUtilization() >= 0); 
+        CHECK(railSystem.getUtilization() >= 0); 
+    }
 
-//     SUBCASE("PublicTransitAdapter - Add Route and Utilization")
-//     {
-//         PublicTransport bus(30, "CityBus", "bus");
-//         PublicTransitAdapter publicTransitAdapter(&bus);
+    SUBCASE("PublicTransitAdapter - Add Route and Utilization")
+    {
+        PublicTransport bus(30, "CityBus", "bus");
+        PublicTransitAdapter publicTransitAdapter(&bus);
 
-//         publicTransitAdapter.addRoute(10);
-//         CHECK(publicTransitAdapter.getUtilization() >= 0);  // Utilization should reflect added route(s)
-//         publicTransitAdapter.performMaintenance();  // Ensure maintenance can be called without errors
-//     }
+        publicTransitAdapter.addRoute(10);
+        CHECK(publicTransitAdapter.getUtilization() >= 0);  // Utilization should reflect added route(s)
+        publicTransitAdapter.performMaintenance();  // Ensure maintenance can be called without errors
+    }
 
-//     SUBCASE("RoadSystemAdapter - Add Road and Utilization")
-//     {
-//         RoadSystem roadSystem;
-//         RoadSystemAdapter roadAdapter(&roadSystem);
+    SUBCASE("RoadSystemAdapter - Add Road and Utilization")
+    {
+        RoadSystem* roadSystem = new RoadSystem();
+        RoadSystemAdapter roadAdapter(roadSystem);
 
-//         Road road1(5, "Commercial");
-//         Road road2(3, "Industrial");
+        Road road1(5, "Commercial");
+        Road road2(3, "Industrial");
 
-//         roadAdapter.addRoute(road1);
-//         roadAdapter.addRoute(road2);
+        roadAdapter.addRoute(road1);
+        roadAdapter.addRoute(road2);
 
-//         CHECK(roadAdapter.getRoads().size() == 2);  // Check that roads were added correctly
-//         CHECK(roadAdapter.getUtilization() >= 0);  // Utilization should reflect road utilization
+        CHECK(roadAdapter.getRoads().size() == 2);  // Check that roads were added correctly
+        CHECK(roadAdapter.getUtilization() >= 0);  // Utilization should reflect road utilization
 
-//         roadAdapter.performMaintenance();  // Ensure maintenance can be called without errors
-//     }
+        roadAdapter.performMaintenance();  // Ensure maintenance can be called without errors
+    }
 
-//     SUBCASE("RailSystemAdapter - Add Railway and Utilization")
-//     {
-//         RailSystem railSystem;
-//         RailSystemAdapter railAdapter(&railSystem);
+    SUBCASE("RailSystemAdapter - Add Railway and Utilization")
+    {
+        RailSystem* railSystem = new RailSystem();
+        RailSystemAdapter railAdapter(railSystem);
 
-//         Railway railway1;
-//         Railway railway2;
+        Railway railway1;
+        Railway railway2;
 
-//         railAdapter.addRoute(railway1);
-//         railAdapter.addRoute(railway2);
+        railAdapter.addRoute(railway1);
+        railAdapter.addRoute(railway2);
 
-//         CHECK(railAdapter.getUtilization() >= 0);  // Utilization should reflect rail utilization
-//         railAdapter.performMaintenance();  // Ensure maintenance can be called without errors
-//     }
-// }
+        CHECK(railAdapter.getUtilization() >= 0);  // Utilization should reflect rail utilization
+        railAdapter.performMaintenance();  // Ensure maintenance can be called without errors
+        delete railSystem;
+    }
+}
 
 TEST_CASE("Testing Buildings"){
     SUBCASE("Testing connecting buildings and citizens"){
@@ -597,13 +598,13 @@ TEST_CASE("Testing Resources") {
     }
 }
 
+
 TEST_CASE("Testing Utility classes") 
 {
     std::cout << "\n------------------------" << std::endl;
     std::cout << "Testing Utility classes" << std::endl;
     std::cout << "------------------------" << std::endl;
 
-    // Test PowerPlant functionality
     SUBCASE("PowerPlant Construction and Type Verification") 
     {
         std::cout << "\n############## Testing PowerPlant Construction and Type Verification ##############" << std::endl;
@@ -619,47 +620,62 @@ TEST_CASE("Testing Utility classes")
             int powerGen = plant->getPowerGeneration();
             std::cout << "Power Generation: " << powerGen << " watts" << std::endl;
 
-            // Separate checks for the power generation range
             CHECK(powerGen >= 1000);
             CHECK(powerGen <= 5000);
 
-            delete plant;
-        }
-
-       SUBCASE("Simulate Malfunction and Repair") 
-        {
-            std::cout << "\n############## Simulating PowerPlant Malfunction ##############" << std::endl;
-            if (plant == nullptr) {
-                std::cout << "PowerPlant does not exist" << std::endl;
-                return;
-            }
-
-            PowerPlant* malfunctioningPlant = plant->mulfunction();
-            CHECK(malfunctioningPlant != nullptr);
-
-            if (malfunctioningPlant != plant) {
-                CHECK(malfunctioningPlant != plant);
-                std::cout << "PowerPlant is now non-functional." << std::endl;
-                delete malfunctioningPlant;  // Only delete if it’s a distinct object
-            } else {
-                std::cout << "Malfunction did not create a new instance." << std::endl;
-            }
-
-            // New subcase to test repair functionality
-            SUBCASE("Repair PowerPlant") 
+            SUBCASE("Simulate Malfunction and Repair") 
             {
-                std::cout << "\n############## Repairing PowerPlant ##############" << std::endl;
-                if (plant->getFunctional() == false) {
-                    bool repairSuccess = plant->repair();
-                    CHECK(repairSuccess);
-                    CHECK(plant->getFunctional() == true);
-                    std::cout << "PowerPlant has been repaired and is now functional." << std::endl;
-                } else {
-                    std::cout << "Repair not needed; PowerPlant is already functional." << std::endl;
-                }
-            }
+                std::cout << "\n############## Simulating PowerPlant Malfunction ##############" << std::endl;
 
-            delete plant;
+                CHECK(plant != nullptr);
+
+                std::cout << "Plant functionality before malfunction: " 
+                          << (plant->getFunctional() ? "true" : "false") << std::endl;
+
+                PowerPlant *malfunctioningPlant = plant->mulfunction();
+                PowerPlant *originalPlant = plant;
+
+                if (malfunctioningPlant != plant) {
+                    plant=nullptr;
+                    delete plant;
+                }
+                plant = malfunctioningPlant;
+
+                CHECK(malfunctioningPlant != nullptr);
+                std::cout << "Plant functionality after malfunction: " 
+                          << (malfunctioningPlant->getFunctional() ? "true" : "false") << std::endl;
+                CHECK(!malfunctioningPlant->getFunctional());
+                std::cout << "PowerPlant is now non-functional." << std::endl;
+
+                SUBCASE("Repair PowerPlant") 
+                {
+                    std::cout << "\n############## Repairing PowerPlant ##############" << std::endl;
+
+                    PowerPlant *repairedPlant = plant->repair();
+
+                    if (repairedPlant != plant) {
+                        delete plant;
+                    }
+                    plant = repairedPlant;
+
+                    CHECK(repairedPlant != nullptr);
+
+                    std::cout << "Plant functionality after repair: " 
+                              << (repairedPlant->getFunctional() ? "true" : "false") << std::endl;
+                    CHECK(repairedPlant->getFunctional());
+                    std::cout << "PowerPlant has been repaired and is now functional." << std::endl;
+                }
+
+                if (plant != originalPlant) {
+                    plant=nullptr;
+                    delete plant;
+                } else {
+                    delete originalPlant;
+                }
+            } 
         }
+
+       if (plant != nullptr)
+        delete plant;  
     }
 }
