@@ -215,7 +215,23 @@ void gameLoop()
         {
             printC("A natural disaster has struck!", Color::RED);
             government->naturalDisaster();
-            government->printSatisfaction();
+            // government->printSatisfaction();
+
+            // writeMessageToFile(" ");
+            // sleep(1.1);
+
+            message.str("");
+            message.clear();
+
+            message << "---------------------------\n";
+            message << "Tax collection progress " << to_string(actionCount) << "/8\n";
+            message << "---------------------------\n";
+
+            message << government->getSatisfactionDetails();
+            message << government->getSec();
+            message << government->getResourcesReport();
+            message << government->getUtilitiesDetails();
+            writeMessageToFile(message.str());
         }
 
         // Display available actions
@@ -397,8 +413,8 @@ int main(int argc, char const *argv[])
     openNewTerminal();
     writeMessageToFile(" ");  // Write message to temp file
 
-    message << "---Welcome message can be displayed---\n\n";
-    message << "---Game rules and goals can be listed---\n\n";
+    // message << "---Welcome message can be displayed---\n\n";
+    // message << "---Game rules and goals can be listed---\n\n";
 
 
     // message << "---------\n";
@@ -408,6 +424,42 @@ int main(int argc, char const *argv[])
 
     writeMessageToFile(message.str());  // Write message to temp file
     // sendMessageToTerminal(message.str());
+
+    std::ostringstream welcome;
+
+    welcome << "\033[36m" // Cyan color for the heading border
+            << "========================================\n"
+            << "     COS 214 Project: City Builder         \n"
+            << "========================================\033[0m\n\n";
+
+    welcome << "\033[35m" // Magenta color for group name
+            << "Group Name: sudo-apt-get-marks\033[0m\n\n";
+
+    welcome << "\033[32m" // Green color for the goal
+            << "Welcome to the City Builder Simulation!\n\n"
+            << "Your Objective:\033[0m\n"
+            << "   - \033[32mPlay as the government and strive to build a thriving city.\033[0m\n\n";
+
+    welcome << "\033[33m" // Yellow for gameplay description
+            << "Gameplay Overview:\033[0m\n"
+            << "   - Increase citizen satisfaction to win the game, or reach a financial milestone.\n"
+            << "   - Keep an eye on natural disasters that will malfunction important Utilities!\n"
+            << "   - Improve and manage transportation to keep your city efficient and happy.\n\n";
+
+    welcome << "\033[31m" // Red for challenges
+            << "Challenges Await:\033[0m\n"
+            << "   - Natural disasters can strike at any moment.\n"
+            << "   - Balancing budgets while expanding services is key to success.\n\n";
+
+    welcome << "\033[36m" // Cyan for features
+            << "Features:\033[0m\n"
+            << "   - Select a difficulty level before you begin the simulation.\n"
+            << "   - Make strategic decisions to manage resources, buildings, and infrastructure.\n\n";
+
+    welcome << "\033[32m" // Green for closing statement
+            << "Enjoy building your city and good luck!\033[0m\n";
+
+    writeMessageToFile(welcome.str()); 
 
     gameLoop();
 
