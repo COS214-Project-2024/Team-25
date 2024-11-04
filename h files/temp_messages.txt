@@ -2,9 +2,9 @@
 Tax collection progress 0/8
 ---------------------------
 [33m---------------------------------[0m
-[33m|     Satisfaction: 50.58       |[0m
+[33m|     Satisfaction: 49.58       |[0m
 [33m---------------------------------[0m
-[33m|     Budget:       312000.00   |[0m
+[33m|     Budget:       200000.00   |[0m
 [33m---------------------------------[0m
 [33m|     Debt:         0.00        |[0m
 [33m---------------------------------[0m
@@ -39,9 +39,9 @@ Tax collection progress 0/8
 Current Resources and Utilities:[0m
 [36m-------------------------------[0m
 [32mMaterials:[0m
-  Wood: 29000 kg
-  Concrete: 29200 kg
-  Steel: 29000 kg
+  Wood: 30000 kg
+  Concrete: 30000 kg
+  Steel: 30000 kg
 
 [32mUtilities:[0m
   Power Plants: 4
@@ -49,7 +49,7 @@ Current Resources and Utilities:[0m
   Waste Management Facilities: 4
 
 [32mBudget:[0m
-  Cash: $312000
+  Cash: $200000
 [36m-------------------------------[0m
 [36m================================[0m
 [36mDetailed Utilities Information:[0m
@@ -59,28 +59,28 @@ Current Resources and Utilities:[0m
 [32m------------------------------[0m
 
 [33mPower Plant #1:[0m
-[37m  Type: 1[0m
-[32m  Status: Functional[0m
-[35m  Efficiency: 100%[0m
-[34m  Power Generation: 1000 watts[0m
-[37m  Raw Generation Capacity: 1000 watts[0m
-
-[33mPower Plant #2:[0m
-[37m  Type: 3[0m
-[32m  Status: Functional[0m
-[35m  Efficiency: 100%[0m
-[34m  Power Generation: 1000 watts[0m
-[37m  Raw Generation Capacity: 1000 watts[0m
-
-[33mPower Plant #3:[0m
 [37m  Type: 0[0m
 [32m  Status: Functional[0m
 [35m  Efficiency: 100%[0m
 [34m  Power Generation: 1000 watts[0m
 [37m  Raw Generation Capacity: 1000 watts[0m
 
-[33mPower Plant #4:[0m
+[33mPower Plant #2:[0m
+[37m  Type: 1[0m
+[32m  Status: Functional[0m
+[35m  Efficiency: 100%[0m
+[34m  Power Generation: 1000 watts[0m
+[37m  Raw Generation Capacity: 1000 watts[0m
+
+[33mPower Plant #3:[0m
 [37m  Type: 2[0m
+[32m  Status: Functional[0m
+[35m  Efficiency: 100%[0m
+[34m  Power Generation: 1000 watts[0m
+[37m  Raw Generation Capacity: 1000 watts[0m
+
+[33mPower Plant #4:[0m
+[37m  Type: 3[0m
 [32m  Status: Functional[0m
 [35m  Efficiency: 100%[0m
 [34m  Power Generation: 1000 watts[0m
