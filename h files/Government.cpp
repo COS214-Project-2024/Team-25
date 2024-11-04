@@ -1168,7 +1168,6 @@ void Government::setDifficulty(int difficulty)
         wood->setKilo(100000);
         concrete->setKilo(100000);
         steel->setKilo(100000);
-
         budget->setCash(100000.00);
 
         // Add 2 of each utility type if they're functional
