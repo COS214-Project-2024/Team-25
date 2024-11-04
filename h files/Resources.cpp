@@ -41,6 +41,11 @@ Budget *Budget::getInstance()
     return instance;
 }
 
+Budget::~Budget()
+{
+    instance = nullptr;
+}
+
 Materials::Materials() : kilograms(0) {}
 
 void Materials::increase()

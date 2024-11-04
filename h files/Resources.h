@@ -217,6 +217,7 @@ public:
      * of Budget throughout the application.
      */
     static Budget* getInstance();
+    ~Budget();
 
     // Deleted copy constructor and assignment operator to prevent copying.
     Budget(const Budget&) = delete;

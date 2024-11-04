@@ -1,10 +1,10 @@
 ---------------------------
-Tax collection progress 1/8
+Tax collection progress 0/8
 ---------------------------
 [33m---------------------------------[0m
-[33m|     Satisfaction: 44.58       |[0m
+[33m|     Satisfaction: 49.58       |[0m
 [33m---------------------------------[0m
-[33m|     Budget:       172000.00   |[0m
+[33m|     Budget:       50000.00   |[0m
 [33m---------------------------------[0m
 [33m|     Debt:         0.00        |[0m
 [33m---------------------------------[0m
@@ -12,7 +12,7 @@ Tax collection progress 1/8
 |	 CityGrowth Stats	|
 |	 ---------------	|
 | Total Sectors: 5              |
-| Total buildings: 51           |
+| Total buildings: 50           |
 | Population: 	125/160         |
 |	 ---------------	|
 | Apartment          : 10       |
@@ -22,16 +22,14 @@ Tax collection progress 1/8
 | Mall               :  5       |
 | Mansion            :  5       |
 | Plant              :  5       |
-| School             :  1       |
 | Shop               :  5       |
 |	 ---------------	|
 | Commercial Roads    : 10      |
 | Industrial Roads    : 10      |
 | Instatutional Roads :  5      |
-| School Roads        :  1      |
 |	 ---------------	|
 | Sector[0]: 10 buildings       |
-| Sector[1]: 11 buildings       |
+| Sector[1]: 10 buildings       |
 | Sector[2]: 10 buildings       |
 | Sector[3]: 10 buildings       |
 | Sector[4]: 10 buildings       |
@@ -41,17 +39,17 @@ Tax collection progress 1/8
 Current Resources and Utilities:[0m
 [36m-------------------------------[0m
 [32mMaterials:[0m
-  Wood: 22680 kg
-  Concrete: 22680 kg
-  Steel: 22680 kg
+  Wood: 5000 kg
+  Concrete: 5000 kg
+  Steel: 5000 kg
 
 [32mUtilities:[0m
-  Power Plants: 4
-  Water Supply Systems: 4
-  Waste Management Facilities: 4
+  Power Plants: 0
+  Water Supply Systems: 0
+  Waste Management Facilities: 0
 
 [32mBudget:[0m
-  Cash: $172000
+  Cash: $50000
 [36m-------------------------------[0m
 [36m================================[0m
 [36mDetailed Utilities Information:[0m
@@ -59,88 +57,15 @@ Current Resources and Utilities:[0m
 [32m------------------------------[0m
 [32mPower Plants:[0m
 [32m------------------------------[0m
-
-[33mPower Plant #1:[0m
-[37m  Type: 0[0m
-[32m  Status: Functional[0m
-[35m  Efficiency: 100%[0m
-[34m  Power Generation: 5000 watts[0m
-[37m  Raw Generation Capacity: 5000 watts[0m
-
-[33mPower Plant #2:[0m
-[37m  Type: 1[0m
-[32m  Status: Functional[0m
-[35m  Efficiency: 100%[0m
-[34m  Power Generation: 5000 watts[0m
-[37m  Raw Generation Capacity: 5000 watts[0m
-
-[33mPower Plant #3:[0m
-[37m  Type: 2[0m
-[32m  Status: Functional[0m
-[35m  Efficiency: 100%[0m
-[34m  Power Generation: 5000 watts[0m
-[37m  Raw Generation Capacity: 5000 watts[0m
-
-[33mPower Plant #4:[0m
-[37m  Type: 3[0m
-[32m  Status: Functional[0m
-[35m  Efficiency: 100%[0m
-[34m  Power Generation: 5000 watts[0m
-[37m  Raw Generation Capacity: 5000 watts[0m
+[33m  No power plants built yet.[0m
 [32m------------------------------[0m
 [32mWater Supply Systems:[0m
 [32m------------------------------[0m
-
-[33mWater Supply System #1:[0m
-[32m  Status: Functional[0m
-[35m  Efficiency: 100%[0m
-[34m  Water Generation: 5000 liters[0m
-[37m  Raw Generation Capacity: 5000 liters[0m
-
-[33mWater Supply System #2:[0m
-[32m  Status: Functional[0m
-[35m  Efficiency: 100%[0m
-[34m  Water Generation: 5000 liters[0m
-[37m  Raw Generation Capacity: 5000 liters[0m
-
-[33mWater Supply System #3:[0m
-[32m  Status: Functional[0m
-[35m  Efficiency: 100%[0m
-[34m  Water Generation: 5000 liters[0m
-[37m  Raw Generation Capacity: 5000 liters[0m
-
-[33mWater Supply System #4:[0m
-[32m  Status: Functional[0m
-[35m  Efficiency: 100%[0m
-[34m  Water Generation: 5000 liters[0m
-[37m  Raw Generation Capacity: 5000 liters[0m
+[33m  No water supply systems built yet.[0m
 [32m------------------------------[0m
 [32mWaste Management Facilities:[0m
 [32m------------------------------[0m
-
-[33mWaste Management Facility #1:[0m
-[32m  Status: Functional[0m
-[35m  Efficiency: 100%[0m
-[34m  Waste Collection: 5000 kg[0m
-[37m  Raw Collection Capacity: 5000 kg[0m
-
-[33mWaste Management Facility #2:[0m
-[32m  Status: Functional[0m
-[35m  Efficiency: 100%[0m
-[34m  Waste Collection: 5000 kg[0m
-[37m  Raw Collection Capacity: 5000 kg[0m
-
-[33mWaste Management Facility #3:[0m
-[32m  Status: Functional[0m
-[35m  Efficiency: 100%[0m
-[34m  Waste Collection: 5000 kg[0m
-[37m  Raw Collection Capacity: 5000 kg[0m
-
-[33mWaste Management Facility #4:[0m
-[32m  Status: Functional[0m
-[35m  Efficiency: 100%[0m
-[34m  Waste Collection: 5000 kg[0m
-[37m  Raw Collection Capacity: 5000 kg[0m
+[33m  No waste management facilities built yet.[0m
 
 [36m================================[0m
 
