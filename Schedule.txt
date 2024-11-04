@@ -1,7 +1,7 @@
 Schedule
 james - intro
 megan - 4. transportation
-cainda - 2. buildings
+carinda - 2. buildings
 james - 3. utilities
 marco - 8. routines
 ethan v - 6. taxes, 5. city growth
@@ -18,12 +18,6 @@ janri - doctest
 
 live demo
  
-
-
-
-
-
-
 
 
 
