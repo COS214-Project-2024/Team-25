@@ -1,0 +1,30 @@
+Schedule
+james - intro
+megan - 4. transportation
+cainda - 2. buildings
+james - 3. utilities
+marco - 8. routines
+ethan v - 6. taxes, 5. city growth
+ethan - 7. resources
+janri - 1. citizens
+
+
+marco - government - brief explanation
+other diagrams
+ethan v- GitHub 
+carinda - doxygen
+
+janri - doctest
+
+live demo
+ 
+
+
+
+
+
+
+
+
+
+
