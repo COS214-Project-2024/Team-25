@@ -526,6 +526,8 @@ TEST_CASE("Testing Resources") {
     }
 
     SUBCASE("Budget Singleton") {
+        Budget* b = Budget::getInstance();
+        delete b;
         Budget* budget1 = Budget::getInstance();
         Budget* budget2 = Budget::getInstance();
         
