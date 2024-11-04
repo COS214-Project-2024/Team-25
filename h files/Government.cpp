@@ -1359,6 +1359,132 @@ void Government::printUtilitiesDetails()
     printC("\n================================\n", Color::CYAN);
 }
 
+std::string Government::getResourcesReport()
+{
+    std::ostringstream report;
+
+    // Header
+    report << "\033[36m\nCurrent Resources and Utilities:\033[0m\n";
+    report << "\033[36m-------------------------------\033[0m\n";
+
+    // Materials
+    report << "\033[32mMaterials:\033[0m\n";
+    report << "  Wood: " << wood->getKilo() << " kg\n";
+    report << "  Concrete: " << concrete->getKilo() << " kg\n";
+    report << "  Steel: " << steel->getKilo() << " kg\n";
+
+    // Utilities
+    report << "\n\033[32mUtilities:\033[0m\n";
+    report << "  Power Plants: " << powerPlant.size() << "\n";
+    report << "  Water Supply Systems: " << waterSupply.size() << "\n";
+    report << "  Waste Management Facilities: " << wasteManagement.size() << "\n";
+
+    // Budget
+    report << "\n\033[32mBudget:\033[0m\n";
+    report << "  Cash: $" << budget->getCash() << "\n";
+
+    // Footer
+    report << "\033[36m-------------------------------\033[0m\n";
+
+    return report.str();
+}
+
+std::string Government::getSec()
+{
+    return cityGrowth->printSectors();
+}
+
+std::string Government::getSatisfactionDetails() 
+{
+    std::stringstream result;
+
+    result << "\033[33m" << std::string(33, '-') << "\033[0m\n"; // Yellow
+    result << "\033[33m|     Satisfaction: " << std::fixed << std::setprecision(2) << avgSatisfaction() << "       |\033[0m\n"; // Yellow
+    result << "\033[33m" << std::string(33, '-') << "\033[0m\n"; // Yellow
+    result << "\033[33m|     Budget:       " << std::fixed << std::setprecision(2) << getBudget() << "   |\033[0m\n"; // Yellow
+    result << "\033[33m" << std::string(33, '-') << "\033[0m\n"; // Yellow
+    result << "\033[33m|     Debt:         " << std::fixed << std::setprecision(2) << getDebt() << "        |\033[0m\n"; // Yellow
+    result << "\033[33m" << std::string(33, '-') << "\033[0m\n"; // Yellow
+
+    return result.str();
+}
+
+std::string Government::getUtilitiesDetails() 
+{
+    std::stringstream result;
+
+    result << "\033[36m================================\033[0m\n"; // Cyan
+    result << "\033[36mDetailed Utilities Information:\033[0m\n"; // Cyan
+    result << "\033[36m================================\033[0m\n"; // Cyan
+
+    // Power Plants
+    result << "\033[32m------------------------------\033[0m\n"; // Green
+    result << "\033[32mPower Plants:\033[0m\n"; // Green
+    result << "\033[32m------------------------------\033[0m\n"; // Green
+    if (powerPlant.empty()) {
+        result << "\033[33m  No power plants built yet.\033[0m\n"; // Yellow
+    } else {
+        for (size_t i = 0; i < powerPlant.size(); i++) {
+            result << "\n\033[33mPower Plant #" << (i + 1) << ":\033[0m\n"; // Yellow
+            result << "\033[37m  Type: " << static_cast<int>(powerPlant[i]->getType()) << "\033[0m\n"; // White
+            if( powerPlant[i]->getFunctional()) {
+                result << "\033[32m  Status: " << "Functional" << "\033[0m\n";
+            } else {
+                result << "\033[31m  Status: " << "Malfunctioning" << "\033[0m\n";
+            }
+            result << "\033[35m  Efficiency: " << powerPlant[i]->getEfficiency() << "%\033[0m\n"; // Magenta
+            result << "\033[34m  Power Generation: " << powerPlant[i]->getPowerGeneration() << " watts\033[0m\n"; // Blue
+            result << "\033[37m  Raw Generation Capacity: " << powerPlant[i]->getPowerGenerationRaw() << " watts\033[0m\n"; // White
+        }
+    }
+
+    // Water Supply Systems
+    result << "\033[32m------------------------------\033[0m\n"; // Green
+    result << "\033[32mWater Supply Systems:\033[0m\n"; // Green
+    result << "\033[32m------------------------------\033[0m\n"; // Green
+    if (waterSupply.empty()) {
+        result << "\033[33m  No water supply systems built yet.\033[0m\n"; // Yellow
+    } else {
+        for (size_t i = 0; i < waterSupply.size(); i++) {
+            result << "\n\033[33mWater Supply System #" << (i + 1) << ":\033[0m\n"; // Yellow
+            if( waterSupply[i]->getFunctional()) {
+                result << "\033[32m  Status: " << "Functional" << "\033[0m\n";
+            } else {
+                result << "\033[31m  Status: " << "Malfunctioning" << "\033[0m\n";
+            }
+            result << "\033[35m  Efficiency: " << waterSupply[i]->getEfficiency() << "%\033[0m\n"; // Magenta
+            result << "\033[34m  Water Generation: " << waterSupply[i]->getWaterGeneration() << " liters\033[0m\n"; // Blue
+            result << "\033[37m  Raw Generation Capacity: " << waterSupply[i]->getWaterGenerationRaw() << " liters\033[0m\n"; // White
+        }
+    }
+
+    // Waste Management Facilities
+    result << "\033[32m------------------------------\033[0m\n"; // Green
+    result << "\033[32mWaste Management Facilities:\033[0m\n"; // Green
+    result << "\033[32m------------------------------\033[0m\n"; // Green
+    if (wasteManagement.empty()) {
+        result << "\033[33m  No waste management facilities built yet.\033[0m\n"; // Yellow
+    } else {
+        for (size_t i = 0; i < wasteManagement.size(); i++) {
+            result << "\n\033[33mWaste Management Facility #" << (i + 1) << ":\033[0m\n"; // Yellow
+            if( wasteManagement[i]->getFunctional()) {
+                result << "\033[32m  Status: " << "Functional" << "\033[0m\n";
+            } else {
+                result << "\033[31m  Status: " << "Malfunctioning" << "\033[0m\n";
+            }
+            result << "\033[35m  Efficiency: " << wasteManagement[i]->getEfficiency() << "%\033[0m\n"; // Magenta
+            result << "\033[34m  Waste Collection: " << wasteManagement[i]->getWasteCollection() << " kg\033[0m\n"; // Blue
+            result << "\033[37m  Raw Collection Capacity: " << wasteManagement[i]->getWasteCollectionRaw() << " kg\033[0m\n"; // White
+        }
+    }
+
+    result << "\n\033[36m================================\033[0m\n"; // Cyan
+
+    return result.str();
+}
+
+
+
 void Government::promptForNewApartment(int sector, Citizen *c)
 {
     printC("No current apartment building available. Create a new one? (Type Y or N)", Color::CYAN);

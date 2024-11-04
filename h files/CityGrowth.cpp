@@ -177,17 +177,17 @@ std::string CityGrowth::printSectors()
     for (auto it = buildingMap.begin(); it != buildingMap.end(); it++)
     {
 
-        BuildingType << "| " << std::setw(10) << std::left << it->first
+        BuildingType << "| " << std::setw(18) << std::left << it->first
                      << " : " << std::setw(2) << std::right << it->second
-                     << std::setw(17) << std::right << "|\n";
+                     << std::setw(9) << std::right << "|\n";
     }
 
     // Print road types
     for (auto it = roadMap.begin(); it != roadMap.end(); it++)
     {
-        RoadType << "| " << std::setw(10) << std::left << it->first + " Roads"
+        RoadType << "| " << std::setw(19) << std::left << it->first + " Roads"
                  << " : " << std::setw(2) << std::right << it->second
-                 << std::setw(11) << std::right << "|\n";
+                 << std::setw(8) << std::right << "|\n";
     }
 
     populationStream << CurrentPopulation << "/" << PopulationCapacity;
@@ -204,11 +204,11 @@ std::string CityGrowth::printSectors()
     for (int i = 0; i < this->sectors.size(); i++)
     {
         if(this->sectors[i]->getBuildingCount() < 10){
-        output << "| Sector[" << i << "]: " << std::setw(1) << std::left
+        output << "| Sector[" << i << "]: " << std::setw(2) << std::left
                << this->sectors[i]->getBuildingCount() << " buildings"
                << std::setw(10) << std::right << "|\n";
         }else{
-            output << "| Sector[" << i << "]: " << std::setw(1) << std::left
+            output << "| Sector[" << i << "]: " << std::setw(2) << std::left
                << this->sectors[i]->getBuildingCount() << " buildings"
                << std::setw(9) << std::right << "|\n";
         }

@@ -1,5 +1,8 @@
 #include <iostream>
+#include <unistd.h>
+
 #include "Government.h"
+#include "NewTerminal.h"
 
 enum class Color
 {
@@ -83,6 +86,7 @@ void gameLoop()
     Government *government = new Government();
     bool game = true;
     int actionCount = 0;
+    std::ostringstream message;
 
     printC("Select which difficulty to play on:", Color::CYAN);
     printC("    1. Easy", Color::GREEN);
@@ -91,10 +95,23 @@ void gameLoop()
     int difficulty = safeIntInput(1, 3);
 
     government->setDifficulty(difficulty);
-    government->printUtilitiesDetails();
-    government->printresources();
-    government->printSec();
-    government->printSatisfaction();
+    // government->printUtilitiesDetails();
+    // government->printresources();
+    // government->printSec();
+    // government->printSatisfaction();
+
+    message.str("");
+    message.clear();
+
+    message << "---------------------------\n";
+    message << "Tax collection progress " << to_string(actionCount) << "/8\n";
+    message << "---------------------------\n";
+
+    message << government->getSatisfactionDetails();
+    message << government->getSec();
+    message << government->getResourcesReport();
+    message << government->getUtilitiesDetails();
+    writeMessageToFile(message.str());
 
     while (game)
     {
@@ -106,6 +123,20 @@ void gameLoop()
             government->printresources();
             government->printSec();
             government->printSatisfaction();
+
+            message.str("");
+            message.clear();
+
+            message << "---------------------------\n";
+            message << "Tax collection progress " << to_string(actionCount) << "/8\n";
+            message << "---------------------------\n";
+
+            message << government->getSatisfactionDetails();
+            message << government->getSec();
+            message << government->getResourcesReport();
+            message << government->getUtilitiesDetails();
+            writeMessageToFile(message.str());
+
             printC("YOU HAVE WON BASED ON SATISFACTION", Color::GREEN);
             break;
         }
@@ -117,6 +148,18 @@ void gameLoop()
             government->printresources();
             government->printSec();
             government->printSatisfaction();
+
+            message.str("");
+            message.clear();
+            message << "---------------------------\n";
+            message << "Tax collection progress " << to_string(actionCount) << "/8\n";
+            message << "---------------------------\n";
+            message << government->getSatisfactionDetails();
+            message << government->getSec();
+            message << government->getResourcesReport();
+            message << government->getUtilitiesDetails();
+            writeMessageToFile(message.str());
+
             printC("YOU HAVE LOST BASED ON SATISFACTION", Color::RED);
             break;
         }
@@ -128,6 +171,18 @@ void gameLoop()
             government->printresources();
             government->printSec();
             government->printSatisfaction();
+
+            message.str("");
+            message.clear();
+            message << "---------------------------\n";
+            message << "Tax collection progress " << to_string(actionCount) << "/8\n";
+            message << "---------------------------\n";
+            message << government->getSatisfactionDetails();
+            message << government->getSec();
+            message << government->getResourcesReport();
+            message << government->getUtilitiesDetails();
+            writeMessageToFile(message.str());
+
             printC("YOU HAVE WON BASED ON CASH", Color::GREEN);
             break;
         }
@@ -139,6 +194,18 @@ void gameLoop()
             government->printresources();
             government->printSec();
             government->printSatisfaction();
+
+            message.str("");
+            message.clear();
+            message << "---------------------------\n";
+            message << "Tax collection progress " << to_string(actionCount) << "/8\n";
+            message << "---------------------------\n";
+            message << government->getSatisfactionDetails();
+            message << government->getSec();
+            message << government->getResourcesReport();
+            message << government->getUtilitiesDetails();
+            writeMessageToFile(message.str());
+
             printC("YOU HAVE LOST BASED ON DEBT", Color::RED);
             break;
         }
@@ -152,6 +219,7 @@ void gameLoop()
         }
 
         // Display available actions
+        std::cout << "\n";
         printC("Choose an action to perform:", Color::CYAN);
         printC("    1. Create Building", Color::WHITE);
         printC("    2. Create Utility", Color::WHITE);
@@ -178,37 +246,37 @@ void gameLoop()
         case 1:
             printC("Creating a building...", Color::GREEN);
             government->createBuilding();
-            government->printSatisfaction();
+            // government->printSatisfaction();
             break;
         case 2:
             printC("Creating a utility...", Color::GREEN);
             government->createUtility();
-            government->printSatisfaction();
+            // government->printSatisfaction();
             break;
         case 3:
             printC("Upgrading transport...", Color::GREEN);
             government->upgradeTransport();
-            government->printSatisfaction();
+            // government->printSatisfaction();
             break;
         case 4:
             printC("Cleaning city and distributing water...", Color::GREEN);
             government->cleanCity();
-            government->printSatisfaction();
+            // government->printSatisfaction();
             break;
         case 5:
             printC("Increasing materials...", Color::GREEN);
             government->increaseMaterials();
-            government->printSatisfaction();
+            // government->printSatisfaction();
             break;
         case 6:
             printC("Changing tax strategy...", Color::GREEN);
             government->changeTaxStartegy();
-            government->printSatisfaction();
+            // government->printSatisfaction();
             break;
         case 7:
             printC("Repairing utilities...", Color::GREEN);
             government->repairUtilities();
-            government->printSatisfaction();
+            // government->printSatisfaction();
             break;
         case 8:
             printC("Creating new citizens...", Color::GREEN);
@@ -216,7 +284,7 @@ void gameLoop()
             printC("NOTE! All the citizens you create now will be added to the same sector, and will have the same job. ", Color::RED);
             numCitizen = safeIntInput(1, 10);
             government->createCitizen(numCitizen);
-            government->printSatisfaction();
+            // government->printSatisfaction();
             break;
         case 9:
             game = false;
@@ -225,52 +293,85 @@ void gameLoop()
 
         if (action != 9)
         {
-
-            printC("See a more detailed report:", Color::CYAN);
-            printC("    1. Print Utilities", Color::WHITE);
-            printC("    2. Print Resources", Color::WHITE);
-            printC("    3. Print Sector", Color::WHITE);
-            printC("    4. Print Satisfaction", Color::WHITE);
-            printC("    5. Print All", Color::WHITE);
-            printC("    6. Skip", Color::WHITE);
-
-            int choice = safeIntInput(1, 6);
-            std::string s = "";
-            switch (choice)
-            {
-            case 1:
-                government->printUtilitiesDetails();
-                std::cout << "Press any button to continue." << std::endl;
-                cin >> s;
-                break;
-            case 2:
-                government->printresources();
-                std::cout << "Press any button to continue." << std::endl;
-                cin >> s;
-                break;
-            case 3:
-                government->printSec();
-                std::cout << "Press any button to continue." << std::endl;
-                cin >> s;
-                break;
-            case 4:
-                government->printSatisfaction();
-                std::cout << "Press any button to continue." << std::endl;
-                cin >> s;
-                break;
-            case 5:
-                government->printUtilitiesDetails();
-                government->printresources();
-                government->printSec();
-                government->printSatisfaction();
-                std::cout << "Press any button to continue." << std::endl;
-                cin >> s;
-                break;
-            case 6:
-                break;
-            }
-
             actionCount++;
+
+            writeMessageToFile(" ");
+            sleep(1.1);
+
+            message.str("");
+            message.clear();
+
+            message << "---------------------------\n";
+            message << "Tax collection progress " << to_string(actionCount) << "/8\n";
+            message << "---------------------------\n";
+
+            message << government->getSatisfactionDetails();
+            message << government->getSec();
+            message << government->getResourcesReport();
+            message << government->getUtilitiesDetails();
+            writeMessageToFile(message.str());
+            // sendMessageToTerminal(message.str());
+
+            // printC("See a more detailed report:", Color::CYAN);
+            // printC("    1. Print Utilities", Color::WHITE);
+            // printC("    2. Print Resources", Color::WHITE);
+            // printC("    3. Print Sector", Color::WHITE);
+            // printC("    4. Print Satisfaction", Color::WHITE);
+            // printC("    5. Print All", Color::WHITE);
+            // printC("    6. Skip", Color::WHITE);
+
+            // int choice = safeIntInput(1, 6);
+            // std::string s = "";
+            // switch (choice)
+            // {
+            // case 1:
+            //     government->printUtilitiesDetails();
+            //     std::cout << "Press any button to continue." << std::endl;
+            //     cin >> s;
+            //     break;
+            // case 2:
+            //     government->printresources();
+            //     std::cout << "Press any button to continue." << std::endl;
+            //     cin >> s;
+            //     break;
+            // case 3:
+            //     government->printSec();
+            //     std::cout << "Press any button to continue." << std::endl;
+            //     cin >> s;
+            //     break;
+            // case 4:
+            //     government->printSatisfaction();
+            //     std::cout << "Press any button to continue." << std::endl;
+            //     cin >> s;
+            //     break;
+            // case 5:
+            //     government->printUtilitiesDetails();
+            //     government->printresources();
+            //     government->printSec();
+            //     government->printSatisfaction();
+            //     std::cout << "Press any button to continue." << std::endl;
+            //     cin >> s;
+            //     break;
+            // case 6:
+            //     break;
+            // }
+
+            // actionCount++;
+
+        // message.str("");
+        // message.clear();
+
+        // message << "---------------------------\n";
+        // message << "Tax collection progress " << to_string(actionCount) << "/8\n";
+        // message << "---------------------------\n";
+
+        // // message << "\n\n (imagine City stats being here)\n";
+        // message << government->getSatisfactionDetails();
+        // message << "\n";
+        // message << government->getSec();
+        // writeMessageToFile(message.str());
+        // // sendMessageToTerminal(message.str());
+
             if (actionCount >= 8)
             {
                 printC("Collecting annual taxes...", Color::YELLOW);
@@ -288,6 +389,27 @@ void gameLoop()
 int main(int argc, char const *argv[])
 {
     setvbuf(stdout, nullptr, _IONBF, 0);
+    // gameLoop();
+    // return 0;
+
+    std::ostringstream message;
+
+    openNewTerminal();
+    writeMessageToFile(" ");  // Write message to temp file
+
+    message << "---Welcome message can be displayed---\n\n";
+    message << "---Game rules and goals can be listed---\n\n";
+
+
+    // message << "---------\n";
+    // message << "| Day 0" << " |\n";
+    // message << "---------\n";
+    // message << "\033[32m this is green\033[0m";
+
+    writeMessageToFile(message.str());  // Write message to temp file
+    // sendMessageToTerminal(message.str());
+
     gameLoop();
+
     return 0;
 }
